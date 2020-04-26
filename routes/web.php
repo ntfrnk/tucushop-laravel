@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+
+// Items
+
+Route::get('/item/detail/{id}', 'ItemController@detail')->name('item.detail');

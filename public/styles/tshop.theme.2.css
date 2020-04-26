@@ -1,0 +1,20 @@
+
+:root {
+	/* Colores generales */
+	--colorPrincipal: #FF7F11;
+	--white: #FFF;
+
+	/* Bootstrap */
+	--primary: #337FA9;
+	--primary-on: #005F93;
+	--secondary: #506880;
+	--secondary-on: #244260;
+	--success: #528D46;
+	--success-on: #277018;
+	--info: #33B8ED;
+	--info-on: #00A6E8;
+	--warning: #CDA133;
+	--warning-on: #C18A00;
+	--danger: #AD3333;
+	--danger-on: #990000;
+}

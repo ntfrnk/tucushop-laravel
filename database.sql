@@ -21,6 +21,7 @@ CONSTRAINT pk_users PRIMARY KEY(id)
 CREATE TABLE IF NOT EXISTS users_profile (
 user_id int(255) NOT NULL,
 name varchar(255),
+lastname varchar(255),
 birthday date,
 gender varchar(10),
 dni int(8),
@@ -31,6 +32,8 @@ state varchar(50),
 city varchar(50),
 postalcode varchar(15),
 photo varchar(255),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_profiles_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
@@ -68,11 +71,11 @@ CONSTRAINT fk_users_preferences_keywords FOREIGN KEY (keyword_id) REFERENCES key
 CONSTRAINT fk_users_preferences_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
-/* Tabla USERS_WISHLIST */
+/* Tabla USERS_LIKES */
 
-CREATE TABLE IF NOT EXISTS users_wishlist (
+CREATE TABLE IF NOT EXISTS users_likes (
 keyword_id int(255) NOT NULL,
-user_id int(255) NOT NULL,
+user_id int(255),
 created_at datetime,
 CONSTRAINT fk_users_wishlist_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id),
 CONSTRAINT fk_users_wishlist_users FOREIGN KEY (user_id) REFERENCES users(id)

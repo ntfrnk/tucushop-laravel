@@ -1,0 +1,244 @@
+
+
+.texto a {color: #2E556A !important;}
+.texto a:hover {color: #003049 !important;}
+
+.texto {
+    color: #656565;
+}
+
+
+.theme-text-color,
+.top-header a:hover,
+ul.nav.navbar-nav li a:hover,
+ul.dropdown-menu li.dropdown-header,
+.foot-sec h3,
+.foot-sec a:hover,
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.product-item .price-box p span,
+a.filter.active,
+.product-item .price-box h4:hover,
+.bottom-footer span,
+.newslatter-search-bar .search_bar button:hover i,
+.breadcrumb li.active,
+.bredcrumb-section h3,
+.wa-theme-color,
+ul.list li a:hover,
+ul.list label:hover,
+a:hover,
+p.review-icon span,
+.blog-sidebar p a:hover,
+.blog-meta-link a:hover,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover,
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover,
+.blog-sidebar p a,
+.language-box p a.active,
+.top-header .dropdown a:hover {
+    color: #999;
+}
+.cart-hover:hover span.cart-circle,
+.search_bar button:hover,
+.navbar-header,
+.foot-sec p span:hover,
+.mega-dropdown-menu > li ul > li > a:hover,
+.mega-dropdown-menu > li ul > li > a:focus,
+.slider-shap-box,
+.itg-button:after,
+.free-shipping-icon-box,
+.free-shipping:hover:after,
+.free-shipping:after,
+figure.theme-effect:before,
+.heading-icon-box,
+.heading-icon-box:after,
+.carousel-style-1 .owl-nav .owl-prev:hover,
+.carousel-style-1 .owl-nav .owl-next:hover,
+.filter-section,
+.product-effect:after,
+.product-effect span:hover,
+.carousel-style-1 .owl-dots .owl-dot.active span,
+.carousel-style-1 .owl-dots .owl-dot:hover span,
+.newslatter-icon figure,
+.sticker,
+.product-list-item .list-icon a span:hover,
+.pagination-box span:hover,
+div.tab button.active,
+.tag-list a:hover,
+input[type=radio]:checked ~ .check::before,
+.top-header .drop-links li:hover,
+.right-pink-shape:before,
+.cssload-loading i,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover,
+ul.nav.navbar-nav li ul.dropdown-menu a:hover,
+div#main-slider .owl-nav .owl-prev:hover,
+div#main-slider .owl-nav .owl-next:hover,
+ul.wa-icons li a:hover {
+    background-color: #2E556A;
+}
+.navbar-header:after,
+.slider-shap-box:after,
+.free-shipping-icon-box:after,
+.heading-section,
+.newslatter-icon figure:after,
+.sticker:after,
+.navbar.navbar {
+    border-bottom-color: #2E556A;
+}
+.blog-thoughts,
+input[type=radio]:checked ~ .check::before,
+input[type=radio]:checked ~ .check,
+.mini-cart,
+.navbar-nav li ul.dropdown-menu {
+    border-color: #2E556A;
+}
+
+.sticker-red {
+    background: rgba(204, 0, 0, 1) !important;
+}
+
+.sticker-red:after {
+    border-bottom-color: rgba(204, 0, 0, 1) !important;
+}
+
+.sticker-red:before {
+    border-bottom-color: rgba(175, 4, 4, 1) !important;
+}
+
+/*dark theme color */
+
+.sticker:before {
+    border-bottom-color: rgba(71, 169, 165, 1);
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+        color: #2E556A;
+    }
+}
+
+.navbar-header:before,
+.navbar-header:after,
+.navbar.navbar-bg-dark,
+.navbar-header {
+    background: #222 !important;
+    border-bottom: 0px solid !important;
+}
+
+.menu-nav>ul>li>a:hover {
+    color: #2E556A;
+}
+
+
+
+
+
+
+
+/* Customize */
+
+.alert-moda {
+	background: rgba(85, 190, 186, .2);
+	border: solid 1px rgba(85, 190, 186, .8);
+}
+
+.alert-moda-alt {
+	background: rgba(85, 190, 186, .8);
+	color: #FFF;
+}
+
+.list-menu li a.activo {
+    background: #2E556A;
+}
+
+.steps li.active {
+    background: #2E556A;
+}
+
+.box-user:hover {
+    background: #2E556A;
+    border-color: #2E556A;
+}
+
+.boton {
+    background: #2E556A !important;
+    color: #FFF !important;
+    border: none !important;
+}
+
+.filter-section-modified button {
+    background: #2E556A !important;
+}
+
+.top-form {
+    color: #2E556A !important;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+input[type=tel]:focus,
+input[type=phone]:focus,
+input[type=search]:focus,
+input[type=password]:focus,
+input[type=number]:focus,
+input[type=file]:focus,
+select:focus {
+    border: solid 1px #2E556A !important;
+}
+textarea:focus {
+    border: solid 1px #2E556A !important;
+}
+
+.figure-caption:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2E556A;
+    opacity: 0.6;
+}
+
+.btn-special {
+    color: #2E556A !important;
+}
+
+.btn-special:hover {
+    color: #444 !important;
+}
+
+.star-on {
+    color: #2E556A !important;
+}
+
+.star-hover {
+    color: #2E556A !important;
+}
+
+.review-icon i {
+    color: #AAA;
+}
+
+
+/* LAYOUTS *********************************************************/
+
+/* Stores */
+
+.store-header {
+    color: #FFF !important;
+}
+
+
+/* OPTION MOVIL */
+
+.movil-bg {
+    background: #2E556A;
+    color: #FFF;
+}

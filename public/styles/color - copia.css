@@ -1,0 +1,99 @@
+.theme-text-color,
+.top-header a:hover,
+ul.nav.navbar-nav li a:hover,
+ul.dropdown-menu li.dropdown-header,
+.foot-sec h3,
+.foot-sec a:hover,
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.product-item .price-box p span,
+a.filter.active,
+.product-item .price-box h4:hover,
+.bottom-footer span,
+.newslatter-search-bar .search_bar button:hover i,
+.breadcrumb li.active,
+.bredcrumb-section h3,
+.wa-theme-color,
+ul.list li a:hover,
+ul.list label:hover,
+a:hover,
+p.review-icon span,
+.blog-sidebar p a:hover,
+.blog-meta-link a:hover,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover,
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover,
+.blog-sidebar p a,
+.language-box p a.active,
+.top-header .dropdown a:hover {
+    color: #ee3054;
+}
+.cart-hover:hover span.cart-circle,
+.search_bar button:hover,
+.navbar-header,
+.foot-sec p span:hover,
+.mega-dropdown-menu > li ul > li > a:hover,
+.mega-dropdown-menu > li ul > li > a:focus,
+.slider-shap-box,
+.itg-button:after,
+.free-shipping-icon-box,
+.free-shipping:hover:after,
+.free-shipping:after,
+figure.theme-effect:before,
+.heading-icon-box,
+.heading-icon-box:after,
+.carousel-style-1 .owl-nav .owl-prev:hover,
+.carousel-style-1 .owl-nav .owl-next:hover,
+.filter-section,
+.product-effect:after,
+.product-effect span:hover,
+.carousel-style-1 .owl-dots .owl-dot.active span,
+.carousel-style-1 .owl-dots .owl-dot:hover span,
+.newslatter-icon figure,
+.sticker,
+.product-list-item .list-icon a span:hover,
+.pagination-box span:hover,
+div.tab button.active,
+.tag-list a:hover,
+input[type=radio]:checked ~ .check::before,
+.top-header .drop-links li:hover,
+.right-pink-shape:before,
+.cssload-loading i,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover,
+ul.nav.navbar-nav li ul.dropdown-menu a:hover,
+div#main-slider .owl-nav .owl-prev:hover,
+div#main-slider .owl-nav .owl-next:hover,
+ul.wa-icons li a:hover {
+    background-color: #ee3054;
+}
+.navbar-header:after,
+.slider-shap-box:after,
+.free-shipping-icon-box:after,
+.heading-section,
+.newslatter-icon figure:after,
+.sticker:after,
+.navbar.navbar {
+    border-bottom-color: #ee3054;
+}
+.blog-thoughts,
+input[type=radio]:checked ~ .check::before,
+input[type=radio]:checked ~ .check,
+.mini-cart,
+.navbar-nav li ul.dropdown-menu {
+    border-color: #ee3054;
+}
+/*dark theme color */
+
+.sticker:before {
+    border-bottom-color: #cc2947;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+        color: #ee3054;
+    }
+}

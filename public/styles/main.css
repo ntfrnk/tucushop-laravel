@@ -1,0 +1,38 @@
+/*---Bootstap---*/
+@import url("bootstrap.min.css");
+
+/*---JQuery UI---*/
+@import url("jquery-ui.css");
+
+/*---Plugins---*/
+/*@import url("../plugins/megamenu/css/hover-dropdown-menu.css");*/
+@import url("../plugins/fancyBox/css/jquery.fancybox.css");
+@import url("../plugins/acordian/css/jquery-ui.css");
+@import url("../plugins/owl-carousel/css/owl.carousel.css");
+@import url("../plugins/owl-carousel/css/owl.theme.default.css");
+@import url("../plugins/font-awesome/css/all.css");
+@import url("../plugins/iconfonts/css/iconfont.css");
+@import url("../plugins/hover-effect/css/themeHover.css");
+@import url("../plugins/EasyAutocomplete/easy-autocomplete.min.css");
+@import url("../plugins/EasyAutocomplete/easy-autocomplete.themes.min.css");
+/*@import url("../plugins/menu/css/megaMenu.css");*/
+@import url("../plugins/mixItUp/css/mixitup.css");
+
+/*---Theme---*/
+@import url("style.css");
+
+/*---Extras---*/
+@import url("extras.css");
+
+/*---Helpers---*/
+@import url("modifiers.css");
+
+/*---Responsive---*/
+@import url("responsive.css");
+@import url("mediaqueries.css");
+
+/*---Colores---*/
+@import url("color.css");
+
+/*---Cropper---*/
+@import url("cropper.css");
