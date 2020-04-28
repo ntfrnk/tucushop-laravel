@@ -11,15 +11,37 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+/*
+** RUTAS PARA USERS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
 
-// Items
+Route::get('/user/home', 'UserController@home')->name('user.home');
+Route::get('/user/edit', 'UserController@edit')->name('user.edit');
 
-Route::get('/item/detail/{id}', 'ItemController@detail')->name('item.detail');
+/*
+** RUTAS PARA ITEMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Detalle del item
+Route::get('/item/{name}_{id}.tshop', 'ItemController@detail')
+		->name('item.detail')
+		->where('name', '[a-z0-9-]+')
+		->where('id', '[0-9]+');
+
+// Detalle del item
+Route::get('/purchase/{item_id}', 'ItemController@purchase')->name('item.purchase');
+
+
+/*
+** RUTAS PARA STORES ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Portada del store
+Route::get('/{alias}', 'StoreController@index')->name('store.index')->where('alias', '[a-z._]+');
+
+// Lista de stores de un usuario
+Route::get('/stores', 'StoreController@list')->name('store.list')->where('alias', '[a-z._]+');

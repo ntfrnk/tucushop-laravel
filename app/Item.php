@@ -10,12 +10,12 @@ class Item extends Model {
 
     // Detalles del item
 	public function features(){
-		return $this->hasMany('App\Feature');
+		return $this->hasMany('App\ItemFeature');
 	}
 
 	// Fotos
 	public function photos(){
-		return $this->hasMany('App\Photo');
+		return $this->hasMany('App\ItemPhoto');
 	}
 
 	// Likes
@@ -23,14 +23,19 @@ class Item extends Model {
 		return $this->hasMany('App\Like');
 	}
 
-    // El shop o tienda
+	// Etiquetas
+	public function tags(){
+		return $this->hasMany('App\ItemTag');
+	}
+
+    // Mensajes
     public function messages(){
         return $this->hasMany('App\Message');
     }
 
 	// Ofertas
-	public function offers(){
-		return $this->hasOne('App\Offer');
+	public function offer(){
+		return $this->hasOne('App\ItemOffer');
 	}
 
     // Negocio

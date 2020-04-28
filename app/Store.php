@@ -35,7 +35,7 @@ class Store extends Model {
 
     // El shop o tienda
     public function shop(){
-        return $this->hasOne('App\Shop');
+        return $this->hasOne('App\StoreShop');
     }
 
     // El plan contratado

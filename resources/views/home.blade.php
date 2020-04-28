@@ -56,39 +56,12 @@
 			{{-- Cuerpo de ofertas --}}
 
 			<div class="box-item-list owl-carousel owl-theme">
+	
+				@foreach($offers as $offer)
 
-				@for($i=0;$i<8;$i++)
-				
-					<div class="box-item item">
-						<div class="box-item-body">
-							<figure class="box-item-image">
-								<a href="{{ route('item.detail', ['id' => 1]) }}">
-									<img src="{{ asset('images/examples/00001_1552703916_53.jpg') }}" class="img-fluid" />
-								</a>
-							</figure>
-							<div class="box-item-details">
-								<h3><a href="{{ route('item.detail', ['id' => 1]) }}">Nombre del producto</a></h3>
-								<p>$ 1250</p>
-							</div>
-						</div>
-					</div>
+					@include('item.includes.item_offer')
 
-					<div class="box-item item-offer item">
-						<div class="box-item-body">
-							<figure class="box-item-image">
-								<a href="{{ route('item.detail', ['id' => 1]) }}">
-									<img src="{{ asset('images/examples/00001_1552703916_53.jpg') }}" class="img-fluid" />
-								</a>
-							</figure>
-							<div class="box-item-details">
-								<h3><a href="{{ route('item.detail', ['id' => 1]) }}">Nombre del producto</a></h3>
-								<p><span>$ 1250</span> $ 980</p>
-								<div class="box-item-offer-flag">-25%</div>
-							</div>
-						</div>
-					</div>
-
-				@endfor
+				@endforeach
 
 			</div>
 
@@ -142,38 +115,11 @@
 
 			<div class="box-item-list row">
 				
-				@for($i=0;$i<4;$i++)
+				@foreach($items_dest as $item)
 				
-					<div class="box-item col-md-3">
-						<div class="box-item-body">
-							<figure class="box-item-image">
-								<a href="{{ route('item.detail', ['id' => 1]) }}">
-									<img src="{{ asset('images/examples/00001_1552703916_53.jpg') }}" class="img-fluid" />
-								</a>
-							</figure>
-							<div class="box-item-details">
-								<h3><a href="{{ route('item.detail', ['id' => 1]) }}">Nombre del producto</a></h3>
-								<p>$ 1250</p>
-							</div>
-						</div>
-					</div>
+					@include('item.includes.item')
 
-					<div class="box-item item-offer col-md-3">
-						<div class="box-item-body">
-							<figure class="box-item-image">
-								<a href="{{ route('item.detail', ['id' => 1]) }}">
-									<img src="{{ asset('images/examples/00001_1552703916_53.jpg') }}" class="img-fluid" />
-								</a>
-							</figure>
-							<div class="box-item-details">
-								<h3><a href="{{ route('item.detail', ['id' => 1]) }}">Nombre del producto</a></h3>
-								<p><span>$ 1250</span> $ 980</p>
-								<div class="box-item-offer-flag">-25%</div>
-							</div>
-						</div>
-					</div>
-
-				@endfor
+				@endforeach
 
 			</div>
 

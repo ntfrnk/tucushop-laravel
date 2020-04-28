@@ -55,8 +55,8 @@ CONSTRAINT fk_users_addresses_users FOREIGN KEY (user_id) REFERENCES users(id)
 /* Tabla KEYWORDS */
 
 CREATE TABLE IF NOT EXISTS keywords (
-id int(255) NOT NULL,
-keyword int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+keyword varchar(255) NOT NULL,
 CONSTRAINT pk_keywords PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -101,8 +101,8 @@ CONSTRAINT pk_plans PRIMARY KEY(id)
 /* Tabla TYPES */
 
 CREATE TABLE IF NOT EXISTS types (
-id int(255) NOT NULL,
-type int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+type varchar(255) NOT NULL,
 CONSTRAINT pk_types PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -183,8 +183,8 @@ CONSTRAINT fk_items_fotos_items FOREIGN KEY (item_id) REFERENCES items(id)
 /* Tabla FEATURES */
 
 CREATE TABLE IF NOT EXISTS features (
-id int(255) NOT NULL,
-feature int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+feature varchar(255) NOT NULL,
 CONSTRAINT pk_features PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -198,11 +198,20 @@ CONSTRAINT fk_items_features_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_items_features_features FOREIGN KEY (feature_id) REFERENCES features(id)
 ) ENGINE=InnoDb;
 
+/* Tabla ITEMS_TAGS */
+
+CREATE TABLE IF NOT EXISTS items_tags (
+item_id int(255) NOT NULL,
+keyword_id int(255) NOT NULL,
+CONSTRAINT fk_items_tags_items FOREIGN KEY (item_id) REFERENCES items(id),
+CONSTRAINT fk_items_tags_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id)
+) ENGINE=InnoDb;
+
 /* Tabla ROLES */
 
 CREATE TABLE IF NOT EXISTS roles (
-id int(255) NOT NULL,
-role int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+role varchar(255) NOT NULL,
 CONSTRAINT pk_roles PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 

@@ -1,6 +1,19 @@
 
 $(function(){
 
+	/* Menú usuario */
+
+	$('.user-menu').on('click', function(){
+		if($('.user-submenu').hasClass('user-submenu-on')){
+			$('.user-submenu').removeClass('user-submenu-on');
+		} else {
+			$('.user-submenu').addClass('user-submenu-on');
+		}
+	});
+
+
+	/* Carousel */
+
 	$('.owl-carousel').owlCarousel({
 	    loop:true,
 	    margin:15,

@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Item;
+use App\ItemOffer;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    
-    /*public function __construct()
-    {
-        $this->middleware('auth');
-    }*/
+class HomeController extends Controller {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
+    public function index() {
+
+        $offers = ItemOffer::inRandomOrder()
+        				->take(8)
+        				->get();
+
+        $items_dest = Item::where('status', '1')
+                        ->inRandomOrder()
+                        ->take(8)
+                        ->get();
+
+        return view('home', [
+            'offers' => $offers,
+            'items_dest' => $items_dest
+        ]);
+
     }
 }

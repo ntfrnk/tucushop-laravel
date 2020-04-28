@@ -174,6 +174,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+        Mis providers
+        */
+        App\Providers\FormatTimeServiceProvider::class,
+        App\Providers\PhotoItemServiceProvider::class,
+        App\Providers\UrlFormatServiceProvider::class,
 
     ],
 
@@ -225,6 +231,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        /*
+        ** Mis helpers
+        */
+        'FormatTime' => App\Helpers\FormatTime::class,
+        'PhotoItem' => App\Helpers\PhotoItem::class,
+        'UrlFormat' => App\Helpers\UrlFormat::class,
 
     ],
 

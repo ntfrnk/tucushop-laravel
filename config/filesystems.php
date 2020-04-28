@@ -55,6 +55,27 @@ return [
             'visibility' => 'public',
         ],
 
+        'items' => [
+            'driver' => 'local',
+            'root' => storage_path('app/items'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'users' => [
+            'driver' => 'local',
+            'root' => storage_path('app/users'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'stores' => [
+            'driver' => 'local',
+            'root' => storage_path('app/stores'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
