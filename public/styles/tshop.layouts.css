@@ -1,0 +1,175 @@
+/*
+ |
+ | STORES -> SHOPS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.store-header {
+	background-size: cover;
+	height: 150px;
+}
+
+.store-header-cover {
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+}
+
+.store-name {
+	font-family: Montserrat;
+	text-transform: uppercase;
+	font-size: 30px;
+	color: #FFF;
+	background: rgba(0,0,0,0.6);
+	display: inline-block;
+	padding: 0 20px;
+	margin: 45px 0px 0px;
+}
+
+.store-logo {
+	margin: 25px 20px 0 0;
+	width: 100px;
+	border: solid 1px #CCC;
+	float: left;
+	z-index: 1;
+}
+
+.store-social {
+	color: #FFF;
+	position: relative;
+	background: rgba(0,0,0,0.5);
+	display: inline-block;
+	padding: 14px 20px 14px 20px;
+	margin: 47px 20px 0 0;
+}
+
+.store-social ul li a {
+	margin: 0 15px 0 15px;
+	line-height: 20px;
+	display: inline-block;
+}
+
+.store-social ul li a:first-child {
+	margin: 0 15px 0 0;
+}
+
+.store-social>a>i:last-child {
+	margin: 0 0 0 15px;
+}
+
+.show-menu-store {
+	color: #FFF !important;
+}
+
+.menu-store {
+	position: absolute;
+	background: #FFF;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+	width: 100%;
+	list-style: none;
+	margin: 0 0 0 -10px;
+	padding: 10px 15px;
+	z-index: 10;
+	display: none;
+}
+
+.menu-store a {
+	color: #888;
+}
+
+.menu-store-on {
+	display: block !important;
+}
+
+
+
+/*
+ |
+ | ITEM -> DETAIL
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.store-header-item {
+    position: relative;
+    top: 0px;
+    left: -10%;
+    width: 120%;
+    margin: 0 0 -50px !important;
+    padding-top: 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center center;
+    height: 180px;
+}
+
+.store-header-cover {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.store-header-card{
+	width: 35%;
+	padding: 10px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.store-header-card-image {
+	border: solid 1px #CCC;
+	width: 18%;
+	float: left;
+}
+
+.store-header-card-name {
+	float: right;
+	padding-top: 10px;
+	text-align: center;
+	color: #333;
+	width: 82%;
+}
+
+.precio-item {
+	font-size: 50px;
+}
+
+.precio-item .old {
+	font-size: 28px;
+	text-decoration: line-through;
+	color: #BBB;
+}
+
+.item-detalle {
+	font-family: Raleway !important;
+	text-align: left;
+}
+
+.product-item-showing {
+	background: #FFF;
+	border: solid 1px #CCC;
+	box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+	border-radius: 5px;
+	padding: 50px 40px;
+}
+
+.item-box-mini {
+	background: #FFF;
+	border: solid 1px #EEE;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.item-box-price-box {
+	padding: 20px 0px 20px !important;
+}
+
+.item-box-price-box h4 {
+	font-size: 15px;
+}

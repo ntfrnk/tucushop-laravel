@@ -18,3 +18,21 @@
 	--danger: #AD3333;
 	--danger-on: #990000;
 }
+
+
+/*
+ |
+ | MODIFICACIONES BOOTSTRAP
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.btn-outline-primary {
+	border-color: #3490dc;
+	color: #3490dc;
+}
+
+.btn-outline-primary:hover {
+	border-color: #227dc7;
+	color: #227dc7;
+	background: transparent;
+}

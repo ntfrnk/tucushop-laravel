@@ -1,5 +1,9 @@
 
-/* Carousel */
+/*
+ |
+ | CAROUSEL DE ITEMS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
 
 .owl-nav {
 	display: none;
@@ -41,7 +45,11 @@
 
 
 
-/* Boxes */
+/*
+ |
+ | BOXES DE ITEMS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
 
 .box-item-list {
 	position: relative;
@@ -105,15 +113,12 @@
 	color: #999;
 	font-size: 18px;
 	font-weight: normal;
-	text-decoration: line-through;
 	display: inline-block;
 	padding-right: 5px;
 }
 
-.item-offer .box-item-details p span:after {
-	content: "/";
-	margin-left: 5px;
-	text-decoration: none !important;
+.item-offer .box-item-details p span.offer {
+	text-decoration: line-through;
 }
 
 .owl-carousel .item-offer .box-item-offer-flag {
@@ -137,7 +142,11 @@
 }
 
 
-/* BANNER PROMOCIONAL */
+/*
+ |
+ | BANNER PROMOCIONES HOME
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
 
 .featured-banner {
     position: relative;
@@ -193,4 +202,116 @@
     font-size: 45px;
     font-weight: 100;
     margin: 0 0 0 0;
+}
+
+
+/*
+ |
+ | DETALLE DE ITEM
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.item-detail {
+
+}
+
+
+/*
+ |
+ | ÁREA DE USUARIOS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.box-user {
+	border: solid 1px #CCC;
+	border-radius: 4px;
+	text-align: center;
+	padding: 20px 0;
+	margin-bottom: 25px;
+	transition: background 300ms ease-in-out, color 300ms ease-in-out, border-color 300ms ease-in-out;
+}
+
+.box-user-special {
+	background: #EEE;
+}
+
+.box-user-deact {
+	color: #BBB;
+}
+
+.box-user:hover {
+	color: #FFF;
+	cursor: pointer;
+}
+
+.box-user p {
+	font-size: 16px;
+}
+
+
+/*
+ |
+ | ÁREA DE AYUDA
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.info-categories {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.info-categories li {
+	font-weight: 600;
+	font-size: 22px;
+	margin: 15px 0 5px;
+}
+
+.info-topics {
+	list-style: square;
+	margin: 0 0;
+	padding: 0 20px;
+}
+
+.info-topics li {
+	font-weight: 400;
+	font-size: 16px;
+	margin: 0px 0;
+}
+
+.info-img {
+	border: solid 4px #CCC;
+	margin: 25px 0;
+}
+
+.help-list>li>a {
+	font-size: 17px;
+}
+
+.help-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.help-list ul>li {
+	text-align: left;
+	line-height: 22px;
+	margin-bottom: 10px;
+}
+
+.help-list ul>li a {
+	display: block;
+}
+
+
+/*
+ |
+ | UTILIDADES
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.bordbot {
+	clear: both;
+	border-bottom: dashed 1px #DDD;
 }
