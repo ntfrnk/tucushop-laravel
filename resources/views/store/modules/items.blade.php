@@ -41,8 +41,8 @@
 									<td class="a-right">
 										<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-primary" title="Editar la información de este item"><i class="fa fa-edit"></i> Editar</a>
 										<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-primary" title="Gestionar las fotos de este item"><i class="fa fa-camera"></i> Editar</a>
-										<a href="" class="marR5 btn btn-sm btn-outline-secondary" title="Desactivar este item"><i class="fa fa-ban"></i> Desactivar</a>
-										<a href="" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i> Eliminar</a>
+										<a href="{{ route('item.status', ['item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-outline-secondary" title="Desactivar este item"><i class="fa fa-ban"></i> Desactivar</a>
+										<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i> Eliminar</a>
 									</td>
 								</tr>
 								@endforeach
@@ -67,7 +67,7 @@
 											<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-primary" title="Editar la información de este item"><i class="fa fa-edit"></i></a>
 											<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-primary" title="Gestionar las fotos de este item"><i class="fa fa-camera"></i></a>
 											<a href="{{ route('item.status', ['item_id' => $item->id]) }}" class="btn btn-sm btn-{{ $item->status == 1 ? 'outline-secondary' : 'secondary' }}" title="{{ $item->status == 1 ? 'Desactivar' : 'Activar' }} este item"><i class="fa fa-ban"></i></a>
-											<a href="{{ route('item.delete', ['item_id' => $item->id]) }}" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i></a>
+											<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i></a>
 										</div>
 									</div>
 								</div>

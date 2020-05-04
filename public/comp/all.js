@@ -112,6 +112,15 @@ function confirm_open(text, funcion, color){
 	
 }
 
+function confirm_open_link(text, link, color){
+	confirm_color(color);
+	$('.confirm-text').html(text);
+	$('.confirm-bg').show();
+	$('.confirm-container').css({'display':'flex'});
+	$('#confirm-btn-accept').attr('onclick',"window.location = '" + link + "'");
+	$('#confirm-btn-accept').focus();
+}
+
 function confirm_close(){
 	$('.confirm-container').hide();
 	$('.confirm-bg').hide();

@@ -41,7 +41,7 @@
 									</div>
 									<div class="options">
 										<a href="{{ route('item.photo.crop', ['alias' => $store->alias, 'item_id' => $item->id, 'photo_id' => $photo->id]) }}" class="marR5 btn btn-sm btn-primary" title="Recortar foto"><i class="fa fa-crop-alt"></i></a>
-										<a href="{{ route('item.photo.delete', ['photo_id' => $photo->id]) }}" class="btn btn-sm btn-outline-danger" title="Eliminar foto"><i class="fa fa-times"></i></a>
+										<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro/a de que quieres eliminar esta foto?', '{{ route('item.photo.delete', ['photo_id' => $photo->id]) }}')" class="btn btn-sm btn-outline-danger" title="Eliminar foto"><i class="fa fa-times"></i></a>
 									</div>
 								</div>
 							</div>
