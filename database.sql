@@ -21,6 +21,7 @@ CONSTRAINT pk_users PRIMARY KEY(id)
 CREATE TABLE IF NOT EXISTS users_profile (
 user_id int(255) NOT NULL,
 name varchar(255),
+lastname varchar(255),
 birthday date,
 gender varchar(10),
 dni int(8),
@@ -31,6 +32,8 @@ state varchar(50),
 city varchar(50),
 postalcode varchar(15),
 photo varchar(255),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_profiles_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
@@ -52,8 +55,8 @@ CONSTRAINT fk_users_addresses_users FOREIGN KEY (user_id) REFERENCES users(id)
 /* Tabla KEYWORDS */
 
 CREATE TABLE IF NOT EXISTS keywords (
-id int(255) NOT NULL,
-keyword int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+keyword varchar(255) NOT NULL,
 CONSTRAINT pk_keywords PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -68,14 +71,15 @@ CONSTRAINT fk_users_preferences_keywords FOREIGN KEY (keyword_id) REFERENCES key
 CONSTRAINT fk_users_preferences_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
-/* Tabla USERS_WISHLIST */
+/* Tabla USERS_LIKES */
 
-CREATE TABLE IF NOT EXISTS users_wishlist (
-keyword_id int(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS users_likes (
+item_id int(255) NOT NULL,
 user_id int(255) NOT NULL,
 created_at datetime,
-CONSTRAINT fk_users_wishlist_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id),
-CONSTRAINT fk_users_wishlist_users FOREIGN KEY (user_id) REFERENCES users(id)
+updated_at datetime,
+CONSTRAINT fk_users_likes_items FOREIGN KEY (item_id) REFERENCES items(id),
+CONSTRAINT fk_users_likes_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
 /* Tabla PLANS */
@@ -98,8 +102,8 @@ CONSTRAINT pk_plans PRIMARY KEY(id)
 /* Tabla TYPES */
 
 CREATE TABLE IF NOT EXISTS types (
-id int(255) NOT NULL,
-type int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+type varchar(255) NOT NULL,
 CONSTRAINT pk_types PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -180,8 +184,8 @@ CONSTRAINT fk_items_fotos_items FOREIGN KEY (item_id) REFERENCES items(id)
 /* Tabla FEATURES */
 
 CREATE TABLE IF NOT EXISTS features (
-id int(255) NOT NULL,
-feature int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+feature varchar(255) NOT NULL,
 CONSTRAINT pk_features PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -195,11 +199,20 @@ CONSTRAINT fk_items_features_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_items_features_features FOREIGN KEY (feature_id) REFERENCES features(id)
 ) ENGINE=InnoDb;
 
+/* Tabla ITEMS_TAGS */
+
+CREATE TABLE IF NOT EXISTS items_tags (
+item_id int(255) NOT NULL,
+keyword_id int(255) NOT NULL,
+CONSTRAINT fk_items_tags_items FOREIGN KEY (item_id) REFERENCES items(id),
+CONSTRAINT fk_items_tags_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id)
+) ENGINE=InnoDb;
+
 /* Tabla ROLES */
 
 CREATE TABLE IF NOT EXISTS roles (
-id int(255) NOT NULL,
-role int(255) NOT NULL,
+id int(255) auto_increment NOT NULL,
+role varchar(255) NOT NULL,
 CONSTRAINT pk_roles PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 

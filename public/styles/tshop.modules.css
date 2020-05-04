@@ -1,0 +1,347 @@
+
+/*
+ |
+ | CAROUSEL DE ITEMS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.owl-nav {
+	display: none;
+}
+
+.carousel-heading {
+	margin: 50px 0 10px;
+	border-bottom: solid 1px var(--colorPrincipal);
+}
+
+.carousel-icon {
+	background: var(--colorPrincipal);
+	height: 80px;
+	line-height: 80px;
+	font-size: 30px;
+	text-align: center;
+	color: var(--white);
+}
+
+.carousel-title {
+	padding: 7px 30px;
+}
+
+.carousel-title h3 {
+	margin: 0;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.carousel-title p {
+	font-size: 17px;
+	margin: 0;
+}
+
+.carousel-navigation {
+	text-align: right;
+	line-height: 80px;
+}
+
+
+
+/*
+ |
+ | BOXES DE ITEMS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.box-item-list {
+	position: relative;
+}
+
+.owl-stage {
+	padding-bottom: 40px;
+}
+
+.box-item-body {
+	background: #FFF;
+	margin-top: 20px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.box-item-image {
+	background: #000;
+	overflow: hidden;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+}
+
+.box-item-image img {
+	transform: scale(1.03);
+	opacity: 1;
+	transition: all 500ms ease-out
+}
+
+.box-item:hover .box-item-body {
+	box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.box-item:hover .box-item-image img {
+	transform: scale(1);
+	opacity: .8;
+}
+
+.box-item-details {
+	padding: 5px 20px 10px;
+	text-align: center;
+	clear: both;
+}
+
+.box-item-details h3 {
+	font-size: 17px;
+	font-weight: normal;
+}
+
+.box-item-details p {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+
+/* Item offer */
+
+.item-offer .box-item-details p span {
+	color: #999;
+	font-size: 18px;
+	font-weight: normal;
+	display: inline-block;
+	padding-right: 5px;
+}
+
+.item-offer .box-item-details p span.offer {
+	text-decoration: line-through;
+}
+
+.owl-carousel .item-offer .box-item-offer-flag {
+	position: absolute;
+	left: 0;
+	top: 260px;
+	color: #FFF;
+	background: #C00;
+	width: 80px;
+	padding: 5px 0;
+}
+
+.item-offer .box-item-offer-flag {
+	position: absolute;
+	left: 15px;
+	top: 260px;
+	color: #FFF;
+	background: #C00;
+	width: 80px;
+	padding: 5px 0;
+}
+
+
+/*
+ |
+ | BANNER PROMOCIONES HOME
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.featured-banner {
+    position: relative;
+    height: 400px;
+    background-position: center -90px;
+    background-size: cover;
+}
+.special-style {
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    background-size: cover !important;
+    width: 100%;
+    z-index: 0;
+}
+.special-style-full {
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    z-index: 0;
+}
+.bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    top: 0;
+    left: 0;
+}
+.parallax-style {
+    background-attachment: fixed;
+}
+.featured-banner-caption {
+    position: relative;
+    padding: 100px 0;
+    width: 90%;
+    margin: 0 auto;
+}
+.featured-banner-caption h1 {
+    color: #fff;
+    font-size: 65px;
+    font-weight: bolder;
+    line-height: 1.2em;
+    margin-bottom: 20px;
+}
+.featured-banner-caption h2 {
+    color: #fff;
+    line-height: 1em;
+    font-size: 45px;
+    font-weight: 100;
+    margin: 0 0 0 0;
+}
+
+
+/*
+ |
+ | DETALLE DE ITEM
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.item-detail {
+
+}
+
+
+/*
+ |
+ | ÁREA DE USUARIOS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.box-user {
+	border: solid 1px #CCC;
+	border-radius: 4px;
+	text-align: center;
+	padding: 20px 0;
+	margin-bottom: 25px;
+	transition: background 300ms ease-in-out, color 300ms ease-in-out, border-color 300ms ease-in-out;
+}
+
+.box-user-special {
+	background: #EEE;
+}
+
+.box-user-deact {
+	color: #BBB;
+}
+
+.box-user:hover {
+	color: #FFF;
+	cursor: pointer;
+}
+
+.box-user p {
+	font-size: 16px;
+}
+
+
+/*
+ |
+ | ÁREA DE AYUDA
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.info-categories {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.info-categories li {
+	font-weight: 600;
+	font-size: 22px;
+	margin: 15px 0 5px;
+}
+
+.info-topics {
+	list-style: square;
+	margin: 0 0;
+	padding: 0 20px;
+}
+
+.info-topics li {
+	font-weight: 400;
+	font-size: 16px;
+	margin: 0px 0;
+}
+
+.info-img {
+	border: solid 4px #CCC;
+	margin: 25px 0;
+}
+
+.help-list>li>a {
+	font-size: 17px;
+}
+
+.help-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.help-list ul>li {
+	text-align: left;
+	line-height: 22px;
+	margin-bottom: 10px;
+}
+
+.help-list ul>li a {
+	display: block;
+}
+
+
+/*
+ |
+ | UTILIDADES
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.bordbot {
+	clear: both;
+	border-bottom: dashed 1px #DDD;
+}
+
+
+/*
+ |
+ | FORMULARIOS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.form-group-alt {
+	
+}
+
+label {
+	margin-bottom: 5px;
+ 	font-size: 14px;
+ 	font-weight: bold;
+ 	color: #555;
+}
+
+.form-group-alt label {
+	margin-bottom: 3px;
+}
+
+.form-control {
+	box-shadow: none !important;
+}
+
+.form-control:focus {
+	border: solid 1px #555;
+}

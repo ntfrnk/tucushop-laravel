@@ -1,0 +1,334 @@
+/*
+ |
+ | STORES -> SHOPS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.store-header {
+	background-size: cover;
+	height: 150px;
+}
+
+.store-header-cover {
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+}
+
+.store-header-admin {
+	position: relative;
+    top: 0px;
+    left: -10%;
+    width: 120%;
+    margin: 0 0 0 !important;
+    padding-top: 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center center;
+    height: 130px;
+}
+
+.store-name {
+	font-family: Montserrat;
+	text-transform: uppercase;
+	font-size: 30px;
+	color: #FFF;
+	background: rgba(0,0,0,0.6);
+	display: inline-block;
+	padding: 0 20px;
+	margin: 45px 0px 0px;
+}
+
+.store-logo {
+	margin: 25px 20px 0 0;
+	width: 100px;
+	border: solid 1px #CCC;
+	float: left;
+	z-index: 1;
+}
+
+.store-social {
+	color: #FFF;
+	position: relative;
+	background: rgba(0,0,0,0.5);
+	display: inline-block;
+	padding: 14px 20px 14px 20px;
+	margin: 47px 20px 0 0;
+}
+
+.store-social ul li a {
+	margin: 0 15px 0 15px;
+	line-height: 20px;
+	display: inline-block;
+}
+
+.store-social ul li a:first-child {
+	margin: 0 15px 0 0;
+}
+
+.store-social>a>i:last-child {
+	margin: 0 0 0 15px;
+}
+
+.show-menu-store {
+	color: #FFF !important;
+}
+
+.menu-store {
+	position: absolute;
+	background: #FFF;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+	width: 100%;
+	list-style: none;
+	margin: 0 0 0 -10px;
+	padding: 10px 15px;
+	z-index: 10;
+	display: none;
+}
+
+.menu-store a {
+	color: #888;
+}
+
+.menu-store-on {
+	display: block !important;
+}
+
+
+
+/*
+ |
+ | ITEM -> DETAIL
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.routing {
+	margin-bottom: 15px;
+	padding: 10px 20px;
+	border: solid 1px #DDD;
+	background: #F8F8F8;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.routing a {
+	display: inline-block;
+	margin-right: 10px;
+	font-weight: normal;
+}
+
+.routing span {
+	font-weight: bold;
+}
+
+.routing span::before {
+	content: " / ";
+	margin-right: 10px;
+	font-weight: normal;
+}
+
+.routing span:first-child::before,
+.routing span:last-child::before {
+	content: "";
+	margin-right: 0px;
+}
+
+.routing .routing-back {
+	
+}
+
+.store-admin {
+	margin: 40px 0 70px;
+}
+
+.sidebar {
+	padding: 0px;
+}
+
+.sidebar ul {
+	list-style: none;
+    padding: 20px;
+    margin: 0;
+    position: -webkit-sticky;
+	position: sticky;
+	top: 100px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border: solid 1px #DDD;
+	background: #FFF;
+}
+
+.sidebar ul li {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 35px;
+    border-bottom: solid 1px #EEE;
+}
+
+.sidebar ul li a {
+	padding: 0 15px;
+	display: block;
+    color: #777;
+}
+
+.sidebar ul li a:hover {
+	background: #F4F4F4;
+	text-decoration: none;
+}
+
+.sidebar ul li a i {
+	display: inline-block;
+	width: 20px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.mainbar {
+	padding-left: 15px !important;
+	padding-right: 0px !important;
+}
+
+.card-body-min {
+	min-height: 400px;
+	height: auto;
+}
+
+.box-admin {
+	margin-bottom: 30px;
+}
+
+.box-admin-container {
+	background: #FFF;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: solid 1px #CCC;
+}
+
+
+/* Show grid list items */
+
+.show-grid-item {
+	margin-bottom: 20px;
+	border: solid 1px #DDD;
+	padding: 10px 10px 0;
+}
+
+.show-grid-item div.options {
+	padding: 5px 5px;
+	text-align: center;
+}
+
+.show-grid-item div.item-info {
+	position: relative;
+}
+
+.show-grid-item div.item-info div {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin: 5px 0 0;
+	color: #FFF;
+	font-weight: 500;
+	line-height: 18px;
+	background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+	height: auto;
+	width: 100%;
+	padding: 20px 5px 5px;
+	text-align: center;
+}
+
+
+
+/*
+ |
+ | ITEM -> DETAIL
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.store-header-item {
+    position: relative;
+    top: 0px;
+    left: -10%;
+    width: 120%;
+    margin: 0 0 -50px !important;
+    padding-top: 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center center;
+    height: 180px;
+}
+
+.store-header-cover {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.store-header-card{
+	width: 35%;
+	padding: 10px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.store-header-card-image {
+	border: solid 1px #CCC;
+	width: 18%;
+	float: left;
+}
+
+.store-header-card-name {
+	float: right;
+	padding-top: 10px;
+	text-align: center;
+	color: #333;
+	width: 82%;
+}
+
+.precio-item {
+	font-size: 50px;
+}
+
+.precio-item .old {
+	font-size: 28px;
+	text-decoration: line-through;
+	color: #BBB;
+}
+
+.item-detalle {
+	font-family: Raleway !important;
+	text-align: left;
+}
+
+.product-item-showing {
+	background: #FFF;
+	border: solid 1px #CCC;
+	box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+	border-radius: 5px;
+	padding: 50px 40px;
+}
+
+.item-box-mini {
+	background: #FFF;
+	border: solid 1px #EEE;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.item-box-price-box {
+	padding: 20px 0px 20px !important;
+}
+
+.item-box-price-box h4 {
+	font-size: 15px;
+}
