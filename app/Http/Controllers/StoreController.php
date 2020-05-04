@@ -91,8 +91,27 @@ class StoreController extends Controller {
 
 	/* Guardado de datos editados en un store
 	---------------------------------------------------- */
-	public function update(){
-		// Guardado de datos editados
+	public function update(Request $request){
+
+		$validate = $this->validate($request, [
+			'name' => 'required|min:6|max:50|string',
+			'type_id' => 'required|integer',
+			'description' => '',
+			'alias' => 'required|min:6|max:30|unique:stores,alias,'.$request->store_id
+		]);
+		
+		$store = Store::find($request->store_id);
+		$store->name = $request->name;
+		$store->type_id = $request->type_id;
+		$store->description = $request->description;
+		$store->alias = $request->alias;
+
+		$store->save();
+
+		return redirect()->route('store.edit', [
+			'alias' => $store->alias
+		])->with(['message'=>'Los cambios se guardaron con éxito.']);
+
 	}
 
 
