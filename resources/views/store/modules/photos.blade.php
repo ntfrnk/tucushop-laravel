@@ -36,7 +36,7 @@
 							<div class="col-md-3" id="img_<?=$photo->id?>">
 								<div class="show-grid-item">
 									<div class="item-info">
-										<img src="{{ file_exists('storage/items/sm/'.$photo->file_path) && !is_dir('storage/items/sm/'.$photo->file_path) ? asset('storage/items/sm/'.$photo->file_path) : asset($noimg) }}?r={{ time() }}" class="img-fluid">
+										<img src="{{ file_exists('storage/items/sm/'.$photo->file_path) && !is_dir('storage/items/sm/'.$photo->file_path) ? asset('storage/items/sm/'.$photo->file_path.'?v='.$photo->version) : asset($noimg) }}" class="img-fluid">
 										<div>{{ $photo->name }}</div>
 									</div>
 									<div class="options">

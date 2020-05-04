@@ -338,6 +338,9 @@ class ItemController extends Controller {
 
 		$image->save();
 
+		$photo->version = $photo->version + 1;
+		$photo->save();
+
 		return redirect()->route('item.photos', [
 			'alias' => $photo->item->store->alias,
 			'item_id' => $photo->item->id

@@ -73,7 +73,7 @@
 						@php($i=0)
 						@foreach($item->photos->sortBy('ordering') as $photo)
 							<div class="carousel-item{{ $i==0 ? ' active' : '' }}">
-								<img src="{{ asset('storage/items/lg/'.$photo->file_path) }}" class="img-fluid">
+								<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid">
 							</div>
 							@php($i++)
 						@endforeach
