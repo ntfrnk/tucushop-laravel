@@ -315,3 +315,33 @@
 	clear: both;
 	border-bottom: dashed 1px #DDD;
 }
+
+
+/*
+ |
+ | FORMULARIOS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.form-group-alt {
+	
+}
+
+label {
+	margin-bottom: 5px;
+ 	font-size: 14px;
+ 	font-weight: bold;
+ 	color: #555;
+}
+
+.form-group-alt label {
+	margin-bottom: 3px;
+}
+
+.form-control {
+	box-shadow: none !important;
+}
+
+.form-control:focus {
+	border: solid 1px #555;
+}

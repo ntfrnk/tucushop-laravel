@@ -3,7 +3,7 @@
 
 <head>
 
-	@include('layouts.parts.head')
+	@include('layouts.includes.head')
 
 </head>
 
@@ -11,7 +11,7 @@
 <body>
 	<div id="app">
 
-		@include('layouts.parts.header')
+		@include('layouts.includes.header')
 
 		<main>
 			@yield('content')
@@ -19,9 +19,9 @@
 
 	</div>
 
-	@include('layouts.parts.footer')
-
-	@include('layouts.parts.scripts')
+	@include('layouts.includes.footer')
+	@include('layouts.includes.data')
+	@include('layouts.includes.scripts')
 
 </body>
 </html>

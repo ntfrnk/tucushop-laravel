@@ -74,11 +74,12 @@ CONSTRAINT fk_users_preferences_users FOREIGN KEY (user_id) REFERENCES users(id)
 /* Tabla USERS_LIKES */
 
 CREATE TABLE IF NOT EXISTS users_likes (
-keyword_id int(255) NOT NULL,
-user_id int(255),
+item_id int(255) NOT NULL,
+user_id int(255) NOT NULL,
 created_at datetime,
-CONSTRAINT fk_users_wishlist_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id),
-CONSTRAINT fk_users_wishlist_users FOREIGN KEY (user_id) REFERENCES users(id)
+updated_at datetime,
+CONSTRAINT fk_users_likes_items FOREIGN KEY (item_id) REFERENCES items(id),
+CONSTRAINT fk_users_likes_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
 /* Tabla PLANS */

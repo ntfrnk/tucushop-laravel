@@ -71,13 +71,13 @@ var EasyAutocomplete = (function(scope){
 
 				showAnimation: {
 					type: "normal", //normal|slide|fade
-					time: 300,
+					time: 400,
 					callback: function() {}
 				},
 
 				hideAnimation: {
 					type: "normal",
-					time: 300,
+					time: 400,
 					callback: function() {}
 				},
 
@@ -99,7 +99,7 @@ var EasyAutocomplete = (function(scope){
 
 			cssClasses: "",
 
-			minCharNumber: 3,
+			minCharNumber: 0,
 
 			requestDelay: 0,
 

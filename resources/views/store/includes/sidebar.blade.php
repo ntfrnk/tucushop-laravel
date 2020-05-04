@@ -22,7 +22,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="{{ route('store.items', ['alias' => $store->alias]) }}">
+			<a href="{{ route('items', ['alias' => $store->alias]) }}">
 				<i class="fa fa-box-open"></i> Productos & Servicios
 			</a>
 		</li>
@@ -36,13 +36,13 @@
 				<i class="fa fa-envelope"></i> Centro de Mensajes
 			</a>
 		</li>
-		<li>
-			<a href="{{ route('store.status', ['alias' => $store->alias]) }}">
-				<i class="fa fa-ban"></i> Deshabilitar negocio
+		<li class="marT20">
+			<a href="{{ route('store.status', ['alias' => $store->alias]) }}" class="text-{{ $store->status == 1 ? 'danger' : 'success' }}">
+				<i class="fa fa-{{ $store->status == 1 ? 'store-slash' : 'store' }}"></i> {{ $store->status == 1 ? 'Deshabilitar' : 'Habilitar' }} negocio
 			</a>
 		</li>
 		<li>
-			<a href="{{ route('store.delete', ['alias' => $store->alias]) }}">
+			<a href="{{ route('store.delete', ['alias' => $store->alias]) }}" class="text-danger">
 				<i class="fa fa-times"></i> Eliminar negocio
 			</a>
 		</li>

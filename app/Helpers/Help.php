@@ -8,7 +8,7 @@ use App\Store;
 
 class Help {
 
-	/* Portada de administración del store
+	/* Compruebo si el usuario es administrador del negocio
 	---------------------------------------------------- */
 	public static function isAdmin($alias){
 		$store = Store::where('alias', $alias)->first();
@@ -21,5 +21,30 @@ class Help {
 			return false;
 		}
 	}
+
+
+	/* Comprueba si el negocio no está eliminado
+	---------------------------------------------------- */
+	public static function isDeleted($alias){
+		$store = Store::where('alias', $alias)->first();
+		if($store->deleted == 1){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	/* Comprueba si el negocio existe
+	---------------------------------------------------- */
+	public static function exists($alias){
+		$store = Store::where('alias', $alias)->first();
+		if(is_object($store)){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
 }

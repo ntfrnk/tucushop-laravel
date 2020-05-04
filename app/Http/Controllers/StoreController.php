@@ -8,6 +8,7 @@ use App\Type;
 use App\Item;
 use App\StoreAdmin;
 use App\Message;
+use App\Feature;
 
 class StoreController extends Controller {
 
@@ -33,17 +34,17 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function home($alias){
 
-		if(\Help::isAdmin($alias)){
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
 			return view('store.modules.home', [
 				'store' => $store
-			]);
+				]);
 
 		} else {
 
-			return redirect()->route('home');
+			return redirect()->route('store.list');
 
 		}
 
@@ -69,7 +70,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function edit($alias){
 
-		if(\Help::isAdmin($alias)){
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$types = Type::orderBy('id','asc')->get();
@@ -81,7 +82,7 @@ class StoreController extends Controller {
 
 		} else {
 
-			return redirect()->route('home');
+			return redirect()->route('store.list');
 
 		}
 
@@ -99,7 +100,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function data($alias){
 
-		if(\Help::isAdmin($alias)){
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -109,7 +110,7 @@ class StoreController extends Controller {
 
 		} else {
 
-			return redirect()->route('home');
+			return redirect()->route('store.list');
 
 		}
 
@@ -137,94 +138,11 @@ class StoreController extends Controller {
 	}
 
 
-	/* Listado de items
-	---------------------------------------------------- */
-	public function items($alias){
-
-		if(\Help::isAdmin($alias)){
-
-			$store = Store::where('alias', $alias)->first();
-			$items = Item::where('store_id', $store->id)
-						->orderBy('name', 'asc')
-						->paginate(5);
-
-			return view('store.modules.items', [
-				'store' => $store,
-				'items' => $items
-			]);
-
-		} else {
-
-			return redirect()->route('home');
-
-		}
-
-	}
-
-
-	/* Formulario de nuevo item
-	---------------------------------------------------- */
-	public function newItem($alias){
-		
-		if(\Help::isAdmin($alias)){
-
-			$store = Store::where('alias', $alias)->first();
-
-			return view('store.modules.item_form', [
-				'store' => $store
-			]);
-
-		} else {
-
-			return redirect()->route('home');
-
-		}
-
-	}
-
-
-	/* Guardado del nuevo item
-	---------------------------------------------------- */
-	public function saveItem(){
-		// Guardado de nuevo administrador
-	}
-
-
-	/* Formulario de edición de un item
-	---------------------------------------------------- */
-	public function editItem($alias, $item_id){
-
-		if(\Help::isAdmin($alias)){
-
-			$store = Store::where('alias', $alias)->first();
-			$item = Item::find($item_id);
-
-			return view('store.modules.item_form', [
-				'store' => $store,
-				'item' => $item
-			]);
-
-		} else {
-
-			return redirect()->route('home');
-
-		}
-
-	}
-
-
-	/* Guardado de cambios en el item
-	---------------------------------------------------- */
-	public function updateItem(){
-		// Guardado de nuevo administrador
-	}
-
-
 	/* Gestión de administradores (listado)
 	---------------------------------------------------- */
 	public function admins($alias){
 
-		if(\Help::isAdmin($alias)){
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$admins = StoreAdmin::where('store_id', $store->id)
@@ -238,7 +156,7 @@ class StoreController extends Controller {
 
 		} else {
 
-			return redirect()->route('home');
+			return redirect()->route('store.list');
 
 		}
 
@@ -277,7 +195,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function messages($alias){
 		
-		if(\Help::isAdmin($alias)){
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$messages = Message::where('store_id', $store->id)
@@ -291,7 +209,7 @@ class StoreController extends Controller {
 
 		} else {
 
-			return redirect()->route('home');
+			return redirect()->route('store.list');
 
 		}
 
@@ -300,16 +218,88 @@ class StoreController extends Controller {
 
 	/* Cambio de estado del store (Activo / inactivo)
 	---------------------------------------------------- */
-	public function changeStatus(){
-		// Cambio de estado (Activo / inactivo)
+	public function status($alias){
+		
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+
+			$store = Store::where('alias', $alias)->first();
+
+			return view('store.modules.status_change', [
+				'store' => $store
+			]);
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
+
+	}
+
+
+	/* Cambio de estado del store (Activo / inactivo)
+	---------------------------------------------------- */
+	public function changeStatus($alias){
+		
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+
+			$store = Store::where('alias', $alias)->first();
+
+			$store->status = $store->status == 1 ? 0 : 1;
+			$store->save();
+
+			return redirect()->route('store.home', ['alias' => $store->alias]);
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
+
+	}
+
+
+	/* Eliminación de un store (Advertencia)
+	---------------------------------------------------- */
+	public function delete($alias){
+		
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+
+			$store = Store::where('alias', $alias)->first();
+
+			return view('store.modules.delete', [
+				'store' => $store
+			]);
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
+
 	}
 
 
 	/* Eliminación lógica de un store
 	** (sólo se marca la casilla "deleted")
 	---------------------------------------------------- */
-	public function delete(){
-		// No se elimina, sólo se marca la casilla "deleted"
+	public function deleteConfirm($alias){
+		
+		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+
+			$store = Store::where('alias', $alias)->first();
+
+			$store->deleted = 1;
+			$store->save();
+
+			return redirect()->route('store.list');
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
+
 	}
 
 }

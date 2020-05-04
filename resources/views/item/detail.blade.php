@@ -63,7 +63,7 @@
 					@if($item->photos->count() != 1)
 						<ol class="carousel-indicators">
 							@php($i=0)
-							@foreach($item->photos as $photo)
+							@foreach($item->photos->sortBy('ordering') as $photo)
 								<li data-target="#item-photos" data-slide-to="{{ $i }}"{{ $i==0 ? ' class="active"' : '' }}></li>
 								@php($i++)
 							@endforeach
@@ -71,7 +71,7 @@
 					@endif
 					<div class="carousel-inner">
 						@php($i=0)
-						@foreach($item->photos as $photo)
+						@foreach($item->photos->sortBy('ordering') as $photo)
 							<div class="carousel-item{{ $i==0 ? ' active' : '' }}">
 								<img src="{{ asset('storage/items/lg/'.$photo->file_path) }}" class="img-fluid">
 							</div>

@@ -131,9 +131,14 @@
 	font-weight: normal;
 }
 
-.routing span:first-child::before {
+.routing span:first-child::before,
+.routing span:last-child::before {
 	content: "";
 	margin-right: 0px;
+}
+
+.routing .routing-back {
+	
 }
 
 .store-admin {
@@ -160,7 +165,7 @@
 
 .sidebar ul li {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 35px;
     border-bottom: solid 1px #EEE;
 }
@@ -180,11 +185,17 @@
 	display: inline-block;
 	width: 20px;
     margin-right: 10px;
+    font-size: 16px;
 }
 
 .mainbar {
 	padding-left: 15px !important;
 	padding-right: 0px !important;
+}
+
+.card-body-min {
+	min-height: 400px;
+	height: auto;
 }
 
 .box-admin {
@@ -197,6 +208,39 @@
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border: solid 1px #CCC;
+}
+
+
+/* Show grid list items */
+
+.show-grid-item {
+	margin-bottom: 20px;
+	border: solid 1px #DDD;
+	padding: 10px 10px 0;
+}
+
+.show-grid-item div.options {
+	padding: 5px 5px;
+	text-align: center;
+}
+
+.show-grid-item div.item-info {
+	position: relative;
+}
+
+.show-grid-item div.item-info div {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin: 5px 0 0;
+	color: #FFF;
+	font-weight: 500;
+	line-height: 18px;
+	background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+	height: auto;
+	width: 100%;
+	padding: 20px 5px 5px;
+	text-align: center;
 }
 
 

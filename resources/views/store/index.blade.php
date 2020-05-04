@@ -7,6 +7,11 @@
 
 {{-- Fin de definición de etiquetas SEO / SEM :::::::::::::::::::--}}
 
+{{-- Cargo los scripts necesarios --}}
+@section('scripts')
+<script src="{{ asset('scripts/tshop.stores.js') }}" type="text/javascript" defer></script>
+@endsection
+
 
 @section('content')
 

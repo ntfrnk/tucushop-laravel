@@ -1,0 +1,18 @@
+[
+{"id":"1","feature":"Color"},
+{"id":"2","feature":"Marca"},
+{"id":"3","feature":"Talle"},
+{"id":"4","feature":"Material"},
+{"id":"5","feature":"Género"},
+{"id":"6","feature":"Modelo"},
+{"id":"7","feature":"Ocasión"},
+{"id":"8","feature":"Temporada"},
+{"id":"9","feature":"Edad"},
+{"id":"10","feature":"Hora"},
+{"id":"11","feature":"Tipo de cuello"},
+{"id":"12","feature":"Tipo de manga"},
+{"id":"13","feature":"Largo"},
+{"id":"14","feature":"Confección"},
+{"id":"15","feature":"Estilo"},
+{"id":"16","feature":"Calce"}
+]

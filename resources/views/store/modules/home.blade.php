@@ -1,6 +1,8 @@
 @extends('store.index')
 
 @section('section.admin', 'Home')
+@section('back.admin')
+@endsection
 
 @section('admin')
 
@@ -37,7 +39,7 @@
 			<div class="card-header">Productos y servicios</div>
 			<div class="card-body">
 				<p>Gestiona los items que tienes a la venta, con todas sus características.</p>
-				<p class="marB0"><a href="{{ route('store.items', ['alias' => $store->alias]) }}" class="btn btn-primary btn-sm">Administrar</a></p>
+				<p class="marB0"><a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-primary btn-sm">Administrar</a></p>
 			</div>
 		</div>
 	</div>
