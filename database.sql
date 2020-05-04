@@ -48,6 +48,8 @@ country varchar(50),
 state varchar(50),
 city varchar(50),
 postalcode varchar(15),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_users_addresses PRIMARY KEY(id),
 CONSTRAINT fk_users_addresses_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
@@ -57,6 +59,8 @@ CONSTRAINT fk_users_addresses_users FOREIGN KEY (user_id) REFERENCES users(id)
 CREATE TABLE IF NOT EXISTS keywords (
 id int(255) auto_increment NOT NULL,
 keyword varchar(255) NOT NULL,
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_keywords PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -67,6 +71,7 @@ keyword_id int(255) NOT NULL,
 user_id int(255) NOT NULL,
 source varchar(50),
 created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_users_preferences_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id),
 CONSTRAINT fk_users_preferences_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
@@ -96,6 +101,8 @@ max_offers int(3),
 max_photos int(3),
 max_admins int(3),
 max_emails int(3),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_plans PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -104,6 +111,8 @@ CONSTRAINT pk_plans PRIMARY KEY(id)
 CREATE TABLE IF NOT EXISTS types (
 id int(255) auto_increment NOT NULL,
 type varchar(255) NOT NULL,
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_types PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -135,6 +144,8 @@ name varchar(255) NOT NULL,
 detail text,
 price int(10),
 tags varchar(255),
+created_at datetime,
+updated_at datetime,
 status int(2),
 CONSTRAINT pk_items PRIMARY KEY(id),
 CONSTRAINT fk_items_stores FOREIGN KEY (store_id) REFERENCES stores(id)
@@ -150,6 +161,7 @@ store_id int(255) NOT NULL,
 item_id int(255) NOT NULL,
 content text,
 created_at datetime,
+updated_at datetime,
 readed_at datetime,
 closed int(1),
 CONSTRAINT pk_messages PRIMARY KEY(id),
@@ -166,19 +178,24 @@ item_id int(255) NOT NULL,
 price int(10),
 percent int(2),
 expiration date,
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_items_offers PRIMARY KEY(id),
 CONSTRAINT fk_items_offers_items FOREIGN KEY (item_id) REFERENCES items(id)
 ) ENGINE=InnoDb;
 
 /* Tabla ITEMS_FOTOS */
 
-CREATE TABLE IF NOT EXISTS items_fotos (
+CREATE TABLE IF NOT EXISTS items_photos (
 id int(255) auto_increment NOT NULL,
 item_id int(255) NOT NULL,
 file_path varchar(255),
+version varchar(3),
+created_at datetime,
+updated_at datetime,
 ordering int(2),
-CONSTRAINT pk_items_fotos PRIMARY KEY(id),
-CONSTRAINT fk_items_fotos_items FOREIGN KEY (item_id) REFERENCES items(id)
+CONSTRAINT pk_items_photos PRIMARY KEY(id),
+CONSTRAINT fk_items_photos_items FOREIGN KEY (item_id) REFERENCES items(id)
 ) ENGINE=InnoDb;
 
 /* Tabla FEATURES */
@@ -186,6 +203,8 @@ CONSTRAINT fk_items_fotos_items FOREIGN KEY (item_id) REFERENCES items(id)
 CREATE TABLE IF NOT EXISTS features (
 id int(255) auto_increment NOT NULL,
 feature varchar(255) NOT NULL,
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_features PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -194,6 +213,8 @@ CONSTRAINT pk_features PRIMARY KEY(id)
 CREATE TABLE IF NOT EXISTS items_features (
 item_id int(255) NOT NULL,
 feature_id int(255),
+created_at datetime,
+updated_at datetime,
 ordering int(2),
 CONSTRAINT fk_items_features_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_items_features_features FOREIGN KEY (feature_id) REFERENCES features(id)
@@ -204,6 +225,8 @@ CONSTRAINT fk_items_features_features FOREIGN KEY (feature_id) REFERENCES featur
 CREATE TABLE IF NOT EXISTS items_tags (
 item_id int(255) NOT NULL,
 keyword_id int(255) NOT NULL,
+created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_items_tags_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_items_tags_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id)
 ) ENGINE=InnoDb;
@@ -213,6 +236,8 @@ CONSTRAINT fk_items_tags_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(i
 CREATE TABLE IF NOT EXISTS roles (
 id int(255) auto_increment NOT NULL,
 role varchar(255) NOT NULL,
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_roles PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
@@ -223,6 +248,8 @@ store_id int(255) NOT NULL,
 user_id int(255) NOT NULL,
 role_id int(255) NOT NULL,
 status int(2),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_stores_admins_stores FOREIGN KEY (store_id) REFERENCES stores(id),
 CONSTRAINT fk_stores_admins_users FOREIGN KEY (user_id) REFERENCES users(id),
 CONSTRAINT fk_stores_admins_roles FOREIGN KEY (role_id) REFERENCES roles(id)
@@ -240,6 +267,8 @@ facebook varchar(255),
 twitter varchar(255),
 instagram varchar(255),
 pinterest varchar(255),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_stores_profile_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 ) ENGINE=InnoDb;
 
@@ -252,6 +281,8 @@ image_profile varchar(255),
 opacity_header int(3),
 ordering varchar(2),
 primary_tab varchar(20),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT fk_stores_shop_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 ) ENGINE=InnoDb;
 
@@ -269,6 +300,8 @@ phone varchar(255),
 cellphone varchar(255),
 email varchar(255),
 schedules varchar(255),
+created_at datetime,
+updated_at datetime,
 CONSTRAINT pk_stores_locations PRIMARY KEY(id),
 CONSTRAINT fk_stores_locations_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 ) ENGINE=InnoDb;
