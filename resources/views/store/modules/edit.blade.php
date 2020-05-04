@@ -6,11 +6,17 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12 mainbar">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('store.update') }}">
         
         	<div class="card marB20">
-            	<div class="card-body padTB50">
+                @if(session('message'))
+                    <div class="card-header bold a-center text-success">{{ session('message') }}</div>
+                @endif
+            	<div class="card-body padTB50">                    
+
                     @csrf
+
+                    <input type="hidden" name="store_id" value="{{ $store->id }}">
 
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
@@ -27,16 +33,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Actividad') }}</label>
+                        <label for="type_id" class="col-md-4 col-form-label text-md-right">{{ __('Actividad') }}</label>
 
                         <div class="col-md-6">
-                            <select id="type" type="text" class="form-control @error('type') is-invalid @enderror" required>
+                            <select id="type_id" name="type_id" type="text" class="form-control @error('type_id') is-invalid @enderror" required>
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}"{{ $type->id == $store->type_id ? ' selected' : '' }}>{{ $type->type }}</option>
                                 @endforeach
                             </select>
 
-                            @error('type')
+                            @error('type_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -48,7 +54,7 @@
                         <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descripción') }}</label>
 
                         <div class="col-md-6">
-                            <textarea id="description" rows="3" class="form-control @error('description') is-invalid @enderror" description="description" autocomplete="off">{{ $store->description ? $store->description : '' }}</textarea>
+                            <textarea id="description" rows="3" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="off">{{ $store->description ? $store->description : '' }}</textarea>
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
