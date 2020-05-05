@@ -8,7 +8,7 @@
 		</li>
 		<li>
 			<a href="{{ route('store.edit', ['alias' => $store->alias]) }}">
-				<i class="fa fa-door-closed"></i> Info general
+				<i class="fa fa-desktop"></i> Info general
 			</a>
 		</li>
 		<li>
