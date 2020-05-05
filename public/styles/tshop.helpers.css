@@ -26,6 +26,7 @@
 .t95 {top: 95px;}
 .t100 {top: 100px;}
 
+
 .b5 {bottom: 5px;}
 .b10 {bottom: 10px;}
 .b15 {bottom: 15px;}
@@ -556,6 +557,31 @@
 .w90  {width: 90%;}
 .w95  {width: 95%;}
 .w100 {width: 100%;}
+
+
+/* ALTO MÍNIMO EN PIXELES **************************************** */
+
+.mh50 {min-height: 50px;}
+.mh60 {min-height: 60px;}
+.mh70 {min-height: 70px;}
+.mh80 {min-height: 80px;}
+.mh90 {min-height: 90px;}
+.mh110 {min-height: 110px;}
+.mh120 {min-height: 120px;}
+.mh130 {min-height: 130px;}
+.mh140 {min-height: 140px;}
+.mh150 {min-height: 150px;}
+.mh160 {min-height: 160px;}
+.mh170 {min-height: 170px;}
+.mh180 {min-height: 180px;}
+.mh190 {min-height: 190px;}
+.mh200 {min-height: 200px;}
+.mh250 {min-height: 250px;}
+.mh300 {min-height: 300px;}
+.mh350 {min-height: 350px;}
+.mh400 {min-height: 400px;}
+.mh450 {min-height: 450px;}
+.mh500 {min-height: 500px;}
 
 
 /* PESOS DE LAS TIPOGRAFÍAS */

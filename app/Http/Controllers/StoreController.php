@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Store;
 use App\Type;
@@ -26,7 +27,18 @@ class StoreController extends Controller {
 	/* Listado de stores propios
 	---------------------------------------------------- */
 	public function list(){
-		echo "Listado de stores propios";
+
+		$stores = Store::whereHas('admins', function(Builder $query){
+							$user = \Auth::user();
+							$query->where('user_id', $user->id);
+						})
+						->orderby('id','asc')
+						->get();
+
+		return view('store.modules.stores', [
+			'stores' => $stores
+			]);
+
 	}
 
 

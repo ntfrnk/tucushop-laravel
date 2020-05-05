@@ -8,11 +8,6 @@ class Store extends Model {
 
 	protected $table = 'stores';
 
-	// Negocios
-    public function getAll(){
-        return $this->hasMany('App\Stores');
-    }
-
     // Locaciones
 	public function locations(){
 		return $this->hasMany('App\Location');

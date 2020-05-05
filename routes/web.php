@@ -70,17 +70,17 @@ Route::get('/purchase/{item_id}', 'ItemController@purchase')
 */
 
 
+// Lista de stores de un usuario
+
+Route::get('/stores', 'StoreController@list')
+		->name('store.list');
+
+
 // Portada del store
 
 Route::get('/{alias}', 'StoreController@index')
 		->name('store.index')
 		->where('alias', '[a-z._]+');
-
-
-// Lista de stores de un usuario
-
-Route::get('/stores', 'StoreController@list')
-		->name('store.list');
 
 
 // Formulario nuevo store

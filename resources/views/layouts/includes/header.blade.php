@@ -39,8 +39,8 @@
 							<ul class="user-submenu">
 								<li><a href="user/home">Mis datos</a></li>
 								<li><a href="user/likes">Mis favoritos</a></li>
-								<li><a href="user/messages">Mensajes<</a></li>
-								<li><a href="user/stores">Mis negocios</a></li>
+								<li><a href="user/messages">Mensajes</a></li>
+								<li><a href="{{ route('store.list') }}">Mis negocios</a></li>
 							</ul>
 						</li>
 						<li>
