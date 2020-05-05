@@ -124,8 +124,8 @@ Route::get('/store/data/{alias}', 'StoreController@data')
 
 // Guardado de modificaciones en los datos de contacto
 
-Route::post('/store/updateData', 'StoreController@updateData')
-		->name('store.updateData');
+Route::post('/store/data/update', 'StoreController@updateData')
+		->name('store.update.data');
 
 
 // Configuración del shop (tienda)

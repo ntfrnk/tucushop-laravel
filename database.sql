@@ -269,6 +269,7 @@ instagram varchar(255),
 pinterest varchar(255),
 created_at datetime,
 updated_at datetime,
+CONSTRAINT pk_stores_profile PRIMARY KEY (id),
 CONSTRAINT fk_stores_profile_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 ) ENGINE=InnoDb;
 

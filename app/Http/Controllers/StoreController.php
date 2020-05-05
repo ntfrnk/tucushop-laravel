@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+
 use App\Store;
 use App\Type;
 use App\Item;
 use App\StoreAdmin;
+use App\StoreProfile;
 use App\Message;
 use App\Feature;
 
@@ -59,7 +61,6 @@ class StoreController extends Controller {
 			return redirect()->route('store.list');
 
 		}
-
 		
 	}
 
@@ -150,8 +151,28 @@ class StoreController extends Controller {
 
 	/* Guardado de datos de contacto editados
 	---------------------------------------------------- */
-	public function updateData(){
-		// Guardado de datos editados
+	public function updateData(Request $request){
+		
+		$validate = $this->validate($request, [
+			'store_id' => 'required|integer'
+		]);
+		
+		$profile = StoreProfile::where('store_id', $request->store_id)->first();
+
+		$profile->email = $request->email;
+		$profile->website = $request->website;
+		$profile->phone = $request->phone;
+		$profile->cellphone = $request->cellphone;
+		$profile->facebook = $request->facebook;
+		$profile->instagram = $request->instagram;
+		$profile->pinterest = $request->pinterest;
+		
+		$profile->save();
+
+		return redirect()->route('store.data', [
+			'alias' => $profile->store->alias
+		])->with(['message'=>'Los cambios se guardaron con éxito.']);
+
 	}
 
 

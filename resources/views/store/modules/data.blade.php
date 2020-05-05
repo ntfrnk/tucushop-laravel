@@ -6,9 +6,17 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12 mainbar">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('store.update.data') }}">
         
+            @csrf
+
+            <input type="hidden" name="store_id" value="{{ $store->id }}">
+
 			<div class="card">
+                
+                @if(session('message'))
+                    <div class="card-header bold a-center text-success">{{ session('message') }}</div>
+                @endif
 
                 <div class="card-body pad30">
 
@@ -21,7 +29,7 @@
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 
                         <div class="col-md-6 input-group">
-							<input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $store->profile->email ? $store->profile->email : '' }}" required autocomplete="email">
+							<input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $store->profile->email ? $store->profile->email : '' }}" autocomplete="email">
                         </div>
                     </div>
 
@@ -32,7 +40,7 @@
                         	<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">http://</span>
 							</div>
-							<input type="text" id="website" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ $store->profile->website ? $store->profile->website : '' }}" required autocomplete="website">
+							<input type="text" id="website" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ $store->profile->website ? $store->profile->website : '' }}" autocomplete="website">
                         </div>
                     </div>
 
@@ -40,7 +48,7 @@
                         <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono fijo') }}</label>
 
                         <div class="col-md-6 input-group">
-							<input type="text" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $store->profile->phone ? $store->profile->phone : '' }}" required autocomplete="phone">
+							<input type="text" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $store->profile->phone ? $store->profile->phone : '' }}" autocomplete="phone">
                         </div>
                     </div>
 
@@ -48,7 +56,7 @@
                         <label for="cellphone" class="col-md-4 col-form-label text-md-right">{{ __('Celular') }}</label>
 
                         <div class="col-md-6 input-group">
-							<input type="text" id="cellphone" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" value="{{ $store->profile->cellphone ? $store->profile->cellphone : '' }}" required autocomplete="cellphone">
+							<input type="text" id="cellphone" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" value="{{ $store->profile->cellphone ? $store->profile->cellphone : '' }}" autocomplete="cellphone">
                         </div>
                     </div>
 
@@ -59,7 +67,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">facebook.com/</span>
 							</div>
-							<input type="text" id="facebook" class="form-control @error('facebook') is-invalid @enderror" name="facebook" value="{{ $store->profile->facebook ? $store->profile->facebook : '' }}" required autocomplete="facebook">
+							<input type="text" id="facebook" class="form-control @error('facebook') is-invalid @enderror" name="facebook" value="{{ $store->profile->facebook ? $store->profile->facebook : '' }}" autocomplete="facebook">
                         </div>
                     </div>
 
@@ -70,7 +78,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">instagram.com/</span>
 							</div>
-							<input type="text" id="instagram" class="form-control @error('instagram') is-invalid @enderror" name="instagram" value="{{ $store->profile->instagram ? $store->profile->instagram : '' }}" required autocomplete="instagram">
+							<input type="text" id="instagram" class="form-control @error('instagram') is-invalid @enderror" name="instagram" value="{{ $store->profile->instagram ? $store->profile->instagram : '' }}" autocomplete="instagram">
                         </div>
                     </div>
 
@@ -81,7 +89,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">pinterest.com/</span>
 							</div>
-							<input type="text" id="pinterest" class="form-control @error('pinterest') is-invalid @enderror" name="pinterest" value="{{ $store->profile->pinterest ? $store->profile->pinterest : '' }}" required autocomplete="pinterest">
+							<input type="text" id="pinterest" class="form-control @error('pinterest') is-invalid @enderror" name="pinterest" value="{{ $store->profile->pinterest ? $store->profile->pinterest : '' }}" autocomplete="pinterest">
                         </div>
                     </div>
 
