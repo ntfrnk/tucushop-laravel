@@ -1,6 +1,6 @@
 @extends('store.index')
 
-@section('section.admin', 'Home')
+@section('section.admin', $store->status == 1 ? 'Desactivar negocio' : 'Reactivar negocio')
 
 @section('admin')
 
