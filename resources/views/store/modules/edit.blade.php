@@ -12,7 +12,12 @@
                 @if(session('message'))
                     <div class="card-header bold a-center text-success">{{ session('message') }}</div>
                 @endif
-            	<div class="card-body padTB50">                    
+            	<div class="card-body pad30">
+
+                    <div class="f17 marB30">
+                        <h1 class="f30 marB15">Información general</h1>
+                        <hr>
+                    </div>
 
                     @csrf
 

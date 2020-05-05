@@ -13,14 +13,14 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body card-body-min padT30 padB30 padLR30">
+			<div class="card-body card-body-min pad30">
 
 				<div class="f16">
 					<div class="f-right">
 						<button type="button" id="photo-ordering" class="btn btn-secondary spn none" spn-text="Estamos guardando el nuevo orden...">Guardar orden</button>
 						<button type="button" id="photo-upload" class="btn btn-primary spn">Subir una nueva foto</button>
 					</div>
-				    <h1 class="f25 marB15">Gestionar fotos</h1>
+				    <h1 class="f30 marB15">Gestionar fotos</h1>
 				    <hr>
 				</div>
 

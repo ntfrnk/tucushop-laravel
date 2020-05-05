@@ -22,10 +22,10 @@
     <div class="col-md-12 mainbar">
         
     	<div class="card padB20">
-        	<div class="card-body padT30 padB30 padLR30">
+        	<div class="card-body pad30">
 
                 <div class="f16 marB30">
-                    <h1 class="f25 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
+                    <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
                     <hr>
                 </div>
 

@@ -10,7 +10,12 @@
         
 			<div class="card">
 
-                <div class="card-body padTB50">
+                <div class="card-body pad30">
+
+                    <div class="f17 marB30">
+                        <h1 class="f30 marB15">Datos de contacto</h1>
+                        <hr>
+                    </div>
 
                     <div class="form-group row">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>

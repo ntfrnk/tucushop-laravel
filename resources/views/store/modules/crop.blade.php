@@ -27,7 +27,7 @@
 			<div class="card-body card-body-min padT30 padB30 padLR30">
 
 				<div class="f16 marB30">
-				    <h1 class="f25 marB15">Recortar foto</h1>
+				    <h1 class="f30 marB15">Recortar foto</h1>
 				    <hr>
 				</div>
 

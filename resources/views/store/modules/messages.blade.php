@@ -7,14 +7,17 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body padT30 padB30 padLR30">
-				<div class="marB30 row">
-					<div class="input-group col-md-6">
+			<div class="card-body pad30">
+
+				<div class="f17 marB30">
+					<div class="input-group col-md-6 f-right padR0">
 						<input type="text" class="form-control" placeholder="Buscar un mensaje" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i> &nbsp;Buscar</button>
 						</div>
 					</div>
+					<h1 class="f30 marB15">Centro de mensajes</h1>
+					<hr>
 				</div>
 				<table class="table table-hover">
 					<thead>

@@ -7,8 +7,19 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body padT30 padB30 padLR30">
-				<div class="marB30 row">
+			<div class="card-body pad30">
+
+				<div class="f17 marB30">
+					<div class="f-right align-right">
+						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'list']) }}" class="btn btn-{{ session('listType') == 'list' ? 'secondary disabled' : 'outline-secondary' }}" title="Mostrar los registros a modo de lista"><i class="fa fa-list"></i></a>
+						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'grid']) }}" class="btn btn-{{ session('listType') == 'grid' ? 'secondary disabled' : 'outline-secondary' }}" title="Mostrar los registros a modo de grilla"><i class="fa fa-th-large"></i></a>
+						<a href="{{ route('item.new', ['alias' => $store->alias]) }}" class="marL10 btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Agregar un nuevo item</a>
+					</div>
+					<h1 class="f30 marB15">Mis productos y servicios</h1>
+					<hr>
+				</div>
+
+				{{-- <div class="marB30 row">
 					<div class="input-group col-md-6">
 						<input type="text" class="form-control" placeholder="Buscar un item" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<div class="input-group-append">
@@ -22,7 +33,7 @@
 					<div class="f-right align-right col-md-4">
 						<a href="{{ route('item.new', ['alias' => $store->alias]) }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Agregar un nuevo item</a>
 					</div>
-				</div>
+				</div> --}}
 
 				@if(session('listType')=='list')
 

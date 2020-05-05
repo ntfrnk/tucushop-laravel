@@ -7,16 +7,18 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body padT30 padB30 padLR30">
-				<div class="marB30 row">
-					<div class="a-right col-md-6 offset-md-6">
+			<div class="card-body pad30">
+				<div class="marB30">
+					<div class="a-right f-right">
 						<a href="" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Agregar un nuevo administrador</a>
 					</div>
-				</div>
+                    <h1 class="f30 marB15">Administradores del negocio</h1>
+                    <hr>
+                </div>
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th class="w65">Nombre del item</th>
+							<th class="w65">Nombre del administrador (e-mail)</th>
 							<th class="w35 a-right">Opciones</th>
 						</tr>
 					</thead>
