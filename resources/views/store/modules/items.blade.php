@@ -41,8 +41,8 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th class="w60">Nombre del item</th>
-									<th class="w40 a-right">Opciones</th>
+									<th class="w45">Nombre del item</th>
+									<th class="w55 a-right">Opciones</th>
 								</tr>
 							</thead>
 							<tbody>
