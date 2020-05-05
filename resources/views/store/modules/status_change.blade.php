@@ -12,8 +12,8 @@
 				@if($store->status == 1)
 
 					<div class="f17">
-						<h1 class="f30 marB15">Advertencia</h1>
-						<p>Estás a punto de desactivar tu negocio, y con ello también quedarán desactivados todos tus productos y servicios.</p>
+						<h1 class="f30 marB15">Desactivar negocio</h1>
+						<p>Estás a punto de desactivar tu negocio, y con ello también tus productos y servicios dejarán de estar publicados.</p>
 						<p class="f17 bold marB20">¿Realmente deseas realizar este cambio?</p>
 						<p>
 							<a class="btn padLR40 btn-danger marR10" href="{{ route('store.status.change', ['alias' => $store->alias]) }}">Sí, desactivar negocio</a>
@@ -24,7 +24,7 @@
 				@else
 
 					<div class="f17">
-						<h1 class="f30 marB15">Aviso de reactivación</h1>
+						<h1 class="f30 marB15">Reactivar negocio</h1>
 						<p>Al realizar esta acción volverás a activar tu negocio. Esta operación también volverá a activar los productos y servicios que tienes publicados.</p>
 						<p class="f17 bold marB20">¿Confirmas que deseas reactivar tu negocio?</p>
 						<p>
