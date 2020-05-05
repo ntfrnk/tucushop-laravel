@@ -329,7 +329,7 @@ Route::get('/item/tag/delete/{item_id}/{keyword_id}/{alias}', 'ItemController@de
 
 // Cambio de estado en el item (activado / desactivado)
 
-Route::get('/store/item/status/{item_id}', 'ItemController@status')
+Route::get('/store/item/status/{item_id}/{editing?}', 'ItemController@status')
 		->name('item.status');
 
 

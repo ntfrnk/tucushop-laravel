@@ -382,7 +382,6 @@ class ItemController extends Controller {
 		Storage::disk('public')->delete('items/original/'.$photo->file_path);
 		Storage::disk('public')->delete('items/lg/'.$photo->file_path);
 		Storage::disk('public')->delete('items/sm/'.$photo->file_path);
-		Storage::disk('public')->delete('items/resized/'.$photo->file_path);
 
 		// Elimino el registro
 		$photo->delete();
@@ -488,7 +487,7 @@ class ItemController extends Controller {
 
 	/* Cambiar el estado de un item
 	---------------------------------------------------- */
-	public function status($item_id){
+	public function status($item_id, $editing = 0){
 		
 		$item = Item::find($item_id);
 
@@ -497,7 +496,11 @@ class ItemController extends Controller {
 			$item->status = $item->status == 1 ? 0 : 1;
 			$item->save();
 
-			return redirect()->route('items', ['alias' => $item->store->alias]);
+			if($editing==1){
+				return redirect()->route('item.edit', ['alias' => $item->store->alias, 'item_id' => $item->id]);
+			} else {
+				return redirect()->route('items', ['alias' => $item->store->alias]);
+			}
 
 		} else {
 
@@ -519,6 +522,16 @@ class ItemController extends Controller {
 
 		if(\Auth::user() && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
+			$photos = ItemPhoto::where('item_id', $item_id)->get();
+
+			// Elimino las fotos
+			foreach($photos as $photo){
+				Storage::disk('public')->delete('items/original/'.$photo->file_path);
+				Storage::disk('public')->delete('items/lg/'.$photo->file_path);
+				Storage::disk('public')->delete('items/sm/'.$photo->file_path);
+			}
+
+			// Elimino todos los registros asociados
 			ItemPhoto::where('item_id', $item_id)->delete();
 			ItemFeature::where('item_id', $item_id)->delete();
 			ItemTag::where('item_id', $item_id)->delete();

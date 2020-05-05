@@ -25,6 +25,12 @@
         	<div class="card-body pad30">
 
                 <div class="f16 marB30">
+                    @if(isset($item))
+                        <div class="f-right align-right">
+                            <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="marL10 btn btn-outline-{{ $item->status == 1 ? 'secondary' : 'primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? 'Desactivar' : 'Publicar' }}</a>
+                            <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-outline-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
+                        </div>
+                    @endif
                     <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
                     <hr>
                 </div>
