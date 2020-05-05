@@ -98,6 +98,7 @@
                             <button type="submit" class="btn btn-primary">
                                 {{ __('Guardar cambios') }}
                             </button>
+                            <a href="{{ route('store.home', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
                         </div>
                     </div>
             	</div>

@@ -43,6 +43,7 @@
 						<p class="d-none d-md-block">Mueve con el mouse la foto, para seleccionar el área que deseas mostrar. Para agrandar o achicar el área de recorte puedes girar la rueda del mouse sobre la foto.</p>
 						<p class="d-block d-md-none">Mueve la foto para seleccionar el área que deseas recortar. Para agrandar o achicar el área de recorte usa dos dedos.</p>
 						<a href="javascript:;" class="show-result btn btn-primary spn" spn-text="Recortando la imagen...">Recortar foto</a>
+						<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
 						<form id="crop-data" action="{{ route('item.photo.cropper') }}" method="post">
 							@csrf
 							<input type="hidden" name="image" value="storage/items/original/{{ $photo->file_path }}">

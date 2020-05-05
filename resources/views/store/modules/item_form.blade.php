@@ -105,6 +105,7 @@
                                 <button type="submit" id="save-form" class="btn btn-primary">
                                     <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
                                 </button>
+                                <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
                             </div>
 
                         </div>
