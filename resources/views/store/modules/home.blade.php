@@ -1,4 +1,4 @@
-@extends('store.index')
+@extends('store.in')
 
 @section('section.admin', 'Home')
 @section('back.admin')

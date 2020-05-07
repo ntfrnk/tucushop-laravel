@@ -1,4 +1,4 @@
-@extends('store.list')
+@extends('store.out')
 
 @section('section.admin', 'Home')
 @section('back.admin')
@@ -11,7 +11,7 @@
 <div class="row mainbar">
 
 	<div class="col-md-12 marB20">
-		<a href="{{ route('store.new') }}" class="btn btn-primary f-right">Crear un nuevo negocio</a>
+		<a href="{{ route('store.new') }}" class="btn btn-primary f-right"><i class="fa fa-plus marR5"></i> Crear un nuevo negocio</a>
 		<h1>Negocios que administras</h1>
 		<hr>
 	</div>

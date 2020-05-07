@@ -1,4 +1,4 @@
-@extends('store.index')
+@extends('store.in')
 
 @section('section.admin', isset($item) ? 'Editar item' : 'Nuevo item')
 @section('back.admin')
