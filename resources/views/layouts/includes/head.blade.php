@@ -49,7 +49,7 @@
 {{-- Estilos CSS --}}
 
 <link href="{{ asset('styles/app.css') }}" rel="stylesheet">
-<link href="{{ asset('comp/all.css') }}" rel="stylesheet">
+<link href="{{ asset('comp/all.min.css') }}" rel="stylesheet">
 <link href="{{ asset('styles/tshop.base.css') }}" rel="stylesheet">
 <link href="{{ asset('styles/tshop.layouts.css') }}" rel="stylesheet">
 <link href="{{ asset('styles/tshop.theme.css') }}" rel="stylesheet">
