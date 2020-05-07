@@ -6,7 +6,9 @@
 @endsection
 
 @if(isset($item))
-    @php($img = 'storage/items/sm/'.$item->photos->first()->file_path)
+    @if(isset($item->photos->first()->file_path) && !empty($item->photos->first()->file_path))
+        @php($img = 'storage/items/sm/'.$item->photos->first()->file_path)
+    @endif
     @php($noimg = 'storage/items/sm/no-image-min.jpg')
 @endif
 
@@ -36,7 +38,7 @@
                         
                         @if(isset($item))
                             <div class="col-md-4">
-                                <img src="{{ file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
+                                <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
                                 <div class="form-group form-group-alt marT15 absolute b10 l25">
                                     <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light">
                                         <i class="fa fa-camera marR5"></i>Gestionar fotos
@@ -203,7 +205,11 @@
 
                             <div class="form-group form-group-alt marT10">
                                 <div class="f-right align-right">
-                                    <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="marL10 btn btn-link {{ $item->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? 'Deshabilitar' : 'Habilitar' }}</a>
+                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+                                        <a href="javascript:;" onclick="notify_open('No puedes {{ __('habilitar') }} un item sin foto.')" class="marR5 btn btn-link text-primary"><i class="fa fa-check"></i> {{ __('Habilitar') }}</a>
+                                    @else
+                                        <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="marL10 btn btn-link {{ $item->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? __('Deshabilitar') : __('Habilitar') }}</a>
+                                    @endif
                                     <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-link text-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
                                 </div>
                                 <button type="button" id="save-form-item" class="btn btn-primary">

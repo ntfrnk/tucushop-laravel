@@ -41,7 +41,7 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th class="w45">Nombre del item</th>
+									<th class="w45">{{ __('Nombre del item') }}</th>
 									<th class="w55 a-right">Opciones</th>
 								</tr>
 							</thead>
@@ -52,7 +52,11 @@
 									<td class="a-right">
 										<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-primary" title="Editar la información de este item"><i class="fa fa-edit"></i> Editar</a>
 										<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-primary" title="Gestionar las fotos de este item"><i class="fa fa-camera"></i> Fotos</a>
-										<a href="{{ route('item.status', ['item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-outline-secondary" title="Desactivar este item"><i class="fa fa-ban"></i> Desactivar</a>
+										@if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+											<a href="javascript:;" onclick="notify_open('No puedes publicar un item sin foto.')" class="marR5 btn btn-sm btn-secondary" title="Activar este item"><i class="fa fa-check"></i> Activar</a>
+										@else
+											<a href="{{ route('item.status', ['item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-{{ $item->status == 1 ? 'outline-secondary' : 'secondary' }}" title="{{ $item->status == 1 ? 'Desactivar' : 'Activar' }} este item"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i> {{ $item->status == 1 ? 'Desactivar' : 'Activar' }}</a>
+										@endif
 										<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i> Eliminar</a>
 									</td>
 								</tr>
@@ -67,7 +71,9 @@
 						<div class="row">
 							@php($noimg = 'storage/items/sm/no-image-min.jpg')
 							@foreach($items as $item)
-								@php($img = 'storage/items/sm/'.$item->photos->first()->file_path)
+								@if(isset($item->photos->first()->file_path) && !empty($item->photos->first()->file_path))
+									@php($img = 'storage/items/sm/'.$item->photos->first()->file_path)
+								@endif
 								<div class="col-md-3">
 									<div class="show-grid-item">
 										<div class="item-info">
@@ -79,7 +85,11 @@
 										<div class="options">
 											<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-primary" title="Editar la información de este item"><i class="fa fa-edit"></i></a>
 											<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-primary" title="Gestionar las fotos de este item"><i class="fa fa-camera"></i></a>
-											<a href="{{ route('item.status', ['item_id' => $item->id]) }}" class="btn btn-sm btn-{{ $item->status == 1 ? 'outline-secondary' : 'secondary' }}" title="{{ $item->status == 1 ? 'Desactivar' : 'Activar' }} este item"><i class="fa fa-ban"></i></a>
+											@if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+												<a href="javascript:;" onclick="notify_open('No puedes publicar un item sin foto.')" class="btn btn-sm btn-secondary" title="Activar este item"><i class="fa fa-check"></i></a>
+											@else
+												<a href="{{ route('item.status', ['item_id' => $item->id]) }}" class="btn btn-sm btn-{{ $item->status == 1 ? 'outline-secondary' : 'secondary' }}" title="{{ $item->status == 1 ? 'Desactivar' : 'Activar' }} este item"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i></a>
+											@endif
 											<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i></a>
 										</div>
 									</div>
