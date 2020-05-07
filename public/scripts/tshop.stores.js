@@ -59,16 +59,12 @@ $(function(){
 	$("#sortable").sortable({
 		stop : function() {
 			neworder = $("#sortable").sortable("toArray");
-			$('#neworder').val(neworder);
-			$('#photo-ordering').removeClass('none');
+			url_post = url_base + '/store/item/photo/order/' + neworder;
+			$.get(url_post);
 		}
 	});
 
 	$("#sortable").disableSelection();
-
-	$('#photo-ordering').on('click', function(){
-		$('#ordering').submit();
-	});
 
 
 	/*

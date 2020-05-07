@@ -17,7 +17,6 @@
 
 				<div class="f16">
 					<div class="f-right">
-						<button type="button" id="photo-ordering" class="btn btn-secondary spn none" spn-text="Estamos guardando el nuevo orden...">Guardar orden</button>
 						<button type="button" id="photo-upload" class="btn btn-primary spn">Subir una nueva foto</button>
 					</div>
 				    <h1 class="f30 marB15">Gestionar fotos</h1>
@@ -66,15 +65,9 @@
 				</div>
 
 				<div class="none">
-					<form id="ordering" action="{{ route('item.photo.order') }}" method="Post">
-						@csrf
-						<input type="hidden" name="neworder" id="neworder">
-						<input type="hidden" name="item_id" value="{{ $item->id }}">
-					</form>
-
 					<form action="{{ route('item.photo.upload') }}" id="form-uploader" method="post" enctype="multipart/form-data">
 						@csrf
-						<input type="hidden" name="item_id" value="{{ $item->id }}">
+						<input type="hidden" id="item_id" name="item_id" value="{{ $item->id }}">
 						<input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" accept=".jpg,.jpeg,.png" />
 					</form>
 				</div>

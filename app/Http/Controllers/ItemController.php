@@ -351,21 +351,18 @@ class ItemController extends Controller {
 
 	/* Ordenar las fotos de un item
 	---------------------------------------------------- */
-	public function orderPhoto(Request $request){
+	public function orderPhoto($neworder){
 
-		$item = Item::find($request->item_id);
-		$photos_id = explode(",", str_replace('img_', '', $request->neworder));
+		$photos_list = str_replace('img_', '', $neworder);
+		$photos_list = preg_split("/,/", $photos_list);
 
-		for($i=0;$i<count($photos_id);$i++){
-			$photo = ItemPhoto::find($photos_id[$i]);
+		for($i=0;$i<count($photos_list);$i++){
+			$photo = ItemPhoto::find($photos_list[$i]);
 			$photo->ordering = $i;
 			$photo->save();
 		}
 
-		return redirect()->route('item.photos', [
-			'alias' => $item->store->alias,
-			'item_id' => $item->id
-		]);
+		return json_encode($photos_list);
 
 	}
 

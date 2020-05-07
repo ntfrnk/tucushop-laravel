@@ -296,8 +296,9 @@ Route::post('/store/item/crop/', 'ItemController@cropper')
 
 // Ordenar las fotos
 
-Route::post('/store/item/photo/order', 'ItemController@orderPhoto')
-		->name('item.photo.order');
+Route::get('/store/item/photo/order/{neworder}', 'ItemController@orderPhoto')
+		->name('item.photo.order')
+		->where('neworder', '[a-z0-9,_]+');
 
 
 // Eliminar una foto
