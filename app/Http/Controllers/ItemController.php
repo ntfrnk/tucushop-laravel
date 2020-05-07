@@ -167,7 +167,7 @@ class ItemController extends Controller {
 		
 		$validate = $this->validate($request, [
 			'name' => 'required|string|min:10|max:255',
-			'detail' => 'string|max:255',
+			'detail' => 'string',
 			'price' => 'integer'
 		]);
 
@@ -398,39 +398,42 @@ class ItemController extends Controller {
 	---------------------------------------------------- */
 	public function addFeature(Request $request){
 
-		$validate = $this->validate($request, [
-			'item_id' => 'required|integer',
-			'feature_id' => 'required|integer',
-			'content' => 'required|string'
-		]);
+		$feature = Feature::where('feature',$request->feature)->first();
+		$itemFeature = new ItemFeature();
 
-		$feature = new ItemFeature();
-		$feature->item_id = $request->item_id;
-		$feature->feature_id = $request->feature_id;
-		$feature->content = $request->content;
+		if(!is_object($feature)){
 
-		$feature->save();
+			$feature = new Feature();
+			$feature->feature = trim($request->feature);
+			$feature->save();
 
-		return redirect()->route('item.edit',[
-			'alias' => $request->alias,
-			'item_id' => $request->item_id
-		])->with(['resp' => 'scroll']);
+		}
+
+		\Jsons::generateFeature();
+
+		$itemFeature->item_id = $request->item_id;
+		$itemFeature->feature_id = $feature->id;
+		$itemFeature->content = trim($request->content);
+		$itemFeature->save();
+
+		$itemFeature->feature = trim(ucfirst($request->feature));
+
+		return json_encode($itemFeature);
 
 	}
 
 
 	/* Elimino una característica del item
 	---------------------------------------------------- */
-	public function deleteFeature($item_id, $feature_id, $alias){
+	public function deleteFeature($item_id, $feature_id){
 
 		$feature = ItemFeature::where('item_id', $item_id)
 							->where('feature_id', $feature_id)
 							->delete();
 
-		return redirect()->route('item.edit', [
-			'alias' => $alias,
-			'item_id' => $item_id
-		])->with(['resp' => 'scroll']);
+		$response['resp'] = "ok";
+
+		return json_encode($response);
 
 	}
 
@@ -439,48 +442,50 @@ class ItemController extends Controller {
 	---------------------------------------------------- */
 	public function addTag(Request $request){
 
-		$validate = $this->validate($request, [
-			'item_id' => 'required|integer',
-			'keyword' => 'required'
-		]);
+		$tags = explode(",", $request->keyword);
+		$n = count($tags);
 
-		$tag_yala = Keyword::where('keyword', $request->keyword)->first();
+		$etiquetas = array();
 
-		if(is_object($tag_yala) && !empty($tag_yala)){
-			$keyword_id = $tag_yala->id;
-		} else {
-			$keyword = new Keyword();
-			$keyword->keyword = $request->keyword;
-			$keyword->save();
-			$keyword_id = $keyword->id;
+		for($i = 0; $i < $n; $i++) {
+
+			$tag_yala = Keyword::where('keyword', trim($tags[$i]))->first();
+
+			if(is_object($tag_yala) && !empty($tag_yala)){
+				$keyword_id = $tag_yala->id;
+			} else {
+				$keyword = new Keyword();
+				$keyword->keyword = trim($tags[$i]);
+				$keyword->save();
+				$keyword_id = $keyword->id;
+			}
+
+			$tag = new ItemTag();
+			$tag->item_id = $request->item_id;
+			$tag->keyword_id = $keyword_id;
+
+			$etiquetas[] = array('keyword_id' => $keyword_id, 'keyword' => trim($tags[$i]));
+
+			$tag->save();
+
 		}
 
-		$tag = new ItemTag();
-		$tag->item_id = $request->item_id;
-		$tag->keyword_id = $keyword_id;
-
-		$tag->save();
-
-		return redirect()->route('item.edit',[
-			'alias' => $request->alias,
-			'item_id' => $request->item_id
-		])->with(['resp' => 'scroll']);
+		return json_encode($etiquetas);
 
 	}
 
 
 	/* Elimino una etiqueta del item
 	---------------------------------------------------- */
-	public function deleteTag($item_id, $keyword_id, $alias){
+	public function deleteTag($item_id, $keyword_id){
 
 		$feature = ItemTag::where('item_id', $item_id)
 							->where('keyword_id', $keyword_id)
 							->delete();
 
-		return redirect()->route('item.edit', [
-			'alias' => $alias,
-			'item_id' => $item_id
-		])->with(['resp' => 'scroll']);
+		$response['resp'] = "ok";
+
+		return json_encode($response);
 
 	}
 

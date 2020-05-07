@@ -5,6 +5,7 @@
 
 /* POSITION ******************************************** */
 
+.t0 {top: 0px;}
 .t5 {top: 5px;}
 .t10 {top: 10px;}
 .t15 {top: 15px;}
@@ -27,6 +28,7 @@
 .t100 {top: 100px;}
 
 
+.b0 {bottom: 0px;}
 .b5 {bottom: 5px;}
 .b10 {bottom: 10px;}
 .b15 {bottom: 15px;}
@@ -49,6 +51,7 @@
 .b100 {bottom: 100px;}
 
 
+.l0 {left: 0px;}
 .l5 {left: 5px;}
 .l10 {left: 10px;}
 .l15 {left: 15px;}
@@ -71,6 +74,7 @@
 .l100 {left: 100px;}
 
 
+.r0 {right: 0px;}
 .r5 {right: 5px;}
 .r10 {right: 10px;}
 .r15 {right: 15px;}
@@ -91,6 +95,20 @@
 .r90 {right: 90px;}
 .r95 {right: 95px;}
 .r100 {right: 100px;}
+
+/* Z-INDEX ********************************************* */
+
+.z1 {z-index: 1 !important;}
+.z2 {z-index: 2 !important;}
+.z3 {z-index: 3 !important;}
+.z4 {z-index: 4 !important;}
+.z5 {z-index: 5 !important;}
+.z6 {z-index: 6 !important;}
+.z7 {z-index: 7 !important;}
+.z8 {z-index: 8 !important;}
+.z9 {z-index: 9 !important;}
+.z10 {z-index: 10 !important;}
+
 
 /* MARGINS ********************************************* */
 

@@ -1,11 +1,5 @@
 @extends('store.index')
 
-@if(session('resp')=='scroll')
-    @section('actionsjs')
-        <script type="text/javascript" defer>$(function(){ window.scroll(0, 250) });</script>
-    @endsection
-@endif
-
 @section('section.admin', isset($item) ? 'Editar item' : 'Nuevo item')
 @section('back.admin')
     <a href="{{ route('items', ['alias' => $store->alias]) }}">Volver al listado</a>
@@ -24,22 +18,16 @@
     	<div class="card padB20">
         	<div class="card-body pad30">
 
-                <div class="f16 marB30">
-                    @if(isset($item))
-                        <div class="f-right align-right">
-                            <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="marL10 btn btn-outline-{{ $item->status == 1 ? 'secondary' : 'primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? 'Desactivar' : 'Publicar' }}</a>
-                            <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-outline-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
-                        </div>
-                    @endif
-                    <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
-                    <hr>
-                </div>
-
                 {{-- Inicio del formulario --}}
                 
-                <form method="POST" action="{{ isset($item) ? route('item.update') : route('item.save') }}">
+                <form method="POST" id="form-item" action="{{ isset($item) ? route('item.update') : route('item.save') }}">
 
                     @csrf
+
+                    <div class="f16 marB30">
+                        <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
+                        <hr>
+                    </div>
 
                     <input type="hidden" name="item_id" value="{{ isset($item) ? $item->id : '' }}">
                     <input type="hidden" name="store_id" value="{{ $store->id }}">
@@ -49,7 +37,7 @@
                         @if(isset($item))
                             <div class="col-md-4">
                                 <img src="{{ file_exists($img) && !is_dir($img) ? asset($img) : asset($noimg) }}" class="img-fluid">
-                                <div class="form-group form-group-alt marT15 absolute b60 l25">
+                                <div class="form-group form-group-alt marT15 absolute b10 l25">
                                     <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light">
                                         <i class="fa fa-camera marR5"></i>Gestionar fotos
                                     </a>
@@ -107,12 +95,14 @@
 
                             </div>
 
-                            <div class="form-group form-group-alt">
-                                <button type="submit" id="save-form" class="btn btn-primary">
-                                    <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
-                                </button>
-                                <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
-                            </div>
+                            @if(!isset($item))
+                                <div class="form-group form-group-alt">
+                                    <button type="submit" id="save-form" class="btn btn-primary">
+                                        <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
+                                    </button>
+                                    <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+                                </div>
+                            @endif
 
                         </div>
 
@@ -120,9 +110,6 @@
 
                 </form>
 
-                {{-- Fin del formulario --}}
-
-                <hr>
 
                 {{-- Características --}}
                 
@@ -130,7 +117,7 @@
 
                     <div class="">
 
-                        <div class="form-group form-group-alt row">
+                        <div class="form-group form-group-alt row marB30">
 
                             <div class="col-md-6">
 
@@ -139,43 +126,31 @@
                                     <hr>
                                 </div>
 
-                                <form action="{{ route('item.feature.add') }}" method="POST">
+                                <label for="feature_id">Añadir una característica: </label>
+                                <div class="input-group marT0">
 
-                                    <label for="feature_id">Añadir una característica: </label>
-                                    <div class="input-group marT0">
-                                        @csrf
+                                    <input type="text" id="feature_name" class="form-control" placeholder="Ej: Color" autocomplete="off">
 
-                                        <select class="form-control" name="feature_id" id="feature_id">
-                                            @foreach($features as $feature)
-                                                <option value="{{ $feature->id }}">{{ $feature->feature }}</option>
-                                            @endforeach
-                                            <option value="more">Otra característica</option>
-                                        </select>
+                                    <input type="text" id="feature_content" class="form-control" placeholder="Ej: Verde" autocomplete="off">
+                                    <input type="hidden" id="item_id" value="{{ $item->id }}">
 
-                                        <input type="text" id="content" class="form-control" name="content" required>
-                                        <input type="hidden" name="item_id" id="item_id" value="{{ $item->id }}">
-                                        <input type="hidden" name="alias" id="alias" value="{{ $store->alias }}">
+                                    <input type="hidden" id="feature_data" />
 
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="submit">Agregar</button>
-                                        </div>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary z1" id="add-feature" type="button">Agregar</button>
                                     </div>
 
-                                </form>
+                                </div>
 
-                                <div class="marT15">
+                                <div class="marT15" id="show-features">
 
                                     @foreach($item->features as $feature)
-                                    <div class="badge badge-light f13 marB5 marR5">
-                                        
-                                            {{ $feature->feature->feature }}:
-                                        
-                                            <span class="fw400 inline-block">{{ $feature->content }}</span>
-
-                                            <a href="{{ route('item.feature.delete', ['item_id' => $item->id, 'feature_id' => $feature->feature_id, 'alias' => $store->alias]) }}" class="inline-block marL10">
+                                        <div class="badge badge-light f13 marB5 marR5" id="feature-{{ $item->id }}-{{ $feature->feature->id }}">
+                                            {{ $feature->feature->feature }}: <span class="fw400 inline-block">{{ $feature->content }}</span>
+                                            <a href="javascript:;" onclick="featureDelete({{ $item->id }}, {{ $feature->feature->id }})" class="inline-block marL10">
                                                 <i class="fa fa-times"></i>
                                             </a>
-                                    </div>
+                                        </div>
                                     @endforeach
 
                                 </div>
@@ -188,33 +163,28 @@
                                     <h3 class="f22 marB0">Etiquetas / Hashtags</h3>
                                     <hr>
                                 </div>
+                                    
+                                <label for="keyword">Palabras separadas por comas:</label>
                                 
-                                <form action="{{ route('item.tag.add') }}" method="POST">
-                                    @csrf
+                                <div class="marT0 input-group">
                                     
-                                    <label for="keyword">Añadir una etiqueta:</label>
-                                    
-                                    <div class="input-group marT0">
-                                        
-                                        <input type="text" id="keyword" class="form-control" name="keyword">
+                                    <input type="text" id="keyword" class="form-control" placeholder="Ej: vestido, noche, fiesta" autocomplete="off">
 
-                                        <input type="hidden" name="item_id" value="{{ $item->id }}">
-                                        <input type="hidden" name="alias" value="{{ $store->alias }}">
+                                    {{-- El input id="item_id" está en el formulario de características (features) --}}
 
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="submit">Agregar</button>
-                                        </div>
-
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary z1" type="button" id="add-tags">Agregar</button>
                                     </div>
-                                </form>
+
+                                </div>
 
                                 <div class="input-group marT10">
 
-                                    <div class="">
+                                    <div id="show-tags">
                                         @foreach($item->tags as $tag)
-                                        <div class="inline-block badge badge-light pad5 marT5 marR5 f13">
-                                            #{{ $tag->keyword->keyword }}
-                                            <a href="{{ route('item.tag.delete', ['item_id' => $item->id, 'keyword_id' => $tag->keyword_id, 'alias' => $store->alias]) }}" class="inline-block marL10">
+                                        <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
+                                            #{{ trim($tag->keyword->keyword) }}
+                                            <a href="javascript:;" onclick="tagDelete({{ $item->id }}, {{ $tag->keyword->id }})" class="inline-block marL10">
                                                 <i class="fa fa-times"></i>
                                             </a>
                                         </div>
@@ -226,6 +196,22 @@
                             </div>
 
                         </div>
+
+                        @if(isset($item))
+
+                            <hr>
+
+                            <div class="form-group form-group-alt marT10">
+                                <div class="f-right align-right">
+                                    <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="marL10 btn btn-link {{ $item->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? 'Deshabilitar' : 'Habilitar' }}</a>
+                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-link text-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
+                                </div>
+                                <button type="button" id="save-form-item" class="btn btn-primary">
+                                    <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
+                                </button>
+                                <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+                            </div>
+                        @endif
 
                     </div>
 

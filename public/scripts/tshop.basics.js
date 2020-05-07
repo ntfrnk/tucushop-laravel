@@ -47,30 +47,4 @@ $(function(){
 		$('.owl-prev').trigger('click');
 	});
 
-
-	/*
-	 | AUTOCOMPLETE USUARIOS
-	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	*/
-
-	var options = {
-		url: "json/features.json",
-		getValue: "feature",
-		list: {
-			match: {
-				enabled: true
-			},
-			maxNumberOfElements: 8
-		},
-		template: {
-			type: "custom",
-			method: function(value, item) {
-				return item.feature;
-			}
-		},
-		theme: "plate-dark"
-	};
-
-	$("#feature").easyAutocomplete(options);
-
 });

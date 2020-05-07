@@ -313,8 +313,10 @@ Route::post('/item/feature/add', 'ItemController@addFeature')
 
 
 // Eliminar característica del item
-Route::get('/item/feature/delete/{item_id}/{feature_id}/{alias}', 'ItemController@deleteFeature')
-		->name('item.feature.delete');
+Route::get('/item/feature/delete/{item_id}/{feature_id}', 'ItemController@deleteFeature')
+		->name('item.feature.delete')
+		->where('item_id', '[0-9]+')
+		->where('feature_id', '[0-9]+');
 
 
 // Agregar una tag al item
@@ -323,8 +325,10 @@ Route::post('/item/tag/add', 'ItemController@addTag')
 
 
 // Eliminar tag del item
-Route::get('/item/tag/delete/{item_id}/{keyword_id}/{alias}', 'ItemController@deleteTag')
-		->name('item.tag.delete');
+Route::get('/item/tag/delete/{item_id}/{keyword_id}', 'ItemController@deleteTag')
+		->name('item.tag.delete')
+		->where('item_id', '[0-9]+')
+		->where('keyword_id', '[0-9]+');
 
 
 // Cambio de estado en el item (activado / desactivado)

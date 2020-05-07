@@ -181,6 +181,7 @@ return [
         App\Providers\PhotoItemServiceProvider::class,
         App\Providers\UrlFormatServiceProvider::class,
         App\Providers\HelpServiceProvider::class,
+        App\Providers\JsonsServiceProvider::class,
 
     ],
 
@@ -239,6 +240,7 @@ return [
         'PhotoItem' => App\Helpers\PhotoItem::class,
         'UrlFormat' => App\Helpers\UrlFormat::class,
         'Help' => App\Helpers\Help::class,
+        'Jsons' => App\Helpers\Jsons::class,
 
     ],
 
