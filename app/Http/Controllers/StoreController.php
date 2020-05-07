@@ -9,15 +9,12 @@ use App\Store;
 use App\Type;
 use App\Item;
 use App\StoreAdmin;
+use App\StoreShop;
 use App\StoreProfile;
 use App\Message;
 use App\Feature;
 
 class StoreController extends Controller {
-
-	public function __construct(){
-		$this->middleware("auth");
-	}
     
 	/* Portada del e-shop o tienda
 	---------------------------------------------------- */
@@ -30,16 +27,24 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function list(){
 
-		$stores = Store::whereHas('admins', function(Builder $query){
-							$user = \Auth::user();
-							$query->where('user_id', $user->id);
-						})
-						->orderby('id','asc')
-						->get();
+		if(\Auth::user()) {
 
-		return view('store.modules.stores', [
-			'stores' => $stores
-			]);
+			$stores = Store::whereHas('admins', function(Builder $query){
+								$user = \Auth::user();
+								$query->where('user_id', $user->id);
+							})
+							->orderby('id','asc')
+							->get();
+
+			return view('store.modules.stores', [
+				'stores' => $stores
+				]);
+
+		} else {
+
+			return redirect()->route('login');
+
+		}
 
 	}
 
@@ -68,14 +73,82 @@ class StoreController extends Controller {
 	/* Formulario para agregar un store
 	---------------------------------------------------- */
 	public function new(){
-		echo "Agregar un store";
+
+		if(\Auth::user()) {
+
+			$types = Type::orderBy('id','asc')->get();
+
+			return view('store.modules.new', [
+				'types' => $types
+			]);
+
+		} else {
+
+			return redirect()->route('login');
+
+		}
 	}
 
 
 	/* Guardado de un nuevo store
 	---------------------------------------------------- */
-	public function save(){
-		// Guardado de nuevo store
+	public function save(Request $request){
+
+		if(\Auth::user()) {
+		
+			$validate = $this->validate($request, [
+				'name' => 'required|string|min:5|max:50|unique:stores',
+				'type_id' => 'required|integer',
+				'description' => 'required|string',
+				'alias' => 'required|string|min:5|max:30|unique:stores'
+			]);
+
+			/** Agrego el nuevo store */
+			
+			$store = new Store();
+			$store->name = $request->name;
+			$store->type_id = $request->type_id;
+			$store->description = $request->description;
+			$store->alias = $request->alias;
+			$store->plan_id = 1;
+
+			$store->save();
+
+			/** Agrego el perfil del store */
+
+			$storeInfo = new StoreProfile();
+			$storeInfo->store_id = $store->id;
+
+			$storeInfo->save();
+
+			/** Agrego el shop / tienda del store */
+
+			$storeShop = new StoreShop();
+			$storeShop->store_id = $store->id;
+
+			$storeShop->save();
+
+			/** Agrego el usuario actual como administrador */
+
+			$admin = new StoreAdmin();
+			$admin->store_id = $store->id;
+			$admin->user_id = \Auth::user()->id;
+			$admin->role_id = 1;
+			$admin->status = 1;
+
+			$admin->save();
+
+
+			return redirect()->route('store.home', [
+				'alias' => $store->alias
+			])->with(['message'=>'welcome']);
+
+		} else {
+
+			return redirect()->route('login');
+
+		}
+
 	}
 
 
