@@ -53,7 +53,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function home($alias){
 
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -156,7 +156,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function edit($alias){
 
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$types = Type::orderBy('id','asc')->get();
@@ -205,7 +205,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function data($alias){
 
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -267,7 +267,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function admins($alias){
 
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$admins = StoreAdmin::where('store_id', $store->id)
@@ -320,7 +320,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function messages($alias){
 		
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$messages = Message::where('store_id', $store->id)
@@ -345,7 +345,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function status($alias){
 		
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -366,7 +366,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function changeStatus($alias){
 		
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -388,7 +388,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function delete($alias){
 		
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -410,7 +410,7 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function deleteConfirm($alias){
 		
-		if(\Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 

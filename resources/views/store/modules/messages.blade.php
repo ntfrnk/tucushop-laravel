@@ -19,35 +19,47 @@
 					<h1 class="f30 marB15">Centro de mensajes</h1>
 					<hr>
 				</div>
-				<table class="table table-hover">
-					<thead>
+				@if($messages->count()!=0)
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th class="w65">Producto consultado</th>
+								<th class="w35 a-right">Opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($messages as $message)
+							<tr>
+								<td>{{ $message->item->name }}</td>
+								<td class="a-right">
+									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-camera"></i></a>
+									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-star"></i></a>
+									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-tag"></i></a>
+									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-ban"></i></a>
+									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-times"></i></a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				@else
+					<table class="table">
 						<tr>
-							<th class="w65">Producto consultado</th>
-							<th class="w35 a-right">Opciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach($messages as $message)
-						<tr>
-							<td>{{ $message->item->name }}</td>
-							<td class="a-right">
-								<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-camera"></i></a>
-								<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
-								<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-star"></i></a>
-								<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-tag"></i></a>
-								<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-ban"></i></a>
-								<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-times"></i></a>
+							<td class="padTB50 f17 align-center">
+								<p class="marB10"><em>Aún no te enviaron ningún mensaje</em></p>
 							</td>
 						</tr>
-						@endforeach
-					</tbody>
-				</table>
+					</table>
+				@endif
+
 				<div class="a-center marT30">
 					<hr>
 					<div class="marAuto inline-block">
 						{{ $messages->links() }}
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
