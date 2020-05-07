@@ -6,7 +6,7 @@
 @endsection
 
 @if(isset($item))
-    @php($img = 'storage/items/sm/'.\PhotoItem::first($item->id))
+    @php($img = 'storage/items/sm/'.$item->photos->first()->file_path)
     @php($noimg = 'storage/items/sm/no-image-min.jpg')
 @endif
 
@@ -36,7 +36,7 @@
                         
                         @if(isset($item))
                             <div class="col-md-4">
-                                <img src="{{ file_exists($img) && !is_dir($img) ? asset($img) : asset($noimg) }}" class="img-fluid">
+                                <img src="{{ file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
                                 <div class="form-group form-group-alt marT15 absolute b10 l25">
                                     <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light">
                                         <i class="fa fa-camera marR5"></i>Gestionar fotos

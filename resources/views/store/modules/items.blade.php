@@ -67,12 +67,12 @@
 						<div class="row">
 							@php($noimg = 'storage/items/sm/no-image-min.jpg')
 							@foreach($items as $item)
-								@php($img = 'storage/items/sm/'.\PhotoItem::first($item->id))
+								@php($img = 'storage/items/sm/'.$item->photos->first()->file_path)
 								<div class="col-md-3">
 									<div class="show-grid-item">
 										<div class="item-info">
 											<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" title="Editar la información de este item">
-												<img src="{{ file_exists($img) && !is_dir($img) ? asset($img) : asset($noimg) }}" class="img-fluid">
+												<img src="{{ file_exists($img) && !is_dir($img) ? asset($img.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
 											</a>
 											<div>{{ $item->name }}</div>
 										</div>

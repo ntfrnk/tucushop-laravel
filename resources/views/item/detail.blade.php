@@ -16,7 +16,7 @@
 @section('meta-title', $item->name)
 @section('meta-description', $item->detail)
 @section('meta-keywords', $keywords)
-@section('meta-image', asset('storage/items/lg/'.\PhotoItem::first($item->id)))
+@section('meta-image', asset('storage/items/lg/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version))
 @section('meta-url', Request::url())
 
 {{-- Fin de definición de etiquetas SEO / SEM :::::::::::::::::::--}}
