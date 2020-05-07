@@ -276,6 +276,7 @@ CONSTRAINT fk_stores_profile_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 /* Tabla STORES_SHOP */
 
 CREATE TABLE IF NOT EXISTS stores_shop (
+id int(255) auto_increment NOT NULL,
 store_id int(255) NOT NULL,
 image_header varchar(255),
 image_profile varchar(255),
@@ -284,6 +285,7 @@ ordering varchar(2),
 primary_tab varchar(20),
 created_at datetime,
 updated_at datetime,
+CONSTRAINT pk_stores_shop PRIMARY KEY (id),
 CONSTRAINT fk_stores_shop_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 ) ENGINE=InnoDb;
 
