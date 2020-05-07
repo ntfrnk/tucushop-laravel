@@ -23,10 +23,12 @@
 				    <h1 class="f30 marB15">Gestionar fotos</h1>
 				    <hr>
 				</div>
-
-				<div class="f15 marB30">
-					<p>Para ordenar las fotos sólo debes arrastrarlas a la posición deseada, y luego confirmar el nuevo orden haciendo click en el botón «Guardar orden».</p>
-				</div>
+				
+				@if($item->photos->count() > 1)
+					<div class="f15 marB30">
+						<p>Para ordenar las fotos sólo debes arrastrarlas a la posición deseada, y luego confirmar el nuevo orden haciendo click en el botón «Guardar orden».</p>
+					</div>
+				@endif
 
 				<div class="row marT20" id="{{ $item->photos->count() > 1 ? 'sortable' : '' }}" rel="{{ $item->id }}">
 
