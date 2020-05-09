@@ -35,13 +35,13 @@
 
 				<div class="row">
 
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="crop-container" style="border: solid 1px #CCC; background: #CCC">
 		                    <img src="" class="recorte" />
 		                </div>
 					</div>
 
-					<div class="col-md-12 marT20">
+					<div class="col-md-6 marT20">
 						<p class="d-none d-md-block">Mueve con el mouse la foto, para seleccionar el área que deseas mostrar. Para agrandar o achicar el área de recorte puedes girar la rueda del mouse sobre la foto, o deslizar el control que está debajo de la foto.</p>
 						<p class="d-block d-md-none">Mueve la foto para seleccionar el área que deseas recortar. Para agrandar o achicar el área de recorte usa dos dedos.</p>
 						<a href="javascript:;" class="show-result-profile btn btn-primary spn" spn-text="Recortando la imagen...">Recortar foto</a>

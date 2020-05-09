@@ -4,8 +4,8 @@ $(function(){
 	/* Recorte de las fotos de portada de stores
 	---------------------------------------------------- */
 	var basic = $('.recorte').croppie({
-	    viewport: {width: 350, height: 350},
-	    boundary: { width: 350, height: 350 }
+	    viewport: {width: 300, height: 300},
+	    boundary: { width: 300, height: 300 }
 	});
 
 	basic.croppie('bind', {
