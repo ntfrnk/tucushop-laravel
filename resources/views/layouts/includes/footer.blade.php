@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <figure>
-                        <img src="assets/images/logo-xtofactory.png" alt=""/>
+                        {{-- <img src="assets/images/logo-xtofactory.png" alt=""/> --}}
                     </figure>
                 </div>
             </div>
