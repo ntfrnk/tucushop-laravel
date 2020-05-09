@@ -17,7 +17,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="{{ route('store.shopConfig', ['alias' => $store->alias]) }}">
+			<a href="{{ route('store.shop.config', ['alias' => $store->alias]) }}">
 				<i class="fa fa-store-alt"></i> Tienda virtual
 			</a>
 		</li>

@@ -131,7 +131,7 @@ Route::post('/store/data/update', 'StoreController@updateData')
 // Configuración del shop (tienda)
 
 Route::get('/store/eshop/{alias}', 'StoreController@shopConfig')
-		->name('store.shopConfig')
+		->name('store.shop.config')
 		->where('alias', '[a-z._]+');
 
 
@@ -139,6 +139,66 @@ Route::get('/store/eshop/{alias}', 'StoreController@shopConfig')
 
 Route::post('/store/eshop/save', 'StoreController@shopConfigSave')
 		->name('store.shopConfigSave');
+
+
+// Guardado de cambios en la opacidad de la cabecera
+
+Route::get('/store/eshop/opacity/{store_id}/{opacity}', 'StoreController@setHeaderOpacity')
+		->name('store.header.opacity')
+		->where('store_id', '[0-9]+')
+		->where('opacity', '[0-9]+');
+
+
+// Upload de foto de portada (cabecera)
+
+Route::post('/store/eshop/header/upload', 'StoreController@headerUpload')
+		->name('store.header.upload');
+
+
+// Optimización (peso/tamaño) de foto de portada (cabecera)
+
+Route::get('/store/eshop/header/resize/{alias}', 'StoreController@headerResize')
+		->name('store.header.resize')
+		->where('alias', '[a-z._]+');
+
+
+// Recorte de foto de portada (seleccionar área de recorte)
+
+Route::get('/store/eshop/header/crop/{alias}', 'StoreController@headerCrop')
+		->name('store.header.crop')
+		->where('alias', '[a-z._]+');
+
+	
+// Recorte de foto de portada (procesar recorte)
+
+Route::post('/store/eshop/header/cropper', 'StoreController@headerCropper')
+		->name('store.header.cropper');
+
+
+// Upload de foto de perfil (logo o marca)
+
+Route::post('/store/eshop/profile/upload', 'StoreController@profileUpload')
+		->name('store.profile.upload');
+
+
+// Optimización (peso/tamaño) de foto de perfil (cabecera)
+
+Route::get('/store/eshop/profile/resize/{alias}', 'StoreController@profileResize')
+		->name('store.profile.resize')
+		->where('alias', '[a-z._]+');
+
+
+// Recorte de foto de perfil (seleccionar área de recorte)
+
+Route::get('/store/eshop/profile/crop/{alias}', 'StoreController@profileCrop')
+		->name('store.profile.crop')
+		->where('alias', '[a-z._]+');
+
+	
+// Recorte de foto de perfil (procesar recorte)
+
+Route::post('/store/eshop/profile/cropper', 'StoreController@profileCropper')
+		->name('store.profile.cropper');
 
 
 // Administradores del store

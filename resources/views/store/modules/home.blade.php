@@ -36,10 +36,10 @@
 			<div class="card-body">
 				<h4 class="f17 fw600">
 					<i class="fa fa-store inline-block marR5 text-primary"></i>
-					<a href="{{ route('store.shopConfig', ['alias' => $store->alias]) }}">Tienda virtual</a>
+					<a href="{{ route('store.shop.config', ['alias' => $store->alias]) }}">Tienda virtual</a>
 				</h4>
 				<p class="f14">Personaliza todos los aspectos de tu tienda para darle identidad.</p>
-				<p class="marB0"><a href="{{ route('store.shopConfig', ['alias' => $store->alias]) }}" class="btn btn-primary btn-sm">Administrar</a></p>
+				<p class="marB0"><a href="{{ route('store.shop.config', ['alias' => $store->alias]) }}" class="btn btn-primary btn-sm">Administrar</a></p>
 			</div>
 		</div>
 	</div>

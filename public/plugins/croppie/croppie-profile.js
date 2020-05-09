@@ -1,18 +1,18 @@
 
 $(function(){
 
-	/* Recorte de las fotos de items
+	/* Recorte de las fotos de portada de stores
 	---------------------------------------------------- */
 	var basic = $('.recorte').croppie({
-	    viewport: {width: 270, height: 303},
-	    boundary: { width: 270, height: 303 }
+	    viewport: {width: 350, height: 350},
+	    boundary: { width: 350, height: 350 }
 	});
 
 	basic.croppie('bind', {
 	    url: $('#photo_url').text()
 	});
 
-	$('.show-result').on('click', function(){
+	$('.show-result-profile').on('click', function(){
 
 		// Objeto con las coordenadas
 		p = $('.recorte').croppie('get');
@@ -27,7 +27,7 @@ $(function(){
 		$('#w').val(w);
 		$('#h').val(h);
 
-		$('#crop-data').submit();
+		$('#crop-data-profile').submit();
 
 	});
 

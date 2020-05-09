@@ -197,6 +197,94 @@ $(function(){
 		}
 	});
 
+
+	/*
+	 | TIENDA VIRTUAL
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+	/* Oscurecer cabecera
+	---------------------------------------------------- */
+	$('#opacity-range').on('change', function(){
+
+		opacity = $('#opacity-range').val();
+		store_id = $('#store_id').text();
+
+		if(opacity.length<2){ 
+			opacity = '0' + opacity;
+		}
+
+		$('#opacity-input').val(opacity);
+		$('#bg-header').css({'background':'rgba(0,0,0,0.' + opacity + ')'});
+		
+		url_get = url_base + '/store/eshop/opacity/' + store_id + '/' + opacity;
+
+		$.get(url_get, {}, function(resp){
+			console.log(resp);
+		});
+
+	});
+
+
+	/* Subir imagen de portada
+	---------------------------------------------------- */
+	$('#image-header-upload').on('click', function(){
+		$('#image-header').trigger('click');
+	});
+
+	$('#image-header').on('change', function(){
+
+		var campo_archivo = document.getElementById('image-header');
+		var campo = campo_archivo.files[0];
+		
+		if($('#image-header').val()!=""){
+			if(campo_archivo.files.length != 0){ 
+				if(campo.size>8388608){
+					notify_open("La foto no debe pesar más de 8 MB. El archivo que intentas subir pesa " + parseInt(campo.size / 1000) + " KB.");
+				} else {
+					spinner_open("Estamos procesando la imagen...");
+					$('#form-image-header').submit();
+				}
+			} else {
+				spinner_open("Estamos procesando la imagen...");
+				$('#form-image-header').submit();
+			}
+		} else {
+			notify_open("Debes seleccionar un archivo para subir.");
+		}
+
+	});
+
+
+	/* Subir imagen de perfil
+	---------------------------------------------------- */
+	$('#image-profile-upload').on('click', function(){
+		$('#image-profile').trigger('click');
+	});
+
+	$('#image-profile').on('change', function(){
+
+		var campo_archivo = document.getElementById('image-profile');
+		var campo = campo_archivo.files[0];
+		
+		if($('#image-profile').val()!=""){
+			if(campo_archivo.files.length != 0){ 
+				if(campo.size>5242880){
+					notify_open("La foto no debe pesar más de 5 MB. El archivo que intentas subir pesa " + parseInt(campo.size / 1024 / 1024) + " MB.");
+				} else {
+					spinner_open("Estamos procesando la imagen...");
+					$('#form-image-profile').submit();
+				}
+			} else {
+				spinner_open("Estamos procesando la imagen...");
+				$('#form-image-profile').submit();
+			}
+		} else {
+			notify_open("Debes seleccionar un archivo para subir.");
+		}
+
+	});
+
 });
 
 
