@@ -201,6 +201,13 @@ Route::post('/store/eshop/profile/cropper', 'StoreController@profileCropper')
 		->name('store.profile.cropper');
 
 
+// Activar tienda
+
+Route::get('/store/eshop/status/{alias}', 'StoreController@shopStatus')
+		->name('store.shop.status')
+		->where('alias', '[a-z._]+');
+
+
 // Administradores del store
 
 Route::get('/store/admins/{alias}', 'StoreController@admins')

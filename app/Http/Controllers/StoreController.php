@@ -280,7 +280,7 @@ class StoreController extends Controller {
 	}
 
 
-	/* Guardado de configuraciones del shop
+	/* Cambio de opacidad en imagen de portada
 	---------------------------------------------------- */
 	public function setHeaderOpacity($store_id, $opacity){
 
@@ -288,6 +288,31 @@ class StoreController extends Controller {
 
 		$storeShop->opacity_header = $opacity;
 		$storeShop->save();
+
+	}
+
+
+	/* Cambio de estado en la publicación de la tienda
+	---------------------------------------------------- */
+	public function shopStatus($alias){
+
+		$store = Store::where('alias', $alias)->first();
+		$shop = StoreShop::where('store_id', $store->id)->first();
+
+		if(\Auth::user() && \Help::isAdmin($store->alias) && !\Help::isDeleted($store->alias)){
+
+			$shop->status = $shop->status == 1 ? 0 : 1;
+			$shop->save();
+
+			return redirect()->route('store.shop.config', ['alias' => $shop->store->alias]);
+
+		} else {
+
+			return redirect()
+					->route('store.list')
+					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+
+		}
 
 	}
 

@@ -26,6 +26,19 @@
 			<div class="card-body padT30 padB30 padLR30">
 
 				<div class="f17">
+					<div class="mar0 marT5 f14 bold f-right">
+						@if($store->shop->status == 0)
+							<span class="text-danger">
+								<i class="f16 fa fa-times-circle marR5"></i> 
+								Tienda deshabilitada
+							</span>
+						@else
+							<span class="text-success">
+								<i class="f16 fa fa-check-circle marR5"></i> 
+								Tienda habilitada
+							</span>
+						@endif
+					</div>
 					<h1 class="f30 marB15">Mi tienda virtual</h1>
 					<hr>
 				</div>
@@ -43,7 +56,7 @@
 									</div>
 									<div class="w75 f-right padL20 padT10">
 										<h3 class="mar0 f22">{{ $store->name }}</h3>
-										<p class="mar0 f14 bold">{{ '@'.$store->alias }}</p>
+										<span class="mar0 f14 bold">{{ '@'.$store->alias }}</span>
 									</div>
 								</div>
 							</div>
@@ -77,18 +90,21 @@
 						</div>
 						<hr>
 					</div>
+					
+					<div class="col-md-12">
+						<div class="marT30"><h3 class="f22 marB0">Configuraciones</h3> <hr></div>
+					</div>
+
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-3 padR0">
 								<strong>Pestaña principal:</strong>
 							</div>
-							<div class="col-md-5">
+							<div class="col-md-6">
 								<select class="form-control">
-									<option>Mis ofertas</option>
-									<option>Todos los productos</option>
-									<option>Quienes somos</option>
-									<option>Horarios de atención</option>
-									<option>Info de contacto</option>
+									<option>Ofertas</option>
+									<option>Todos mis items</option>
+									<option>Contacto</option>
 								</select>
 							</div>
 						</div>
@@ -99,14 +115,17 @@
 							<div class="col-md-3 padR0">
 								<strong>Orden de productos:</strong>
 							</div>
-							<div class="col-md-5">
+							<div class="col-md-3">
 								<select class="form-control">
-									<option>Nombre (Creciente)</option>
-									<option>Nombre (Decreciente)</option>
-									<option>Fecha (Creciente)</option>
-									<option>Fecha (Decreciente)</option>
-									<option>Precio (Creciente)</option>
-									<option>Precio (Decreciente)</option>
+									<option>Nombre</option>
+									<option>Fecha</option>
+									<option>Precio</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<select class="form-control">
+									<option>Ascendente</option>
+									<option>Descendente</option>
 								</select>
 							</div>
 						</div>
@@ -114,12 +133,12 @@
 					</div>
 					<div class="marT20 col-md-12">
 						<div class="f-right align-right">
-							<a href="" class="marL10 btn btn-link {{ $store->shop->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $store->shop->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $store->shop->status == 1 ? __('Deshabilitar') : __('Habilitar') }} tienda virtual</a>
+							<a href="{{ route('store.shop.status', ['alias' => $store->alias]) }}" class="marL10 btn btn-link {{ $store->shop->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $store->shop->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $store->shop->status == 1 ? __('Deshabilitar') : __('Habilitar') }} tienda virtual</a>
 						</div>
 						<button type="submit" id="save-form" class="btn btn-primary">
 							<i class="fa fa-save marR5"></i> Guardar cambios
 						</button>
-						<a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+						<a href="{{ route('store.home', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
 					</div>
 				</div>
 
