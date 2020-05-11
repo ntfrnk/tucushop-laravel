@@ -638,8 +638,10 @@
 .fw800 {font-weight: 800 !important;}
 .fw900 {font-weight: 900 !important;}
 
-.b ,.bold, .bolder {font-weight: bold !important;}
+.b ,.bold, .strong {font-weight: bold !important;}
 .nobold, .no-bold, .nob, .nobolder {font-weight: normal !important;}
+
+.em, .i, .italic {font-style: italic;}
 
 
 /* TEXT-TRANSFORM */

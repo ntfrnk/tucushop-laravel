@@ -1,3 +1,16 @@
+@if(isset(\Auth::user()->profile->photo) && !empty(\Auth::user()->profile->photo))
+    @php($image_file = 'storage/users/resized/'.\Auth::user()->profile->photo)
+    @if(file_exists($image_file) && !is_dir($image_file))
+        @php($img = 'storage/users/resized/'.\Auth::user()->profile->photo.'?v='.\Auth::user()->profile->version_photo)
+    @else
+        @php($noimg = 1)
+        @php($loadImg = 'storage/users/resized/no-photo.jpg')
+    @endif
+@else
+    @php($noimg = 1)
+    @php($img = 'storage/users/resized/no-photo.jpg')
+@endif
+
 <header>
 
 	<div class="container">
@@ -33,7 +46,7 @@
 					@else
 						<li class="">
 							<a href="javascript:;" class="user-menu">
-								<img src="{{ asset('images/profile.jpg') }}" class="rounded-circle" style="width: 36px; margin: 0 5px 0 10px;">
+								<img src="{{ asset($img) }}" class="rounded-circle" style="width: 36px; margin: 0 5px 0 10px;">
 								Mi cuenta <span class="caret"></span>
 							</a>
 							<ul class="user-submenu">

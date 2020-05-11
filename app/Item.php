@@ -20,7 +20,7 @@ class Item extends Model {
 
 	// Likes
 	public function likes(){
-		return $this->hasMany('App\Like');
+		return $this->hasMany('App\UserLike');
 	}
 
 	// Etiquetas
