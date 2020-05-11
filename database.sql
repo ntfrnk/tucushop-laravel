@@ -7,34 +7,31 @@ USE tucushop_laravel;
 CREATE TABLE IF NOT EXISTS users (
 id int(255) auto_increment NOT NULL,
 email varchar(255),
+email_verified_at timestamp NULL,
 password varchar(255),
-nickname varchar(50),
-role varchar(20),
-created_at datetime,
-updated_at datetime,
-remember_token varchar(255),
+nickname varchar(50) NULL,
+remember_token varchar(100) NULL,
+created_at datetime NULL,
+updated_at timestamp NULL,
 CONSTRAINT pk_users PRIMARY KEY(id)
 ) ENGINE=InnoDb;
 
 /* Tabla USERS_PROFILE */
 
 CREATE TABLE IF NOT EXISTS users_profile (
+id int(255) auto_increment NOT NULL,
 user_id int(255) NOT NULL,
 name varchar(255),
 lastname varchar(255),
 birthday date,
 gender varchar(10),
 dni int(8),
-phone varchar(20),
-address varchar(100),
-country varchar(50),
-state varchar(50),
-city varchar(50),
-postalcode varchar(15),
 photo varchar(255),
+version_photo int(3),
 created_at datetime,
 updated_at datetime,
-CONSTRAINT fk_profiles_users FOREIGN KEY (user_id) REFERENCES users(id)
+CONSTRAINT pk_users_profiles PRIMARY KEY (id),
+CONSTRAINT fk_users_profiles_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
 /* Tabla USERS_ADDRESSES */
