@@ -120,7 +120,7 @@
 						<div class="color-gray precio-item">$ {{ $item->price }}</div>
 					@endif
 
-					<p class="capfirst padT15 padB0">
+					<p class="item-details padT15 padB0">
 						{{ $item->detail }}
 					</p>
 

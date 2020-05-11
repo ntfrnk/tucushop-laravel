@@ -309,6 +309,10 @@
 	text-align: left;
 }
 
+.item-details {
+	font-size: 16px;
+}
+
 .product-item-showing {
 	background: #FFF;
 	border: solid 1px #CCC;
