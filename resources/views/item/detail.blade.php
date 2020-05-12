@@ -178,28 +178,64 @@
 
 	<div class="container">
 	
-		{{-- Encabezado --}}
+		{{-- Encabezado de sugeridos --}}
 		<div class="carousel-heading row">
 			<div class="col-md-2 carousel-icon">
 				<i class="fa fa-tag" aria-hidden="true"></i>
 			</div>
 			<div class="col-md-8 carousel-title">
-				<h3>Te puede interesar</h3>
+				<h3>Items relacionados</h3>
 				<p>Productos y servicios similares a lo que estás viendo</p>
 			</div>
 			<div class="col-md-2 carousel-navigation">
-				<button type="button" class="carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
-				<button type="button" class="carousel-next btn btn-light" carousel-id="carousel-1">></button>
+				<button type="button" class="suggested carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
+				<button type="button" class="suggested carousel-next btn btn-light" carousel-id="carousel-1">></button>
 			</div>
 		</div>
 
-		{{-- Cuerpo de ofertas --}}
+	</div>
 
-		<div class="box-item-list owl-carousel owl-theme">
+</section>
+
+<section class="marT0">
+
+	<div class="container">
+
+		{{-- Cuerpo de sugeridos --}}
+
+		<div id="suggested" class="box-item-list owl-carousel owl-theme">
 
 			@foreach($items_sugested as $item)
 
 				@include('item.includes.item_carousel')
+
+			@endforeach
+
+		</div>
+
+
+		{{-- Encabezado de random --}}
+		<div class="carousel-heading row">
+			<div class="col-md-2 carousel-icon">
+				<i class="fa fa-tag" aria-hidden="true"></i>
+			</div>
+			<div class="col-md-8 carousel-title">
+				<h3>También te puede interesar</h3>
+				<p>Te sugerimos otros productos y servicios disponibles en la web</p>
+			</div>
+			<div class="col-md-2 carousel-navigation">
+				<button type="button" class="random carousel-prev btn btn-light" carousel-id="random"><</button>
+				<button type="button" class="random carousel-next btn btn-light" carousel-id="random">></button>
+			</div>
+		</div>
+
+		{{-- Cuerpo de random items --}}
+
+		<div id="random" class="box-item-list owl-carousel owl-theme">
+
+			@foreach($items_random as $item)
+
+				@include('item.includes.item_random')
 
 			@endforeach
 

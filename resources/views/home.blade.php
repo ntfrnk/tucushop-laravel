@@ -48,14 +48,14 @@
 					<p>Con estas ofertas te vas a volver loco!</p>
 				</div>
 				<div class="col-md-2 carousel-navigation">
-					<button type="button" class="carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
-					<button type="button" class="carousel-next btn btn-light" carousel-id="carousel-1">></button>
+					<button type="button" class="home-offers carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
+					<button type="button" class="home-offers carousel-next btn btn-light" carousel-id="carousel-1">></button>
 				</div>
 			</div>
 
 			{{-- Cuerpo de ofertas --}}
 
-			<div class="box-item-list owl-carousel owl-theme">
+			<div id="home-offers" class="box-item-list owl-carousel owl-theme">
 	
 				@foreach($offers as $offer)
 
