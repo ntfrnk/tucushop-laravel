@@ -27,14 +27,62 @@ class ItemController extends Controller {
 	public function detail($name, $id){
 
 		$item = Item::find($id);
-		$items_sugested = Item::where('status', '1')
+
+		$items_random = Item::where(function($query) {
+								$query->where('status', 1);
+								$query->whereHas('store', function($q) {
+									$q->where('status', 1);
+									$q->where('deleted', '!=', 1);
+								});
+							})
+							->where('status', '1')
 							->inRandomOrder()
-							->take(8)
+							->take(12)
+							->get();
+
+		$kname = \Help::keywords($item->name);
+		$kdetail = \Help::keywords($item->detail);
+
+		if($item->tags->count()!=0){
+			foreach($item->tags as $tag){
+				$ktags[] = $tag->keyword->keyword;
+			}
+		} else {
+			$ktags = array();
+		}
+
+		$words = array_merge_recursive($kname, $kdetail, $ktags);
+
+		$items_sugested = Item::where(function($query) use ($item) {
+								$query->where('status', 1);
+								$query->whereHas('store', function($q) {
+									$q->where('status', 1);
+									$q->where('deleted', '!=', 1);
+								});
+								$query->where('id', '!=', $item->id);
+							})
+							->where(function($query) use ($words){
+								foreach($words as $word){
+									$query->orWhere('name', 'like', '%'.$word.'%');
+									$query->orWhere('detail', 'like', '%'.$word.'%');
+									$query->orWhereHas('features', function($q) use ($word) {
+										$q->where('content', 'like', '%'.$word.'%');
+									});
+									$query->orWhereHas('tags', function($query) use ($word) {
+										$query->whereHas('keyword', function($q) use ($word) {
+											$q->where('keyword', 'like', '%'.$word.'%');
+										});
+									});
+								}
+							})
+							->inRandomOrder()
+							->take(12)
 							->get();
 
 		return view('item.detail', [
 			'item' => $item,
-			'items_sugested' => $items_sugested
+			'items_sugested' => $items_sugested,
+			'items_random' => $items_random
 		]);
 
 	}

@@ -26,6 +26,22 @@ Route::get('/', 'HomeController@index')->name('home');
 
 /*
  |
+ | BUSCADOR
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Realizar búsqueda
+
+Route::post('/search', 'SearchController@do')->name('search');
+
+
+// Resultados de la búsqueda
+
+Route::get('/search/{keyword}/{page?}', 'SearchController@results')->name('search.results');
+
+
+/*
+ |
  | RUTAS PARA USERS
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */

@@ -97,13 +97,13 @@
 }
 
 .box-item-details h3 {
-	font-size: 17px;
-	font-weight: normal;
+	font-size: 16px;
+	font-weight: 600;
 }
 
 .box-item-details p {
 	font-size: 22px;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 
@@ -139,6 +139,46 @@
 	background: #C00;
 	width: 80px;
 	padding: 5px 0;
+}
+
+
+/* Item random */
+
+.item-random .box-item-details {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.item-random .box-item-details h3 {
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.item-random .box-item-details p span {
+	color: #999;
+	font-size: 16px;
+	font-weight: normal;
+	display: inline-block;
+	padding-right: 5px;
+}
+
+.item-random .box-item-details p span.offer {
+	text-decoration: line-through;
+}
+
+.owl-carousel .item-random .box-item-offer-flag {
+	position: absolute;
+	left: 0;
+	top: 160px;
+	color: #FFF;
+	background: #C00;
+	width: 70px;
+	padding: 3px 0;
+}
+
+.item-random .box-item-details p {
+	font-size: 20px;
+	font-weight: 500;
 }
 
 

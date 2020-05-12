@@ -36,3 +36,25 @@
 	color: #227dc7;
 	background: transparent;
 }
+
+
+/*
+ |
+ | PAGINADO BOOTSTRAP
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.page-item.active .page-link {
+	background-color: var(--colorPrincipal);
+	border-color: var(--colorPrincipal);
+}
+
+.page-link {
+	color: var(--colorPrincipal);
+	padding: 10px 17px;
+	font-weight: 500;
+}
+
+.page-link:hover {
+	color: var(--colorPrincipal);
+}
