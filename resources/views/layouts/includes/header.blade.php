@@ -23,7 +23,10 @@
 			</div>
 
 			<div class="menu-search">
-				<input type="text" id="searcher" value="" placeholder="Buscar productos y servicios..." autocomplete="off" />
+				<form id="form-search" action="{{ route('search') }}" method="POST">
+					@csrf
+					<input type="text" id="search" name="search" placeholder="Escribe aquí lo que estás buscando" autocomplete="off" />
+				</form>
 			</div>
 
 			<div class="menu-nav">
