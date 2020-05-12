@@ -98,8 +98,8 @@
 			<div class="col-md-6">
 
 				<div class="marB30">
-					<a href="javascript:;" onclick="add_wishlist(4, 1)" class="inline-block float-right heart-off" title="Agregar a favoritos">
-						<span class="f30 far fa-heart"></span>
+					<a href="javascript:;" onclick="add_wishlist(4, 1)" class="inline-block float-right heart-on" title="Agregar a favoritos">
+						<span class="f30 fa fa-heart"></span>
 					</a>
 					<h1 class="lh34 f30">{{ $item->name }}</h1>
 					<h3 class="f13 texto marB10">
@@ -146,7 +146,7 @@
 
 				<div class="f15 texto marT10">
 					@foreach($item->tags as $tag)
-						<a href="tags/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
+						<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
 							#{{ $tag->keyword->keyword }}
 						</a>
 					@endforeach
