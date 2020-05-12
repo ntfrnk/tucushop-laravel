@@ -36,6 +36,7 @@ class StoreController extends Controller {
 								$user = \Auth::user();
 								$query->where('user_id', $user->id);
 							})
+							->where('deleted','!=',1)
 							->orderby('id','asc')
 							->get();
 
