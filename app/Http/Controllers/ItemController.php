@@ -26,19 +26,32 @@ class ItemController extends Controller {
 	---------------------------------------------------- */
 	public function detail($name, $id){
 
+		// Obtengo los datos del item
+
 		$item = Item::find($id);
 
-		$items_random = Item::where(function($query) {
-								$query->where('status', 1);
-								$query->whereHas('store', function($q) {
-									$q->where('status', 1);
-									$q->where('deleted', '!=', 1);
-								});
-							})
-							->where('status', '1')
-							->inRandomOrder()
-							->take(12)
-							->get();
+		if($item->status != 0 && $item->store->status != 0 && $item->store->deleted != 1){
+			$item_disabled = 1;
+		} else {
+			$item_disabled = 0;
+		}
+
+		// Obtengo los items aleatorios
+
+		$items_random = 
+		Item::where(function($query) {
+				$query->where('status', 1);
+				$query->whereHas('store', function($q) {
+					$q->where('status', 1);
+					$q->where('deleted', '!=', 1);
+				});
+			})
+			->where('status', '1')
+			->inRandomOrder()
+			->take(12)
+			->get();
+
+		// Obtengo keywords para buscar los relacionados
 
 		$kname = \Help::keywords($item->name);
 		$kdetail = \Help::keywords($item->detail);
@@ -53,37 +66,67 @@ class ItemController extends Controller {
 
 		$words = array_merge_recursive($kname, $kdetail, $ktags);
 
-		$items_sugested = Item::where(function($query) use ($item) {
-								$query->where('status', 1);
-								$query->whereHas('store', function($q) {
-									$q->where('status', 1);
-									$q->where('deleted', '!=', 1);
-								});
-								$query->where('id', '!=', $item->id);
-							})
-							->where(function($query) use ($words){
-								foreach($words as $word){
-									$query->orWhere('name', 'like', '%'.$word.'%');
-									$query->orWhere('detail', 'like', '%'.$word.'%');
-									$query->orWhereHas('features', function($q) use ($word) {
-										$q->where('content', 'like', '%'.$word.'%');
-									});
-									$query->orWhereHas('tags', function($query) use ($word) {
-										$query->whereHas('keyword', function($q) use ($word) {
-											$q->where('keyword', 'like', '%'.$word.'%');
-										});
-									});
-								}
-							})
-							->inRandomOrder()
-							->take(12)
-							->get();
+		// Busco los ítems relacionados
+
+		$items_sugested = 
+		Item::where(function($query) use ($item) {
+			$query->where('status', 1);
+			$query->whereHas('store', function($q) {
+				$q->where('status', 1);
+				$q->where('deleted', '!=', 1);
+			});
+			$query->where('id', '!=', $item->id);
+		})
+		->where(function($query) use ($words){
+			foreach($words as $word){
+				$query->orWhere('name', 'like', '%'.$word.'%');
+				$query->orWhere('detail', 'like', '%'.$word.'%');
+				$query->orWhereHas('features', function($q) use ($word) {
+					$q->where('content', 'like', '%'.$word.'%');
+				});
+				$query->orWhereHas('tags', function($query) use ($word) {
+					$query->whereHas('keyword', function($q) use ($word) {
+						$q->where('keyword', 'like', '%'.$word.'%');
+					});
+				});
+			}
+		})
+		->inRandomOrder()
+		->take(12)
+		->get();
+
+		// Retorno la vista
 
 		return view('item.detail', [
 			'item' => $item,
+			'item_disabled' => $item_disabled,
 			'items_sugested' => $items_sugested,
 			'items_random' => $items_random
 		]);
+
+	}
+
+
+	/* Like / unlike a un item
+	---------------------------------------------------- */
+	public function like($item_id){
+
+		$user = \Auth::user();
+		
+		$like = UserLike::where('item_id', $item_id)->where('user_id', $user->id)->first();
+
+		 if(is_object($like)){
+			UserLike::where('item_id', $item_id)->where('user_id', $user->id)->delete();
+			$resp = 0;
+		} else {
+			$like = new UserLike();
+			$like->item_id = $item_id;
+			$like->user_id = $user->id;
+			$like->save();
+			$resp = 1;
+		}
+		
+		return $resp;
 
 	}
 
@@ -95,9 +138,11 @@ class ItemController extends Controller {
 		if(\Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
-			$items = Item::where('store_id', $store->id)
-						->orderBy('name', 'asc')
-						->paginate(12);
+
+			$items = Item::
+			where('store_id', $store->id)
+			->orderBy('name', 'asc')
+			->paginate(12);
 
 			return view('store.modules.items', [
 				'store' => $store,
@@ -107,8 +152,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+			->route('store.list')
+			->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 
@@ -145,8 +190,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+				->route('store.list')
+				->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 
@@ -201,8 +246,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+				->route('store.list')
+				->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 
@@ -249,8 +294,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+				->route('store.list')
+				->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 
@@ -340,8 +385,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+				->route('store.list')
+				->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 
@@ -473,8 +518,8 @@ class ItemController extends Controller {
 	public function deleteFeature($item_id, $feature_id){
 
 		$feature = ItemFeature::where('item_id', $item_id)
-							->where('feature_id', $feature_id)
-							->delete();
+			->where('feature_id', $feature_id)
+			->delete();
 
 		$response['resp'] = "ok";
 
@@ -525,8 +570,8 @@ class ItemController extends Controller {
 	public function deleteTag($item_id, $keyword_id){
 
 		$feature = ItemTag::where('item_id', $item_id)
-							->where('keyword_id', $keyword_id)
-							->delete();
+			->where('keyword_id', $keyword_id)
+			->delete();
 
 		$response['resp'] = "ok";
 
@@ -555,8 +600,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+				->route('store.list')
+				->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 
@@ -596,8 +641,8 @@ class ItemController extends Controller {
 		} else {
 
 			return redirect()
-					->route('store.list')
-					->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
+				->route('store.list')
+				->with(['message' => 'El link que buscas no existe o no tienes permiso para ver su contenido.']);
 
 		}
 

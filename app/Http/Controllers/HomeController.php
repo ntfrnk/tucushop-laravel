@@ -10,17 +10,31 @@ class HomeController extends Controller {
 
     public function index() {
 
-        $offers = ItemOffer::whereHas('item', function(Builder $query){
-                            $query->where('status', 1);
-                        })
-                        ->inRandomOrder()
-        				->take(8)
-        				->get();
+        $offers = ItemOffer::
+        whereHas('item', function(Builder $query){
+            $query->where(function($query) {
+                $query->where('status', 1);
+                $query->whereHas('store', function($q) {
+                    $q->where('status', 1);
+                    $q->where('deleted', '!=', 1);
+                });
+            });
+        })
+        ->inRandomOrder()
+        ->take(8)
+        ->get();
 
-        $items_dest = Item::where('status', '1')
-                        ->inRandomOrder()
-                        ->take(8)
-                        ->get();
+        $items_dest = Item::
+            where(function($query) {
+                $query->where('status', 1);
+                $query->whereHas('store', function($q) {
+                    $q->where('status', 1);
+                    $q->where('deleted', '!=', 1);
+                });
+            })
+            ->inRandomOrder()
+            ->take(8)
+            ->get();
 
         return view('home', [
             'offers' => $offers,

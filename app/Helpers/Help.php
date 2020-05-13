@@ -50,20 +50,15 @@ class Help {
 	/* Obtiene keywords de una frase
 	---------------------------------------------------- */
 	public static function keywords($text){
-		
 		$not = array("a","de","al","del","y","e","para","por","con","sin","en","varios","muchos","lindos","motivos");
-
 		$text_clean = preg_replace("([^A-Za-z0-9 áéíóúüñ])", "", $text);
 		$words = explode(" ", $text_clean);
-
 		foreach($words as $word){
 			if(!in_array($word, $not) && strlen($word)>3){
 				$ok[] = $word;
 			}
 		}
-
 		return $ok;
-
 	}
 
 

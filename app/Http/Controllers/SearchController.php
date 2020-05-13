@@ -36,28 +36,29 @@ class SearchController extends Controller {
 
         $words = explode(" ", $keyword);
 
-        $items = Item::where(function($query) {
-                            $query->where('status', 1);
-                            $query->whereHas('store', function($q) {
-                                $q->where('status', 1);
-                                $q->where('deleted', '!=', 1);
-                            });
-                        })
-                        ->where(function($query) use ($words){
-                            foreach($words as $word){
-                                $query->orWhere('name', 'like', '%'.$word.'%');
-                                $query->orWhere('detail', 'like', '%'.$word.'%');
-                                $query->orWhereHas('features', function($q) use ($word) {
-                                    $q->where('content', 'like', '%'.$word.'%');
-                                });
-                                $query->orWhereHas('tags', function($query) use ($word) {
-                                    $query->whereHas('keyword', function($q) use ($word) {
-                                        $q->where('keyword', 'like', '%'.$word.'%');
-                                    });
-                                });
-                            }
-                        })
-                        ->paginate(12);
+        $items = Item::
+            where(function($query) {
+                $query->where('status', 1);
+                $query->whereHas('store', function($q) {
+                    $q->where('status', 1);
+                    $q->where('deleted', '!=', 1);
+                });
+            })
+            ->where(function($query) use ($words){
+                foreach($words as $word){
+                    $query->orWhere('name', 'like', '%'.$word.'%');
+                    $query->orWhere('detail', 'like', '%'.$word.'%');
+                    $query->orWhereHas('features', function($q) use ($word) {
+                        $q->where('content', 'like', '%'.$word.'%');
+                    });
+                    $query->orWhereHas('tags', function($query) use ($word) {
+                        $query->whereHas('keyword', function($q) use ($word) {
+                            $q->where('keyword', 'like', '%'.$word.'%');
+                        });
+                    });
+                }
+            })
+            ->paginate(12);
 
         $search = implode("» y «", $words);
 
