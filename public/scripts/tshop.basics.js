@@ -2,6 +2,13 @@
 $(function(){
 
 	/*
+	 | RUTAS DEL SERVIDOR
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+	url_base = $('#url_base').text();
+
+	/*
 	 | MENU DE USUARIO
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/
@@ -128,3 +135,69 @@ $(function(){
 	});
 
 });
+
+
+function add_wishlist(item_id, sess){
+	if(sess){
+		url = url_base + '/item/like/' + item_id;
+		$.get(url, {}, function(resp){
+			if(resp==1){
+				$('.heart-on .fa-heart').removeClass('far').addClass('fa');
+			} else {
+				$('.heart-on .fa-heart').removeClass('fa').addClass('far');
+			}
+		});
+	} else {
+		notify_open('Para agregar este artículo a favoritos primero debes iniciar sesión.');
+	}
+}
+
+
+function add_cart(item_id, sess){
+	spinnOn()
+	if(sess){
+		url = url_base + '/cart/add/' + item_id;
+		$.get(url, {}, function(resp){
+			if(resp==1){
+				$('.cart-text').html('Quitar del carrito');
+				$('.btn-cart').removeClass('btn-outline-primary').addClass('btn-secondary');
+			} else {
+				$('.cart-text').html('Agregar al carrito');
+				$('.btn-cart').removeClass('btn-secondary').addClass('btn-outline-primary');
+			}
+			spinnOff()
+		});
+	} else {
+		spinnOff()
+		notify_open('Para agregar este artículo al carrito de compras primero debes iniciar sesión.');
+	}
+}
+
+function remove_cart(item_id){
+	url = url_base + '/cart/add/' + item_id;
+	$.get(url, {}, function(resp){
+		window.location.reload();
+	});
+}
+
+function cart_increase(item_id){
+	url = url_base + '/cart/increase/' + item_id;
+	$.get(url, {}, function(){
+		window.location.reload();
+	});
+}
+
+function cart_decrease(item_id){
+	url = url_base + '/cart/decrease/' + item_id;
+	$.get(url, {}, function(){
+		window.location.reload();
+	});
+}
+
+function spinnOn(){
+	$('.loader').show();
+}
+
+function spinnOff(){
+	$('.loader').show();
+}

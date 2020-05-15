@@ -57,114 +57,135 @@
 
 		<div class="row product-item-showing">
 
-			{{-- Muestro las fotos --}}
-			<div class="col-md-6">
-				<div id="item-photos" class="carousel slide" data-ride="carousel">
-					@if($item->photos->count() != 1)
-						<ol class="carousel-indicators">
+			@if($item_disabled != 0)
+			
+				{{-- Muestro las fotos --}}
+				<div class="col-md-6">
+					<div id="item-photos" class="carousel slide" data-ride="carousel">
+						@if($item->photos->count() != 1)
+							<ol class="carousel-indicators">
+								@php($i=0)
+								@foreach($item->photos->sortBy('ordering') as $photo)
+									<li data-target="#item-photos" data-slide-to="{{ $i }}"{{ $i==0 ? ' class="active"' : '' }}></li>
+									@php($i++)
+								@endforeach
+							</ol>
+						@endif
+						<div class="carousel-inner">
 							@php($i=0)
 							@foreach($item->photos->sortBy('ordering') as $photo)
-								<li data-target="#item-photos" data-slide-to="{{ $i }}"{{ $i==0 ? ' class="active"' : '' }}></li>
+								<div class="carousel-item{{ $i==0 ? ' active' : '' }}">
+									<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid">
+								</div>
 								@php($i++)
 							@endforeach
-						</ol>
-					@endif
-					<div class="carousel-inner">
-						@php($i=0)
-						@foreach($item->photos->sortBy('ordering') as $photo)
-							<div class="carousel-item{{ $i==0 ? ' active' : '' }}">
-								<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid">
+						</div>
+						@if($item->photos->count() != 1)
+							<a class="carousel-control-prev" href="#item-photos" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#item-photos" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						@endif
+					</div>
+
+				</div>
+
+
+				{{-- Detalle del item --}}
+
+				<div class="col-md-6">
+
+					<div class="marB30">
+						<a href="javascript:;" onclick="add_wishlist({{ $item->id }}{{ \Auth::user() ? ', 1' : '' }})" class="inline-block float-right heart-on marL30" title="Agregar a favoritos">
+							<span class="f30 {{ \Auth::user() && $item->likes->contains('user_id', \Auth::user()->id) ? 'fa' : 'far' }} fa-heart"></span>
+						</a>
+						<h1 class="lh34 f30">{{ $item->name }}</h1>
+						<h3 class="f13 texto marB10">
+							By: 
+							@if($item->store->plan->eshop==1)
+								<strong><a href="{{ route('store.home', ['alias' => $item->store->alias]) }}">{{ $item->store->name }}</a></strong>
+							@else
+								<strong>{{ $item->store->name }}</strong>
+							@endif
+						</h3>
+
+						@if($item->offer)
+							<div class="precio-item">
+								<span class="old">$ {{ $item->price }}</span>&nbsp;<span class="new">$ {{ $item->offer->price }}</span>
+								<span class="f14 badge badge-danger inline-block marB20">{{ $item->offer->percent }}% OFF</span>
 							</div>
-							@php($i++)
+						@else
+							<div class="color-gray precio-item">$ {{ $item->price }}</div>
+						@endif
+
+						<p class="item-details padT15 padB0">
+							{{ $item->detail }}
+						</p>
+
+					</div>
+
+					<div class="row marT20 marB30">
+						<div class="col-md-6">
+							<a href="{{ route('item.purchase', ['item_id' => \UrlFormat::add_zeros($item->id)]) }}" class="btn btn-primary w-100">
+								<i class="fa fa-shopping-bag marR5"></i> 
+								Comprar
+							</a>
+						</div>
+						<div class="col-md-6">
+							<a href="javascript:;" class="w-100 btn-cart btn btn-{{ \Auth::user() && \Help::inCart($item->id) ? 'secondary' : 'outline-primary' }}" onclick="add_cart({{ $item->id }}{{ \Auth::user() ? ', 1' : '' }})">
+								<i class="fa fa-shopping-cart marR5"></i> 
+								<span class="cart-text">
+									{{ \Auth::user() && \Help::inCart($item->id) ? 'Quitar del carrito' : 'Agregar al carrito' }}
+								</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="row">
+						<h3 class="col-md-12 marB20 f22">Características</h3>
+						@foreach($item->features as $feature)
+							<div class="col-md-4 marB15 f13 padB10" style="border-bottom: dashed 1px #CCC;">
+								<b>{{ $feature->feature->feature }}: </b><br><span class="f15">{{ $feature->content }}</span>
+							</div>
 						@endforeach
 					</div>
-					@if($item->photos->count() != 1)
-						<a class="carousel-control-prev" href="#item-photos" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#item-photos" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
-					@endif
-				</div>
 
-			</div>
-
-
-			{{-- Detalle del item --}}
-
-			<div class="col-md-6">
-
-				<div class="marB30">
-					<a href="javascript:;" onclick="add_wishlist(4, 1)" class="inline-block float-right heart-on" title="Agregar a favoritos">
-						<span class="f30 fa fa-heart"></span>
-					</a>
-					<h1 class="lh34 f30">{{ $item->name }}</h1>
-					<h3 class="f13 texto marB10">
-						By: 
-						@if($item->store->plan->eshop==1)
-							<strong><a href="{{ route('store.home', ['alias' => $item->store->alias]) }}">{{ $item->store->name }}</a></strong>
-						@else
-							<strong>{{ $item->store->name }}</strong>
-						@endif
-					</h3>
-
-					@if($item->offer)
-						<div class="precio-item">
-							<span class="old">$ {{ $item->price }}</span>&nbsp;<span class="new">$ {{ $item->offer->price }}</span>
-							<span class="f14 badge badge-danger inline-block marB20">{{ $item->offer->percent }}% OFF</span>
-						</div>
-					@else
-						<div class="color-gray precio-item">$ {{ $item->price }}</div>
-					@endif
-
-					<p class="item-details padT15 padB0">
-						{{ $item->detail }}
-					</p>
-
-				</div>
-
-				<div class="row marT20 marB30">
-					<div class="col-md-6">
-						<a href="{{ route('item.purchase', ['item_id' => \UrlFormat::add_zeros($item->id)]) }}" class="btn btn-primary w-100"><i class="fa fa-shopping-bag marR5"></i> Comprar</a>
+					<div class="f15 texto marT10">
+						@foreach($item->tags as $tag)
+							<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
+								#{{ $tag->keyword->keyword }}
+							</a>
+						@endforeach
 					</div>
-					<div class="col-md-6">
-						<a href="javascript:;" class="btn btn-outline-primary w-100"><i class="fa fa-shopping-cart marR5"></i> Agregar al carrito</a>
-					</div>
-				</div>
 
-				<div class="row">
-					<h3 class="col-md-12 marB20 f22">Características</h3>
-					@foreach($item->features as $feature)
-						<div class="col-md-4 marB15 f13 padB10" style="border-bottom: dashed 1px #CCC;">
-							<b>{{ $feature->feature->feature }}: </b><br><span class="f15">{{ $feature->content }}</span>
-						</div>
-					@endforeach
-				</div>
+					<div class="bordbot marT10 marB20"></div>
 
-				<div class="f15 texto marT10">
-					@foreach($item->tags as $tag)
-						<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
-							#{{ $tag->keyword->keyword }}
+					<div class="add-to-cart marB10">
+						<a href="javascript:;" class="bot bot-primario" onclick="askquestion(4)">
+							<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta</span>
 						</a>
-					@endforeach
-				</div>
+						<a href="javascript:;" class="bot bot-secundario-link marL10" onclick="denunciar('4')">
+							<span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; Informar un problema</span>
+						</a>
 
-				<div class="bordbot marT10 marB20"></div>
-
-				<div class="add-to-cart marB10">
-					<a href="javascript:;" class="bot bot-primario" onclick="askquestion(4)">
-						<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta</span>
-					</a>
-					<a href="javascript:;" class="bot bot-secundario-link marL10" onclick="denunciar('4')">
-						<span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; Informar un problema</span>
-					</a>
+					</div>
 
 				</div>
 
-			</div>
+			@else
+
+				<div class="col-md-12 padTB70 a-center f20 em">
+					
+					<p><i class="f50 fa fa-exclamation-triangle principal"></i></p>
+					<p>El artículo que estás buscando se encuentra inhabilitado.</p>
+
+				</div>
+
+			@endif
 
 		</div>
 
@@ -215,7 +236,7 @@
 
 
 		{{-- Encabezado de random --}}
-		<div class="carousel-heading row">
+		<div class="carousel-heading row marT10">
 			<div class="col-md-2 carousel-icon">
 				<i class="fa fa-tag" aria-hidden="true"></i>
 			</div>
@@ -231,7 +252,7 @@
 
 		{{-- Cuerpo de random items --}}
 
-		<div id="random" class="box-item-list owl-carousel owl-theme">
+		<div id="random" class="box-item-list owl-carousel owl-theme marB500">
 
 			@foreach($items_random as $item)
 

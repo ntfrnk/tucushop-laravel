@@ -154,11 +154,12 @@ header .menu-logo {
 .user-notifications li a {
 	display: block !important;
 	color: #999 !important;
+	text-decoration: none !important;
 }
 
 .user-submenu li a:hover,
 .user-notifications li a:hover {
-	color: #333 !important;
+	color: #111 !important;
 	background: #F2F2F2 !important;
 }
 

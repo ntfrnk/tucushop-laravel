@@ -168,10 +168,64 @@ Route::get('/item/{name}_{id}.tshop', 'ItemController@detail')
 ->where('id', '[0-9]+');
 
 
+// Like / Unlike
+
+Route::get('/item/like/{item_id}', 'ItemController@like')
+->name('item.like');
+
+
 // Detalle del item
 
 Route::get('/purchase/{item_id}', 'ItemController@purchase')
 ->name('item.purchase');
+
+
+/*
+ |
+ | RUTAS DEL CARRITO
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Carrito de compras (vista general)
+
+Route::get('/cart', 'CartController@items')
+->name('cart.items');
+
+
+// Carrito de compras (Agregar / quitar)
+
+Route::get('/cart/add/{item_id}', 'CartController@add')
+->name('cart.add');
+
+
+// Aumentar cantidad de unidades
+
+Route::get('/cart/increase/{item_id}', 'CartController@increase')
+->name('cart.increase');
+
+
+// Disminuir cantidad de unidades
+
+Route::get('/cart/decrease/{item_id}', 'CartController@decrease')
+->name('cart.decrease');
+
+
+// Vaciar carrito de compras
+
+Route::get('/cart/clean', 'CartController@clean')
+->name('cart.clean');
+
+
+/*
+ |
+ | RUTAS DEL CARRITO
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Checkout Screen
+
+Route::get('/sale/address', 'CartController@clean')
+->name('sale.shipping');
 
 
 /*

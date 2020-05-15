@@ -62,4 +62,19 @@ class Help {
 	}
 
 
+	/* Consulto si el item está en el carrito
+	---------------------------------------------------- */
+	public static function inCart($item_id){
+		$in_cart = false;
+		if(session('cart')){
+			foreach(session('cart') as $sess){
+				if($sess['id'] == $item_id){
+					$in_cart = true;
+				}
+			}
+		}
+		return $in_cart;
+	}
+
+
 }

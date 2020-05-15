@@ -43,35 +43,58 @@
 						    	<i class="f17 fa fa-id-card"></i> Registrarme
 						    </a>
 						</li>
-						<li>
-							<a href="help/"><i class="f17 fa fa-question-circle"></i> Ayuda</a>
-						</li>
 					@else
 						<li class="">
 							<a href="javascript:;" class="user-menu">
 								<img src="{{ asset($img) }}" class="rounded-circle" style="width: 36px; margin: 0 5px 0 10px;">
-								Mi cuenta <span class="caret"></span>
+								{{ \Auth::user()->profile->name." ".\Auth::user()->profile->lastname }} <span class="caret"></span>
 							</a>
-							<ul class="user-submenu">
-								<li><a href="user/home">Mis datos</a></li>
-								<li><a href="user/likes">Mis favoritos</a></li>
-								<li><a href="user/messages">Mensajes</a></li>
-								<li><a href="{{ route('store.list') }}">Mis negocios</a></li>
+							<ul class="user-submenu pad10">
+								<li>
+									<a href="user/home">
+										<i class="w15 f17 fa fa-user"></i>
+										Mis cuenta
+									</a>
+								</li>
+								<li>
+									<a href="user/likes">
+										<i class="w15 f17 fa fa-heart"></i>
+										Mis items favoritos
+									</a>
+								</li>
+								<li>
+									<a href="user/messages">
+										<i class="w15 f17 fa fa-envelope"></i>
+										Mis mensajes
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('store.list') }}">
+										<i class="w15 f17 fa fa-store-alt"></i>
+										Mis negocios
+									</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:;" onclick="$('#logout-form').submit();">
+										<i class="w15 f17 fa fa-sign-out-alt"></i> Salir
+									</a>
+		
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+									</form>
+								</li>
 							</ul>
 						</li>
+						
 						<li>
-							<a href="help/"><i class="f17 fa fa-question-circle"></i> Ayuda</a>
+							<a href="{{ route('cart.items') }}"><i class="f17 fa fa-shopping-cart"></i></a>
 						</li>
-						<li>
-							<a class="dropdown-item" href="javascript:;" onclick="$('#logout-form').submit();">
-								<i class="f17 fa fa-sign-out-alt"></i> Salir
-							</a>
 
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-							    @csrf
-							</form>
-						</li>
 					@endguest
+
+					<li>
+						<a href="help/"><i class="f17 fa fa-question-circle"></i></a>
+					</li>
 				</ul>
 			</div>
 

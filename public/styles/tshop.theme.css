@@ -22,9 +22,24 @@
 
 /*
  |
+ | CLASES PARA COLORES
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.principal {
+	color: #E8004E;
+}
+
+
+/*
+ |
  | MODIFICACIONES BOOTSTRAP
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
+
+.btn {
+	box-shadow: none !important;
+}
 
 .btn-outline-primary {
 	border-color: #3490dc;
