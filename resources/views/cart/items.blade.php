@@ -20,85 +20,91 @@
 				</div>
 			</div>
 
-			<div class="marT50 marB100">
+			<div class="marT50 marB100 row">
+
+                @php($total_price=0)
 
                 @if($items!=0)
-                    <table class="table f18">
-                        <thead class="thead-light">
-                            <tr>
-                                <th colspan="2" class="f16 w45">Producto o servicio</th>
-                                <th class="f16 w15 a-center">Unidades</th>
-                                <th class="f16 w15 a-center">Precio Unit.</th>
-                                <th class="f16 w15 a-center">Precio Total</th>
-                                <th class="f16 w10 a-center">Quitar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php($total_price=0)
-                            @foreach($items as $item)
-                                @php($total_price += $item['price'] * $item['cant'])
+
+                    <div class="col-md-8">
+                        <table class="table f17 fw500">
+                            <thead class="">
                                 <tr>
-                                    <td class="va-middle">
-                                        <a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item['name']), 'id' => $item['id']]) }}">
-                                            <img src="{{ asset('storage/items/sm/'.$item['image']) }}" class="thumb">
-                                        </a>
-                                    </td>
-                                    <td class="va-middle fw500">
-                                        <a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item['name']), 'id' => $item['id']]) }}">
-                                            {{ $item['name'] }}
-                                        </a>
-                                    </td>
-                                    <td class="va-middle a-center fw500">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary b f22 lh16 cant-subtract" onclick="cart_decrease({{ $item['id'] }})" type="button">-</button>
-                                            </div>
-                                            <input type="text" class="form-control a-center f18" id="count-{{ $item['id'] }}" value="{{ $item['cant'] }}" readonly>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary b f22 lh16 cant-add" onclick="cart_increase({{ $item['id'] }})" type="button">+</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="va-middle a-center">${{ $item['price'] }}</td>
-                                    <td class="va-middle a-center">${{ $item['price'] * $item['cant'] }}</td>
-                                    <td class="va-middle a-center">
-                                        <a href="javascript:;" onclick="remove_cart({{ $item['id'] }})" class="btn btn-danger" title="Quitar este item del carrito">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </td>
+                                    <th colspan="2" class="f15">Producto o servicio</th>
+                                    <th class="f15 a-center">Unidades</th>
+                                    <th class="f15 a-center">Precio</th>
+                                    <th class="f15 a-center">Total</th>
                                 </tr>
-                            @endforeach
-                            <tr class="table-active">
-                                <td class="va-middle padTB40">&nbsp;</td>
-                                <td class="va-middle fw500">&nbsp;</td>
-                                <td class="va-middle a-center fw500">&nbsp;</td>
-                                <td class="va-middle a-center b">Costo total:</td>
-                                <td class="va-middle a-center b f20">${{ $total_price }}</td>
-                                <td class="va-middle a-center">&nbsp;</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                @else
-                    <div class="padTB80 em f20 a-center">
-                        <p class="mar0">El carrito de compras está vacío.</p>
-                        <p class="mar0 f16 fw600"><a href="{{ route('home') }}">¿Quienes buscar algo para comprar?</a></p>
+                            </thead>
+                            <tbody>
+                                @foreach($items as $item)
+                                    @php($total_price += $item['price'] * $item['cant'])
+                                    <tr>
+                                        <td class="va-middle">
+                                            <a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item['name']), 'id' => $item['id']]) }}">
+                                                <img src="{{ asset('storage/items/sm/'.$item['image']) }}" class="thumb">
+                                            </a>
+                                        </td>
+                                        <td class="va-middle fw500">
+                                            <div class="ellipsis w95">
+                                                <a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item['name']), 'id' => $item['id']]) }}">
+                                                    {{ $item['name'] }}
+                                                </a><br>
+                                                <a href="javascript:;" onclick="remove_cart({{ $item['id'] }})" class="btn btn-link text-danger btn-sm" title="Quitar este item del carrito">
+                                                    <i class="fa fa-times"></i> Eliminar del carrito
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="va-middle a-center fw500">
+                                            <button class="btn btn-outline-secondary btn-sm b f22 lh16 cant-subtract" onclick="cart_decrease({{ $item['id'] }})" type="button">-</button>
+                                            <span id="count-{{ $item['id'] }}" style="width: 30px" class="inline-block">{{ $item['cant'] }}</span>
+                                            <button class="btn btn-outline-secondary btn-sm b f22 lh16 cant-add" onclick="cart_increase({{ $item['id'] }})" type="button">+</button>
+                                        </td>
+                                        <td class="va-middle a-center">${{ $item['price'] }}</td>
+                                        <td class="va-middle a-center">${{ $item['price'] * $item['cant'] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
                     </div>
+
+                    <div class="col-md-4">
+
+                        <div class="card">
+
+                            <div class="card-body a-center">
+
+                                <p class="f16 fw600 marB0">Monto total (*)</p>
+                                <p class="f46 fw500">${{ $total_price }}</p>
+
+                                @if($items!=0)
+                                    <a href="{{ route('sale.shipping') }}" class="btn btn-success col-12 marB10">
+                                        Continuar con la compra
+                                    </a>
+                                    <a href="{{ route('cart.clean') }}" class="btn btn-link fw500 text-danger marR10 col-12">
+                                        Vaciar carrito
+                                    </a>
+                                @endif
+
+                                <p class="f14"><hr>(*) Este monto no incluye costos de envío.</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                @else
+
+                    <div class="col-md-12">
+                        <div class="padTB80 em f20 a-center">
+                            <p class="mar0">El carrito de compras está vacío.</p>
+                            <p class="mar0 f16 fw600"><a href="{{ route('home') }}">¿Quienes buscar algo para comprar?</a></p>
+                        </div>
+                    </div>
+
                 @endif
-
-                <div class="marT40 a-right">
-                    
-                    <hr>
-
-                    @if($items!=0)
-                        <a href="{{ route('cart.clean') }}" class="btn btn-lg btn-outline-danger marR10">
-                            Vaciar carrito
-                        </a>
-                        <a href="{{ route('cart.clean') }}" class="btn btn-lg btn-success">
-                            Confirmar compra
-                        </a>
-                    @endif
-
-                </div>
 
 			</div>
 
