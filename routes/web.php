@@ -218,14 +218,26 @@ Route::get('/cart/clean', 'CartController@clean')
 
 /*
  |
- | RUTAS DEL CARRITO
+ | RUTAS DEL VENTAS
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
 
-// Checkout Screen
+// Seleccionar forma de envío
 
-Route::get('/sale/address', 'CartController@clean')
+Route::get('/sale/shipping', 'SaleController@shipping')
 ->name('sale.shipping');
+
+
+// Guardar medio de envío
+
+Route::post('/sale/shipping/save', 'SaleController@shippingSave')
+->name('sale.shipping.save');
+
+
+// Seleccionar método de pago
+
+Route::get('/sale/payment', 'SaleController@payment')
+->name('sale.payment');
 
 
 /*

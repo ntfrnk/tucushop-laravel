@@ -11,18 +11,23 @@ class CartController extends Controller {
 	---------------------------------------------------- */
 	public function items(){
 
-		if(session('cart')){
-			$items = session('cart');
-		} else {
-			$items = 0;
-		}
+		if(\Auth::user()){
 
-		/* var_dump(session('cart'));
-		die; */
-        
-        return view('cart.items', [
-            'items' => $items
-        ]);
+			if(session('cart')){
+				$items = session('cart');
+			} else {
+				$items = 0;
+			}
+			
+			return view('cart.items', [
+				'items' => $items
+			]);
+
+		} else {
+
+            return redirect()->route('home');
+
+        }
 
     }
 
@@ -47,11 +52,17 @@ class CartController extends Controller {
 
 			$item = Item::where('id', $item_id)->first();
 
+			if(!empty($item->offer->price)){
+				$price = $item->offer->price;
+			} else {
+				$price = $item->price;
+			}
+
 			session()->push('cart',
 				array(
 					'id' => $item->id,
 					'name' => $item->name,
-					'price' => $item->price,
+					'price' => $price,
 					'image' => $item->photos->sortBy('ordering')->first()->file_path,
 					'cant' => 1
 				)
@@ -71,7 +82,9 @@ class CartController extends Controller {
 				}
 			}
 
-			session(['cart' => $new_cart]);
+			if(!empty($new_cart)){
+				session(['cart' => $new_cart]);
+			}
 
 			$resp = 0;
 			
