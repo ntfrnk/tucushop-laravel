@@ -33,6 +33,35 @@
 
 /*
  |
+ | LINKS DE LA PÁGINA
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+main a:link:not(.btn),
+main a:visited:not(.btn) {
+	color: var(--colorPrincipal);
+}
+
+main a:active:not(.btn),
+main a:hover:not(.btn) {
+	color: var(--colorPrincipal);
+	text-decoration: underline;
+}
+
+footer a:link:not(.btn),
+footer a:visited:not(.btn) {
+	color: var(--colorPrincipal);
+}
+
+footer a:active:not(.btn),
+footer a:hover:not(.btn) {
+	color: var(--colorPrincipal);
+	text-decoration: underline;
+}
+
+
+/*
+ |
  | MODIFICACIONES BOOTSTRAP
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */

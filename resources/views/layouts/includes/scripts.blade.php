@@ -1,3 +1,14 @@
+{{-- Loader --}}
+
+<div class="loader">
+    <div class="loader-bg"></div>
+    <div class="loader-container">
+        <div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+</div>
+
 {{-- Scripts (cargan al final) --}}
 
 <script src="{{ asset('scripts/app.js') }}" defer></script>

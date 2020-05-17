@@ -38,11 +38,11 @@ $(function(){
 				if(campo.size>10485760){
 					notify_open("La foto no debe pesar más de 10 MB. El archivo que intentas subir pesa " + parseInt(campo.size / 1000) + " KB.");
 				} else {
-					spinner_open("Estamos procesando la imagen...");
+					spinnOn();
 					$('#form-uploader').submit();
 				}
 			} else {
-				spinner_open("Estamos procesando la imagen...");
+				spinnOn();
 				$('#form-uploader').submit();
 			}
 		} else {
@@ -242,11 +242,11 @@ $(function(){
 				if(campo.size>8388608){
 					notify_open("La foto no debe pesar más de 8 MB. El archivo que intentas subir pesa " + parseInt(campo.size / 1000) + " KB.");
 				} else {
-					spinner_open("Estamos procesando la imagen...");
+					spinnOn();
 					$('#form-image-header').submit();
 				}
 			} else {
-				spinner_open("Estamos procesando la imagen...");
+				spinnOn();
 				$('#form-image-header').submit();
 			}
 		} else {
@@ -272,11 +272,11 @@ $(function(){
 				if(campo.size>5242880){
 					notify_open("La foto no debe pesar más de 5 MB. El archivo que intentas subir pesa " + parseInt(campo.size / 1024 / 1024) + " MB.");
 				} else {
-					spinner_open("Estamos procesando la imagen...");
+					spinnOn();
 					$('#form-image-profile').submit();
 				}
 			} else {
-				spinner_open("Estamos procesando la imagen...");
+				spinnOn();
 				$('#form-image-profile').submit();
 			}
 		} else {

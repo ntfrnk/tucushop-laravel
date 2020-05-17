@@ -53,13 +53,13 @@
 								<li>
 									<a href="user/home">
 										<i class="w15 f17 fa fa-user"></i>
-										Mis cuenta
+										Mi cuenta
 									</a>
 								</li>
 								<li>
 									<a href="user/likes">
 										<i class="w15 f17 fa fa-heart"></i>
-										Mis items favoritos
+										Mis favoritos
 									</a>
 								</li>
 								<li>

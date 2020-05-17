@@ -38,6 +38,38 @@ $(function(){
 
 
 	/*
+	 | LOADING
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+	
+	$(".loading").on('click', function() {
+		spinnOn();
+	});
+
+	$('button[type="submit"], a:not([href="javascript:;"])').on('click', function() {
+		spinnOn();
+	});
+
+
+	/*
+	 | COMPRAS
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+	$('.delivery-option').on('click', function(){
+		valor = $(this).attr('rel');
+		total = $('.sale').text();
+		$('.delivery').text(valor);
+		if(valor!=0){
+			$('.total').text(parseInt(total) + parseInt(valor));
+		} else {
+			$('.total').text(parseInt(total));
+		}
+		$('#deliveryPrice').val(valor);
+	});
+
+
+	/*
 	 | CAROUSEL DE ITEMS
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/
@@ -199,5 +231,5 @@ function spinnOn(){
 }
 
 function spinnOff(){
-	$('.loader').show();
+	$('.loader').hide();
 }
