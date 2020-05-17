@@ -305,3 +305,36 @@ updated_at datetime,
 CONSTRAINT pk_stores_locations PRIMARY KEY(id),
 CONSTRAINT fk_stores_locations_stores FOREIGN KEY (store_id) REFERENCES stores(id)
 ) ENGINE=InnoDb;
+
+
+/* Tabla SALES */
+
+CREATE TABLE IF NOT EXISTS sales (
+id int(255) auto_increment NOT NULL,
+user_id int(255) NOT NULL,
+delivery_type varchar(20),
+payment_method varchar(20),
+amount int(10),
+installments int(2),
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_sales PRIMARY KEY(id),
+CONSTRAINT fk_sales_users FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDb;
+
+
+/* Tabla SALES_ITEMS */
+
+CREATE TABLE IF NOT EXISTS sales_items (
+id int(255) auto_increment NOT NULL,
+item_id int(255) NOT NULL,
+sale_id int(255) NOT NULL,
+quantity int(20),
+price int(20),
+offer int(1),
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_sales PRIMARY KEY(id),
+CONSTRAINT fk_sales_items_items FOREIGN KEY (item_id) REFERENCES items(id),
+CONSTRAINT fk_sales_items_sales FOREIGN KEY (sale_id) REFERENCES sales(id)
+) ENGINE=InnoDb;
