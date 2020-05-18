@@ -33,7 +33,7 @@
 				<div class="row">
 					<div class="store-header-card" style="background: rgba(255,255,255,0.85); border-radius: 4px;">
 						<div class="store-header-card-image">
-							<a href="{{ route('store.home', ['alias' => $item->store->alias]) }}">
+							<a href="{{ route('store.index', ['alias' => $item->store->alias]) }}">
 								<img src="{{ asset('storage/logos/resized/'.$item->store->shop->image_profile) }}" class="img-fluid">
 							</a>
 						</div>
@@ -107,7 +107,7 @@
 						<h3 class="f13 texto marB10">
 							By: 
 							@if($item->store->plan->eshop==1)
-								<strong><a href="{{ route('store.home', ['alias' => $item->store->alias]) }}">{{ $item->store->name }}</a></strong>
+								<strong><a href="{{ route('store.index', ['alias' => $item->store->alias]) }}">{{ $item->store->name }}</a></strong>
 							@else
 								<strong>{{ $item->store->name }}</strong>
 							@endif
