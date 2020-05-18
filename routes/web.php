@@ -242,6 +242,19 @@ Route::get('/sale/payment', 'SaleController@payment')
 
 /*
  |
+ | TIENDAS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Portada del store
+
+Route::get('/{alias}', 'ShopController@home')
+->name('store.index')
+->where('alias', '[a-z._]+');
+
+
+/*
+ |
  | RUTAS PARA STORES
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
@@ -251,13 +264,6 @@ Route::get('/sale/payment', 'SaleController@payment')
 
 Route::get('/stores', 'StoreController@list')
 ->name('store.list');
-
-
-// Portada del store
-
-Route::get('/{alias}', 'StoreController@index')
-->name('store.index')
-->where('alias', '[a-z._]+');
 
 
 // Formulario nuevo store

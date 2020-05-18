@@ -35,6 +35,18 @@ class Help {
 	}
 
 
+	/* Comprueba si el negocio está activo
+	---------------------------------------------------- */
+	public static function isActive($alias){
+		$store = Store::where('alias', $alias)->first();
+		if($store->status == 1){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
 	/* Comprueba si el negocio existe
 	---------------------------------------------------- */
 	public static function exists($alias){

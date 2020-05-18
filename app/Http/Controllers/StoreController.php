@@ -18,13 +18,6 @@ use App\Message;
 use App\Feature;
 
 class StoreController extends Controller {
-    
-	/* Portada del e-shop o tienda
-	---------------------------------------------------- */
-	public function index(){
-		echo "Portada del shop";
-	}
-
 
 	/* Listado de stores propios
 	---------------------------------------------------- */
