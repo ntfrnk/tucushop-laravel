@@ -255,6 +255,7 @@ CONSTRAINT fk_stores_admins_roles FOREIGN KEY (role_id) REFERENCES roles(id)
 /* Tabla STORES_PROFILE */
 
 CREATE TABLE IF NOT EXISTS stores_profile (
+id int(255) auto_increment NOT NULL,
 store_id int(255) NOT NULL,
 email varchar(255),
 website varchar(255),
