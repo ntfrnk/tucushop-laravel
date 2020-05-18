@@ -41,8 +41,8 @@
                         <ul class="pad0">
                             <li><a href="pages/vender-en-este-sitio_33/"><i class="fa fa-angle-right" aria-hidden="true"></i>Vender en este sitio</a></li>
                             <li><a href="help/"><i class="fa fa-angle-right" aria-hidden="true"></i>Centro de ayuda</a></li>
-                            <li><a href="pages/politicas-de-privacidad_22/"><i class="fa fa-angle-right" aria-hidden="true"></i>Políticas de privacidad</a></li>
-                            <li><a href="pages/terminos-y-condiciones-del-servicio_11/"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y condiciones de uso</a></li>
+                            <li><a href="{{ route('page.policy') }}"><i class="fa fa-angle-right" aria-hidden="true"></i>Políticas de privacidad</a></li>
+                            <li><a href="{{ route('page.terms') }}"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y condiciones de uso</a></li>
                         </ul>
                     </div>
                 </div>

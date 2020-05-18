@@ -42,6 +42,19 @@ Route::get('/search/{keyword}/{page?}', 'SearchController@results')->name('searc
 
 /*
  |
+ | PÁGINAS ESTÁTICAS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Políticas de privacidad
+Route::get('/pages/policy', 'PageController@policy')->name('page.policy');
+
+// Términos y condiciones
+Route::get('/pages/terms', 'PageController@terms')->name('page.terms');
+
+
+/*
+ |
  | RUTAS PARA USERS
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
