@@ -157,7 +157,7 @@
 					<div class="f15 texto marT10">
 						@foreach($item->tags as $tag)
 							<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
-								#{{ $tag->keyword->keyword }}
+								#{{ mb_strtolower($tag->keyword->keyword) }}
 							</a>
 						@endforeach
 					</div>
