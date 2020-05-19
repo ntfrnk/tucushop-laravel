@@ -128,7 +128,7 @@
 
 					</div>
 
-					<div class="row marT20 marB30">
+					<div class="row marT20 marB30 none">
 						<div class="col-md-6">
 							<a href="{{ route('item.purchase', ['item_id' => \UrlFormat::add_zeros($item->id)]) }}" class="btn btn-primary w-100">
 								<i class="fa fa-shopping-bag marR5"></i> 

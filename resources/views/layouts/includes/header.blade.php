@@ -86,7 +86,7 @@
 							</ul>
 						</li>
 						
-						<li>
+						<li class="none">
 							<a href="{{ route('cart.items') }}"><i class="f17 fa fa-shopping-cart"></i></a>
 						</li>
 
