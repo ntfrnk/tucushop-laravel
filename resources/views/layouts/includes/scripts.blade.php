@@ -17,6 +17,7 @@
 <script src="{{ asset('plugins/EasyAutocomplete/jquery.easy-autocomplete.min.js') }}" defer></script>
 <script src="{{ asset('comp/all.min.js') }}" defer asinc></script>
 <script src="{{ asset('scripts/tshop.basics.js') }}" defer asinc></script>
+<script src="{{ asset('scripts/tshop.feedback.js') }}" defer asinc></script>
 @section('scripts')
 @show
 @section('actionsjs')

@@ -21,6 +21,7 @@
 
 	@include('layouts.includes.footer')
 	@include('layouts.includes.data')
+	@include('layouts.includes.modals')
 	@include('layouts.includes.scripts')
 
 </body>

@@ -339,3 +339,17 @@ CONSTRAINT pk_sales PRIMARY KEY(id),
 CONSTRAINT fk_sales_items_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_sales_items_sales FOREIGN KEY (sale_id) REFERENCES sales(id)
 ) ENGINE=InnoDb;
+
+
+/* Tabla BUGS */
+
+CREATE TABLE IF NOT EXISTS bugs (
+id int(255) auto_increment NOT NULL,
+name varchar(255),
+content text,
+url varchar(255),
+whereis varchar(20),
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_bugs PRIMARY KEY(id)
+) ENGINE=InnoDb;

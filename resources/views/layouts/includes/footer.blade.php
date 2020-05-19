@@ -12,10 +12,10 @@
                             <br>E-mail: info@tucushop.com
                         </p>
                         <p>
-                            <a href="https://www.facebook.com/moda.tucushop/" target="_blank"><span><i class="fab fa-facebook" aria-hidden="true"></i></span></a>
-                            <a href="https://www.instagram.com/moda.tucushop/" target="_blank"><span><i class="fab fa-instagram" aria-hidden="true"></i></span></a>
-                            <a href="https://www.twitter.com/moda.tucushop/" target="_blank"><span><i class="fab fa-twitter" aria-hidden="true"></i></span></a>
-                            <a href="https://www.pinterest.com/moda.tucushop/" target="_blank"><span><i class="fab fa-pinterest" aria-hidden="true"></i></span></a>
+                            <a href="https://www.facebook.com/moda.tucushop/" target="_blank"><span><i class="fab fa-facebook"></i></span></a>
+                            <a href="https://www.instagram.com/moda.tucushop/" target="_blank"><span><i class="fab fa-instagram"></i></span></a>
+                            <a href="https://www.twitter.com/moda.tucushop/" target="_blank"><span><i class="fab fa-twitter"></i></span></a>
+                            <a href="https://www.pinterest.com/moda.tucushop/" target="_blank"><span><i class="fab fa-pinterest"></i></span></a>
                         </p>
                     </div>
                 </div>
@@ -23,15 +23,15 @@
                     <div class="foot-sec">
                         <h3>TU CUENTA </h3>
                         <ul class="pad0">
-                            <? if(!isset($_SESSION['moda_user'])){ ?>
-                                <li><a href="login/"><i class="fa fa-angle-right" aria-hidden="true"></i>Inicia sesión</a></li>
-                                <li><a href="register/"><i class="fa fa-angle-right" aria-hidden="true"></i>Crea tu cuenta</a></li>
-                            <? } else { ?>
-                                <li><a href="user/"><i class="fa fa-angle-right" aria-hidden="true"></i>Mis datos personales</a></li>
-                                <li><a href="store/"><i class="fa fa-angle-right" aria-hidden="true"></i>Administrar mis negocios</a></li>
-                            <? } ?>
-                            <li><a href="javascript:;" onclick="reportar()"><i class="fa fa-angle-right" aria-hidden="true"></i>Reportar un error en la página</a></li>
-                            <li><a href="javascript:;" onclick="contactus()"><i class="fa fa-angle-right" aria-hidden="true"></i>Hacenos una consulta</a></li>
+                            @guest
+                                <li><a href="{{ route('login') }}"><i class="fa fa-angle-right"></i>Inicia sesión</a></li>
+                                <li><a href="{{ route('register') }}"><i class="fa fa-angle-right"></i>Crea tu cuenta</a></li>
+                            @else
+                                <li><a href="{{ route('user.home') }}"><i class="fa fa-angle-right"></i>Mis datos personales</a></li>
+                                <li><a href="{{ route('store.list') }}"><i class="fa fa-angle-right"></i>Administrar mis negocios</a></li>
+                            @endguest
+                            <li><a href="javascript:;" id="reporting"><i class="fa fa-angle-right"></i>Reportar un error en la página</a></li>
+                            <li><a href="javascript:;" id="question"><i class="fa fa-angle-right"></i>Hacenos una consulta</a></li>
                         </ul>
                     </div>
                 </div>
@@ -39,10 +39,10 @@
                     <div class="foot-sec">
                         <h3>PARTICIPA </h3>
                         <ul class="pad0">
-                            <li><a href="pages/vender-en-este-sitio_33/"><i class="fa fa-angle-right" aria-hidden="true"></i>Vender en este sitio</a></li>
-                            <li><a href="help/"><i class="fa fa-angle-right" aria-hidden="true"></i>Centro de ayuda</a></li>
-                            <li><a href="{{ route('page.policy') }}"><i class="fa fa-angle-right" aria-hidden="true"></i>Políticas de privacidad</a></li>
-                            <li><a href="{{ route('page.terms') }}"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y condiciones de uso</a></li>
+                            <li><a href="pages/vender-en-este-sitio_33/"><i class="fa fa-angle-right"></i>Vender en este sitio</a></li>
+                            <li><a href="help/"><i class="fa fa-angle-right"></i>Centro de ayuda</a></li>
+                            <li><a href="{{ route('page.policy') }}"><i class="fa fa-angle-right"></i>Políticas de privacidad</a></li>
+                            <li><a href="{{ route('page.terms') }}"><i class="fa fa-angle-right"></i>Términos y condiciones de uso</a></li>
                         </ul>
                     </div>
                 </div>

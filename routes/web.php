@@ -47,10 +47,20 @@ Route::get('/search/{keyword}/{page?}', 'SearchController@results')->name('searc
 */
 
 // Políticas de privacidad
-Route::get('/pages/policy', 'PageController@policy')->name('page.policy');
+Route::get('/policy', 'PageController@policy')->name('page.policy');
 
 // Términos y condiciones
-Route::get('/pages/terms', 'PageController@terms')->name('page.terms');
+Route::get('/terms', 'PageController@terms')->name('page.terms');
+
+
+/*
+ |
+ | FORMULARIOS DE FEEDBACK
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Reportar errores
+Route::post('/feedback/bugs', 'FeedbackController@bugs')->name('feedback.bugs');
 
 
 /*
@@ -251,19 +261,6 @@ Route::post('/sale/shipping/save', 'SaleController@shippingSave')
 
 Route::get('/sale/payment', 'SaleController@payment')
 ->name('sale.payment');
-
-
-/*
- |
- | TIENDAS
- | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-*/
-
-// Portada del store
-
-Route::get('/{alias}', 'ShopController@home')
-->name('store.index')
-->where('alias', '[a-z._]+');
 
 
 /*
@@ -605,3 +602,16 @@ Route::get('/store/item/status/{item_id}/{editing?}', 'ItemController@status')
 
 Route::get('/store/item/delete/{item_id}', 'ItemController@delete')
 ->name('item.delete');
+
+
+/*
+ |
+ | TIENDAS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Portada del store
+
+Route::get('/{alias}', 'ShopController@home')
+->name('store.index')
+->where('alias', '[a-z0-9._]+');
