@@ -62,6 +62,9 @@ Route::get('/terms', 'PageController@terms')->name('page.terms');
 // Reportar errores
 Route::post('/feedback/bugs', 'FeedbackController@bugs')->name('feedback.bugs');
 
+// Enviar consultas
+Route::post('/feedback/question', 'FeedbackController@question')->name('feedback.question');
+
 
 /*
  |

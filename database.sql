@@ -353,3 +353,16 @@ created_at datetime,
 updated_at datetime,
 CONSTRAINT pk_bugs PRIMARY KEY(id)
 ) ENGINE=InnoDb;
+
+
+/* Tabla QUESTIONS */
+
+CREATE TABLE IF NOT EXISTS questions (
+id int(255) auto_increment NOT NULL,
+name varchar(255),
+contact varchar(255),
+content text,
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_questions PRIMARY KEY(id)
+) ENGINE=InnoDb;

@@ -7,6 +7,16 @@ $(function(){
         }
     });
 
+    /*
+	 | REPORTAR UN BUG
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+    $('#reporting').on('click', function(){
+        $('.pop-bg').show();
+        $('#m-report').show();
+    });
+
     $('#send-report').on('submit', function(e){
 
         e.preventDefault();
@@ -26,13 +36,34 @@ $(function(){
         
     });
 
-    $('#reporting').on('click', function(){
-        $('.pop-bg').show();
-        $('#m-report').show();
-    });
+
+    /*
+	 | ENVIAR UNA CONSULTA
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
 
     $('#question').on('click', function(){
-        pop_open('modal-question', 'sm');
+        $('.pop-bg').show();
+        $('#m-question').show();
+    });
+
+    $('#send-question').on('submit', function(e){
+
+        e.preventDefault();
+        spinnModalOn();
+
+        data = $(this).serialize();
+    
+        url = url_base + '/feedback/question';
+    
+        $.post(url, data, function(resp){
+            if(resp=="ok"){
+                $('.form-question').hide();
+                $('.resp-question').show();
+                spinnModalOff();
+            }
+        }, '');
+        
     });
 
 });
