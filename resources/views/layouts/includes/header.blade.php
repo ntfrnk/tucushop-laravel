@@ -86,9 +86,9 @@
 							</ul>
 						</li>
 						
-						<li class="none">
+						{{-- <li>
 							<a href="{{ route('cart.items') }}"><i class="f17 fa fa-shopping-cart"></i></a>
-						</li>
+						</li> --}}
 
 					@endguest
 

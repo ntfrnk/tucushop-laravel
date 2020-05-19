@@ -128,7 +128,7 @@
 
 					</div>
 
-					<div class="row marT20 marB30 none">
+					{{-- <div class="row marT20 marB30">
 						<div class="col-md-6">
 							<a href="{{ route('item.purchase', ['item_id' => \UrlFormat::add_zeros($item->id)]) }}" class="btn btn-primary w-100">
 								<i class="fa fa-shopping-bag marR5"></i> 
@@ -143,7 +143,7 @@
 								</span>
 							</a>
 						</div>
-					</div>
+					</div> --}}
 
 					<div class="row">
 						<h3 class="col-md-12 marB20 f22">Características</h3>
@@ -168,8 +168,8 @@
 						<a href="javascript:;" class="bot bot-primario" onclick="askquestion(4)">
 							<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta</span>
 						</a>
-						<a href="javascript:;" class="bot bot-secundario-link marL10" onclick="denunciar('4')">
-							<span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; Informar un problema</span>
+						<a href="javascript:;" class="bot bot-secundario-link marL10" id="problem">
+							<span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; Informar un problema con este artículo</span>
 						</a>
 
 					</div>
