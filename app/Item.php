@@ -31,6 +31,11 @@ class Item extends Model {
     // Mensajes
     public function messages(){
         return $this->hasMany('App\Message');
+	}
+	
+	// Reportes
+    public function reports(){
+        return $this->hasMany('App\ItemReport');
     }
 
 	// Ofertas

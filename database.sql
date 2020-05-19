@@ -228,6 +228,20 @@ CONSTRAINT fk_items_tags_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_items_tags_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(id)
 ) ENGINE=InnoDb;
 
+/* Tabla ITEMS_TAGS */
+
+CREATE TABLE IF NOT EXISTS items_report (
+id int(255) auto_increment NOT NULL,
+item_id int(255) NOT NULL,
+name varchar(255),
+reason varchar(255),
+content text,
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_items_report PRIMARY KEY (id),
+CONSTRAINT fk_items_report_items FOREIGN KEY (item_id) REFERENCES items(id)
+) ENGINE=InnoDb;
+
 /* Tabla ROLES */
 
 CREATE TABLE IF NOT EXISTS roles (

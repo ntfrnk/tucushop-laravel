@@ -65,6 +65,9 @@ Route::post('/feedback/bugs', 'FeedbackController@bugs')->name('feedback.bugs');
 // Enviar consultas
 Route::post('/feedback/question', 'FeedbackController@question')->name('feedback.question');
 
+// Reportar problemas en un item
+Route::post('/feedback/problem', 'FeedbackController@problem')->name('feedback.problem');
+
 
 /*
  |

@@ -66,6 +66,36 @@ $(function(){
         
     });
 
+    
+    /*
+	 | ENVIAR UNA CONSULTA
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+    $('#problem').on('click', function(){
+        $('.pop-bg').show();
+        $('#m-problem').show();
+    });
+
+    $('#send-problem').on('submit', function(e){
+
+        e.preventDefault();
+        spinnModalOn();
+
+        data = $(this).serialize();
+    
+        url = url_base + '/feedback/problem';
+    
+        $.post(url, data, function(resp){
+            if(resp=="ok"){
+                $('.form-problem').hide();
+                $('.resp-problem').show();
+                spinnModalOff();
+            }
+        }, '');
+        
+    });
+
 });
 
 function pop_close(){

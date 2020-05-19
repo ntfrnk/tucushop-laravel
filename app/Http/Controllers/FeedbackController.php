@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 
 use App\Bug;
 use App\Question;
+use App\ItemReport;
 
 class FeedbackController extends Controller {
     
@@ -37,6 +38,22 @@ class FeedbackController extends Controller {
         $question->content = $request->content;
 
         $question->save();
+
+        return "ok";
+
+    }
+
+
+    /* Enviar una consulta sobre la página
+    ---------------------------------------------------- */
+    public function problem(Request $request){
+
+        $problem = new ItemReport();
+        $problem->item_id = $request->item_id;
+        $problem->reason = $request->reason;
+        $problem->content = $request->content;
+
+        $problem->save();
 
         return "ok";
 
