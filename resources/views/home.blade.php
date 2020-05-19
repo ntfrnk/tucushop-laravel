@@ -95,7 +95,7 @@
 
 	{{-- PRODUCTOS DESTACADOS --}}
 
-	<section style="clear: both;">
+	<section class="padB100">
 
 		<div class="container">
 		
