@@ -8,7 +8,7 @@
                     <div class="foot-sec">
                         <h3>Atención al cliente</h3>
                         <p>Red Tucushop
-                            <br>Phone: +54 9 381 511-3710
+                            <br>WhatsApp: +54 9 381 320-0054
                             <br>E-mail: info@tucushop.com
                         </p>
                         <p>
