@@ -131,6 +131,26 @@ class ItemController extends Controller {
 	}
 
 
+	/* Consulta sobre un item
+	---------------------------------------------------- */
+	public function message(Request $request){
+
+		$user = \Auth::user();
+		$item = Item::find($request->item_id);
+
+		$message = new Message();
+		$message->user_id = $user->id;
+		$message->item_id = $item->id;
+		$message->store_id = $item->store->id;
+		$message->content = $request->content;
+
+		$message->save();
+		
+		return "ok";
+
+	}
+
+
 	/* Listado de items
 	---------------------------------------------------- */
 	public function items($alias){

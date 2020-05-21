@@ -50,8 +50,8 @@
                 
                             <div class="form-group row">
                                 <label for="" class="col-md-3 col-form-label text-md-right">&nbsp;</label>
-                                <div class="col-md-7 a-le8t">
-                                    <button type="submit" class="btn btn-primary" id="send-report-submit">Enviar reporte</button>
+                                <div class="col-md-8 a-left">
+                                    <button type="submit" class="btn btn-primary" rel="submit">Enviar reporte</button>
                                     <button type="button" class="btn btn-link" onclick="pop_close();">Cancelar</button>
                                 </div>
                             </div>
@@ -122,8 +122,8 @@
                 
                             <div class="form-group row">
                                 <label for="" class="col-md-3 col-form-label text-md-right">&nbsp;</label>
-                                <div class="col-md-7 a-center">
-                                    <button type="submit" class="btn btn-primary">Enviar consulta</button>
+                                <div class="col-md-8 a-left">
+                                    <button type="submit" class="btn btn-primary" rel="submit">Enviar consulta</button>
                                     <button type="button" class="btn btn-link" onclick="pop_close();">Cancelar</button>
                                 </div>
                             </div>

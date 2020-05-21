@@ -46,7 +46,7 @@ $(function(){
 		spinnOn();
 	});
 
-	$('button[type="submit"], a:not([href="javascript:;"], [target="_blank"], [href^="#"])').on('click', function() {
+	$('button[type="submit"]:not([rel="submit"]), a:not([href="javascript:;"], [target="_blank"], [href^="#"])').on('click', function() {
 		spinnOn();
 	});
 

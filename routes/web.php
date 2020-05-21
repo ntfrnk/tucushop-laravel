@@ -209,6 +209,12 @@ Route::get('/purchase/{item_id}', 'ItemController@purchase')
 ->name('item.purchase');
 
 
+// Consulta sobre el item
+
+Route::post('/message/send', 'ItemController@message')
+->name('item.message');
+
+
 /*
  |
  | RUTAS DEL CARRITO

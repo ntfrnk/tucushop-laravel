@@ -128,6 +128,14 @@
 
 					</div>
 
+					<div class="row marT20 marB30">
+						<div class="col-md-8">
+							<a href="javascript:;" class="btn btn-primary" id="message">
+								<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta al vendedor</span>
+							</a>
+						</div>
+					</div>
+
 					{{-- <div class="row marT20 marB30">
 						<div class="col-md-6">
 							<a href="{{ route('item.purchase', ['item_id' => \UrlFormat::add_zeros($item->id)]) }}" class="btn btn-primary w-100">
@@ -165,11 +173,8 @@
 					<div class="bordbot marT10 marB20"></div>
 
 					<div class="add-to-cart marB10">
-						<a href="javascript:;" class="bot bot-primario" onclick="askquestion(4)">
-							<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta</span>
-						</a>
-						<a href="javascript:;" class="bot bot-secundario-link marL10" id="problem">
-							<span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; Informar un problema con este artículo</span>
+						<a href="javascript:;" class="btn btn-link text-danger marL10" id="problem">
+							<span><i class="fa fa-exclamation-triangle marR5" aria-hidden="true"></i>Informar un problema con este artículo</span>
 						</a>
 
 					</div>
@@ -226,7 +231,7 @@
 
 		<div id="suggested" class="box-item-list owl-carousel owl-theme">
 
-			@foreach($items_sugested as $item)
+			@foreach($items_sugested as $item_suggest)
 
 				@include('item.includes.item_carousel')
 
@@ -254,7 +259,7 @@
 
 		<div id="random" class="box-item-list owl-carousel owl-theme marB500">
 
-			@foreach($items_random as $item)
+			@foreach($items_random as $item_rand)
 
 				@include('item.includes.item_random')
 
@@ -273,6 +278,73 @@
 
 
 @section('modals')
+
+{{-- Informar un problema con un producto ---------------------------- --}}
+
+<div class="pop-container" id="m-message">
+    <div class="pop-box">
+        <div class="pop-head">{{ config('app.name', 'Laravel') }}</div>
+        <a href="javascript:;" class="pop-close pop-btn-close" onclick="pop_close()"><i class="fa fa-times"></i></a>
+        <div class="pop-html">
+            <div id="modal-message">
+    
+                <div class="padB30">
+        
+                    <div class="marB30">
+                        <h3>Hacer una pregunta al vendedor</h3>
+                    </div>
+
+                    <div class="form-message">
+
+                        <form id="send-message" action="{{ route('item.message') }}" method="POST">
+                            
+                            @csrf
+
+							<input type="hidden" name="item_id" value="{{ $item->id }}">
+							
+							<div class="form-group row">
+								<label class="col-md-3 col-form-label text-md-right">{{ __('Artículo') }}</label>
+                                <div class="col-md-8 a-left padT5">
+									<span class="fw500 f18">{{ $item->name }}</span>
+								</div>
+                            </div>
+                
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-md-right">{{ __('Escribe tu consulta') }}</label>
+                                <div class="col-md-8">
+                                    <textarea name="content" rows="4" class="form-control" required autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                
+                            <div class="form-group row">
+                                <label for="" class="col-md-3 col-form-label text-md-right">&nbsp;</label>
+                                <div class="col-md-8 a-left">
+                                    <button type="submit" class="btn btn-primary" rel="submit">Enviar consulta</button>
+                                    <button type="button" class="btn btn-link" onclick="pop_close();">Cancelar</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="resp-message none">
+                        <div class="f18 alert alert-success padT25">
+                            <p>Tu consulta fue enviada correctamente al vendedor.<br>Encontrarás la respuesta a tu consulta en tu área de mensajes.</p>
+                            <p class="b">¡Muchas gracias por ser parte de Tucushop!</p>
+                        </div>
+                        <p class="marT20"><button type="button" class="btn btn-primary w25 refresh">Cerrar esta ventana</button></p>
+                    </div>
+        
+                </div>
+        
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 
 {{-- Informar un problema con un producto ---------------------------- --}}
 
@@ -319,8 +391,8 @@
                 
                             <div class="form-group row">
                                 <label for="" class="col-md-3 col-form-label text-md-right">&nbsp;</label>
-                                <div class="col-md-7 a-center">
-                                    <button type="submit" class="btn btn-primary">Enviar consulta</button>
+                                <div class="col-md-8 a-left">
+                                    <button type="submit" class="btn btn-primary" rel="submit">Enviar informe</button>
                                     <button type="button" class="btn btn-link" onclick="pop_close();">Cancelar</button>
                                 </div>
                             </div>

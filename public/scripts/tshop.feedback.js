@@ -38,7 +38,7 @@ $(function(){
 
 
     /*
-	 | ENVIAR UNA CONSULTA
+	 | ENVIAR UNA CONSULTA AL SITIO
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/
 
@@ -68,7 +68,7 @@ $(function(){
 
     
     /*
-	 | ENVIAR UNA CONSULTA
+	 | INFORMAR UN PROBLEMA
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/
 
@@ -90,6 +90,42 @@ $(function(){
             if(resp=="ok"){
                 $('.form-problem').hide();
                 $('.resp-problem').show();
+                spinnModalOff();
+            }
+        }, '');
+        
+    });
+
+
+    /*
+	 | HACER UNA PREGUNTA AL VENDEDOR
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+    $('#message').on('click', function(){
+        sess = $('#sess').text();
+        if(sess==1){
+            $('.pop-bg').show();
+            $('#m-message').show();
+        } else {
+            notify_open('Para hacer una pregunta sobre este artículo primero debes iniciar sesión.');
+        }
+    });
+
+    $('#send-message').on('submit', function(e){
+
+        e.preventDefault();
+
+        spinnModalOn();
+
+        data = $(this).serialize();
+    
+        url = url_base + '/message/send';
+    
+        $.post(url, data, function(resp){
+            if(resp=="ok"){
+                $('.form-message').hide();
+                $('.resp-message').show();
                 spinnModalOff();
             }
         }, '');
