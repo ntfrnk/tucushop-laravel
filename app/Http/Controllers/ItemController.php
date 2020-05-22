@@ -56,7 +56,7 @@ class ItemController extends Controller {
 		$kname = \Help::keywords($item->name);
 		$kdetail = \Help::keywords($item->detail);
 
-		if($item->tags && $item->tags->count()!=0){
+		if($item->tags!=null && $item->tags->count()!=0){
 			foreach($item->tags as $tag){
 				$ktags[] = $tag->keyword->keyword;
 			}
