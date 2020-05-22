@@ -355,9 +355,34 @@ class UserController extends Controller {
 		if(\Auth::user()){
 
 			$user = \Auth::user();
-			$messages = Message::where('user_id', $user->id)
-						->orderBy('Id', 'desc')
-						->paginate(5);
+			$messages = Message::
+				where('user_id', $user->id)
+				->where('closed', '!=', 1)
+				->orderBy('Id', 'desc')
+				->paginate(5);
+
+			return view('user.modules.messages', [
+				'user' => $user,
+				'messages' => $messages
+			]);
+
+		} else {
+
+			return redirect()->route('home');
+
+		}
+
+	}
+
+
+	/* Gestión de mensajes (Bandeja de entrada)
+	---------------------------------------------------- */
+	public function messageDelete($message_id){
+		
+		if(\Auth::user()){
+
+			$message = Message::find($message_id);
+			$message->closed = 1;
 
 			return view('user.modules.messages', [
 				'user' => $user,

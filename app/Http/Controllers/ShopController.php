@@ -19,7 +19,16 @@ class ShopController extends Controller {
         if(\Help::exists($alias) && !\Help::isDeleted($alias) && \Help::isActive($alias)){
 
             $store = Store::where('alias', $alias)->first();
-            $items = Item::where('store_id', $store->id)->paginate(12);
+			$items = Item::
+			where(function($query) {
+				$query->where('status', 1);
+				$query->whereHas('store', function($q) {
+					$q->where('status', 1);
+					$q->where('deleted', '!=', 1);
+				});
+			})
+			->where('store_id', $store->id)
+			->paginate(12);
 
 			return view('shop.home', [
 				'store' => $store,

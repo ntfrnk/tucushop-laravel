@@ -32,12 +32,8 @@
 							<tr>
 								<td>{{ $message->item->name }}</td>
 								<td class="a-right">
-									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-camera"></i></a>
-									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
-									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-star"></i></a>
-									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-tag"></i></a>
-									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-ban"></i></a>
-									<a href="" class="btn btn-sm btn-outline-secondary"><i class="fa fa-times"></i></a>
+									<a href="javascript:;" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Ver mensaje</a>
+									<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('') }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i> Eliminar</a>
 								</td>
 							</tr>
 							@endforeach
