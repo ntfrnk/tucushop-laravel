@@ -51,19 +51,19 @@
 							</a>
 							<ul class="user-submenu pad10">
 								<li>
-									<a href="user/home">
+									<a href="{{ route('user.home') }}">
 										<i class="w15 f17 fa fa-user"></i>
 										Mi cuenta
 									</a>
 								</li>
 								<li>
-									<a href="user/likes">
+									<a href="{{ route('user.likes') }}">
 										<i class="w15 f17 fa fa-heart"></i>
 										Mis favoritos
 									</a>
 								</li>
 								<li>
-									<a href="user/messages">
+									<a href="{{ route('user.messages') }}">
 										<i class="w15 f17 fa fa-envelope"></i>
 										Mis mensajes
 									</a>
