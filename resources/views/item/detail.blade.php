@@ -163,11 +163,13 @@
 					</div>
 
 					<div class="f15 texto marT10">
-						@foreach($item->tags as $tag)
-							<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
-								#{{ mb_strtolower($tag->keyword->keyword) }}
-							</a>
-						@endforeach
+						@if($item->tags!=null && $item->tags->count()>0)
+							@foreach($item->tags as $tag)
+								<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
+									#{{ mb_strtolower($tag->keyword->keyword) }}
+								</a>
+							@endforeach
+						@endif
 					</div>
 
 					<div class="bordbot marT10 marB20"></div>
