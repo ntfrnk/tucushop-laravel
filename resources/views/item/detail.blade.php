@@ -4,7 +4,7 @@
 
 @section('title', $item->name)
 
-@if($item->tags->count()>0)
+@if($item->tags!=null && $item->tags->count()>0)
 	@foreach($item->tags as $tag)
 		@php($item_keyword[]=$tag->keyword->keyword)
 	@endforeach
