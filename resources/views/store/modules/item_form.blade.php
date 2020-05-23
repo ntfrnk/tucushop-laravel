@@ -146,7 +146,7 @@
 
                                 <div class="marT15" id="show-features">
 
-                                    @if(($item->features && ($item->features->count() != 0)
+                                    @if($item->features && $item->features->count() != 0)
                                         @foreach($item->features as $feature)
                                             <div class="badge badge-light f13 marB5 marR5" id="feature-{{ $item->id }}-{{ $feature->feature->id }}">
                                                 {{ $feature->feature->feature }}: <span class="fw400 inline-block">{{ $feature->content }}</span>
