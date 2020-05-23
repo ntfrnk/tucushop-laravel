@@ -46,7 +46,7 @@
 					@else
 						<li class="">
 							<a href="javascript:;" class="user-menu">
-								<img src="{{ asset($img) }}" class="rounded-circle" style="width: 36px; margin: 0 5px 0 10px;">
+								<img src="{{ isset($img) ? asset($img) : '' }}" class="rounded-circle" style="width: 36px; margin: 0 5px 0 10px;">
 								{{ \Auth::user()->profile->name." ".\Auth::user()->profile->lastname }} <span class="caret"></span>
 							</a>
 							<ul class="user-submenu pad10">

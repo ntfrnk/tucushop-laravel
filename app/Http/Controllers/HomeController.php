@@ -10,6 +10,9 @@ class HomeController extends Controller {
 
     public function index() {
 
+        /* echo public_path();
+        die; */
+
         $offers = ItemOffer::
         whereHas('item', function(Builder $query){
             $query->where(function($query) {
