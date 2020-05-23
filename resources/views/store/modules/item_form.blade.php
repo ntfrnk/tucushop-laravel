@@ -146,14 +146,16 @@
 
                                 <div class="marT15" id="show-features">
 
-                                    @foreach($item->features as $feature)
-                                        <div class="badge badge-light f13 marB5 marR5" id="feature-{{ $item->id }}-{{ $feature->feature->id }}">
-                                            {{ $feature->feature->feature }}: <span class="fw400 inline-block">{{ $feature->content }}</span>
-                                            <a href="javascript:;" onclick="featureDelete({{ $item->id }}, {{ $feature->feature->id }})" class="inline-block marL10">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </div>
-                                    @endforeach
+                                    @if(($item->features && ($item->features->count() != 0)
+                                        @foreach($item->features as $feature)
+                                            <div class="badge badge-light f13 marB5 marR5" id="feature-{{ $item->id }}-{{ $feature->feature->id }}">
+                                                {{ $feature->feature->feature }}: <span class="fw400 inline-block">{{ $feature->content }}</span>
+                                                <a href="javascript:;" onclick="featureDelete({{ $item->id }}, {{ $feature->feature->id }})" class="inline-block marL10">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    @endif
 
                                 </div>
 
@@ -183,14 +185,16 @@
                                 <div class="input-group marT10">
 
                                     <div id="show-tags">
-                                        @foreach($item->tags as $tag)
-                                        <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
-                                            #{{ trim($tag->keyword->keyword) }}
-                                            <a href="javascript:;" onclick="tagDelete({{ $item->id }}, {{ $tag->keyword->id }})" class="inline-block marL10">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </div>
-                                        @endforeach
+                                        @if($item->tags && $item->tags->count() != 0)
+                                            @foreach($item->tags as $tag)
+                                            <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
+                                                #{{ trim($tag->keyword->keyword) }}
+                                                <a href="javascript:;" onclick="tagDelete({{ $item->id }}, {{ $tag->keyword->id }})" class="inline-block marL10">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                            @endforeach
+                                        @endif
                                     </div>
 
                                 </div>
