@@ -23,7 +23,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+                                <input id="name" type="text" class="orm-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus autocomplete="off">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname">
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="off">
 
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
