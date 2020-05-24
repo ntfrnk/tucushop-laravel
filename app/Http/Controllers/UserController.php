@@ -269,6 +269,16 @@ class UserController extends Controller {
 
 			$user = \Auth::user();
 
+			if(!$user->address){
+
+				$address = new UserAddress();
+				$address->user_id = $user->id;
+				$address->save();
+
+				$user = \Auth::user();
+
+			}
+
 			return view('user.modules.contact', [
 				'user' => $user
 			]);
