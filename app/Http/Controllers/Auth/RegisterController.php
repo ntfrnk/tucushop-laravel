@@ -67,7 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data) {
 
-        $nickgen = substr($data['name'],1).$data['lastname'].rand(100,999);
+        $nickgen = substr(mb_strtolower($data['name']), 0, 1).$data['lastname'].rand(100,999);
 
         $userCreated = User::create([
             'email' => $data['email'],
