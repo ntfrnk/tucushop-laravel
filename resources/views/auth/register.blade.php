@@ -86,8 +86,11 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" rel="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrarme') }}
                                 </button>
+                                <a href="{{ route('home') }}" class="btn btn-link">
+                                    {{ __('Cancelar') }}
+                                </a>
                             </div>
                         </div>
                     </form>
