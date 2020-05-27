@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use App\Custom\ImagesWork;
 
 use App\Store;
@@ -23,19 +24,21 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function list(){
 
-		if(\Auth::user()) {
+		$user = \Auth::user();
 
-			$stores = Store::whereHas('admins', function(Builder $query){
-								$user = \Auth::user();
-								$query->where('user_id', $user->id);
-							})
-							->where('deleted','!=',1)
-							->orderby('id','asc')
-							->get();
+		if($user) {
+
+			$stores = Store::
+			whereHas('admins', function(Builder $query) use ($user) {
+				$query->where('user_id', $user->id);
+			})
+			->where('deleted','!=',1)
+			->orderby('id','asc')
+			->get();
 
 			return view('store.modules.stores', [
 				'stores' => $stores
-				]);
+			]);
 
 		} else {
 
@@ -43,27 +46,6 @@ class StoreController extends Controller {
 
 		}
 
-	}
-
-
-	/* Portada de administración del store
-	---------------------------------------------------- */
-	public function home($alias){
-
-		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
-
-			$store = Store::where('alias', $alias)->first();
-
-			return view('store.modules.home', [
-				'store' => $store
-				]);
-
-		} else {
-
-			return redirect()->route('store.list');
-
-		}
-		
 	}
 
 
@@ -87,6 +69,22 @@ class StoreController extends Controller {
 	}
 
 
+	/* Validación AJAX de alias
+	---------------------------------------------------- */
+	public function aliasValidate($alias, $store_id = null){
+		if($store_id){
+			$storeName = Store::where('alias', $alias)->where('id', '!=', $store_id)->first();
+		} else {
+			$storeName = Store::where('alias', $alias)->first();
+		}
+		if(is_object($storeName)){
+			return "error";
+		} else {
+			return "ok";
+		}
+	}
+
+
 	/* Guardado de un nuevo store
 	---------------------------------------------------- */
 	public function save(Request $request){
@@ -94,10 +92,19 @@ class StoreController extends Controller {
 		if(\Auth::user()) {
 		
 			$validate = $this->validate($request, [
-				'name' => 'required|string|min:5|max:50|unique:stores',
+				'name' => 'required|string|min:6|max:50',
 				'type_id' => 'required|integer',
-				'description' => 'required|string',
-				'alias' => 'required|string|min:5|max:30|unique:stores'
+				'description' => 'required',
+				'alias' => 'required|regex:/^[a-zA-Z0-9_\.]{6,30}$/|unique:stores,alias,'.$request->store_id
+			],[
+				'name.required' => 'Debes escribir un nombre para tu negocio',
+				'name.string'  => 'Estás utilizando caracteres no permitidos',
+				'name.min'  => 'Debes ingresar 6 (seis) caracteres como mínimo',
+				'name.max'  => 'Debes ingresar 50 (cincuenta) caracteres como máximo',
+				'description.required'  => 'Por favor describe brevemente tu negocio',
+				'alias.required'  => 'Debes escribir una dirección para tu tienda',
+				'alias.regex'  => 'Sólo puedes usar letras, números, puntos y guiónes bajos',
+				'alias.unique'  => 'Esta dirección ya está siendo usada por otro negocio'
 			]);
 
 			/** Agrego el nuevo store */
@@ -107,7 +114,10 @@ class StoreController extends Controller {
 			$store->type_id = $request->type_id;
 			$store->description = $request->description;
 			$store->alias = $request->alias;
-			$store->plan_id = 1;
+			$store->plan_id = 3;
+			$store->status = 0;
+			$store->status_plan = 0;
+			$store->deleted = 0;
 
 			$store->save();
 
@@ -149,6 +159,27 @@ class StoreController extends Controller {
 	}
 
 
+	/* Portada de administración del store
+	---------------------------------------------------- */
+	public function home($alias){
+
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+
+			$store = Store::where('alias', $alias)->first();
+
+			return view('store.modules.home', [
+				'store' => $store
+				]);
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
+		
+	}
+
+
 	/* Formulario de edición de datos del store
 	---------------------------------------------------- */
 	public function edit($alias){
@@ -176,24 +207,41 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function update(Request $request){
 
-		$validate = $this->validate($request, [
-			'name' => 'required|min:6|max:50|string',
-			'type_id' => 'required|integer',
-			'description' => '',
-			'alias' => 'required|min:6|max:30|unique:stores,alias,'.$request->store_id
-		]);
-		
-		$store = Store::find($request->store_id);
-		$store->name = $request->name;
-		$store->type_id = $request->type_id;
-		$store->description = $request->description;
-		$store->alias = $request->alias;
+		if(\Auth::user()){
 
-		$store->save();
+			$validate = $this->validate($request, [
+				'name' => 'required|string|min:6|max:50',
+				'type_id' => 'required|integer',
+				'description' => 'required',
+				'alias' => 'required|regex:/^[a-zA-Z0-9_\.]{6,30}$/|unique:stores,alias,'.$request->store_id
+			],[
+				'name.required' => 'Debes escribir un nombre para tu negocio',
+				'name.string'  => 'Estás utilizando caracteres no permitidos',
+				'name.min'  => 'Debes ingresar 6 (seis) caracteres como mínimo',
+				'name.max'  => 'Debes ingresar 50 (cincuenta) caracteres como máximo',
+				'description.required'  => 'Por favor describe brevemente tu negocio',
+				'alias.required'  => 'Debes escribir una dirección para tu tienda',
+				'alias.regex'  => 'Sólo puedes usar letras, números, puntos y guiónes bajos',
+				'alias.unique'  => 'Esta dirección ya está siendo usada por otro negocio'
+			]);
 
-		return redirect()->route('store.edit', [
-			'alias' => $store->alias
-		])->with(['message'=>'Los cambios se guardaron con éxito.']);
+			$store = Store::find($request->store_id);
+			$store->name = $request->name;
+			$store->type_id = $request->type_id;
+			$store->description = $request->description;
+			$store->alias = mb_strtolower($request->alias);
+
+			$store->save();
+
+			return redirect()->route('store.edit', [
+				'alias' => $store->alias
+			])->with(['message'=>'Los cambios se guardaron con éxito.']);
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
 
 	}
 
@@ -222,26 +270,49 @@ class StoreController extends Controller {
 	/* Guardado de datos de contacto editados
 	---------------------------------------------------- */
 	public function updateData(Request $request){
-		
-		$validate = $this->validate($request, [
-			'store_id' => 'required|integer'
-		]);
-		
-		$profile = StoreProfile::where('store_id', $request->store_id)->first();
 
-		$profile->email = $request->email;
-		$profile->website = $request->website;
-		$profile->phone = $request->phone;
-		$profile->cellphone = $request->cellphone;
-		$profile->facebook = $request->facebook;
-		$profile->instagram = $request->instagram;
-		$profile->pinterest = $request->pinterest;
+		if(\Auth::user()){
 		
-		$profile->save();
+			$validate = $this->validate($request, [
+				'store_id' => 'required|integer',
+				'email' => 'email|nullable',
+				'website' => 'url|nullable',
+				'phone' => 'numeric|nullable',
+				'cellphone' => 'numeric|nullable',
+				'facebook' => 'regex:/^[a-z0-9_-]{6,30}$/|nullable',
+				'instagram' => 'regex:/^[a-z0-9_-]{6,30}$/|nullable',
+				'pinterest' => 'regex:/^[a-z0-9_-]{6,30}$/|nullable',
+			], [
+				'email.email' => 'El formato del correo no es válido',
+				'website.url' => 'El formato de la dirección web no es válido',
+				'phone.numeric' => 'Sólo puedes escribir números',
+				'cellphone.numeric' => 'Sólo puedes escribir números',
+				'facebook' => 'El formato del usuario de Facebook no es correcto',
+				'instagram' => 'El formato del usuario de Instagram no es correcto',
+				'pinterest' => 'El formato del usuario de Pinterest no es correcto'
+			]);
+			
+			$profile = StoreProfile::where('store_id', $request->store_id)->first();
 
-		return redirect()->route('store.data', [
-			'alias' => $profile->store->alias
-		])->with(['message'=>'Los cambios se guardaron con éxito.']);
+			$profile->email = $request->email;
+			$profile->website = $request->website;
+			$profile->phone = $request->phone;
+			$profile->cellphone = $request->cellphone;
+			$profile->facebook = $request->facebook;
+			$profile->instagram = $request->instagram;
+			$profile->pinterest = $request->pinterest;
+			
+			$profile->save();
+
+			return redirect()->route('store.data', [
+				'alias' => $profile->store->alias
+			])->with(['message'=>'Los cambios se guardaron con éxito.']);
+
+		} else {
+
+			return redirect()->route('store.list');
+
+		}
 
 	}
 
@@ -293,7 +364,7 @@ class StoreController extends Controller {
 		$store = Store::where('alias', $alias)->first();
 		$shop = StoreShop::where('store_id', $store->id)->first();
 
-		if(\Auth::user() && \Help::isAdmin($store->alias) && !\Help::isDeleted($store->alias)){
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$shop->status = $shop->status == 1 ? 0 : 1;
 			$shop->save();
@@ -495,9 +566,9 @@ class StoreController extends Controller {
 	---------------------------------------------------- */
 	public function profileCrop($alias){
 
-		$store = Store::where('alias', $alias)->first();
+		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
-		if(\Auth::user() && \Help::isAdmin($store->alias) && !\Help::isDeleted($store->alias)){
+			$store = Store::where('alias', $alias)->first();
 
 			return view('store.modules.crop_profile', [
 				'store' => $store
@@ -598,32 +669,7 @@ class StoreController extends Controller {
 	public function updateAdmin(){
 		// Guardado de cambios del administrador
 	}
-
-
-	/* Gestión de mensajes (Bandeja de entrada)
-	---------------------------------------------------- */
-	public function messages($alias){
-		
-		if(\Auth::user() && \Help::exists($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
-
-			$store = Store::where('alias', $alias)->first();
-			$messages = Message::where('store_id', $store->id)
-						->orderBy('Id', 'desc')
-						->paginate(5);
-
-			return view('store.modules.messages', [
-				'store' => $store,
-				'messages' => $messages
-			]);
-
-		} else {
-
-			return redirect()->route('store.list');
-
-		}
-
-	}
-
+	
 
 	/* Cambio de estado del store (Activo / inactivo)
 	---------------------------------------------------- */

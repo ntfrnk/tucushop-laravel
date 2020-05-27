@@ -131,26 +131,6 @@ class ItemController extends Controller {
 	}
 
 
-	/* Consulta sobre un item
-	---------------------------------------------------- */
-	public function message(Request $request){
-
-		$user = \Auth::user();
-		$item = Item::find($request->item_id);
-
-		$message = new Message();
-		$message->user_id = $user->id;
-		$message->item_id = $item->id;
-		$message->store_id = $item->store->id;
-		$message->content = $request->content;
-
-		$message->save();
-		
-		return "ok";
-
-	}
-
-
 	/* Listado de items
 	---------------------------------------------------- */
 	public function items($alias){
@@ -223,10 +203,19 @@ class ItemController extends Controller {
 	public function save(Request $request){
 		
 		$validate = $this->validate($request, [
-			'name' => 'required|string|min:10|max:255',
-			'detail' => 'string|max:255',
-			'price' => 'integer',
+			'name' => 'required|string|min:10|max:50',
+			'detail' => 'required|max:500',
+			'price' => 'integer|required',
 			'store_id' => 'integer'
+		], [
+			'name.required' => 'Debes escribir un nombre para el artículo',
+			'name.string' => 'Estás utilizando caracteres no válidos',
+			'name.min' => 'El nombre debe tener 10 (diez) caracteres como mínimo.',
+			'name.max' => 'El nombre debe tener 50 (cincuenta) caracteres como máximo.',
+			'detail.required' => 'Por favor describe tu artículo',
+			'detail.max' => 'Superaste el límite de caracteres (500)',
+			'price.required' => 'Por favor indica un precio para el artículo',
+			'price.integer' => 'El precio debe contener números y no puede quedar vacío'
 		]);
 
 		$item = new Item();
@@ -279,9 +268,19 @@ class ItemController extends Controller {
 	public function update(Request $request){
 		
 		$validate = $this->validate($request, [
-			'name' => 'required|string|min:10|max:255',
-			'detail' => 'string',
-			'price' => 'integer'
+			'name' => 'required|string|min:10|max:50',
+			'detail' => 'string|required|max:500',
+			'price' => 'integer|required'
+		], [
+			'name.required' => 'Debes escribir un nombre para el artículo',
+			'name.string' => 'Estás utilizando caracteres no válidos',
+			'name.min' => 'El nombre debe tener 10 (diez) caracteres como mínimo.',
+			'name.max' => 'El nombre debe tener 50 (cincuenta) caracteres como máximo.',
+			'detail.string' => 'Estás utilizando caracteres no válidos',
+			'detail.required' => 'Por favor describe tu artículo',
+			'detail.max' => 'Superaste el límite de caracteres (500)',
+			'price.integer' => 'El precio debe contener sólo números',
+			'price.required' => 'Por favor indica un precio para el artículo'
 		]);
 
 		$item = Item::find($request->item_id);

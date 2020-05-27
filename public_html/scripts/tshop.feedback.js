@@ -12,7 +12,7 @@ $(function(){
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/
 
-    $('#reporting').on('click', function(){
+    $('.reporting').on('click', function(){
         $('.pop-bg').show();
         $('#m-report').show();
     });

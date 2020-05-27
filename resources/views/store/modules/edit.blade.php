@@ -70,19 +70,15 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="alias" class="col-md-4 col-form-label text-md-right">{{ __('Alias o Nickname') }}</label>
+                        <label for="alias" class="col-md-4 col-form-label text-md-right">{{ __('Dirección web') }}</label>
 
                         <div class="col-md-6 input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text bold">@</span>
+								<span class="input-group-text fw500">https://tucushop.com/</span>
 							</div>
 							<input type="text" id="alias" class="form-control @error('alias') is-invalid @enderror" name="alias" value="{{ $store->alias ? $store->alias : '' }}" required autocomplete="alias">
-
-                            @error('alias')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <span class="invalid-feedback alias b" role="alert">@error('alias') {{ $message }} @enderror</span>
+                            
                         </div>
                     </div>
 

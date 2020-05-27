@@ -1,7 +1,7 @@
 
 :root {
 	/* Colores generales */
-	--colorPrincipal: #E8004E;
+	--colorPrincipal: #D90046;
 	--white: #FFF;
 
 	/* Bootstrap */
@@ -17,6 +17,20 @@
 	--warning-on: #C18A00;
 	--danger: #AD3333;
 	--danger-on: #990000;
+
+	/* Colores interesantes */
+	--azul: #26547C;
+	--naranja-fuerte: #EF271B;
+	--violeta: #820263;
+	--morado: #820263;
+	--amarillo: #F9C80E;
+	--amarillo-oscuro: #FF9914;
+	--rosa-viejo: #EB5E55;
+	--verde-suave: #0EAD69;
+	--verde-opaco: #32936F;
+	--celeste-opaco: #448FA3;
+	--azul-violeta: #2B2D42;
+
 }
 
 

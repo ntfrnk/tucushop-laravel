@@ -21,20 +21,34 @@
 
 {{-- Fin de definición de etiquetas SEO / SEM :::::::::::::::::::--}}
 
+@php($imgShop = public_path().'/storage/stores/resized/'.$item->store->shop->image_header)
+@if(file_exists($imgShop) && !is_dir($imgShop))
+	@php($imgShop = route('home').'/storage/stores/resized/'.$item->store->shop->image_header.'?v='.$item->store->shop->version_header)
+@else
+	@php($imgShop = route('home').'/storage/stores/resized/no-header.jpg')
+@endif
+
+@php($imgLogo = public_path().'/storage/logos/resized/'.$item->store->shop->image_profile)
+@if(file_exists($imgLogo) && !is_dir($imgLogo))
+	@php($imgLogo = route('home').'/storage/logos/resized/'.$item->store->shop->image_profile.'?v='.$item->store->shop->version_profile)
+@else
+	@php($imgLogo = route('home').'/storage/logos/resized/no-logo.jpg')
+@endif
+
 
 @section('content')
 
 @if($item->store->plan->eshop==1)
 
 	<section>
-		<div class="store-header store-header-item" style="background-image: url({{ asset('storage/stores/resized/'.$item->store->shop->image_header) }});">
+		<div class="store-header store-header-item" style="background-image: url({{ asset($imgShop) }});">
 			<div class="store-header-cover" style="background: rgba(0,0,0,{{ $item->store->shop->opacity_header!=100 ? '0.'.\UrlFormat::add_zeros($item->store->shop->opacity_header, 2) : 1 }});"></div>
 			<div class="container">
 				<div class="row">
 					<div class="store-header-card" style="background: rgba(255,255,255,0.85); border-radius: 4px;">
 						<div class="store-header-card-image">
 							<a href="{{ route('store.index', ['alias' => $item->store->alias]) }}">
-								<img src="{{ asset('storage/logos/resized/'.$item->store->shop->image_profile) }}" class="img-fluid">
+								<img src="{{ asset($imgLogo) }}" class="img-fluid">
 							</a>
 						</div>
 						<div class="store-header-card-name">
@@ -55,7 +69,7 @@
 
 	<div class="container">
 
-		<div class="row product-item-showing">
+		<div class="row product-item-showing relative padB100">
 
 			@if($item_disabled != 0)
 			
@@ -165,20 +179,11 @@
 					<div class="f15 texto marT10">
 						@if($item->tags!=null && $item->tags->count()>0)
 							@foreach($item->tags as $tag)
-								<a href="search/{{ $tag->keyword->keyword }}/" class="inline-block marR15">
+								<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
 									#{{ mb_strtolower($tag->keyword->keyword) }}
 								</a>
 							@endforeach
 						@endif
-					</div>
-
-					<div class="bordbot marT10 marB20"></div>
-
-					<div class="add-to-cart marB10">
-						<a href="javascript:;" class="btn btn-link text-danger marL10" id="problem">
-							<span><i class="fa fa-exclamation-triangle marR5" aria-hidden="true"></i>Informar un problema con este artículo</span>
-						</a>
-
 					</div>
 
 				</div>
@@ -193,6 +198,15 @@
 				</div>
 
 			@endif
+
+			<div class="card-footer col-12 absolute l0 b0 w100 a-center">
+				<a href="javascript:;" class="text-danger marR15" id="problem">
+					<span><i class="fa fa-exclamation-triangle marR5" aria-hidden="true"></i>Informar un problema con este artículo</span>
+				</a>|
+				<a href="javascript:;" class="text-danger marL15 reporting">
+					<span><i class="fa fa-bug marR5" aria-hidden="true"></i>Reportar un error con la página</span>
+				</a>
+			</div>
 
 		</div>
 

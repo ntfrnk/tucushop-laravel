@@ -21,7 +21,7 @@
 
 @section('admin')
 
-<span id="photo_url" class="none">storage/stores/original/{{ $store->shop->image_header }}</span>
+<span id="photo_url" class="none">{{ route('home').'/storage/stores/original/'.$store->shop->image_header.'?v='.$store->shop->version_header }}</span>
 
 <div class="row">
 	<div class="col-md-12 mainbar">

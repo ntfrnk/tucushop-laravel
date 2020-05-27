@@ -13,9 +13,62 @@ $(function(){
 	 | ELEGIR TIPO DE LISTADO
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/
-
+	
 	$('#save-form-item').on('click', function(){
 		$('#form-item').submit();
+	});
+	
+
+	/*
+	 | VALIDACIÓN DE CAMPOS NUEVO NEGOCIO
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+	$('#name').on('keyup', function(){
+		name = $(this).val();
+		if(name.length<6){
+			$('.invalid-feedback.name').text('Debes ingresar al menos 6 (seis) caracteres')
+			$('#name').addClass('is-invalid');
+			$('.invalid-feedback.name').show();
+		} else {
+			$('.invalid-feedback.name').hide();
+			$('#name').removeClass('is-invalid');
+		}
+	});
+
+	$('#alias').on('keyup', function(){
+		alias = $(this).val();
+		store_id = $('#store_id').text();
+		expresion = /^[a-zA-Z0-9._]{6,30}$/;
+		if(alias.length<6){
+			$('.invalid-feedback.alias').text('Debes ingresar al menos 6 (seis) caracteres')
+			$('#alias').addClass('is-invalid');
+			$('.invalid-feedback.alias').show();
+		} else if(alias.length>30){
+			$('.invalid-feedback.alias').text('No puedes usar más de 30 (treinta) caracteres')
+			$('#alias').addClass('is-invalid');
+			$('.invalid-feedback.alias').show();
+		} else if(expresion.test(alias)==false){
+			$('.invalid-feedback.alias').text('Sólo puedes usar letras, números, puntos y guiónes bajos')
+			$('#alias').addClass('is-invalid');
+			$('.invalid-feedback.alias').show();
+		} else {
+			if(store_id==""){
+				url_post = url_base + '/store/alias/validate/' + alias;
+			} else {
+				url_post = url_base + '/store/alias/validate/' + alias + '/' + store_id;
+			}
+			$.get(url_post, {}, function(resp){
+				if(resp=="error"){
+					$('.invalid-feedback.alias').text('Esta dirección ya está siendo usada por otro negocio.')
+					$('#alias').addClass('is-invalid');
+					$('.invalid-feedback.alias').show();
+				} else {
+					$('.invalid-feedback.alias').hide();
+					$('#alias').removeClass('is-invalid');
+				}
+			});
+		}
 	});
 
 
@@ -73,7 +126,7 @@ $(function(){
 	*/
 
 	$.ajax({
-	    url: 'storage/json/features.json',
+	    url: 'public_html/storage/json/features.json',
 		type: 'POST',
 	    success: function(data){
 

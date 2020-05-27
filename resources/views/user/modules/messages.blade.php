@@ -32,8 +32,8 @@
 							<tr>
 								<td>{{ $message->item->name }}</td>
 								<td class="a-right">
-									<a href="javascript:;" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Ver mensaje</a>
-									<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('') }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i> Eliminar</a>
+									<a href="{{ route('user.message.read', ['message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Ver mensaje</a>
+									<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('user.message.delete', ['message_id' => $message->id]) }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i> Eliminar</a>
 								</td>
 							</tr>
 							@endforeach

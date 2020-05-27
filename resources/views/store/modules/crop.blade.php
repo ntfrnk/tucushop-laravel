@@ -19,7 +19,7 @@
 
 @section('admin')
 
-<span id="photo_url" class="none">storage/items/original/{{ $photo->file_path }}</span>
+<span id="photo_url" class="none">{{ route('home').'/storage/items/original/'.$photo->file_path }}</span>
 
 <div class="row">
 	<div class="col-md-12 mainbar">

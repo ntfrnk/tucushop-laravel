@@ -30,7 +30,7 @@
                                 <li><a href="{{ route('user.home') }}"><i class="fa fa-angle-right"></i>Mis datos personales</a></li>
                                 <li><a href="{{ route('store.list') }}"><i class="fa fa-angle-right"></i>Administrar mis negocios</a></li>
                             @endguest
-                            <li><a href="javascript:;" id="reporting"><i class="fa fa-angle-right"></i>Reportar un error en la página</a></li>
+                            <li><a href="javascript:;" class="reporting"><i class="fa fa-angle-right"></i>Reportar un error en la página</a></li>
                             <li><a href="javascript:;" id="question"><i class="fa fa-angle-right"></i>Hacenos una consulta</a></li>
                         </ul>
                     </div>

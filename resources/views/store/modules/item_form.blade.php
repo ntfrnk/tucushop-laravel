@@ -53,13 +53,8 @@
 
                                 <label for="name">{{ __('Nombre') }}</label>
 
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($item) ? $item->name : '' }}" required autocomplete="name">
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($item) ? $item->name : old('name') }}" required autocomplete="name">
+                                <span class="invalid-feedback name b">@error('name'){{ $message }}</strong>@enderror</span>
 
                             </div>
 
@@ -67,13 +62,11 @@
 
                                 <label for="detail">{{ __('Detalle') }}</label>
 
-                                <textarea id="detail" rows="3" class="form-control @error('detail') is-invalid @enderror" name="detail" autocomplete="off">{{ isset($item) ? $item->detail : '' }}</textarea>
+                                <textarea id="detail" rows="3" class="form-control @error('detail') is-invalid @enderror" name="detail" autocomplete="off">{{ isset($item) ? $item->detail : old('detail') }}</textarea>
 
-                                @error('detail')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                
+                                    <span class="invalid-feedback detail b">@error('detail'){{ $message }}@enderror</span>
+                                
 
                             </div>
 
@@ -86,20 +79,18 @@
                                         <span class="input-group-text bold">$</span>
                                     </div>
 
-                                    <input type="text" id="price" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : '' }}" autocomplete="price">
+                                    <input type="text" id="price" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}" autocomplete="price">
+                                    <span class="invalid-feedback price b">@error('price'){{ $message }}@enderror</span>
+                                
                                 </div>
 
-                                @error('price')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                
 
                             </div>
 
                             @if(!isset($item))
                                 <div class="form-group form-group-alt">
-                                    <button type="submit" id="save-form" class="btn btn-primary">
+                                    <button type="submit" rel="submit" id="save-form" class="btn btn-primary">
                                         <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
                                     </button>
                                     <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>

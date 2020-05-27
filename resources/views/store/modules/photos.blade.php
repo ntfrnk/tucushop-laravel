@@ -25,7 +25,7 @@
 				
 				@if($item->photos->count() > 1)
 					<div class="f15 marB30">
-						<p>Para ordenar las fotos sólo debes arrastrarlas a la posición deseada, y luego confirmar el nuevo orden haciendo click en el botón «Guardar orden».</p>
+						<p>Para ordenar las fotos sólo debes arrastrarlas a la posición deseada. El nuevo orden se guardará automáticamente.</p>
 					</div>
 				@endif
 

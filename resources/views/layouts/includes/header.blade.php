@@ -1,14 +1,14 @@
 @if(isset(\Auth::user()->profile->photo) && !empty(\Auth::user()->profile->photo))
-    @php($image_file = 'storage/users/resized/'.\Auth::user()->profile->photo)
+	@php($image_file = public_path().'/storage/users/resized/'.\Auth::user()->profile->photo)
     @if(file_exists($image_file) && !is_dir($image_file))
-        @php($img = 'storage/users/resized/'.\Auth::user()->profile->photo.'?v='.\Auth::user()->profile->version_photo)
+        @php($img = route('home').'/storage/users/resized/'.\Auth::user()->profile->photo.'?v='.\Auth::user()->profile->version_photo)
     @else
         @php($noimg = 1)
-        @php($loadImg = 'storage/users/resized/no-photo.jpg')
+        @php($img = route('home').'/storage/users/resized/no-photo.jpg')
     @endif
 @else
     @php($noimg = 1)
-    @php($img = 'storage/users/resized/no-photo.jpg')
+    @php($img = route('home').'/storage/users/resized/no-photo.jpg')
 @endif
 
 <header>

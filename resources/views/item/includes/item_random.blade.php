@@ -2,7 +2,7 @@
 	<div class="box-item-body">
 		<figure class="box-item-image">
 			<a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item_rand->name), 'id' => \UrlFormat::add_zeros($item_rand->id)]) }}">
-				<img src="{{ asset('storage/items/sm/'.$item_rand->photos->first()->file_path.'?v='.$item_rand->photos->first()->version) }}" class="img-fluid" />
+				<img src="{{ asset('storage/items/sm/'.$item_rand->photos->sortBy('ordering')->first()->file_path.'?v='.$item_rand->photos->sortBy('ordering')->first()->version) }}" class="img-fluid" />
 			</a>
 		</figure>
 		<div class="box-item-details">

@@ -2,7 +2,7 @@
 	<div class="box-item-body">
 		<figure class="box-item-image">
 			<a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item->name), 'id' => \UrlFormat::add_zeros($item->id)]) }}">
-				<img src="{{ asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) }}" class="img-fluid" />
+				<img src="{{ asset('storage/items/sm/'.$item->photos->sortBy('ordering')->first()->file_path.'?v='.$item->photos->sortBy('ordering')->first()->version) }}" class="img-fluid" />
 			</a>
 		</figure>
 		<div class="box-item-details">

@@ -44,3 +44,7 @@
 <div class="clear"></div>
 
 @endsection
+
+@section('data')
+<span id="store_id">{{ $store->id }}</span>
+@endsection

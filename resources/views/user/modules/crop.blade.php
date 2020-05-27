@@ -21,7 +21,7 @@
 
 @section('admin')
 
-<span id="photo_url" class="none">storage/users/original/{{ $user->profile->photo }}</span>
+<span id="photo_url" class="none">public_html/storage/users/original/{{ $user->profile->photo }}</span>
 
 <div class="row">
 	<div class="col-md-12 mainbar">
