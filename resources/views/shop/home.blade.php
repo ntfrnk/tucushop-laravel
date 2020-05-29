@@ -35,13 +35,31 @@
 	</div>
 </section>
 
-{{-- PRODUCTOS DESTACADOS --}}
+{{-- PRODUCTOS Y SERVICIOS --}}
 
 <section class="marT0 relative" style="clear: both;">
 
 	<div class="container">
 
-		<div class="row product-item-showing marB30 padT30">
+		<div class="row product-item-showing marB50 padT60 padB40 relative">
+
+			<div class="card-header absolute t0 l0 w100 f16">
+				<div class="a-center">
+					<a class="fb-share-button" 
+						data-href="{{ Request::url() }}" 
+						data-layout="button">
+					</a>
+					<a href="http://pinterest.com/pin/create/button/?url={{ urlencode(Request::url()) }}&amp;media={{ urlencode(route('home').'/storage/logos/resized/'.$store->shop->image_profile) }}" class="btn btn-primary btn-sm btn-pt f18">
+						<i class="fab fa-pinterest"></i>
+					</a>
+					<a href="whatsapp://send?text={{ urlencode($store->name.': '.Request::url()) }}" class="badge badge-success text-white btn-wp">
+						<i class="fab fa-whatsapp f13 block f-left"></i> <span class="inline-block f11 fw600 lh10">Enviar</span>
+					</a>
+					<a href="https://twitter.com/intent/tweet?text={{ urlencode($store->name) }}&url={{ urlencode(Request::url()) }}" class="badge badge-info text-white btn-wp">
+						<i class="fab fa-twitter f13 block f-left"></i> <span class="inline-block f11 fw600 lh10">Twittear</span>
+					</a>
+				</div>
+			</div>
 
 			{{-- Cuerpo de productos destacados --}}
 
@@ -53,7 +71,7 @@
 						
 						@foreach($items as $item)
 						
-							@include('item.includes.item')
+							@include('item.includes.item_tienda')
 
 						@endforeach
 
@@ -69,12 +87,14 @@
 				</div>
 			@endif
 
-			<div class="marT60 marB0 a-center">
+			<div class="marT20 marB0 a-center col-12">
 				<hr>
 				<div class="inline-block marAuto">
 					{{ $items->links() }}
 				</div>
 			</div>
+
+			
 
 		</div>
 

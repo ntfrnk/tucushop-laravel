@@ -34,7 +34,12 @@
 								<tbody>
 									@foreach($items as $item)
 									<tr>
-										<td>{{ $item->name }}</td>
+										<td>
+											@if($item->offer && $item->offer->expiration > date('Y-m-d'))
+												<span class="badge badge-success">OFERTA</span>
+											@endif
+											{{ $item->name }}
+										</td>
 										<td class="a-right">
 											<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-primary" title="Editar la información de este item"><i class="fa fa-edit"></i> Editar</a>
 											<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="marR5 btn btn-sm btn-primary" title="Gestionar las fotos de este item"><i class="fa fa-camera"></i> Fotos</a>
@@ -62,11 +67,14 @@
 									@endif
 									<div class="col-md-3">
 										<div class="show-grid-item">
-											<div class="item-info">
+											<div class="item-info relative">
 												<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" title="Editar la información de este item">
 													<img src="{{ file_exists($img) && !is_dir($img) ? asset($img.'?v='.$item->photos->sortBy('ordering')->first()->version) : asset($noimg) }}" class="img-fluid">
 												</a>
 												<div>{{ $item->name }}</div>
+												@if($item->offer && $item->offer->expiration > date('Y-m-d'))
+												<span class=" f12 fw600 w40 a-center text-white absolute t100 l0 bg-danger inline-block">{{ $item->offer->percent }}% OFF</span>
+												@endif
 											</div>
 											<div class="options">
 												<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-primary" title="Editar la información de este item"><i class="fa fa-edit"></i></a>

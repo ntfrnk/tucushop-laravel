@@ -246,9 +246,12 @@ class ItemController extends Controller {
 			$item = Item::find($item_id);
 			$features = Feature::all();
 
+			$offer = $item->offer && $item->offer->expiration > date('Y-m-d') ? true : false;
+
 			return view('store.modules.item_form', [
 				'store' => $store,
 				'item' => $item,
+				'offer' => $offer,
 				'features' => $features
 			]);
 
@@ -287,11 +290,58 @@ class ItemController extends Controller {
 		
 		$item->name = $request->name;
 		$item->detail = $request->detail;
-		$item->price = $request->price;
+		if(!$item->offer || $item->offer->expiration <= date('Y-m-d')){
+			$item->price = $request->price;
+		}
 
 		$item->save();
 
-		return redirect()->route('items', ['alias' => $item->store->alias]);
+		return redirect()->route('item.edit', [
+			'alias' => $item->store->alias,
+			'item_id' => $item->id
+		])->with(['message' => '¡Los cambios se guardaron con éxito!']);
+
+	}
+
+
+	/* Crear o eliminar una oferta
+	---------------------------------------------------- */
+	public function offer(Request $request){
+
+		$item = Item::find($request->item_id);
+
+		if(!empty($item->offer)){
+			$offer = ItemOffer::find($item->offer->id)->delete();
+		}
+
+		$offer = new ItemOffer();
+		
+		$offer->item_id = $request->item_id;
+		$offer->percent = $request->percent;
+		$offer->price = $request->price;
+		$offer->expiration = $request->expiration;
+		
+		$offer->save();
+
+		return "ok";
+
+	}
+
+
+	/* Eliminar una oferta
+	---------------------------------------------------- */
+	public function offerDelete($item_id){
+
+		$item = Item::find($item_id);
+
+		if($item->offer){
+			$offer = ItemOffer::find($item->offer->id)->delete();
+		}
+
+		return redirect()->route('item.edit', [
+			'alias' => $item->store->alias,
+			'item_id' => $item->id
+		]);
 
 	}
 
@@ -359,18 +409,19 @@ class ItemController extends Controller {
 
 		$size = getimagesize(route('home')."/storage".$path_original.$photo->file_path);
 
-		if($size[0]>1800 || $size[1]>1800){
+		if($size[0]>1200 || $size[1]>1200){
 
 			$image = new ImagesWork('storage'.$path_original.$photo->file_path);
 			$orientation = $image->orientation($size[0], $size[1]);
 			if($orientation=='v' || $orientation=='c'){
-				$image->setSizeW(1800);
+				$image->setSizeW(1200);
 			} else {
-				$image->setSizeH(1800);
+				$image->setSizeH(1200);
 			}
 
 			$image->setPath("storage".$path_original);
 			$image->setFilename($photo->file_path);
+			$image->setQuality(65);
 			$image->resize();
 			$image->save();
 
@@ -430,7 +481,7 @@ class ItemController extends Controller {
 		$orientation = $image->orientation($size[0], $size[1]);
 		$image->setSizeH($request->h);
 		$image->setSizeW($request->w);
-		$image->setQuality(100);
+		$image->setQuality(60);
 		$image->setPosX($request->x);
 		$image->setPosY($request->y);
 

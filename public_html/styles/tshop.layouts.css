@@ -345,3 +345,9 @@
 .item-box-price-box h4 {
 	font-size: 15px;
 }
+
+.item-feature:after {
+	content: "|";
+	color: #CCC;
+	margin-left: 10px;
+}

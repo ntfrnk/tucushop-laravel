@@ -26,11 +26,11 @@
 				<i class="fa fa-box-open"></i> Productos & Servicios
 			</a>
 		</li>
-		<li>
+		{{-- <li>
 			<a href="{{ route('store.admins', ['alias' => $store->alias]) }}">
 				<i class="fa fa-users"></i> Administradores
 			</a>
-		</li>
+		</li> --}}
 		<li>
 			<a href="{{ route('store.messages', ['alias' => $store->alias]) }}">
 				<i class="fa fa-envelope"></i> Centro de Mensajes

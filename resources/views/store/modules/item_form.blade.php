@@ -18,6 +18,11 @@
     <div class="col-md-12 mainbar">
         
     	<div class="card padB20">
+
+            @if(session('message'))
+                <div class="card-header bold a-center text-success">{{ session('message') }}</div>
+            @endif
+
         	<div class="card-body pad30">
 
                 {{-- Inicio del formulario --}}
@@ -26,7 +31,17 @@
 
                     @csrf
 
-                    <div class="f16 marB30">
+                    <div class="marB30">
+                        <div class="mar0 marT0 f-right">
+                            <div class="f-right align-right">
+                                @if($offer)
+                                    <span>¡Artículo en oferta!</span>
+                                @endif
+                                <a href="{{ $offer ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ $offer ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ $offer ? 'btn-outline-danger' : 'btn-outline-primary' }}">
+                                    {{ $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
+                                </a>
+                            </div>
+                        </div>
                         <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
                         <hr>
                     </div>
@@ -38,11 +53,13 @@
                         
                         @if(isset($item))
                             <div class="col-md-4">
-                                <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
-                                <div class="form-group form-group-alt marT15 absolute b10 l25">
-                                    <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light">
-                                        <i class="fa fa-camera marR5"></i>Gestionar fotos
-                                    </a>
+                                <div class="relative">
+                                    <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
+                                    <div class="form-group form-group-alt marT15 absolute b0 l15">
+                                        <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light">
+                                            <i class="fa fa-camera marR5"></i>Gestionar fotos
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         @endif
@@ -69,19 +86,39 @@
 
                             <div class="form-group form-group-alt">
 
-                                <label for="price">{{ __('Precio') }}</label>
+                                <div class="row">
 
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bold">$</span>
-                                    </div>
-
-                                    <input type="text" id="price" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}" autocomplete="price">
-                                    <span class="invalid-feedback price b">@error('price'){{ $message }}@enderror</span>
+                                    <label for="price" class="{{ $offer ? 'col-6' : 'col-12' }}">{{ __('Precio') }}</label>
+                                    
+                                    @if($offer)
+                                        <label for="offer-price" class="col-6">Oferta ({{ $item->offer->percent }}% OFF)</label>
+                                    @endif
                                 
                                 </div>
 
-                                
+                                <div class="{{ $offer ? 'row' : '' }}">
+
+                                    <div class="input-group{{ $offer ? ' col-6' : '' }}">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bold">$</span>
+                                        </div>
+                                        <input type="text" id="price" class="{{ $offer ? 'tachado ' : '' }} f20 form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}"{{ $offer ? ' readonly' : '' }} autocomplete="off">
+                                        <span class="invalid-feedback price b">@error('price'){{ $message }}@enderror</span>
+                                    </div>
+
+                                    @if($offer)
+                                        <div class="input-group col-6">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bold">$</span>
+                                            </div>
+                                            <input type="text" id="offer-price" class="form-control f20 @error('price') is-invalid @enderror" name="price" value="{{ $item->offer->price }}" readonly autocomplete="off">
+                                            <span class="invalid-feedback offer-price b">@error('price'){{ $message }}@enderror</span>
+                                        </div>
+
+                                        <div class="f14 text-muted col-12 marT10 em">(*) Para cambiar el precio a un artículo en oferta primero debes eliminar la oferta.</div>
+                                    @endif
+
+                                </div>
 
                             </div>
 
@@ -218,6 +255,95 @@
 			</div>
 		</div>
         
+    </div>
+</div>
+
+@endsection
+
+@section('modals')
+
+{{-- Consultas sobre la página --------------------------------------- --}}
+
+<div class="pop-container" id="m-offer">
+    <div class="pop-box">
+        <div class="pop-head">{{ config('app.name', 'Laravel') }}</div>
+        <a href="javascript:;" class="pop-close pop-btn-close" onclick="pop_close()"><i class="fa fa-times"></i></a>
+        <div class="pop-html">
+            <div id="modal-reporting">
+    
+                <div class="padB30">
+        
+                    <div class="">
+                        <h3>Poner artículo en oferta</h3>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-offer marT20">
+
+                        <form id="send-offer" action="{{ route('item.offer') }}" method="POST">
+                            
+                            @csrf
+
+                            <input type="hidden" name="item_id" value="{{ $item->id }}">
+                            <input type="hidden" id="old-price" value="{{ $item->price }}">
+                    
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">{{ __('Artículo') }}</label>
+                                <div class="col-md-7 a-left padT5">
+                                    <span class="f18">{{ $item->name }}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">{{ __('Precio & descuento') }}</label>
+                                <div class="col-md-4 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text fw500">$</span>
+                                    </div>
+                                    <input type="number" step="10" min="0" max="{{ $item->price }}" name="price" id="offer-price" value="{{ $item->price }}" class="form-control" required autocomplete="off">
+                                </div>
+                                <div class="col-md-3 input-group">
+                                    <input type="number" step="1" min="0" max="99" name="percent" id="offer-percent" value="0" class="form-control" required autocomplete="off">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text fw500">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">{{ __('Fecha de caducidad') }}</label>
+                                <div class="col-md-7">
+                                    <input type="date" min="{{ date('Y-m-d') }}" value="{{ date('Y-m-d', strtotime('+15 day', strtotime(date('Y-m-d')))) }}" name="expiration" class="form-control" required autocomplete="off">
+                                </div>
+                            </div>
+                
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label text-md-right">&nbsp;</label>
+                                <div class="col-md-7 a-left">
+                                    <button type="submit" class="btn btn-primary" rel="submit">Enviar consulta</button>
+                                    <button type="button" class="btn btn-link" onclick="pop_close();">Cancelar</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="resp-offer none">
+                        <div class="f18 alert alert-success padT25">
+                            <p>Tu consulta fue enviada exitosamente.<br>En breve nos pondremos en contacto con vos para responderte.</p>
+                            <p class="b">¡Muchas gracias por contactarnos!</p>
+                        </div>
+                        <p class="marT20"><button type="button" class="btn btn-primary w25 refresh">Cerrar esta ventana</button></p>
+                    </div>
+        
+                </div>
+        
+            </div>
+
+        </div>
+
     </div>
 </div>
 

@@ -55,7 +55,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 box-admin">
+	{{-- <div class="col-md-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">
@@ -66,7 +66,7 @@
 				<p class="marB0"><a href="{{ route('store.admins', ['alias' => $store->alias]) }}" class="btn btn-primary btn-sm">Administrar</a></p>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<div class="col-md-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">

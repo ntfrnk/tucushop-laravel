@@ -73,6 +73,53 @@ $(function(){
 
 
 	/*
+	 | CREAR UNA OFERTA
+	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	*/
+
+	$('#offer-price').on('change', function(){
+		new_price = $(this).val();
+		old_price = $('#old-price').val();
+		percent = parseInt(new_price) * 100 / parseInt(old_price);
+		$('#offer-percent').val(100 - Math.round(percent));
+	});
+
+	$('#offer-percent').on('change', function(){
+		percent = $(this).val();
+		old_price = $('#old-price').val();
+		new_price = old_price * (100 - percent) / 100;
+		$('#offer-price').val(Math.round(new_price));
+	});
+
+    $('#new-offer').on('click', function(){
+        sess = $('#sess').text();
+        if(sess==1){
+            $('.pop-bg').show();
+            $('#m-offer').show();
+        } else {
+            notify_open('Para hacer una pregunta sobre este artículo primero debes iniciar sesión.');
+        }
+    });
+
+    $('#send-offer').on('submit', function(e){
+
+        e.preventDefault();
+		spinnModalOn();
+		
+		data = $(this).serialize();
+    
+        url = url_base + '/store/item/offer';
+    
+        $.post(url, data, function(resp){
+            if(resp=="ok"){
+                window.location.reload();
+            }
+        }, '');
+        
+    });
+
+
+	/*
 	 | SUBIR FOTOS AL SERVIDOR
 	 | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	*/

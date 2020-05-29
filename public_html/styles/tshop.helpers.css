@@ -659,6 +659,13 @@
 .normal{text-transform: initial;}
 
 
+/* TEXT-DECORATION */
+
+.underline, .u, .subrayado {text-decoration: underline;}
+.through, .tachado {text-decoration: line-through;}
+.u-no, .deco-no {text-decoration: none;}
+
+
 /* DISPLAY */
 
 .block{display: block;}

@@ -277,19 +277,21 @@ class StoreController extends Controller {
 				'store_id' => 'required|integer',
 				'email' => 'email|nullable',
 				'website' => 'url|nullable',
-				'phone' => 'numeric|nullable',
-				'cellphone' => 'numeric|nullable',
-				'facebook' => 'regex:/^[a-z0-9_-]{6,30}$/|nullable',
-				'instagram' => 'regex:/^[a-z0-9_-]{6,30}$/|nullable',
-				'pinterest' => 'regex:/^[a-z0-9_-]{6,30}$/|nullable',
+				'phone' => 'numeric|digits_between:7,15|nullable',
+				'cellphone' => 'numeric|digits_between:10,15|nullable',
+				'facebook' => 'regex:/^[a-z0-9_\.-]{6,50}$/|nullable',
+				'instagram' => 'regex:/^[a-z0-9_\.-]{6,50}$/|nullable',
+				'pinterest' => 'regex:/^[a-z0-9_\.-]{6,50}$/|nullable',
 			], [
 				'email.email' => 'El formato del correo no es válido',
 				'website.url' => 'El formato de la dirección web no es válido',
 				'phone.numeric' => 'Sólo puedes escribir números',
+				'phone.digits_between' => 'La longitud del número es incorrecta',
 				'cellphone.numeric' => 'Sólo puedes escribir números',
-				'facebook' => 'El formato del usuario de Facebook no es correcto',
-				'instagram' => 'El formato del usuario de Instagram no es correcto',
-				'pinterest' => 'El formato del usuario de Pinterest no es correcto'
+				'cellphone.digits_between' => 'La longitud del número es incorrecta',
+				'facebook.regex' => 'El formato del usuario de Facebook no es correcto',
+				'instagram.regex' => 'El formato del usuario de Instagram no es correcto',
+				'pinterest.regex' => 'El formato del usuario de Pinterest no es correcto'
 			]);
 			
 			$profile = StoreProfile::where('store_id', $request->store_id)->first();
@@ -432,6 +434,7 @@ class StoreController extends Controller {
 
 			$image->setPath("storage".$path_original);
 			$image->setFilename($storeShop->image_header);
+			$image->setQuality(80);
 			$image->resize();
 			$image->save();
 
@@ -481,7 +484,7 @@ class StoreController extends Controller {
 
 		$image->setSizeH($request->h);
 		$image->setSizeW($request->w);
-		$image->setQuality(100);
+		$image->setQuality(80);
 		$image->setPosX($request->x);
 		$image->setPosY($request->y);
 
@@ -550,6 +553,7 @@ class StoreController extends Controller {
 
 			$image->setPath("storage".$path_original);
 			$image->setFilename($storeShop->image_profile);
+			$image->setQuality(80);
 			$image->resize();
 			$image->save();
 
@@ -599,7 +603,7 @@ class StoreController extends Controller {
 
 		$image->setSizeH($request->h);
 		$image->setSizeW($request->w);
-		$image->setQuality(100);
+		$image->setQuality(90);
 		$image->setPosX($request->x);
 		$image->setPosY($request->y);
 

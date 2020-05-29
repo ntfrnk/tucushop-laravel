@@ -518,6 +518,18 @@ Route::post('/store/item/update', 'ItemController@update')
 ->name('item.update');
 
 
+// Crear oferta
+
+Route::post('/store/item/offer', 'ItemController@offer')
+->name('item.offer');
+
+
+// Eliminar oferta
+
+Route::get('/item/offer/delete/{item_id}', 'ItemController@offerDelete')
+->name('item.offer.delete');
+
+
 // Gestión de fotos de un item
 
 Route::get('/store/item/photos/{alias}/{item_id}', 'ItemController@photos')

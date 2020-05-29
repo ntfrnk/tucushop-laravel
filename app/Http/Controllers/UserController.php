@@ -160,13 +160,14 @@ class UserController extends Controller {
 
 		$size = getimagesize(route('home')."/storage".$path_original.$profile->photo);
 
-		if($size[0]>800 || $size[1]>800){
+		if($size[0]>640 || $size[1]>640){
 
 			$image = new ImagesWork('storage'.$path_original.$profile->photo);
-			$image->setSizeW(800);
+			$image->setSizeW(640);
 
 			$image->setPath("storage".$path_original);
 			$image->setFilename($profile->photo);
+			$image->setQuality(70);
 			$image->resize();
 			$image->save();
 
@@ -214,7 +215,7 @@ class UserController extends Controller {
 
 		$image->setSizeH($request->h);
 		$image->setSizeW($request->w);
-		$image->setQuality(100);
+		$image->setQuality(90);
 		$image->setPosX($request->x);
 		$image->setPosY($request->y);
 

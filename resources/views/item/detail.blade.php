@@ -113,7 +113,7 @@
 
 				<div class="col-md-6">
 
-					<div class="marB30">
+					<div class="marB20">
 						<a href="javascript:;" onclick="add_wishlist({{ $item->id }}{{ \Auth::user() ? ', 1' : '' }})" class="inline-block float-right heart-on marL30" title="Agregar a favoritos">
 							<span class="f30 {{ \Auth::user() && $item->likes->contains('user_id', \Auth::user()->id) ? 'fa' : 'far' }} fa-heart"></span>
 						</a>
@@ -142,7 +142,7 @@
 
 					</div>
 
-					<div class="row marT20 marB30">
+					<div class="row marT0 marB20">
 						<div class="col-md-12">
 							<a class="fb-share-button" 
 								data-href="{{ Request::url() }}" 
@@ -160,13 +160,7 @@
 						</div>
 					</div>
 
-					<div class="row marT20 marB30">
-						<div class="col-md-12">
-							<a href="javascript:;" class="btn btn-primary" id="message">
-								<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta al vendedor</span>
-							</a>
-						</div>
-					</div>
+					<hr>
 
 					{{-- <div class="row marT20 marB30">
 						<div class="col-md-6">
@@ -185,14 +179,18 @@
 						</div>
 					</div> --}}
 
-					<div class="row">
-						<h3 class="col-md-12 marB20 f22">Características</h3>
-						@foreach($item->features as $feature)
-							<div class="col-md-4 marB15 f13 padB10" style="border-bottom: dashed 1px #CCC;">
-								<b>{{ $feature->feature->feature }}: </b><br><span class="f15">{{ $feature->content }}</span>
-							</div>
-						@endforeach
+					<div class="row item-features">
+						<div class="col-md-12">
+							<h3 class="marB20 f22">Características</h3>
+							@foreach($item->features as $feature)
+								<span class="item-feature marB5 f14 padB0 marR5 inline-block">
+									<b>{{ $feature->feature->feature }}: </b> <span class="f14">{{ $feature->content }}</span>
+								</span>
+							@endforeach
+						</div>
 					</div>
+
+					<hr>
 
 					<div class="f15 texto marT10">
 						@if($item->tags!=null && $item->tags->count()>0)
@@ -202,6 +200,16 @@
 								</a>
 							@endforeach
 						@endif
+					</div>
+
+					<hr>
+
+					<div class="row padT10 marB30">
+						<div class="col-md-12">
+							<a href="javascript:;" class="btn btn-primary" id="message">
+								<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta al vendedor</span>
+							</a>
+						</div>
 					</div>
 
 				</div>

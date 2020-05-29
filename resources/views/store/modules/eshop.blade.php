@@ -26,18 +26,10 @@
 			<div class="card-body padT30 padB30 padLR30">
 
 				<div class="f17">
-					<div class="mar0 marT5 f14 bold f-right">
-						@if($store->shop->status == 0)
-							<span class="text-danger">
-								<i class="f16 fa fa-times-circle marR5"></i> 
-								Tienda deshabilitada
-							</span>
-						@else
-							<span class="text-success">
-								<i class="f16 fa fa-check-circle marR5"></i> 
-								Tienda habilitada
-							</span>
-						@endif
+					<div class="mar0 marT0 f14 bold f-right">
+						<div class="f-right align-right">
+							<a href="{{ route('store.shop.status', ['alias' => $store->alias]) }}" class="marL10 btn btn-link {{ $store->shop->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $store->shop->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $store->shop->status == 1 ? 'Deshabilitar' : 'Habilitar' }} tienda virtual</a>
+						</div>
 					</div>
 					<h1 class="f30 marB15">Mi tienda virtual</h1>
 					<hr>
@@ -66,7 +58,7 @@
 					<div class="marT20 col-md-12">
 						<div class="row">
 							<div class="col-md-3 padR0">
-								<strong title="Desliza el control para aclarar / oscurecer.">Opacidad de la imagen:</strong>
+								<strong title="Desliza el control para aclarar / oscurecer.">Oscurecer la imagen:</strong>
 							</div>
 							<div class="col-md-8">
 								<input type="range" min="0" max="99" class="form-control" id="opacity-range" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}">
@@ -91,11 +83,11 @@
 						<hr>
 					</div>
 					
-					<div class="col-md-12">
+					{{-- <div class="col-md-12">
 						<div class="marT30"><h3 class="f22 marB0">Configuraciones</h3> <hr></div>
-					</div>
+					</div> --}}
 
-					<div class="col-md-12">
+					{{-- <div class="col-md-12">
 						<div class="row">
 							<div class="col-md-3 padR0">
 								<strong>Pestaña principal:</strong>
@@ -109,8 +101,9 @@
 							</div>
 						</div>
 						<hr>
-					</div>
-					<div class="col-md-12">
+					</div> --}}
+
+					{{-- <div class="col-md-12">
 						<div class="row">
 							<div class="col-md-3 padR0">
 								<strong>Orden de productos:</strong>
@@ -130,15 +123,13 @@
 							</div>
 						</div>
 						<hr>
-					</div>
-					<div class="marT20 col-md-12">
-						<div class="f-right align-right">
-							<a href="{{ route('store.shop.status', ['alias' => $store->alias]) }}" class="marL10 btn btn-link {{ $store->shop->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $store->shop->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $store->shop->status == 1 ? __('Deshabilitar') : __('Habilitar') }} tienda virtual</a>
-						</div>
-						<button type="submit" id="save-form" class="btn btn-primary">
+					</div> --}}
+
+					<div class="marT0 col-md-12">
+						{{-- <button type="submit" id="save-form" class="btn btn-primary">
 							<i class="fa fa-save marR5"></i> Guardar cambios
 						</button>
-						<a href="{{ route('store.home', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+						<a href="{{ route('store.home', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a> --}}
 					</div>
 				</div>
 
