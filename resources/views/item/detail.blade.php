@@ -38,7 +38,7 @@
 
 @section('content')
 
-@if($item->store->plan->eshop==1)
+@if($item->store->shop->status == 1)
 
 	<section>
 		<div class="store-header store-header-item" style="background-image: url({{ asset($imgShop) }});">
@@ -65,7 +65,7 @@
 
 <div class="clear"></div>
 
-<section class="relative{{ $item->store->plan->eshop!=1 ? ' marT50' : '' }}">
+<section class="relative{{ $item->store->shop->status != 1 ? ' marT50' : '' }}">
 
 	<div class="container">
 
@@ -120,7 +120,7 @@
 						<h1 class="lh34 f30">{{ $item->name }}</h1>
 						<h3 class="f13 texto marB10">
 							By: 
-							@if($item->store->plan->eshop==1)
+							@if($item->store->shop->status == 1)
 								<strong><a href="{{ route('store.index', ['alias' => $item->store->alias]) }}">{{ $item->store->name }}</a></strong>
 							@else
 								<strong>{{ $item->store->name }}</strong>
@@ -143,7 +143,25 @@
 					</div>
 
 					<div class="row marT20 marB30">
-						<div class="col-md-8">
+						<div class="col-md-12">
+							<a class="fb-share-button" 
+								data-href="{{ Request::url() }}" 
+								data-layout="button">
+							</a>
+							<a href="http://pinterest.com/pin/create/button/?url={{ urlencode(Request::url()) }}&amp;media={{ urlencode(route('home').'/storage/items/lg/'.$item->photos->first()->file_path) }}" class="btn btn-primary btn-sm btn-pt f18">
+								<i class="fab fa-pinterest"></i>
+							</a>
+							<a href="whatsapp://send?text={{ urlencode($item->name.': '.Request::url()) }}" class="badge badge-success text-white btn-wp">
+								<i class="fab fa-whatsapp f13 block f-left"></i> <span class="inline-block f11 fw600 lh10">Enviar</span>
+							</a>
+							<a href="https://twitter.com/intent/tweet?text={{ urlencode($item->name) }}&url={{ urlencode(Request::url()) }}" class="badge badge-info text-white btn-wp">
+								<i class="fab fa-twitter f13 block f-left"></i> <span class="inline-block f11 fw600 lh10">Twittear</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="row marT20 marB30">
+						<div class="col-md-12">
 							<a href="javascript:;" class="btn btn-primary" id="message">
 								<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta al vendedor</span>
 							</a>

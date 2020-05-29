@@ -56,18 +56,32 @@ class UserController extends Controller {
 		$user = \Auth::user();
 
 		$validate = $this->validate($request, [
-			'email' => 'required|string|unique:users,email,'.$user->id,
-			'nickname' => 'required|string|unique:users,email,'.$user->id,
+			'email' => 'required|email|unique:users,email,'.$user->id,
+			'nickname' => 'required|min:6|max:30|regex:/^[a-zA-Z0-9_\.]+$/|unique:users,nickname,'.$user->id,
+			'password' => 'nullable|min:6|max:30|regex:/^[a-zA-Z0-9_ -\+\.]+$/'
+		], [
+			'email.required' => 'Este dato es obligatorio',
+			'email.email' => 'El formato del correo no es válido',
+			'email.unique' => 'Este correo ya está siendo usado por otro usuario',
+			'nickname.required' => 'Este dato es obligatorio',
+			'nickname.min' => 'El nickname es demasiado corto (mínimo: 6 caracteres)',
+			'nickname.max' => 'El nickname es demasiado largo (máximo: 30 caracteres)',
+			'nickname.regex' => 'Estás utilizando caracteres no permitidos',
+			'nickname.unique' => 'Este nombre de usuario ya se encuentra en uso',
+			'password.regex' => 'Estás usando caracteres no permitidos',
+			'password.min' => 'La contraseña es demasiado corta (mínimo: 6 caracteres)',
+			'password.max' => 'La contraseña es demasiado larga (máximo: 30 caracteres)'
 		]);
 
 		$user->email = $request->email;
 		$user->nickname = $request->nickname;
-		if(isset($request->password) && !emtpy($request->password)){
+		if($request->password){
 			$user->password = Hash::make($request->password);
 		}
 		$user->save();
 
-		return redirect()->route('user.account')->with(['message' => '¡Los datos se guardaron correctamente!']);
+		return redirect()->route('user.account')
+				->with(['message' => '¡Los datos se guardaron correctamente!']);
 
 	}
 
@@ -244,6 +258,21 @@ class UserController extends Controller {
 	---------------------------------------------------- */
 	public function update(Request $request){
 
+		$validate = $this->validate($request, [
+			'name' => 'required|min:3|regex:/^[a-zA-Z \.]+$/',
+			'birthday' => 'date|nullable',
+			'dni' => 'numeric|nullable',
+		], [
+			'name.required' => 'Este dato es requerido',
+			'name.min' => 'El nombre es demasiado corto',
+			'name.regex' => 'Sólo puedes ingresar caracteres alfabéticos (letras)',
+			'lastname.required' => 'Este dato es requerido',
+			'lastname.min' => 'El apellido es demasiado corto',
+			'lastname.regex' => 'Sólo puedes ingresar caracteres alfabéticos (letras)',
+			'birthday.date' => 'Debes ingresar una fecha válida',
+			'dni.numeric' => 'Sólo puedes ingresar caracteres numéricos'
+		]);
+
 		$user = \Auth::user();
 		$profile = UserProfile::where('user_id', $user->id)->first();
 
@@ -294,6 +323,17 @@ class UserController extends Controller {
 	/* Actualización de datos
 	---------------------------------------------------- */
 	public function contactUpdate(Request $request){
+
+		$validate = $this->validate($request, [
+			'phone' => 'digits:10|numeric|nullable',
+			'address' => 'nullable',
+			'city' => 'nullable',
+			'postalcode' => 'numeric|nullable',
+		], [
+			'phone.digits' => 'El número es muy corto (se esperan 10 números)',
+			'phone.numeric' => 'Debes ingresar sólo caracteres numéricos',
+			'postalcode.numeric' => 'Sólo puedes ingresar caracteres numéricos'
+		]);
 
 		$user = \Auth::user();
 		$address = UserAddress::where('user_id', $user->id)->first();

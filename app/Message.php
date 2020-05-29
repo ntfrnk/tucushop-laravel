@@ -8,6 +8,11 @@ class Message extends Model {
 
 	protected $table = 'messages';
 
+    // Respuestas
+    public function answers(){
+        return $this->hasMany('App\MessageAnswer');
+    }
+    
     // Store
     public function store(){
         return $this->belongsTo('App\Store');

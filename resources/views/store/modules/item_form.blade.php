@@ -63,10 +63,7 @@
                                 <label for="detail">{{ __('Detalle') }}</label>
 
                                 <textarea id="detail" rows="3" class="form-control @error('detail') is-invalid @enderror" name="detail" autocomplete="off">{{ isset($item) ? $item->detail : old('detail') }}</textarea>
-
-                                
-                                    <span class="invalid-feedback detail b">@error('detail'){{ $message }}@enderror</span>
-                                
+                                <span class="invalid-feedback detail b">@error('detail'){{ $message }}@enderror</span>
 
                             </div>
 

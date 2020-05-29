@@ -173,7 +173,7 @@
 .sidebar ul li a {
 	padding: 0 15px;
 	display: block;
-    color: #777;
+    color: #555 !important;
 }
 
 .sidebar ul li a:hover {
@@ -185,7 +185,8 @@
 	display: inline-block;
 	width: 20px;
     margin-right: 10px;
-    font-size: 16px;
+	font-size: 16px;
+	color: var(--primary);
 }
 
 .mainbar {
@@ -208,6 +209,14 @@
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border: solid 1px #CCC;
+}
+
+.box-admin-container h4 a {
+	color: var(--primary) !important;
+}
+
+.box-admin-container i {
+	color: var(--primary) !important;
 }
 
 

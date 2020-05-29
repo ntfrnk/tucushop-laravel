@@ -5,8 +5,8 @@
 	--white: #FFF;
 
 	/* Bootstrap */
-	--primary: #337FA9;
-	--primary-on: #005F93;
+	--primary: #38607E;
+	--primary-on: #214769;
 	--secondary: #506880;
 	--secondary-on: #244260;
 	--success: #528D46;
@@ -84,15 +84,76 @@ footer a:hover:not(.btn) {
 	box-shadow: none !important;
 }
 
+.btn-primary {
+	background: var(--primary);
+	border: solid 1px var(--primary);
+}
+
+.btn-primary:hover {
+	background: var(--primary-on);
+	border: solid 1px var(--primary-on);
+}
+
+.btn-link {
+	color: var(--primary);
+}
+
+.btn-link:hover {
+	color: var(--primary-on);
+}
+
 .btn-outline-primary {
-	border-color: #3490dc;
-	color: #3490dc;
+	color: var(--primary);
+	border: solid 1px var(--primary);
 }
 
 .btn-outline-primary:hover {
-	border-color: #227dc7;
-	color: #227dc7;
+	color: var(--primary-on);
+	border: solid 1px var(--primary-on);
 	background: transparent;
+}
+
+.btn-fb {
+	background: #3B5998;
+	border: solid 1px #3B5998;
+}
+
+.btn-fb:hover {
+	background: #334D84;
+	border: solid 1px #334D84;
+}
+
+.btn-pt {
+	background: #E60023;
+	border: solid 1px #E60023;
+}
+
+.btn-pt:hover {
+	background: #CC001F;
+	border: solid 1px #CC001F;
+}
+
+.btn-tw {
+	background: #00ACEE;
+	border: solid 1px #00ACEE;
+}
+
+.btn-tw:hover {
+	background: #0092CC;
+	border: solid 1px #0092CC;
+}
+
+.btn-wp {
+	padding: 0px 1px 3px !important;
+}
+
+.btn-wp i {
+	padding: 4px 4px 0 6px !important;
+}
+
+.btn-wp span {
+	padding: 6px 7px 0 0 !important;
+	margin: 0 !important;
 }
 
 

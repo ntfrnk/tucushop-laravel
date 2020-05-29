@@ -10,12 +10,12 @@
 			<div class="card-body pad30">
 
 				<div class="f17 marB30">
-					<div class="input-group col-md-6 f-right padR0">
+					{{-- <div class="input-group col-md-6 f-right padR0">
 						<input type="text" class="form-control" placeholder="Buscar un mensaje" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i> &nbsp;Buscar</button>
 						</div>
-					</div>
+					</div> --}}
 					<h1 class="f30 marB15">Centro de mensajes</h1>
 					<hr>
 				</div>
@@ -28,14 +28,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($messages as $message)
-							<tr>
-								<td>{{ $message->item->name }}</td>
-								<td class="a-right">
-									<a href="{{ route('user.message.read', ['message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Ver mensaje</a>
-									<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('user.message.delete', ['message_id' => $message->id]) }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i> Eliminar</a>
-								</td>
-							</tr>
+							@foreach($messages->sortByDesc('answers') as $message)
+
+								@php($isNew = $message->answers->where(['readed' => '0', 'sended_by' => 'store']))
+
+								<tr>
+									<td class="{{ $isNew!=false ? 'b' : '' }}">
+										{!! $isNew!=false ? '<span class="badge badge-success marR10">Sin leer</span>' : '' !!}
+										{{ $message->item->name }}
+									</td>
+									<td class="a-right">
+										<a href="{{ route('user.message.read', ['message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Ver mensaje</a>
+										<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('user.message.delete', ['message_id' => $message->id]) }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i> Eliminar</a>
+									</td>
+								</tr>
+
+								@php($isNew = "")
+
 							@endforeach
 						</tbody>
 					</table>

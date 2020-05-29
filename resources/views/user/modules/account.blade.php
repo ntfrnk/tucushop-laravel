@@ -40,55 +40,35 @@
 
                             <div class="form-group row form-row">
                                 <label for="email" class="col-md-4 col-form-label">{{ __('Correo electrónico') }}</label>
-
                                 <div class="col-md-8">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email ? $user->email : '' }}" required autocomplete="off">
-                                    <span class="invalid-feedback email none b" role="alert"></span>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <span class="invalid-feedback email b">@error('email'){{ $message }}@enderror</span>                                    
                                 </div>
                             </div>
 
                             <div class="form-group row form-row">
                                 <label for="nickname" class="col-md-4 col-form-label">{{ __('Nombre de usuario') }}</label>
-
                                 <div class="col-md-8 input-group">
                                     <input type="text" id="nickname" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ $user->nickname ? $user->nickname : '' }}" required autocomplete="off">
-                                    <span class="invalid-feedback nickname none b" role="alert"></span>
-                                    @error('nickname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <span class="invalid-feedback nickname b">@error('nickname'){{ $message }}@enderror</span>
                                 </div>
                             </div>
 
                             <div class="form-group row form-row">
                                 <label for="password" class="col-md-4 col-form-label">{{ __('Cambiar contraseña') }}</label>
-
                                 <div class="col-md-8">
-
                                     <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
-                                    <span class="invalid-feedback password none b" role="alert"></span>
+                                    <span class="invalid-feedback password b">@error('password'){{ $message }}@enderror</span>
                                     <span class="f13 text-muted i">(*) Rellenar sólo si deseas cambiar de contraseña.</span>
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row form-row-btn">
                                 <div class="col-md-8 offset-md-4 padL5">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" rel="submit" class="btn btn-primary">
                                         {{ __('Guardar cambios') }}
                                     </button>
-                                    <a href="{{ route('user.home') }}" class="btn btn-outline-primary marL5">Cancelar</a>
+                                    <a href="{{ route('user.home') }}" class="btn btn-link marL5">Cancelar</a>
                                 </div>
                             </div>
 

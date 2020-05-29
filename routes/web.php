@@ -186,7 +186,7 @@ Route::get('/user/preferences', 'UserController@preferences')
 
 // Detalle del item
 
-Route::get('/item/{name}_{id}.tshop', 'ItemController@detail')
+Route::get('/item/{name}_{id}', 'ItemController@detail')
 ->name('item.detail')
 ->where('name', '[a-z0-9-]+')
 ->where('id', '[0-9]+');
@@ -618,15 +618,16 @@ Route::post('/message/send', 'MessageController@send')
 
 // Listado de mensajes (Store)
 
-Route::get('/store/messages/{alias}', 'MessageController@store')
+Route::get('/store/{alias}/messages', 'MessageController@store')
 ->name('store.messages')
 ->where('alias', '[a-z0-9._]+');
 
 
 // Leer un hilo de mensajes (Store)
 
-Route::get('/store/message/read/{alias}/{message_id}', 'MessageController@read')
+Route::get('/store/{alias}/message/read/{message_id}', 'MessageController@readStore')
 ->name('store.message.read')
+->where('message_id', '[0-9]+')
 ->where('alias', '[a-z0-9._]+');
 
 
@@ -638,8 +639,14 @@ Route::get('/user/messages', 'MessageController@user')
 
 // Leer hilo de mensajes (Usuario)
 
-Route::get('/user/message/read/{message_id}', 'MessageController@read')
+Route::get('/user/message/read/{message_id}', 'MessageController@readUser')
 ->name('user.message.read');
+
+
+// Enviar respuesta
+
+Route::post('/message/answer', 'MessageController@answer')
+->name('message.answer');
 
 
 // Eliminar mensaje (Usuario)

@@ -167,6 +167,26 @@ CONSTRAINT fk_messages_stores FOREIGN KEY (store_id) REFERENCES stores(id),
 CONSTRAINT fk_messages_items FOREIGN KEY (item_id) REFERENCES items(id)
 ) ENGINE=InnoDb;
 
+
+/* Tabla MESSAGES_ANSWERS */
+
+CREATE TABLE IF NOT EXISTS messages_answers (
+id int(255) auto_increment NOT NULL,
+user_id int(255) NOT NULL,
+message_id int(255) NOT NULL,
+store_id int(255) NOT NULL,
+content text,
+sended_by varchar(10),
+readed_at datetime,
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_messages_answers PRIMARY KEY(id),
+CONSTRAINT fk_messages_answers_users FOREIGN KEY (user_id) REFERENCES users(id),
+CONSTRAINT fk_messages_answers_stores FOREIGN KEY (store_id) REFERENCES stores(id),
+CONSTRAINT fk_messages_answers_messages FOREIGN KEY (message_id) REFERENCES messages(id)
+) ENGINE=InnoDb;
+
+
 /* Tabla ITEMS_OFFERS */
 
 CREATE TABLE IF NOT EXISTS items_offers (

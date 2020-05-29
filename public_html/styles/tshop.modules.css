@@ -302,38 +302,6 @@
     margin: 0 0 0 0;
 }
 
-/*
- |
- | ÁREA DE USUARIOS
- | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-*/
-
-.box-user {
-	border: solid 1px #CCC;
-	border-radius: 4px;
-	text-align: center;
-	padding: 20px 0;
-	margin-bottom: 25px;
-	transition: background 300ms ease-in-out, color 300ms ease-in-out, border-color 300ms ease-in-out;
-}
-
-.box-user-special {
-	background: #EEE;
-}
-
-.box-user-deact {
-	color: #BBB;
-}
-
-.box-user:hover {
-	color: #FFF;
-	cursor: pointer;
-}
-
-.box-user p {
-	font-size: 16px;
-}
-
 
 /*
  |
@@ -452,4 +420,10 @@ label {
 
 .form-control:focus {
 	border: solid 1px #555;
+}
+
+.message-resp-form {
+	border-top: double 6px #EEE;
+	/* background: #F8FAFC; */
+	padding: 25px 0 0;
 }

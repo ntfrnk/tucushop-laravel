@@ -25,7 +25,7 @@
                         <label for="name" class="col-md-3 col-form-label">{{ __('Nombres') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->profile->name ? $user->profile->name : '' }}" required autocomplete="off">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->profile->name ? $user->profile->name : old('name') }}" required autocomplete="off">
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -39,7 +39,7 @@
                         <label for="alias" class="col-md-3 col-form-label">{{ __('Apellidos') }}</label>
 
                         <div class="col-md-6 input-group">
-							<input type="text" id="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ $user->profile->lastname ? $user->profile->lastname : '' }}" required autocomplete="off">
+							<input type="text" id="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ $user->profile->lastname ? $user->profile->lastname : old('lastname') }}" required autocomplete="off">
 
                             @error('lastname')
                                 <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                         <label for="birthday" class="col-md-3 col-form-label">{{ __('Fecha de nacimiento') }}</label>
 
                         <div class="col-md-6 input-group">
-							<input type="date" id="birthday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ $user->profile->birthday ? $user->profile->birthday : '' }}" required autocomplete="off">
+							<input type="date" id="birthday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ $user->profile->birthday ? $user->profile->birthday : old('birthday') }}" autocomplete="off">
 
                             @error('birthday')
                                 <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
 
                         <div class="col-md-6">
 
-                            <input type="number" id="dni" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $user->profile->dni ? $user->profile->dni : '' }}" required autocomplete="off">
+                            <input type="number" id="dni" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $user->profile->dni ? $user->profile->dni : '' }}" autocomplete="off">
                             <span class="f13 text-muted i">(*) Requerido para realizar compras o ventas.</span>
 
                             @error('dni')
@@ -99,10 +99,10 @@
 
                     <div class="form-group row form-row-btn">
                         <div class="col-md-6 offset-md-3 padL5">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" rel="submit" class="btn btn-primary">
                                 {{ __('Guardar cambios') }}
                             </button>
-                            <a href="{{ route('user.home') }}" class="btn btn-outline-primary marL5">Cancelar</a>
+                            <a href="{{ route('user.home') }}" class="btn btn-link marL5">Cancelar</a>
                         </div>
                     </div>
 
