@@ -2,7 +2,7 @@
 
 @section('content-mail')
 
-<p>Estimado {{ $info->user->profile->name}},</p>
+<p>Estimado {{ $info->user->profile->name }},</p>
 <p>Te informamos que «{{ $info->user->admins->first()->store->name }}» fue creado con éxito en Tucushop.com.</p>
 <p>Los datos de tu nuevo negocio son los siguientes:</p>
 
@@ -15,5 +15,7 @@
 
 <p>Si tienes alguna duda respecto a este u otros temas de la web, te invitamos a revisar la información disponible en el área de ayuda y soporte de Tucushop.com (https://tucuchop.com/help).</p>
 <p>¡Gracias por ser parte de Red Tucushop!</p>
+
+<p><br>--<br>{{ $info->sender }}</p>
 
 @endsection

@@ -19,7 +19,7 @@ class MailSender extends Mailable {
 
     public function build() {
         return $this->from('mailing@tucushop.com')
-        ->view('mail.store_new');
+        ->view('mail.'.$this->info->template);
     }
 
 }
