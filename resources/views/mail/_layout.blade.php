@@ -1,21 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<style>
-			.nw-cabecera {padding: 30px 40px; background: #d90046;}
-			.nw-cabecera img {width: 300px;}
-			.nw-contenedor {width: 800px; padding: 0; margin: 0;}
-			.nw-texto {color: #676767; margin: 0 50px;}
-			.nw-texto p {font-family: Raleway; font-size: 16px; line-height: 22px; margin-bottom: 16px;}
-			.nw-texto p blockquote {font-family: Raleway; font-size: 16px; line-height: 22px; margin-bottom: 16px;}
-			.nw-texto a {color: rgba(70, 180, 176, 1);}
-			.nw-texto a:hover {color: #555;}
-			.nw-cuerpo {padding: 60px 20px;}
-			.nw-footer {background: #222; color: #999; font-family: Raleway; font-size: 13px; padding: 40px 40px; line-height: 20px;}
-			.nw-footer a {color: rgba(70, 180, 176, 1); text-decoration: none;}
-			.nw-footer a:hover {text-decoration: underline;}
-			.nw-box-detail {background: #F4F4F4; border: solid 1px #CCC; padding: 20px; margin: 10px 0;}
-		</style>
+		<link href="{{ asset('styles/tshop.mails.css') }}" rel="stylesheet">
 	</head>
 	
 	<body>
