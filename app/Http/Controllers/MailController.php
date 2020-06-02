@@ -31,6 +31,7 @@ class MailController extends Controller {
 
         $infoMail = new \stdClass();
         $infoMail->template = 'welcome';
+        $infoMail->subject = '¡Bienvenido a Red Tucushop!';
         $infoMail->sender = 'Equipo Tucushop';
         $infoMail->user = $user;
  
