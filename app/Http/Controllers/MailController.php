@@ -10,11 +10,12 @@ use App\User;
 
 class MailController extends Controller {
     
-    public function toUser($user_id) {
+    public function userWelcome($user_id) {
 
         $user = User::find($user_id);
 
         $infoMail = new \stdClass();
+        $infoMail->template = 'welcome';
         $infoMail->sender = 'Equipo Tucushop';
         $infoMail->user = $user;
  
@@ -31,7 +32,7 @@ class MailController extends Controller {
         $infoMail->sender = 'Equipo Tucushop';
         $infoMail->user = $user;
  
-        Mail::to($user->email)->send(new MailSender($infoMail));
+        //Mail::to($user->email)->send(new MailSender($infoMail));
 
         return view('mail.store_new', ['info' => $infoMail]);
 
