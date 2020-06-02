@@ -667,6 +667,11 @@ Route::get('/user/message/delete/{message_id}', 'MessageController@delete')
 ->name('user.message.delete');
 
 
+// Algo
+
+Route::get('/mail/ver', 'MailController@ver')->name('mail.ver');
+
+
 /*
  |
  | TIENDAS
