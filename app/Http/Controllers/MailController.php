@@ -30,7 +30,7 @@ class MailController extends Controller {
         $infoMail->sender = 'Equipo Tucushop';
         $infoMail->user = $user;
  
-        //Mail::to($user->email)->send(new MailSender($infoMail));
+        Mail::to($user->email)->send(new MailSender($infoMail));
 
         return view('mail.store_new', ['info' => $infoMail]);
 
