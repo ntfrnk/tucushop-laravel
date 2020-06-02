@@ -32,8 +32,8 @@ class MailController extends Controller {
  
         Mail::to($user->email)->send(new MailSender($infoMail));
 
-        return view('mail.store_new', ['user' => $user]);
-        
+        return view('mail.store_new', ['infoMail' => $infoMail]);
+
     }
 
 }
