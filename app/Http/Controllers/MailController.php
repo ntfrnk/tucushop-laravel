@@ -18,13 +18,22 @@ class MailController extends Controller {
         $infoMail->sender = 'Equipo Tucushop';
         $infoMail->user = $user;
  
-        Mail::to($user->email)->send(new DemoEmail($infoMail));
+        Mail::to($user->email)->send(new MailSender($infoMail));
 
     }
 
     public function ver() {
+
         $user = \Auth::user();
+
+        $infoMail = new \stdClass();
+        $infoMail->sender = 'Equipo Tucushop';
+        $infoMail->user = $user;
+ 
+        Mail::to($user->email)->send(new MailSender($infoMail));
+
         return view('mail.store_new', ['user' => $user]);
+        
     }
 
 }
