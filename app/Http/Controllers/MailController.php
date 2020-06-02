@@ -27,6 +27,7 @@ class MailController extends Controller {
         $user = \Auth::user();
 
         $infoMail = new \stdClass();
+        $infoMail->template = 'welcome';
         $infoMail->sender = 'Equipo Tucushop';
         $infoMail->user = $user;
  
