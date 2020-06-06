@@ -1,6 +1,0 @@
-RewriteEngine on
-
-RewriteCond %{HTTP_HOST} ^tucushop.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www.tucushop.com$
-
-rewriterule ^(.*)$ https://moda.tucushop.com/ [R=301,L]
