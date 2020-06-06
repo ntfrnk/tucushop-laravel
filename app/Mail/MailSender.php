@@ -20,6 +20,7 @@ class MailSender extends Mailable {
     public function build() {
         return $this->subject($this->info->subject)
                     ->view('mail.'.$this->info->template);
+                    //->text('mail.text.'.$this->info->template);
     }
 
 }

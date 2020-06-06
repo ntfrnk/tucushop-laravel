@@ -18,7 +18,7 @@
 
 			<div class="menu-logo">
 				<a class="menu-logo-a" href="{{ route('home') }}">
-					<img src="{{ asset('images/logo.png') }}" class="menu-logo-img" />
+					<img src="{{ asset('images/logo.svg') }}" class="menu-logo-img" />
 				</a>
 			</div>
 

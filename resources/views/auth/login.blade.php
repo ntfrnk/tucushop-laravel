@@ -16,6 +16,9 @@
 
                             <div class="col-md-6">
                                 <h3 class="f25 fw600 marT20">Iniciar sesión</h3>
+                                @if(session('message'))
+                                    <span class="text-success f16 b">{{ session('message') }}</span>
+                                @endif
                             </div>
                         </div>
 

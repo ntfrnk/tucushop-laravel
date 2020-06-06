@@ -53,6 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
+            'gender' => ['string', 'min:8', 'max:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -80,6 +81,7 @@ class RegisterController extends Controller
         $userProfile->user_id = $userCreated->id;
         $userProfile->name = $data['name'];
         $userProfile->lastname = $data['lastname'];
+        $userProfile->gender = $data['gender'];
 
         $userProfile->save();
 

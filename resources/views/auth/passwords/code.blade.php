@@ -9,30 +9,32 @@
 
                 <div class="card-body padB40 padT25">
 
-                    <form method="POST" action="{{ route('user.pass.recover') }}">
+                    <form method="POST" action="{{ route('user.pass.validate') }}">
                         @csrf
 
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">&nbsp;</label>
+                            <label for="" class="col-md-4 col-form-label text-md-right">&nbsp;</label>
 
                             <div class="col-md-6">
-                                <h3 class="f25 fw600 marT20">Recuperar contraseña</h3>
+                                <h3 class="f25 fw600 marT20">Valida tu cuenta</h3>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Código de validación') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="off" autofocus>
-                                <span class="invalid-feedback email b">@error('email'){{ $message }}@enderror</span>
-                                <span class="text-muted f13 lh16 block marT10">Te enviaremos un código único a tu casilla de correo para que puedas recuperar el acceso a tu cuenta.</span>
+                                <input id="code" type="number" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" autocomplete="off" autofocus>
+                                <span class="invalid-feedback code b">@error('code'){{ $message }}@enderror</span>
+                                <span class="text-muted f13 lh16 block marT10">Ingresa aquí el código de validación (seis dígitos) que te enviamos a tu cuenta de correo.</span>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" rel="submit" class="btn btn-primary">
                                     {{ __('Enviar código') }}
                                 </button>
                                 <a href="{{ route('login') }}" class="btn btn-link">

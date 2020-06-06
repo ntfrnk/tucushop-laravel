@@ -75,6 +75,38 @@ Route::post('/feedback/problem', 'FeedbackController@problem')->name('feedback.p
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
 
+// Recuperar contraseña
+
+Route::post('/user/pass/recover', 'UserController@passRecover')
+->name('user.pass.recover');
+
+
+// Recuperar contraseña (cargar código)
+
+Route::get('/user/pass/code/{user_token}', 'UserController@passRecoverCode')
+->name('user.pass.code')
+->where('user_token', '[a-zA-Z0-9]{60}');
+
+
+// Recuperar contraseña (validar código)
+
+Route::post('/user/pass/validate', 'UserController@passValidateCode')
+->name('user.pass.validate');
+
+
+// Recuperar contraseña (ingresar una nueva)
+
+Route::get('/user/pass/changepass/{user_token}', 'UserController@passChangePass')
+->name('user.pass.changepass')
+->where('user_token', '[a-zA-Z0-9]{60}');
+
+
+// Recuperar contraseña (validar nueva contraseña)
+
+Route::post('/user/pass/new', 'UserController@passValidateNew')
+->name('user.pass.new');
+
+
 // Información de usuario
 
 Route::get('/user/home', 'UserController@home')
@@ -667,9 +699,134 @@ Route::get('/user/message/delete/{message_id}', 'MessageController@delete')
 ->name('user.message.delete');
 
 
-// Algo
+/*
+ |
+ | MAILS
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
 
-Route::get('/mail/ver', 'MailController@ver')->name('mail.ver');
+// Bienvenida de usuario
+
+Route::get('/mail/user/welcome/{user_id}/{debug?}', 'MailController@userWelcome')
+->name('mail.user.welcome')
+->where('user_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Recuperación de contraseña
+
+Route::get('/mail/user/recoverpass/{user_id}/{debug?}', 'MailController@userRecoverPass')
+->name('mail.user.recoverpass')
+->where('user_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Confirmación de contraseña
+
+Route::get('/mail/user/changepass/{user_id}/{debug?}', 'MailController@userChangePass')
+->name('mail.user.changepass')
+->where('user_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Nuevo mensaje
+
+Route::get('/mail/user/newmessage/{user_id}/{debug?}', 'MailController@userNewMessage')
+->name('mail.user.newmessage')
+->where('user_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+// Nuevo negocio creado (Bienvenida)
+
+Route::get('/mail/store/new/{store_id}/{debug?}', 'MailController@storeNew')
+->name('mail.store.new')
+->where('store_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Habilitación / Deshabilitación de negocio
+
+Route::get('/mail/store/statuschange/{store_id}/{debug?}', 'MailController@storeStatusChange')
+->name('mail.store.statuschange')
+->where('store_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Eliminación de negocio
+
+Route::get('/mail/store/delete/{store_id}/{debug?}', 'MailController@storeDelete')
+->name('mail.store.delete')
+->where('store_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Nuevo mensaje
+
+Route::get('/mail/store/newmessage/{store_id}/{debug?}', 'MailController@storeNewMessage')
+->name('mail.store.newmessage')
+->where('store_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Denuncia de un artículo
+
+Route::get('/mail/store/claim/{item_id}/{debug?}', 'MailController@storeClaim')
+->name('mail.store.claim')
+->where('item_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+// Nuevo usuario
+
+Route::get('/mail/root/newuser/{user_id}/{debug?}', 'MailController@rootNewUser')
+->name('mail.root.newuser')
+->where('user_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Nuevo negocio
+
+Route::get('/mail/root/newstore/{store_id}/{debug?}', 'MailController@rootStoreNew')
+->name('mail.root.newstore')
+->where('store_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Negocio eliminado
+
+Route::get('/mail/root/storedeleted/{store_id}/{debug?}', 'MailController@rootStoreDeleted')
+->name('mail.root.storedeleted')
+->where('store_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Denuncia a un artículo
+
+Route::get('/mail/root/claim/{report_id}/{debug?}', 'MailController@rootClaim')
+->name('mail.root.claim')
+->where('report_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Reporte de un error en la página
+
+Route::get('/mail/root/reporting/{reporting_id}/{debug?}', 'MailController@rootReporting')
+->name('mail.root.reporting')
+->where('reporting_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
+
+
+// Consulta desde la página
+
+Route::get('/mail/root/question/{question_id}/{debug?}', 'MailController@rootQuestion')
+->name('mail.root.question')
+->where('question_id', '[0-9]{1,11}')
+->where('debug', '[a-z]{4,5}');
 
 
 /*

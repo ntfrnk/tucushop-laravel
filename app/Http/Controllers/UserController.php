@@ -13,10 +13,127 @@ use App\User;
 use App\UserLike;
 use App\UserProfile;
 use App\UserAddress;
+use App\UserRecover;
 use App\Item;
 
 class UserController extends Controller {
     
+	/* Recuperar contraseña
+	---------------------------------------------------- */
+	public function passRecover(Request $request){
+		
+		$validate = $this->validate($request, [
+			'email' => 'required|email|exists:users,email'
+		], [
+			'email.required' => 'Este campo no puede quedar vacío',
+			'email.email' => 'Debes ingresar un e-mail válido',
+			'email.exists' => 'No encontramos este e-mail en nuestra base de datos'
+		]);
+
+		$user = User::where('email', $request->email)->get();
+
+		return redirect()->route('mail.user.recoverpass', [
+			'user_id' => $user->id
+		]);
+
+	}
+
+
+	/* Recuperar contraseña (cargar código)
+	---------------------------------------------------- */
+	public function passRecoverCode($user_token){
+		
+		$user = User::where('remember_token', $user_token)->first();
+
+		if($user){
+
+			return view('auth.passwords.code', [
+				'user' => $user
+			]);
+		
+		} else {
+
+			return redirect()->route('login');
+
+		}
+
+	}
+
+
+	/* Recuperar contraseña
+	---------------------------------------------------- */
+	public function passValidateCode(Request $request){
+		
+		$validate = $this->validate($request, [
+			'code' => 'required|digits:6|int|exists:users_recoverpass,code'
+		], [
+			'code.required' => 'Debes indicar el código de validación',
+			'code.digits' => 'La longitud del código no es correcta (seis caracteres requeridos)',
+			'code.int' => 'El código debe ser un número',
+			'code.exists' => 'El código ingresado no es válido'
+		]);
+
+		$recover = UserRecover::where('code',$request->code)
+		->where('user_id',$request->user_id)
+		->first();
+
+		$recover->delete();
+
+		$user = User::find($request->user_id);
+
+		return redirect()->route('user.pass.changepass', [
+			'user_token' => $user->remember_token
+		]);
+
+	}
+
+
+	/* Recuperar contraseña (introducir una nueva)
+	---------------------------------------------------- */
+	public function passChangePass($user_token){
+		
+		$user = User::where('remember_token', $user_token)->first();
+
+		if($user){
+
+			return view('auth.passwords.newpass', [
+				'user' => $user
+			]);
+		
+		} else {
+
+			return redirect()->route('login');
+
+		}
+
+	}
+
+
+	/* Recuperar contraseña
+	---------------------------------------------------- */
+	public function passValidateNew(Request $request){
+		
+		$validate = $this->validate($request, [
+			'password' => 'required|min:6|max:30|regex:/^[a-zA-Z0-9_ -\+\.]+$/|confirmed'
+		], [
+			'password.required' => 'Tienes que ingresar una contraseña',
+			'password.regex' => 'Estás usando caracteres no permitidos',
+			'password.min' => 'La contraseña es demasiado corta (mínimo: 6 caracteres)',
+			'password.max' => 'La contraseña es demasiado larga (máximo: 30 caracteres)',
+			'password.confirmed' => 'Las contraseñas no coinciden'
+		]);
+
+		$user = User::find($request->user_id);
+		$user->password = hash::make($request->password);
+		$user->save();
+
+		return redirect()->route('mail.user.changepass');
+
+	}
+
+	
+	/* Home de área de usuario
+	---------------------------------------------------- */
 	public function home(){
 		
 		$user = \Auth::user();

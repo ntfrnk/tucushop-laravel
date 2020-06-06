@@ -84,6 +84,19 @@ CONSTRAINT fk_users_likes_items FOREIGN KEY (item_id) REFERENCES items(id),
 CONSTRAINT fk_users_likes_users FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDb;
 
+/* Tabla USERS_RECOVERPASS */
+
+CREATE TABLE IF NOT EXISTS users_recoverpass (
+id int(255) auto_increment NOT NULL,
+user_id int(255) NOT NULL,
+code int(6) NOT NULL,
+confirm int(1) NOT NULL,
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_users_recoverpass PRIMARY KEY (id),
+CONSTRAINT fk_users_recoverpass_users FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDb;
+
 /* Tabla PLANS */
 
 CREATE TABLE IF NOT EXISTS plans (
@@ -399,4 +412,16 @@ content text,
 created_at datetime,
 updated_at datetime,
 CONSTRAINT pk_questions PRIMARY KEY(id)
+) ENGINE=InnoDb;
+
+
+/* Tabla MAILS */
+
+CREATE TABLE IF NOT EXISTS mails (
+id int(255) auto_increment NOT NULL,
+user_id int(255),
+topic varchar(255),
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_mails PRIMARY KEY(id)
 ) ENGINE=InnoDb;

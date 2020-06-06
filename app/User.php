@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'nickname',
+        'email', 'password', 'nickname', 'remember_token',
     ];
 
     /**
@@ -67,6 +67,11 @@ class User extends Authenticatable
     // El perfil
     public function profile(){
         return $this->hasOne('App\UserProfile');
+    }
+
+    // Recover
+    public function recover(){
+        return $this->hasOne('App\UserRecover');
     }
 
 
