@@ -55,6 +55,7 @@ class MailController extends Controller {
         $recover = new UserRecover();
         $recover->user_id = $user->id;
         $recover->code = mt_rand(111111,999999);
+        $recover->confirm = 0;
         $recover->save();
 
         $infoMail = new \stdClass();
