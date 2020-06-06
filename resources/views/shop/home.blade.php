@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+
+@section('cdn')
+<script src="//assets.pinterest.com/js/pinit.js" defer asinc></script>
+<script src="//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v7.0&appId=680360878656194&autoLogAppEvents=1" async defer crossorigin="anonymous"></script>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8" defer async></script>
+@endsection
+
+
 @php($imgShop = public_path().'/storage/stores/resized/'.$store->shop->image_header)
 @if(file_exists($imgShop) && !is_dir($imgShop))
 	@php($imgShop = route('home').'/storage/stores/resized/'.$store->shop->image_header.'?v='.$store->shop->version_header)
