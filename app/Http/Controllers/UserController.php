@@ -30,7 +30,7 @@ class UserController extends Controller {
 			'email.exists' => 'No encontramos este e-mail en nuestra base de datos'
 		]);
 
-		$user = User::where('email', $request->email)->get();
+		$user = User::where('email', $request->email)->first();
 
 		return redirect()->route('mail.user.recoverpass', [
 			'user_id' => $user->id
