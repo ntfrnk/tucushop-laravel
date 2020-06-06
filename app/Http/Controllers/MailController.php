@@ -88,7 +88,7 @@ class MailController extends Controller {
         if($debug==false){
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('login')
-            ->with(['message' => 'La contraseña se modificó exitosamente. Por favor inicia sesión.']);
+            ->with(['message' => '¡La contraseña se modificó exitosamente!<br>Por favor inicia sesión.']);
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
         }
