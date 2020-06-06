@@ -11,17 +11,9 @@
 	<link href="{{ asset('plugins/croppie/croppie-custom.css') }}" rel="stylesheet">
 @endsection
 
-{{-- Imagenes --}}
-
-@if($user->profile->photo)
-	@php($img = 'storage/users/resized/'.$user->profile->photo)
-@endif
-
-@php($noimg = 'storage/users/resized/no-logo.jpg')
-
 @section('admin')
 
-<span id="photo_url" class="none">public_html/storage/users/original/{{ $user->profile->photo }}</span>
+<span id="photo_url" class="none">{{ route('home').'/storage/users/original/'.$user->profile->photo }}</span>
 
 <div class="row">
 	<div class="col-md-12 mainbar">
