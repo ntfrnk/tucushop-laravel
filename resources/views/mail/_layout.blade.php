@@ -14,7 +14,7 @@
 
 				<div class="nw-cabecera">
 					<a href="{{ route('home') }}">
-						<img src="{{ asset('/images/logo-mail.svg') }}" />
+						<img src="{{ asset(route('home').'/images/logo-mail.png') }}" />
 					</a>
 				</div>
 				
