@@ -82,7 +82,7 @@ class UserController extends Controller {
 		$user = User::find($request->user_id);
 
 		return redirect()->route('user.pass.changepass', [
-			'user_token' => $user->remember_token
+			'user_id' => $user->id
 		]);
 
 	}
