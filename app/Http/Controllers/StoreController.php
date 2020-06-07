@@ -156,7 +156,7 @@ class StoreController extends Controller {
 			
 			// Notifico por mail al dueño
 
-			$newstore = Store::find($store_id);
+			$newstore = Store::find($store->id);
 
 			$infoMailOwner = new \stdClass();
 			$infoMailOwner->template = 'store_new';
