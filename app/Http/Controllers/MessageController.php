@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\MailSender;
+use Illuminate\Support\Facades\Mail;
+
 use App\Message;
 use App\MessageAnswer;
 use App\Store;
@@ -82,6 +86,16 @@ class MessageController extends Controller {
 		$message->closed = 0;
 
 		$message->save();
+
+		// Envío la notificación al dueño del store
+
+		$infoMail = new \stdClass();
+        $infoMail->template = 'store_newmessage';
+        $infoMail->gender = $message->store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
+        $infoMail->subject = 'Recibiste una consulta por un artículo';
+        $infoMail->message = $message;
+ 
+        Mail::to($user->email)->send(new MailSender($infoMail));
 		
 		return "ok";
 
