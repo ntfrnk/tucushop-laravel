@@ -1,0 +1,6 @@
+[alias]
+
+    push = push origin master
+    pull = pull origin master
+    co = commit -m
+    st = status
