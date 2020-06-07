@@ -78,16 +78,18 @@ class MessageController extends Controller {
 		$user = \Auth::user();
 		$item = Item::find($request->item_id);
 
-		$message = new Message();
-		$message->user_id = $user->id;
-		$message->item_id = $item->id;
-		$message->store_id = $item->store->id;
-		$message->content = $request->content;
-		$message->closed = 0;
+		$newmsj = new Message();
+		$newmsj->user_id = $user->id;
+		$newmsj->item_id = $item->id;
+		$newmsj->store_id = $item->store->id;
+		$newmsj->content = $request->content;
+		$newmsj->closed = 0;
 
-		$message->save();
+		$newmsj->save();
 
 		// Envío la notificación al dueño del store
+
+		$message = Message::find($newmsj->id);
 
 		$infoMail = new \stdClass();
         $infoMail->template = 'store_newmessage';
