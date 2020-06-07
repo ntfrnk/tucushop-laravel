@@ -13,6 +13,7 @@ use App\Message;
 use App\ItemReport;
 use App\Question;
 use App\Bug;
+use App\Email;
 
 class MailController extends Controller {
 
@@ -37,6 +38,8 @@ class MailController extends Controller {
         $infoMail->user = $user;
  
         if($debug==false){
+            $mail = new Email();
+		    $mail->topic = 'New user';
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
@@ -65,6 +68,8 @@ class MailController extends Controller {
         $infoMail->user = $user;
  
         if($debug==false){
+            $mail = new Email();
+		    $mail->topic = 'Recover password: Send code';
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('user.pass.code', ['user_token' => $user->remember_token]);
         } else {
@@ -86,6 +91,8 @@ class MailController extends Controller {
         $infoMail->user = $user;
  
         if($debug==false){
+            $mail = new Email();
+		    $mail->topic = 'Recover password: Change';
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('login')
             ->with(['message' => '¡La contraseña se modificó exitosamente!<br>Por favor inicia sesión.']);
@@ -109,6 +116,8 @@ class MailController extends Controller {
         $infoMail->message = $message;
  
         if($debug==false){
+            $mail = new Email();
+		    $mail->topic = 'New message to store';
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {

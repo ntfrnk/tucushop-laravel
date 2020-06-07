@@ -17,6 +17,7 @@ use App\StoreShop;
 use App\StoreProfile;
 use App\Message;
 use App\Feature;
+use App\Email;
 
 class StoreController extends Controller {
 
@@ -107,7 +108,8 @@ class StoreController extends Controller {
 				'alias.unique'  => 'Esta dirección ya está siendo usada por otro negocio'
 			]);
 
-			/** Agrego el nuevo store */
+
+			// Agrego el nuevo store 
 			
 			$store = new Store();
 			$store->name = $request->name;
@@ -121,21 +123,24 @@ class StoreController extends Controller {
 
 			$store->save();
 
-			/** Agrego el perfil del store */
+
+			// Agrego el perfil del store 
 
 			$storeInfo = new StoreProfile();
 			$storeInfo->store_id = $store->id;
 
 			$storeInfo->save();
 
-			/** Agrego el shop / tienda del store */
+
+			// Agrego el shop / tienda del store 
 
 			$storeShop = new StoreShop();
 			$storeShop->store_id = $store->id;
 
 			$storeShop->save();
 
-			/** Agrego el usuario actual como administrador */
+
+			// Agrego el usuario actual como administrador 
 
 			$admin = new StoreAdmin();
 			$admin->store_id = $store->id;
@@ -145,6 +150,38 @@ class StoreController extends Controller {
 
 			$admin->save();
 
+			
+			// Notifico por mail al dueño
+
+			$newstore = Store::find($store_id);
+
+			$infoMailOwner = new \stdClass();
+			$infoMailOwner->template = 'store_new';
+			$infoMailOwner->subject = '¡Creaste tu negocio en Red Tucushop!';
+			$infoMailOwner->store = $newstore;
+
+			Mail::to($newstore->admins->first()->user->email)->send(new MailSender($infoMailOwner));
+
+			$mail = new Email();
+			$mail->topic = 'New store (to owner)';
+			$mail->save();
+
+
+			// Notifico por mail a root
+
+			$infoMailRoot = new \stdClass();
+			$infoMailRoot->template = 'root_newstore';
+			$infoMailRoot->subject = 'Nuevo negocio creado en Red Tucushop';
+			$infoMailRoot->store = $newstore;
+ 
+			Mail::to('mailing@tucushop.com')->send(new MailSender($infoMailRoot));
+			
+			$mail = new Email();
+			$mail->topic = 'New store (to root)';
+			$mail->save();
+
+			
+			// Redirijo a home de gestión del negocio
 
 			return redirect()->route('store.home', [
 				'alias' => $store->alias
@@ -707,6 +744,33 @@ class StoreController extends Controller {
 			$store->status = $store->status == 1 ? 0 : 1;
 			$store->save();
 
+			
+			// Notifico por mail a owner
+
+			$action = $store->status == 1 ? 'habilitaste' : 'deshabilitaste';
+
+			$infoMail = new \stdClass();
+			$infoMail->template = 'store_statuschange';
+			$infoMail->gender = $store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
+			$infoMail->subject = $store->admins->first()->user->profile->name.', '.$action.' tu negocio';
+			$infoMail->store = $store;
+ 
+            Mail::to($store->admins->first()->user->email)->send(new MailSender($infoMail));
+
+			if($store->status == 1){
+
+				$mail = new Email();
+				$mail->topic = 'Store enabled';
+				$mail->save();
+
+			} else {
+
+				$mail = new Email();
+				$mail->topic = 'Store disabled';
+				$mail->save();
+
+			}
+
 			return redirect()->route('store.home', ['alias' => $store->alias]);
 
 		} else {
@@ -750,6 +814,36 @@ class StoreController extends Controller {
 
 			$store->deleted = 1;
 			$store->save();
+
+
+			// Notifico por mail a owner
+
+			$infoMail = new \stdClass();
+			$infoMail->template = 'store_delete';
+			$infoMail->gender = $store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
+			$infoMail->subject = $store->admins->first()->user->profile->name.', eliminaste tu negocio';
+			$infoMail->store = $store;
+ 
+            Mail::to($store->admins->first()->user->email)->send(new MailSender($infoMail));
+
+			$mail = new Email();
+			$mail->topic = 'Store deleted (to owner)';
+			$mail->save();
+
+
+			// Notifico por mail a root
+
+			$infoMailRoot = new \stdClass();
+			$infoMailRoot->template = 'root_storedeleted';
+			$infoMailRoot->subject = 'Negocio eliminado en Tucushop.com';
+			$infoMailRoot->store = $newstore;
+ 
+			Mail::to('mailing@tucushop.com')->send(new MailSender($infoMailRoot));
+			
+			$mail = new Email();
+			$mail->topic = 'Store deleted (to root)';
+			$mail->save();
+
 
 			return redirect()->route('store.list');
 

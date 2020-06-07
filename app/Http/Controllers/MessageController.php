@@ -11,6 +11,7 @@ use App\Message;
 use App\MessageAnswer;
 use App\Store;
 use App\Item;
+use App\Email;
 
 class MessageController extends Controller {
     
@@ -95,7 +96,11 @@ class MessageController extends Controller {
         $infoMail->template = 'store_newmessage';
         $infoMail->gender = $message->store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
         $infoMail->subject = 'Recibiste una consulta por un artículo';
-        $infoMail->message = $message;
+		$infoMail->message = $message;
+		
+		$mail = new Email();
+		$mail->topic = 'New message to store';
+		$mail->save();
  
         Mail::to($message->store->admins->first()->user->email)->send(new MailSender($infoMail));
 		
@@ -202,6 +207,10 @@ class MessageController extends Controller {
 				$infoMail->subject = 'Tienes un nuevo mensaje en una consulta que te hicieron';
 				$infoMail->message = $message;
 
+				$mail = new Email();
+				$mail->topic = 'New answer to store';
+				$mail->save();
+
 				Mail::to($user->email)->send(new MailSender($infoMail));
 			
 				return redirect()->route('user.message.read', [
@@ -219,6 +228,10 @@ class MessageController extends Controller {
 				$infoMail->gender = $message->user->profile->gender == 'Masculino' ? 'o' : 'a';
 				$infoMail->subject = $message->user->profile->name.', tienes un nuevo mensaje en una consulta que hiciste';
 				$infoMail->message = $message;
+
+				$mail = new Email();
+				$mail->topic = 'New answer to user';
+				$mail->save();
 
 				Mail::to($message->store->admins->first()->user->email)->send(new MailSender($infoMail));
 
