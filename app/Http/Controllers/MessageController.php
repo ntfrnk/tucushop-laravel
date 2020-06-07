@@ -220,7 +220,7 @@ class MessageController extends Controller {
 				$infoMail->subject = $message->user->profile->name.', tienes un nuevo mensaje en una consulta que hiciste';
 				$infoMail->message = $message;
 
-				Mail::to($store->admins->first()->user->email)->send(new MailSender($infoMail));
+				Mail::to($message->store->admins->first()->user->email)->send(new MailSender($infoMail));
 
 				$store = Store::find($request->store_id);
 
