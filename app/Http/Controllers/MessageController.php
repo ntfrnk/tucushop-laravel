@@ -155,7 +155,7 @@ class MessageController extends Controller {
 	}
 	
 
-	/* Consulta sobre un item
+	/* Respuesta a un mensaje
 	---------------------------------------------------- */
 	public function answer(Request $request){
 
@@ -191,6 +191,16 @@ class MessageController extends Controller {
 			$answer->save();
 
 			if($request->sended_by == 'user'){
+
+				$message = Message::find($request->message_id);
+
+				$infoMail = new \stdClass();
+				$infoMail->template = 'user_newmessage';
+				$infoMail->gender = $message->user->profile->gender == 'Masculino' ? 'o' : 'a';
+				$infoMail->subject = $message->user->profile->name.', tu consulta por un artículo fue respondida';
+				$infoMail->message = $message;
+
+				Mail::to($user->email)->send(new MailSender($infoMail));
 			
 				return redirect()->route('user.message.read', [
 					'message_id' => $request->message_id
