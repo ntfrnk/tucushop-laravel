@@ -97,7 +97,7 @@ class MessageController extends Controller {
         $infoMail->subject = 'Recibiste una consulta por un artículo';
         $infoMail->message = $message;
  
-        Mail::to($user->email)->send(new MailSender($infoMail));
+        Mail::to($message->store->admins->first()->user->email)->send(new MailSender($infoMail));
 		
 		return "ok";
 
@@ -192,12 +192,14 @@ class MessageController extends Controller {
 
 			if($request->sended_by == 'user'){
 
+				// Envío notificación por mail
+
 				$message = Message::find($request->message_id);
 
 				$infoMail = new \stdClass();
-				$infoMail->template = 'user_newmessage';
-				$infoMail->gender = $message->user->profile->gender == 'Masculino' ? 'o' : 'a';
-				$infoMail->subject = $message->user->profile->name.', tu consulta por un artículo fue respondida';
+				$infoMail->template = 'store_newanswer';
+				$infoMail->gender = $message->store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
+				$infoMail->subject = 'Tienes un nuevo mensaje en una consulta que te hicieron';
 				$infoMail->message = $message;
 
 				Mail::to($user->email)->send(new MailSender($infoMail));
@@ -207,6 +209,18 @@ class MessageController extends Controller {
 				]);
 
 			} else {
+
+				// Envío notificación por mail
+
+				$message = Message::find($request->message_id);
+
+				$infoMail = new \stdClass();
+				$infoMail->template = 'user_newanswer';
+				$infoMail->gender = $message->user->profile->gender == 'Masculino' ? 'o' : 'a';
+				$infoMail->subject = $message->user->profile->name.', tienes un nuevo mensaje en una consulta que hiciste';
+				$infoMail->message = $message;
+
+				Mail::to($store->admins->first()->user->email)->send(new MailSender($infoMail));
 
 				$store = Store::find($request->store_id);
 
