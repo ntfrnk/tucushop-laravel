@@ -839,7 +839,7 @@ class StoreController extends Controller {
 			$infoMailRoot = new \stdClass();
 			$infoMailRoot->template = 'root_storedeleted';
 			$infoMailRoot->subject = 'Negocio eliminado en Tucushop.com';
-			$infoMailRoot->store = $newstore;
+			$infoMailRoot->store = $store;
  
 			Mail::to('mailing@tucushop.com')->send(new MailSender($infoMailRoot));
 			
