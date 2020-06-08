@@ -8,4 +8,6 @@
 <p>Esperamos que pronto puedas volver a vender en nuestra web.</p>
 <p>¡Gracias por ser parte de <b>Tucushop.com</b>!</p>
 
+<p><br>--<br>Equipo Tucushop</p>
+
 @endsection
