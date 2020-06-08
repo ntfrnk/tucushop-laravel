@@ -90,18 +90,19 @@ class FeedbackController extends Controller {
 
         $problem->save();
 
+        
 
         // Notifico al dueño del negocio
 
         $report = ItemReport::find($problem->id);
 
-        $infoMail = new \stdClass();
-        $infoMail->template = 'store_claim';
-        $infoMail->gender = $report->item->store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
-        $infoMail->subject = 'Uno de tus artículos fue denunciado';
-        $infoMail->report = $report;
- 
-        Mail::to($report->item->store->admins->first()->user->email)->send(new MailSender($infoMail));
+        $infoOwner = new \stdClass();
+        $infoOwner->template = 'store_claim';
+        $infoOwner->gender = $report->item->store->admins->first()->user->profile->gender == 'Masculino' ? 'o' : 'a';
+        $infoOwner->subject = 'Uno de tus artículos fue denunciado';
+        $infoOwner->report = $report;
+
+        Mail::to($report->item->store->admins->first()->user->email)->send(new MailSender($infoOwner));
 
         $mail = new Email();
 		$mail->topic = 'Item reported (to owner)';
@@ -110,16 +111,16 @@ class FeedbackController extends Controller {
         
         // Notifico a root
 
-        $infoMail = new \stdClass();
-        $infoMail->template = 'root_claim';
-        $infoMail->subject = 'Artículo denunciado en Tucushop.com';
-        $infoMail->report = $report;
+        $infoRoot = new \stdClass();
+        $infoRoot->template = 'root_claim';
+        $infoRoot->subject = 'Artículo denunciado en Tucushop.com';
+        $infoRoot->report = $report;
 
-        Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+        Mail::to('mailing@tucushop.com')->send(new MailSender($infoRoot));
         
         $mail = new Email();
 		$mail->topic = 'Item reported (to root)';
-        $mail->save();
+        $mail->save(); 
 
         return "ok";
 
