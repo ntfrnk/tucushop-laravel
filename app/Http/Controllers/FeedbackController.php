@@ -79,7 +79,7 @@ class FeedbackController extends Controller {
     }
 
 
-    /* Enviar una consulta sobre la página
+    /* Reportar un problema con un artículo
     ---------------------------------------------------- */
     public function problem(Request $request){
 
@@ -89,7 +89,6 @@ class FeedbackController extends Controller {
         $problem->content = $request->content;
 
         $problem->save();
-
         
 
         // Notifico al dueño del negocio

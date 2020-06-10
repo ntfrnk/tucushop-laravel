@@ -91,6 +91,8 @@ $(function(){
                 $('.form-problem').hide();
                 $('.resp-problem').show();
                 spinnModalOff();
+            } else {
+                $('.invalid-feedback.error').show();
             }
         }, '');
         

@@ -330,7 +330,7 @@
 
 @section('modals')
 
-{{-- Informar un problema con un producto ---------------------------- --}}
+{{-- Hacer una pregunta al vendedor ---------------------------- --}}
 
 <div class="pop-container" id="m-message">
     <div class="pop-box">
@@ -429,14 +429,14 @@
                                         <option value="Fotos falsas">Las fotos no pertenecen al artículo publicado</option>
                                         <option value="Sin stock">El artículo está publicado pero no hay stock</option>
                                         <option value="Otro">Otro problema (decribir el detalle más abajo)</option>
-                                    </select>
+									</select>
                                 </div>
                             </div>
                 
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-md-right">{{ __('Escribe los detalles del problema que encontraste') }}</label>
                                 <div class="col-md-8">
-                                    <textarea name="content" rows="4" class="form-control" required autocomplete="off"></textarea>
+									<textarea name="content" rows="4" class="form-control" required autocomplete="off"></textarea>
                                 </div>
                             </div>
                 
