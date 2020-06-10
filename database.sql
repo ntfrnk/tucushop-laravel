@@ -266,7 +266,6 @@ CONSTRAINT fk_items_tags_keywords FOREIGN KEY (keyword_id) REFERENCES keywords(i
 CREATE TABLE IF NOT EXISTS items_report (
 id int(255) auto_increment NOT NULL,
 item_id int(255) NOT NULL,
-name varchar(255),
 reason varchar(255),
 content text,
 created_at datetime,
@@ -419,7 +418,6 @@ CONSTRAINT pk_questions PRIMARY KEY(id)
 
 CREATE TABLE IF NOT EXISTS mails (
 id int(255) auto_increment NOT NULL,
-user_id int(255),
 topic varchar(255),
 created_at datetime,
 updated_at datetime,
