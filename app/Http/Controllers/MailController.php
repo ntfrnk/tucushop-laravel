@@ -39,7 +39,8 @@ class MailController extends Controller {
  
         if($debug==false){
             $mail = new Email();
-		    $mail->topic = 'New user';
+            $mail->topic = 'New user';
+            $mail->save();
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
@@ -69,7 +70,8 @@ class MailController extends Controller {
  
         if($debug==false){
             $mail = new Email();
-		    $mail->topic = 'Recover password: Send code';
+            $mail->topic = 'Recover password: Send code';
+            $mail->save();
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('user.pass.code', ['user_token' => $user->remember_token]);
         } else {
@@ -92,7 +94,8 @@ class MailController extends Controller {
  
         if($debug==false){
             $mail = new Email();
-		    $mail->topic = 'Recover password: Change';
+            $mail->topic = 'Recover password: Change';
+            $mail->save();
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('login')
             ->with(['message' => '¡La contraseña se modificó exitosamente!<br>Por favor inicia sesión.']);
@@ -117,7 +120,8 @@ class MailController extends Controller {
  
         if($debug==false){
             $mail = new Email();
-		    $mail->topic = 'New message to store';
+            $mail->topic = 'New message to store';
+            $mail->save();
             Mail::to($user->email)->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
@@ -261,7 +265,7 @@ class MailController extends Controller {
         $infoMail->user = $user;
  
         if($debug==false){
-            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -282,7 +286,7 @@ class MailController extends Controller {
         $infoMail->store = $store;
  
         if($debug==false){
-            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -303,7 +307,7 @@ class MailController extends Controller {
         $infoMail->store = $store;
  
         if($debug==false){
-            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -324,7 +328,7 @@ class MailController extends Controller {
         $infoMail->report = $report;
  
         if($debug==false){
-            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -345,7 +349,7 @@ class MailController extends Controller {
         $infoMail->question = $question;
  
         if($debug==false){
-            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -366,7 +370,7 @@ class MailController extends Controller {
         $infoMail->bug = $bug;
  
         if($debug==false){
-            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
