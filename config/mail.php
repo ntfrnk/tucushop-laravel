@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'mailing@tucushop.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@tucushop.com'),
         'name' => env('MAIL_FROM_NAME', 'Red Tucushop'),
     ],
 
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'mailing@tucushop.com'),
+    'username' => env('MAIL_USERNAME', 'no-reply@tucushop.com'),
 
-    'password' => env('MAIL_PASSWORD', 'Daniel412*'),
+    'password' => env('MAIL_PASSWORD', '53*HjNPQ3I'),
 
     /*
     |--------------------------------------------------------------------------
