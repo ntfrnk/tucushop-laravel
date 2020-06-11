@@ -265,7 +265,7 @@ class MailController extends Controller {
         $infoMail->user = $user;
  
         if($debug==false){
-            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -286,7 +286,7 @@ class MailController extends Controller {
         $infoMail->store = $store;
  
         if($debug==false){
-            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -307,7 +307,7 @@ class MailController extends Controller {
         $infoMail->store = $store;
  
         if($debug==false){
-            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -328,7 +328,7 @@ class MailController extends Controller {
         $infoMail->report = $report;
  
         if($debug==false){
-            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -349,7 +349,7 @@ class MailController extends Controller {
         $infoMail->question = $question;
  
         if($debug==false){
-            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);
@@ -370,7 +370,7 @@ class MailController extends Controller {
         $infoMail->bug = $bug;
  
         if($debug==false){
-            Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+            Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
             return redirect()->route('');
         } else {
             return view('mail.'.$infoMail->template, ['info' => $infoMail]);

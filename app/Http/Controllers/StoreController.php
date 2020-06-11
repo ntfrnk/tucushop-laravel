@@ -177,7 +177,7 @@ class StoreController extends Controller {
 			$infoMailRoot->subject = 'Nuevo negocio creado en Red Tucushop';
 			$infoMailRoot->store = $newstore;
  
-			Mail::to('info@tucushop.com')->send(new MailSender($infoMailRoot));
+			Mail::to('mailing@tucushop.com')->send(new MailSender($infoMailRoot));
 			
 			$mail = new Email();
 			$mail->topic = 'New store (to root)';
@@ -841,7 +841,7 @@ class StoreController extends Controller {
 			$infoMailRoot->subject = 'Negocio eliminado en Tucushop.com';
 			$infoMailRoot->store = $store;
  
-			Mail::to('info@tucushop.com')->send(new MailSender($infoMailRoot));
+			Mail::to('mailing@tucushop.com')->send(new MailSender($infoMailRoot));
 			
 			$mail = new Email();
 			$mail->topic = 'Store deleted (to root)';

@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'vps-1723788-x.dattaweb.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@tucushop.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'mailing@tucushop.com'),
         'name' => env('MAIL_FROM_NAME', 'Red Tucushop'),
     ],
 
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'info@tucushop.com'),
+    'username' => env('MAIL_USERNAME', 'mailing@tucushop.com'),
 
     'password' => env('MAIL_PASSWORD', 'Daniel412*'),
 

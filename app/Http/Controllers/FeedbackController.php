@@ -36,7 +36,7 @@ class FeedbackController extends Controller {
         $infoMail->subject = 'Reporte de error en Tucushop.com';
         $infoMail->bug = $newBug;
  
-        Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+        Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
 
         $mail = new Email();
 		$mail->topic = 'Bug reporting';
@@ -68,7 +68,7 @@ class FeedbackController extends Controller {
         $infoMail->subject = 'Consulta realizada desde Tucushop.com';
         $infoMail->question = $newquestion;
  
-        Mail::to('info@tucushop.com')->send(new MailSender($infoMail));
+        Mail::to('mailing@tucushop.com')->send(new MailSender($infoMail));
 
         $mail = new Email();
 		$mail->topic = 'Question from page';
@@ -115,7 +115,7 @@ class FeedbackController extends Controller {
         $infoRoot->subject = 'Artículo denunciado en Tucushop.com';
         $infoRoot->report = $report;
 
-        Mail::to('info@tucushop.com')->send(new MailSender($infoRoot));
+        Mail::to('mailing@tucushop.com')->send(new MailSender($infoRoot));
         
         $mail = new Email();
 		$mail->topic = 'Item reported (to root)';
