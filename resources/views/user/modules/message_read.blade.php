@@ -10,14 +10,14 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body pad30">
+			<div class="card-body card-body-pad">
 
-				<div class="f20 lh30">
-                    <div class="f16 fw500">
+				<div class="card-body-message-head">
+                    <div class="">
                         <span class="b">Destinatario:</span> 
                         <a href="{{ route('store.index', ['alias' => $message->store->alias]) }}" target="_blank">{{ $message->store->name }}</a>
                     </div>
-                    <div class="f16 fw500 lh20">
+                    <div class="">
                         <span class="b">Artículo consultado:</span>
                         <a href="{{ route('item.detail', ['name' => UrlFormat::url_limpia($message->item->name), 'id' => $message->item->id]) }}" target="_blank">{{ $message->item->name }}</a>
                     </div>

@@ -110,12 +110,12 @@
 		@guest
 			<li>
 				<a href="{{ route('login') }}">
-					<i class="f17 fa fa-sign-in-alt"></i> Ingresar
+					<i class="w15 f17 fa fa-sign-in-alt"></i> Ingresar
 				</a>
 			</li>
 			<li>
 				<a href="{{ route('register') }}">
-					<i class="f17 fa fa-id-card"></i> Registrarme
+					<i class="w15 f17 fa fa-id-card"></i> Registrarme
 				</a>
 			</li>
 			<li>

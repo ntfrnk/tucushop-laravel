@@ -18,10 +18,10 @@
 <div class="row">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body padT30 padB30 padLR30">
+			<div class="card-body card-body-pad">
 
-				<div class="f17">
-					<h1 class="f30 marB15">Recortar foto de perfil</h1>
+				<div class="card-body-title">
+					<h1>Recortar foto de perfil</h1>
 					<hr>
 				</div>
 

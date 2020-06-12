@@ -7,10 +7,10 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body pad30">
+			<div class="card-body card-body-pad">
 
-				<div class="f17 marB30">
-					<h1 class="f30 marB15">Mis favoritos</h1>
+				<div class="card-body-title">
+					<h1>Mis favoritos</h1>
 					<hr>
 				</div>
 
@@ -23,8 +23,8 @@
 								@if(isset($item->item->photos->sortBy('ordering')->first()->file_path) && !empty($item->item->photos->sortBy('ordering')->first()->file_path))
 									@php($img = 'storage/items/sm/'.$item->item->photos->sortBy('ordering')->first()->file_path)
 								@endif
-								<div class="col-md-3">
-									<div class="show-grid-item">
+								<div class="col-6 col-md-3">
+									<div class="show-grid-item show-grid-item-favs">
 										<div class="item-info">
 											<a href="{{ route('item.detail', ['name' => UrlFormat::url_limpia($item->item->name), 'item_id' => $item->item->id]) }}" target="_blank" title="Ver el detalle de este item">
 												<img src="{{ file_exists($img) && !is_dir($img) ? asset($img.'?v='.$item->item->photos->sortBy('ordering')->first()->version) : asset($noimg) }}" class="img-fluid">

@@ -237,14 +237,82 @@
 
     .mainbar {
         padding-left: 0px !important;
+        padding-right: 0px !important;
     }
 
-    .mainbar>.card>.card-body {
-        padding: 0px 15px 15px !important;
+    .mainbar .card {
+        border-radius: 0px !important;
     }
 
-    .box-admin {
-        margin-bottom: 15px;
+    .card-body-pad {
+        padding: 20px;
+    }
+
+    .card-body-title {
+        margin-bottom: 0px;
+    }
+
+    .card-body-title h1 {
+        font-size: 24px;
+    }
+
+    .card-body-message-head>div {
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .card-body-message-head>div>span {
+        display: block;
+        font-size: 14px;
+    }
+
+    .table th {
+        border-top: none;
+    }
+
+    .table th, table td {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .form-row {
+        padding: 0 0 10px 0;
+        margin: 0 0 0;
+        border-bottom: none;
+    }
+
+    .show-grid-item-favs {
+        padding: 0px;
+    }
+
+    .options {
+        position: absolute;
+        text-align: right;
+        top: 5px;
+        right: 20px;
+    }
+
+    .options .btn {
+        background: #FFF;
+    }
+
+    .routing-back a {
+        margin-right: 0px;
+    }
+
+    .sidebar ul {
+        padding-bottom: 50px;
+        padding-top: 20px;
+    }
+
+    .sidebar ul li {
+        font-size: 16px;
+        line-height: 40px;
+    }
+
+    .sidebar ul li a {
+        padding: 0 0;
     }
 
 

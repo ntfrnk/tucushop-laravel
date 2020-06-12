@@ -1,6 +1,7 @@
-@extends('user.in')
+@extends('user.home')
 
 @section('section.admin', 'Home')
+
 @section('back.admin')
 @endsection
 
@@ -19,7 +20,7 @@
 
 @section('admin')
 
-<div class="row justify-content-center">
+<div class="row justify-content-center d-none d-md-block">
     <div class="col-md-12 mainbar">
 
 		<div class="card marB20">
@@ -28,7 +29,7 @@
 			@endif
 			<div class="card-body pad30">
 
-				<div class="row d-none d-md-flex">
+				<div class="row">
 					<div class="col-md-2">
 						<img src="{{ asset($img) }}" class="img-fluid rounded-circle">
 					</div>

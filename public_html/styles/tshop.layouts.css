@@ -210,6 +210,24 @@
 	height: auto;
 }
 
+.card-body-pad {
+	padding: 30px;
+}
+
+.card-body-title {
+	margin-bottom: 30px;
+}
+
+.card-body-title h1 {
+	font-size: 30px;
+	margin-bottom: 15px;
+}
+
+.card-body-message-head>div {
+	line-height: 30px;
+	font-size: 16px;
+}
+
 .box-admin {
 	margin-bottom: 30px;
 }
