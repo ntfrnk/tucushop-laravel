@@ -831,6 +831,34 @@ Route::get('/mail/root/question/{question_id}/{debug?}', 'MailController@rootQue
 
 /*
  |
+ | CENTRO DE AYUDA
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+// Home de centro de ayuda
+
+Route::get('/help', 'HelpController@index')
+->name('help');
+
+
+// Home de centro de ayuda
+
+Route::get('/help/category/{name}_{id}', 'HelpController@category')
+->name('help.category')
+->where('name', '[a-z-]+')
+->where('id', '[0-9]{1,11}');
+
+
+// Detalle de centro de ayuda
+
+Route::get('/help/topic/{title}_{id}', 'HelpController@detail')
+->name('help.detail')
+->where('title', '[a-z0-9-]+')
+->where('id', '[0-9]{1,11}');
+
+
+/*
+ |
  | TIENDAS
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */

@@ -423,3 +423,33 @@ created_at datetime,
 updated_at datetime,
 CONSTRAINT pk_mails PRIMARY KEY(id)
 ) ENGINE=InnoDb;
+
+
+/* Tabla HELP_CATEGORIES */
+
+CREATE TABLE IF NOT EXISTS help_categories (
+id int(255) auto_increment NOT NULL,
+name varchar(255),
+description text,
+active int(1) NOT NULL DEFAULT 1,
+ordering int(2),
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_help_categories PRIMARY KEY(id)
+) ENGINE=InnoDb;
+
+
+/* Tabla HELP_TOPICS */
+
+CREATE TABLE IF NOT EXISTS help_topics (
+id int(255) auto_increment NOT NULL,
+category_id int(255) NOT NULL,
+title varchar(255),
+text text,
+active int(1) NOT NULL DEFAULT 1,
+ordering int(2),
+created_at datetime,
+updated_at datetime,
+CONSTRAINT pk_help_topics PRIMARY KEY (id),
+CONSTRAINT fk_help_topics_categories FOREIGN KEY (category_id) REFERENCES help_categories (id)
+) ENGINE=InnoDb;
