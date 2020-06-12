@@ -314,6 +314,10 @@
 	width: 82%;
 }
 
+.item-container {
+	margin-top: 50px;
+}
+
 .precio-item {
 	font-size: 50px;
 }
@@ -339,6 +343,7 @@
 	box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 	border-radius: 5px;
 	padding: 50px 40px;
+	margin-bottom: 50px;
 }
 
 .item-box-mini {

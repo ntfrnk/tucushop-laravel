@@ -49,7 +49,7 @@
 
 	<div class="container">
 
-		<div class="row product-item-showing marB50 padT60 padB40 relative">
+		<div class="row product-item-showing padT60 padB40 relative">
 
 			<div class="card-header absolute t0 l0 w100 f16">
 				<div class="a-center">

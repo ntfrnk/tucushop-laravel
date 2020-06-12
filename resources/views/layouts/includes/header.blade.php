@@ -124,10 +124,9 @@
 				</a>
 			</li>
 		@else
-			<li class="marL30 marB20">
+			<li class="marL30 marB20 padB20">
 				<img src="{{ isset($img) ? asset($img) : '' }}" class="rounded-circle" style="width: 36px; margin: 0 5px 0 0;">
 				{{ \Auth::user()->profile->name." ".\Auth::user()->profile->lastname }}
-				<hr>
 			</li>
 			<li>
 				<a href="{{ route('user.home') }}">

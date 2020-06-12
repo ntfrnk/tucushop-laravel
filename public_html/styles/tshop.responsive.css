@@ -4,7 +4,7 @@
 
     body {
         overflow-x: hidden;
-        padding-top: 68px;
+        padding-top: 66px;
     }
 
 	.container {
@@ -36,8 +36,8 @@
     .menu-nav-movil {
         position: fixed;
         top: 66px;
-        right: -75%;
-        width: 75% !important;
+        right: -85%;
+        width: 80% !important;
         height: 100%;
         padding: 20px 0 0 !important;
         display: block;
@@ -55,8 +55,11 @@
         display: block;
         float: none;
         line-height: 40px;
-        margin: 0px 40px;
+        margin: 0px 30px;
         color: #777;
+        font-size: 17px;
+        border-bottom: solid 1px #CCC;
+        padding: 0 0px;
     }
 
     .menu-nav-movil li a {
@@ -95,7 +98,7 @@
 
 
     /* Bootstrap
-    ******************************************************/
+    ********************************************/
 
     .btn {
         font-size: .8rem;
@@ -128,16 +131,123 @@
         padding: 5px 10px 1px;
     }
     
+    .box-item-details-shop {
+        padding: 0px 0px 1px;
+    }
+    
     .box-item-details h3 {
         font-size: 15px;
+        margin-top: 0px;
     }
 
     .box-item-details p {
         font-size: 19px !important;
+        margin-bottom: 10px;
     }
 
     .box-item-details p span {
         font-size: 15px !important;
+    }
+
+    .product-item-showing {
+        box-shadow: none;
+        margin-bottom: 0px;
+    }
+
+
+    /* Item detail
+    ********************************************/
+
+    .store-header-item {
+        left: 0%;
+        width: 100%;
+    }
+
+    .store-header-card {
+        width: 75%;
+    }
+
+    .item-container {
+        margin-top: 0px;
+    }
+
+    .product-item-showing {
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .item-col-photos {
+        padding: 0;
+    }
+
+    .item-col-detail {
+        padding: 20px 20px;
+    }
+    
+    .precio-item {
+        font-size: 40px;
+    }
+    
+    .precio-item .old {
+        font-size: 22px;
+    }
+
+    .item-question {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .detail-footer {
+        line-height: 26px;
+    }
+
+    .pop-box {
+        width: 90%;
+        padding: 60px 30px 0;
+    }
+
+    .pop-box h3 {
+        text-align: left;
+    }
+
+    .col-form-label {
+        text-align: left;
+    }
+
+    .pop-header {
+        margin-bottom: 15px;
+    }
+
+
+    /* User
+    ********************************************/
+
+    .routing {
+        margin-bottom: 0px;
+    }
+
+    .store-admin {
+        margin: 0px 0 0px;
+    }
+
+    .mainbar {
+        padding-left: 0px !important;
+    }
+
+    .mainbar>.card>.card-body {
+        padding: 0px 15px 15px !important;
+    }
+
+    .box-admin {
+        margin-bottom: 15px;
+    }
+
+
+    /* Footer
+    ********************************************/
+
+    .margin-footer {
+        margin: 0 5px;
     }
 
 }

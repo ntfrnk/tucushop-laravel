@@ -3,8 +3,8 @@
 <footer class="main_footer">
     <div class="container">
         <div class="padT70 padB40">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="row margin-footer">
+                <div class="col-md-4 col-sm-6 col-xs-12 marB20 order-md-1 order-3">
                     <div class="foot-sec">
                         <h3>Atención al cliente</h3>
                         <p>Red Tucushop
@@ -19,7 +19,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12 marB20">
                     <div class="foot-sec">
                         <h3>TU CUENTA </h3>
                         <ul class="pad0">
@@ -35,7 +35,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12 marB20">
                     <div class="foot-sec">
                         <h3>PARTICIPA </h3>
                         <ul class="pad0">
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="bottom-footer padTB30 hide">
+    {{-- <div class="bottom-footer padTB30 hide">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -57,10 +57,10 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <figure>
-                        {{-- <img src="assets/images/logo-xtofactory.png" alt=""/> --}}
+                        <img src="assets/images/logo-xtofactory.png" alt=""/>
                     </figure>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </footer>

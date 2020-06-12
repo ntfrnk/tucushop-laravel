@@ -49,7 +49,7 @@
 
 @if($item->store->shop->status == 1)
 
-	<section>
+	<section class="d-none d-md-block">
 		<div class="store-header store-header-item" style="background-image: url({{ asset($imgShop) }});">
 			<div class="store-header-cover" style="background: rgba(0,0,0,{{ $item->store->shop->opacity_header!=100 ? '0.'.\UrlFormat::add_zeros($item->store->shop->opacity_header, 2) : 1 }});"></div>
 			<div class="container">
@@ -74,7 +74,7 @@
 
 <div class="clear"></div>
 
-<section class="relative{{ $item->store->shop->status != 1 ? ' marT50' : '' }}">
+<section class="relative{{ $item->store->shop->status != 1 ? ' item-container' : '' }}">
 
 	<div class="container">
 
@@ -83,7 +83,7 @@
 			@if($item_disabled != 0)
 			
 				{{-- Muestro las fotos --}}
-				<div class="col-md-6">
+				<div class="col-md-6 item-col-photos">
 					<div id="item-photos" class="carousel slide" data-ride="carousel">
 						@if($item->photos->count() != 1)
 							<ol class="carousel-indicators">
@@ -120,7 +120,7 @@
 
 				{{-- Detalle del item --}}
 
-				<div class="col-md-6">
+				<div class="col-md-6 item-col-detail">
 
 					<div class="marB20">
 						<a href="javascript:;" onclick="add_wishlist({{ $item->id }}{{ \Auth::user() ? ', 1' : '' }})" class="inline-block float-right heart-on marL30" title="Agregar a favoritos">
@@ -188,34 +188,36 @@
 						</div>
 					</div> --}}
 
-					<div class="row item-features">
-						<div class="col-md-12">
-							<h3 class="marB20 f22">Características</h3>
-							@foreach($item->features as $feature)
-								<span class="item-feature marB5 f14 padB0 marR5 inline-block">
-									<b>{{ $feature->feature->feature }}: </b> <span class="f14">{{ $feature->content }}</span>
-								</span>
-							@endforeach
+					@if($item->features->count() != 0)
+						<div class="row item-features">
+							<div class="col-md-12">
+								<h3 class="marB20 f22">Características</h3>
+								@foreach($item->features as $feature)
+									<span class="item-feature marB5 f14 padB0 marR5 inline-block">
+										<b>{{ $feature->feature->feature }}: </b> <span class="f14">{{ $feature->content }}</span>
+									</span>
+								@endforeach
+							</div>
 						</div>
-					</div>
-
-					<hr>
-
-					<div class="f15 texto marT10">
-						@if($item->tags!=null && $item->tags->count()>0)
-							@foreach($item->tags as $tag)
-								<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
-									#{{ mb_strtolower($tag->keyword->keyword) }}
-								</a>
-							@endforeach
-						@endif
-					</div>
-
-					<hr>
+						<hr>
+					@endif
+					
+					@if($item->tags->count() != 0)
+						<div class="f15 texto marT10">
+							@if($item->tags!=null && $item->tags->count()>0)
+								@foreach($item->tags as $tag)
+									<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
+										#{{ mb_strtolower($tag->keyword->keyword) }}
+									</a>
+								@endforeach
+							@endif
+						</div>
+						<hr>
+					@endif
 
 					<div class="row padT10 marB30">
 						<div class="col-md-12">
-							<a href="javascript:;" class="btn btn-primary" id="message">
+							<a href="javascript:;" class="btn btn-primary item-question" id="message">
 								<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta al vendedor</span>
 							</a>
 						</div>
@@ -234,12 +236,12 @@
 
 			@endif
 
-			<div class="card-footer col-12 absolute l0 b0 w100 a-center">
-				<a href="javascript:;" class="text-danger marR15" id="problem">
-					<span><i class="fa fa-exclamation-triangle marR5" aria-hidden="true"></i>Informar un problema con este artículo</span>
-				</a>|
-				<a href="javascript:;" class="text-danger marL15 reporting">
-					<span><i class="fa fa-bug marR5" aria-hidden="true"></i>Reportar un error con la página</span>
+			<div class="card-footer detail-footer col-12 absolute l0 b0 w100 a-center">
+				<a href="javascript:;" class="text-danger" id="problem">
+					<span><i class="fa fa-exclamation-triangle marR5"></i>Informar un problema con este artículo</span>
+				</a><span class="d-none d-md-inline-block">&nbsp; &nbsp; | &nbsp; &nbsp;</span><span class="d-block d-md-none"></span>
+				<a href="javascript:;" class="text-danger reporting">
+					<span><i class="fa fa-bug marR5"></i>Reportar un error con la página</span>
 				</a>
 			</div>
 
@@ -257,14 +259,14 @@
 	
 		{{-- Encabezado de sugeridos --}}
 		<div class="carousel-heading row">
-			<div class="col-md-2 carousel-icon">
+			<div class="col-2 col-md-2 carousel-icon">
 				<i class="fa fa-tag" aria-hidden="true"></i>
 			</div>
-			<div class="col-md-8 carousel-title">
+			<div class="col-10 col-md-8 carousel-title">
 				<h3>Items relacionados</h3>
-				<p>Productos y servicios similares a lo que estás viendo</p>
+				<p class="d-none d-md-block">Productos y servicios similares a lo que estás viendo</p>
 			</div>
-			<div class="col-md-2 carousel-navigation">
+			<div class="col-md-2 carousel-navigation d-none d-md-block">
 				<button type="button" class="suggested carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
 				<button type="button" class="suggested carousel-next btn btn-light" carousel-id="carousel-1">></button>
 			</div>
@@ -293,14 +295,14 @@
 
 		{{-- Encabezado de random --}}
 		<div class="carousel-heading row marT10">
-			<div class="col-md-2 carousel-icon">
+			<div class="col-2 col-md-2 carousel-icon">
 				<i class="fa fa-tag" aria-hidden="true"></i>
 			</div>
-			<div class="col-md-8 carousel-title">
-				<h3>También te puede interesar</h3>
-				<p>Te sugerimos otros productos y servicios disponibles en la web</p>
+			<div class="col-10 col-md-8 carousel-title">
+				<h3>T<span class="d-none d-md-block">ambién t</span>e puede interesar</h3>
+				<p class="d-none d-md-block">Te sugerimos otros productos y servicios disponibles en la web</p>
 			</div>
-			<div class="col-md-2 carousel-navigation">
+			<div class="col-md-2 carousel-navigation d-none d-md-block">
 				<button type="button" class="random carousel-prev btn btn-light" carousel-id="random"><</button>
 				<button type="button" class="random carousel-next btn btn-light" carousel-id="random">></button>
 			</div>
@@ -341,7 +343,7 @@
     
                 <div class="padB30">
         
-                    <div class="marB30">
+                    <div class="pop-header">
                         <h3>Hacer una pregunta al vendedor</h3>
                     </div>
 
@@ -408,7 +410,7 @@
     
                 <div class="padB30">
         
-                    <div class="marB30">
+                    <div class="pop-header">
                         <h3>Informar un problema con este artículo</h3>
                     </div>
 

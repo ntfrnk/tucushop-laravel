@@ -28,7 +28,7 @@
 			@endif
 			<div class="card-body pad30">
 
-				<div class="row">
+				<div class="row d-none d-md-flex">
 					<div class="col-md-2">
 						<img src="{{ asset($img) }}" class="img-fluid rounded-circle">
 					</div>

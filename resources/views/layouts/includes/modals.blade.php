@@ -11,7 +11,7 @@
     
                 <div class="padB30">
         
-                    <div class="marB30">
+                    <div class="pop-header">
                         <h3>Reportar un error</h3>
                     </div>
 
@@ -89,7 +89,7 @@
     
                 <div class="padB30">
         
-                    <div class="marB30">
+                    <div class="pop-header">
                         <h3>Hacer una consulta</h3>
                     </div>
 
