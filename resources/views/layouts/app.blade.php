@@ -9,6 +9,7 @@
 
 
 <body>
+	
 	<div id="app" class="block">
 
 		@include('layouts.includes.header')

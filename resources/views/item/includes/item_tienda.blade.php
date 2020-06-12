@@ -1,4 +1,4 @@
-<div class="box-item{{ $item->offer ? ' item-offer' : '' }} item-tienda col-md-3">
+<div class="box-item{{ $item->offer ? ' item-offer' : '' }} item-tienda col-6 col-md-3">
 	<div class="box-item-body">
 		<figure class="box-item-image">
 			<a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item->name), 'id' => \UrlFormat::add_zeros($item->id)]) }}">

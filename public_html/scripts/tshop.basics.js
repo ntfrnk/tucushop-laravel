@@ -95,10 +95,12 @@ $(function(){
 	    navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
 	    responsive:{
 	        0:{
-	            items:2
+				items:2,
+				center:true
 	        },
 	        600:{
-	            items:3
+				items:3,
+				center:true
 	        },
 	        1000:{
 	            items:4
@@ -126,10 +128,12 @@ $(function(){
 	    navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
 	    responsive:{
 	        0:{
-	            items:2
+				items:2,
+				center:true
 	        },
 	        600:{
-	            items:3
+				items:3,
+				center:true
 	        },
 	        1000:{
 	            items:4
@@ -156,10 +160,12 @@ $(function(){
 	    navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
 	    responsive:{
 	        0:{
-	            items:2
+				items:2,
+				center:true
 	        },
 	        600:{
-	            items:3
+				items:3,
+				center:true
 	        },
 	        1000:{
 				items:6,

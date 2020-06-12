@@ -80,6 +80,10 @@ footer a:hover:not(.btn) {
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
 
+.carousel-indicators {
+	z-index: 10;
+}
+
 .btn {
 	box-shadow: none !important;
 }

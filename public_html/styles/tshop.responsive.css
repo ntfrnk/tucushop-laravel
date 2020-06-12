@@ -2,8 +2,142 @@
 
 @media (max-width: 768px) {
 
+    body {
+        overflow-x: hidden;
+        padding-top: 68px;
+    }
+
 	.container {
         width: 100%;
+    }
+
+    /* General
+    ********************************************/
+    .menu-logo-img {
+        width: 240px;
+    }
+
+    header {
+        height: 66px;
+    }
+
+    header .menu-logo {
+        margin: 18px 0;
+    }
+
+    header .menu-bars {
+        margin: 13px 10px 0 0;
+        color: #FFF;
+        font-size: 28px;
+        display: block;
+        transition: all 200ms ease-out;
+    }
+
+    .menu-nav-movil {
+        position: fixed;
+        top: 66px;
+        right: -75%;
+        width: 75% !important;
+        height: 100%;
+        padding: 20px 0 0 !important;
+        display: block;
+        background: #FFF;
+        box-shadow: -4px 10px 7px 2px rgba(0, 0, 0, 0.4);
+        text-align: left !important;
+        transition: all 200ms ease-out;
+    }
+
+    .menu-on {
+        right: 0%;
+    }
+
+    .menu-nav-movil li {
+        display: block;
+        float: none;
+        line-height: 40px;
+        margin: 0px 40px;
+        color: #777;
+    }
+
+    .menu-nav-movil li a {
+        color: #777;
+    }
+
+
+    /* Home
+    ********************************************/
+
+    .home-destacados {
+        padding-bottom: 60px;
+    }
+    
+
+    /* Banner
+    ********************************************/
+
+    .featured-banner {
+        height: 330px;
+        background-position: center 0px;
+    }
+
+    .featured-banner-caption {
+        padding: 180px 0;
+    }
+
+    .featured-banner-caption h2 {
+        font-size: 35px;
+    }
+    
+    .featured-banner-caption h1 {
+        font-size: 40px;
+        margin-bottom: 5px;
+    }
+
+
+    /* Bootstrap
+    ******************************************************/
+
+    .btn {
+        font-size: .8rem;
+    }
+
+    
+    /* Items
+    ********************************************/
+
+    .carousel-icon {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .carousel-icon i, .carousel-icon svg {
+        font-size: 20px;
+    }
+
+    .carousel-title h3 {
+        font-size: 22px;
+    }
+
+    .box-item-offer-flag {
+        font-size: 12px !important;
+        width: 65px !important;
+        top: 170px !important;
+    }
+
+    .box-item-details {
+        padding: 5px 10px 1px;
+    }
+    
+    .box-item-details h3 {
+        font-size: 15px;
+    }
+
+    .box-item-details p {
+        font-size: 19px !important;
+    }
+
+    .box-item-details p span {
+        font-size: 15px !important;
     }
 
 }

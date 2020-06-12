@@ -13,10 +13,12 @@
 
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="{{ asset('images/slider/slider-001.jpg') }}" class="img-fluid">
+				<img src="{{ asset('images/slider/001-ambos.jpg') }}" class="img-fluid d-none d-md-block">
+				<img src="{{ asset('images/slider/001_1-ambos.jpg') }}" class="img-fluid d-block d-md-none">
 			</div>
 			<div class="carousel-item">
-				<img src="{{ asset('images/slider/slider-002.jpg') }}" class="img-fluid"/>
+				<img src="{{ asset('images/slider/002-moda.jpg') }}" class="img-fluid d-none d-md-block">
+				<img src="{{ asset('images/slider/002_2-moda.jpg') }}" class="img-fluid d-block d-md-none">
 			</div>
 		</div>
 
@@ -40,14 +42,14 @@
 		
 			{{-- Encabezado --}}
 			<div class="carousel-heading row">
-				<div class="col-md-2 carousel-icon">
+				<div class="col-2 col-md-2 carousel-icon">
 					<i class="fa fa-tag" aria-hidden="true"></i>
 				</div>
-				<div class="col-md-8 carousel-title">
+				<div class="col-10 col-md-8 carousel-title">
 					<h3>Ofertas de la semana</h3>
-					<p>Con estas ofertas te vas a volver loco!</p>
+					<p class="d-none d-md-block">Con estas ofertas te vas a volver loco!</p>
 				</div>
-				<div class="col-md-2 carousel-navigation">
+				<div class="d-none d-md-block col-md-2 carousel-navigation">
 					<button type="button" class="home-offers carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
 					<button type="button" class="home-offers carousel-next btn btn-light" carousel-id="carousel-1">></button>
 				</div>
@@ -95,19 +97,19 @@
 
 	{{-- PRODUCTOS DESTACADOS --}}
 
-	<section class="padB100">
+	<section class="home-destacados">
 
 		<div class="container">
 		
 			{{-- Encabezado --}}
 
 			<div class="carousel-heading row">
-				<div class="col-md-2 carousel-icon">
+				<div class="col-2 col-md-2 carousel-icon">
 					<i class="fa fa-tag" aria-hidden="true"></i>
 				</div>
-				<div class="col-md-10 carousel-title">
+				<div class="col-10 col-md-10 carousel-title">
 					<h3>Ofertas de la semana</h3>
-					<p>Con estas ofertas te vas a volver loco!</p>
+					<p class="d-none d-md-block">Con estas ofertas te vas a volver loco!</p>
 				</div>
 			</div>
 

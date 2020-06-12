@@ -54,7 +54,7 @@
 <link href="{{ asset('styles/tshop.layouts.css') }}" rel="stylesheet">
 <link href="{{ asset('styles/tshop.theme.css') }}" rel="stylesheet">
 <link href="{{ asset('styles/tshop.modules.css') }}" rel="stylesheet">
-<link href="{{ asset('styles/tshop.responsive.css') }}" rel="stylesheet">
+<link href="{{ asset('styles/tshop.responsive.css?v='.mt_rand(111,999)) }}" rel="stylesheet">
 <link href="{{ asset('styles/tshop.helpers.css') }}" rel="stylesheet">
 
 {{-- Icono --}}
