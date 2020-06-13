@@ -104,7 +104,7 @@
 							<span class="n-total">{{ $item->photos->count() }}</span>
 						</div>
 					</div>
-					@if($item-photos && $item->photos->count() > 1)
+					@if($item->photos && $item->photos->count() > 1)
 						<a href="javascript:;" class="btn-photo btn-photo-prev d-none d-md-block"><i class="fa fa-chevron-left"></i></a>
 						<a href="javascript:;" class="btn-photo btn-photo-next d-none d-md-block"><i class="fa fa-chevron-right"></i></a>
 					@endif
