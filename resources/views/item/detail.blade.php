@@ -84,36 +84,27 @@
 			
 				{{-- Muestro las fotos --}}
 				<div class="col-md-6 item-col-photos">
-					<div id="item-photos" class="carousel slide" data-ride="carousel">
-						@if($item->photos->count() != 1)
-							<ol class="carousel-indicators">
-								@php($i=0)
-								@foreach($item->photos->sortBy('ordering') as $photo)
-									<li data-target="#item-photos" data-slide-to="{{ $i }}"{{ $i==0 ? ' class="active"' : '' }}></li>
-									@php($i++)
-								@endforeach
-							</ol>
-						@endif
-						<div class="carousel-inner">
-							@php($i=0)
-							@foreach($item->photos->sortBy('ordering') as $photo)
-								<div class="carousel-item{{ $i==0 ? ' active' : '' }}">
-									<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid">
-								</div>
-								@php($i++)
-							@endforeach
-						</div>
-						@if($item->photos->count() != 1)
-							<a class="carousel-control-prev" href="#item-photos" role="button" data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#item-photos" role="button" data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						@endif
+
+					<div id="item-detail" class="owl-carousel owl-theme">
+
+						@php($i=0)
+						@foreach($item->photos->sortBy('ordering') as $photo)
+							<div class="item item-detail-photo">
+								<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid" idph="{{ $i }}">
+							</div>
+							@php($i++)
+						@endforeach
+
 					</div>
+
+					<div class="n-photo">
+						<div>
+							<span>Foto </span>
+							<span class="n-actual">1</span> de 
+							<span class="n-total">{{ $item->photos->count() }}</span>
+						</div>
+					</div>
+
 
 				</div>
 

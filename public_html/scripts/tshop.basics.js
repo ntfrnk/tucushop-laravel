@@ -87,6 +87,33 @@ $(function(){
 
 	/* Items sugeridos en detalle de item
 	---------------------------------------------------- */
+	$('#item-detail').owlCarousel({
+	    loop:true,
+	    margin:0,
+	    nav:true,
+		dots:false,
+		items:1,
+	    navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
+	});
+
+	$('#item-detail').on('translated.owl.carousel', function(event){
+		item_actual = $('.owl-item.active .item img').attr('idph');
+		item_actual = parseInt(item_actual) + 1;
+		$('.n-actual').html(item_actual);
+		$('.n-total').html(event.item.count);
+	});
+
+	$('.item-detail.carousel-next').on('click', function(){
+		$('#item-detail .owl-next').trigger('click');
+	});
+
+	$('.item-detail.carousel-prev').on('click', function(){
+		$('#item-detail .owl-prev').trigger('click');
+	});
+
+
+	/* Items sugeridos en detalle de item
+	---------------------------------------------------- */
 	$('#home-offers').owlCarousel({
 	    loop:true,
 	    margin:15,

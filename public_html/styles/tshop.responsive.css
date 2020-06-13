@@ -180,6 +180,18 @@
     .item-col-photos {
         padding: 0;
     }
+    
+    .n-photo {
+        padding: 0px 0px 0px;
+        top: 0;
+        bottom: unset;
+    }
+
+    .n-photo>div {
+        padding: 10px 20px 30px;
+        text-align: right;
+        background: linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0));
+    }
 
     .store-header-card-image {
         border: none;
