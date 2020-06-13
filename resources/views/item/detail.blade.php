@@ -104,7 +104,8 @@
 							<span class="n-total">{{ $item->photos->count() }}</span>
 						</div>
 					</div>
-
+					<a href="javascript:;" class="btn-photo btn-photo-prev"><i class="fa fa-chevron-left"></i></a>
+					<a href="javascript:;" class="btn-photo btn-photo-next"><i class="fa fa-chevron-right"></i></a>
 
 				</div>
 

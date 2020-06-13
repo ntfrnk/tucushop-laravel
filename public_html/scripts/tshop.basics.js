@@ -88,12 +88,21 @@ $(function(){
 	/* Items sugeridos en detalle de item
 	---------------------------------------------------- */
 	$('#item-detail').owlCarousel({
-	    loop:false,
 	    margin:0,
 	    nav:true,
 		dots:false,
 		items:1,
-	    navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
+		responsive:{
+	        0:{
+				loop:false
+	        },
+	        600:{
+				loop:true
+	        },
+	        1000:{
+	            loop:true
+	        }
+	    }
 	});
 
 	$('#item-detail').on('translated.owl.carousel', function(event){
@@ -103,12 +112,12 @@ $(function(){
 		$('.n-total').html(event.item.count);
 	});
 
-	$('.item-detail.carousel-next').on('click', function(){
-		$('#item-detail .owl-next').trigger('click');
+	$('.btn-photo-prev').on('click', function(){
+		$('#item-detail').trigger('prev.owl.carousel')
 	});
 
-	$('.item-detail.carousel-prev').on('click', function(){
-		$('#item-detail .owl-prev').trigger('click');
+	$('.btn-photo-next').on('click', function(){
+		$('#item-detail').trigger('next.owl.carousel')
 	});
 
 
