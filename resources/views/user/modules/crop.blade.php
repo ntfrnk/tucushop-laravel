@@ -40,6 +40,9 @@
 						<form id="crop-data-profile" action="{{ route('user.photo.cropper') }}" method="post">
 							@csrf
 							<input type="hidden" name="image" id="image" value="storage/users/original/{{ $user->profile->photo }}">
+							@if($vmovil == 1)
+							<input type="hidden" name="vmovil" value="1">
+							@endif
 							<input type="hidden" id="x" name="x">
 							<input type="hidden" id="y" name="y">
 							<input type="hidden" id="w" name="w">

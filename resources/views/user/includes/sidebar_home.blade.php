@@ -11,6 +11,11 @@
 				<i class="fa fa-key"></i> Datos de la cuenta
 			</a>
 		</li>
+		<li class="d-block d-md-none">
+			<a href="{{ route('user.profile') }}">
+				<i class="fa fa-image"></i> Foto de perfil
+			</a>
+		</li>
 		<li>
 			<a href="{{ route('user.edit') }}">
 				<i class="fa fa-user"></i> Información personal

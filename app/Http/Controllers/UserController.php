@@ -229,6 +229,27 @@ class UserController extends Controller {
 	}
 
 
+	/* Gestionar la foto de perfil
+	---------------------------------------------------- */
+	public function profile(){
+
+		if(\Auth::user()){
+
+			$user = \Auth::user();
+
+			return view('user.modules.profile', [
+				'user' => $user
+			]);
+
+		} else {
+
+			return redirect()->route('home');
+
+		}
+
+	}
+
+
 	/* Upload de foto de perfil
 	---------------------------------------------------- */
 	public function photoUpload(Request $request){
@@ -255,7 +276,11 @@ class UserController extends Controller {
 
 			$profile->save();
 
-			return redirect()->route('user.photo.resize');
+			if($request->vmovil && $request->vmovil == 1){
+				return redirect()->route('user.photo.resize', ['vmovil' => 1]);
+			} else {
+				return redirect()->route('user.photo.resize');
+			}
 
 		} else {
 
@@ -268,7 +293,7 @@ class UserController extends Controller {
 
 	/* Optimización de foto de portada
 	---------------------------------------------------- */
-	public function photoResize(){
+	public function photoResize($vmovil = null){
 
 		$user = \Auth::user();
 		$profile = UserProfile::where('user_id', $user->id)->first();
@@ -290,21 +315,32 @@ class UserController extends Controller {
 
 		}
 
-		return redirect()->route('user.photo.crop');
+		if($vmovil && $vmovil == 1){
+			return redirect()->route('user.photo.crop', ['vmovil' => 1]);
+		} else {
+			return redirect()->route('user.photo.crop');
+		}
 
 	}
 
 
 	/* Recorte de foto de portada
 	---------------------------------------------------- */
-	public function photoCrop(){
+	public function photoCrop($vmovil = null){
 
 		$user = \Auth::user();
+
+		if($vmovil && $vmovil == 1){
+			$vmov = 1;
+		} else {
+			$vmov = 0;
+		}
 
 		if(\Auth::user()){
 
 			return view('user.modules.crop', [
-				'user' => $user
+				'user' => $user,
+				'vmovil' => $vmov
 			]);
 
 		} else {
@@ -344,9 +380,15 @@ class UserController extends Controller {
 		$profile->version_photo = $profile->version_photo + 1;
 		$profile->save();
 
-		return redirect()->route('user.account', [
-			'user' => \Auth::user()
-		]);
+		if($request->vmovil && $request->vmovil == 1){
+			return redirect()->route('user.profile', [
+				'user' => \Auth::user()
+			]);
+		} else {
+			return redirect()->route('user.account', [
+				'user' => \Auth::user()
+			]);
+		}
 
 	}
 

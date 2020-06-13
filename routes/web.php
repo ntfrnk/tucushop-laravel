@@ -121,6 +121,12 @@ Route::get('/user/account', 'UserController@account')
 
 // Edición de datos de usuario
 
+Route::get('/user/profile', 'UserController@profile')
+->name('user.profile');
+
+
+// Edición de datos de usuario
+
 Route::post('/user/account/update', 'UserController@accountUpdate')
 ->name('user.account.update');
 
@@ -145,13 +151,13 @@ Route::post('/user/photo/upload', 'UserController@photoUpload')
 
 // Optimización de foto de perfil
 
-Route::get('/user/photo/resize', 'UserController@photoResize')
+Route::get('/user/photo/resize/{vmovil?}', 'UserController@photoResize')
 ->name('user.photo.resize');
 
 
 // Recorte de foto de perfil (seleccionar área)
 
-Route::get('/user/photo/crop', 'UserController@photoCrop')
+Route::get('/user/photo/crop/{vmovil?}', 'UserController@photoCrop')
 ->name('user.photo.crop');
 
 

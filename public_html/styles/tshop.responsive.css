@@ -242,10 +242,11 @@
 
     .mainbar .card {
         border-radius: 0px !important;
+        margin-bottom: 0px !important;
     }
 
     .card-body-pad {
-        padding: 20px;
+        padding: 20px 20px 40px;
     }
 
     .card-body-title {
@@ -293,7 +294,7 @@
         right: 20px;
     }
 
-    .options .btn {
+    .options .btn-opt {
         background: #FFF;
     }
 
