@@ -197,6 +197,10 @@
         font-size: 22px;
     }
 
+    .btn-question {
+        margin-bottom: 0px;
+    }
+
     .item-question {
         width: 100%;
         font-size: 16px;

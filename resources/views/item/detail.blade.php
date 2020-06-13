@@ -215,7 +215,7 @@
 						<hr>
 					@endif
 
-					<div class="row padT10 marB30">
+					<div class="row padT10 btn-question">
 						<div class="col-md-12">
 							<a href="javascript:;" class="btn btn-primary item-question" id="message">
 								<span><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp; Hacer una pregunta al vendedor</span>
