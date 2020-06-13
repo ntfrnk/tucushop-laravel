@@ -32,7 +32,7 @@
 											<div>{{ $item->item->name }}</div>
 										</div>
 										<div class="options">
-											<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item de tus favoritos?', '{{ route('user.like.delete', ['item_id' => $item->item->id]) }}');" class="btn btn-sm btn-outline-danger" title="Eliminar este item"><i class="fa fa-times"></i></a>
+											<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item de tus favoritos?', '{{ route('user.like.delete', ['item_id' => $item->item->id]) }}');" class="btn btn-sm btn-outline-danger btn-opt" title="Eliminar este item"><i class="fa fa-times"></i></a>
 										</div>
 									</div>
 								</div>
