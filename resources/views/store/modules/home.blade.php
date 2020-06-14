@@ -1,4 +1,4 @@
-@extends('store.in')
+@extends('store.in_home')
 
 @section('section.admin', 'Home')
 @section('back.admin')
@@ -6,7 +6,7 @@
 
 @section('admin')
 
-<div class="row mainbar">
+<div class="row mainbar d-none d-md-block">
 	<div class="col-md-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">

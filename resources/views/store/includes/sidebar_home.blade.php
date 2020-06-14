@@ -1,4 +1,4 @@
-<div class="col-md-3 sidebar d-none d-md-block">
+<div class="col-md-3 sidebar">
 
 	<ul>
 		<li>

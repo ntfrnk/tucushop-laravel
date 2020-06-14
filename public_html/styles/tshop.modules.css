@@ -404,9 +404,13 @@ label {
 }
 
 .form-row-btn {
-	padding: 0 0 0 0;
+	padding: 0 0 0 5px;
 	margin: 15px 0 0 0;
 	border-bottom: none;
+}
+
+.form-row-btn>div {
+	padding: 0 0 0 0;
 }
 
 .col-form-label {

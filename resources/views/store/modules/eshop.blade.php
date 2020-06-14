@@ -23,15 +23,15 @@
 <div class="row">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body padT30 padB30 padLR30">
+			<div class="card-body card-body-pad">
 
-				<div class="f17">
-					<div class="mar0 marT0 f14 bold f-right">
+				<div class="card-body-title">
+					<div class="mar0 marT0 f14 bold f-right d-none d-md-block">
 						<div class="f-right align-right">
 							<a href="{{ route('store.shop.status', ['alias' => $store->alias]) }}" class="marL10 btn btn-link {{ $store->shop->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $store->shop->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $store->shop->status == 1 ? 'Deshabilitar' : 'Habilitar' }} tienda virtual</a>
 						</div>
 					</div>
-					<h1 class="f30 marB15">Mi tienda virtual</h1>
+					<h1>Mi tienda virtual</h1>
 					<hr>
 				</div>
 

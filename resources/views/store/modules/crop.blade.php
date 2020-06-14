@@ -3,7 +3,7 @@
 @section('section.admin', 'Recortar foto')
 
 @section('back.admin')
-    <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}">Volver al listado de fotos</a>
+    <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}">Volver a fotos</a>
 @endsection
 
 @section('scripts')
@@ -24,10 +24,10 @@
 <div class="row">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body card-body-min padT30 padB30 padLR30">
+			<div class="card-body card-body-min">
 
-				<div class="f16 marB30">
-				    <h1 class="f30 marB15">Recortar foto</h1>
+				<div class="card-body-title">
+				    <h1>Recortar foto</h1>
 				    <hr>
 				</div>
 
@@ -42,8 +42,8 @@
 					<div class="col-md-6">
 						<p class="d-none d-md-block">Mueve con el mouse la foto, para seleccionar el área que deseas mostrar. Para agrandar o achicar el área de recorte puedes girar la rueda del mouse sobre la foto.</p>
 						<p class="d-block d-md-none">Mueve la foto para seleccionar el área que deseas recortar. Para agrandar o achicar el área de recorte usa dos dedos.</p>
-						<a href="javascript:;" class="show-result btn btn-primary loading">Recortar foto</a>
-						<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+						<a href="javascript:;" class="show-result btn btn-primary btn-important loading">Recortar foto</a>
+						<a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-link btn-important">Cancelar</a>
 						<form id="crop-data" action="{{ route('item.photo.cropper') }}" method="post">
 							@csrf
 							<input type="hidden" name="image" value="storage/items/original/{{ $photo->file_path }}">

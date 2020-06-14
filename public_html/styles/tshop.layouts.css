@@ -210,6 +210,15 @@
 	height: auto;
 }
 
+.container-forms {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.card-body-forms {
+	padding: 25px 20px 80px;
+}
+
 .card-body-pad {
 	padding: 30px;
 }
@@ -246,6 +255,15 @@
 
 .box-admin-container i {
 	color: var(--primary) !important;
+}
+
+.margin-form {
+	padding: 50px 30px 30px;
+}
+
+.btn-important {
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 
@@ -443,4 +461,17 @@
 
 .btn-question {
 	margin-bottom: 30px;
+}
+
+
+/* Stores management */
+
+.stores-info {
+	margin-top: 10px;
+}
+
+.stores-info h3 {
+	font-size: 20px;
+	line-height: 22px;
+	font-weight: 600;
 }

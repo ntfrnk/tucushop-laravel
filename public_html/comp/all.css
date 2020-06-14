@@ -452,3 +452,14 @@
 .pop-xs {
 	width: 40%;
 }
+
+
+/* RESPONSIVE ************************************************************ */
+
+@media (max-width: 768px) {
+
+	.notify-box, .confirm-box {
+		width: 90%;
+	}
+
+}

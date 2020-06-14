@@ -6,7 +6,7 @@
 
 	<div class="row">
 
-		<div class="col-md-12">
+		<div class="col-md-12 d-none d-md-block">
 			<div class="carousel-heading row marT10">
 				<div class="col-md-2 carousel-icon">
 					<i class="fa fa-tag" aria-hidden="true"></i>
@@ -21,6 +21,13 @@
 			</div>
 		</div>
 
+		<div class="d-block d-md-none col-12 card-body-pad card-body-pad-1">
+			<div class="card-body-title">
+				<h1>Nuevo negocio</h1>
+				<hr>
+			</div>
+		</div>
+
 	</div>
 
 	<div>
@@ -32,7 +39,7 @@
 						@if(session('message'))
 							<div class="card-header bold a-center text-success">{{ session('message') }}</div>
 						@endif
-						<div class="padT50 pad30">
+						<div class="margin-form">
 		
 							@csrf
 		
@@ -81,10 +88,10 @@
 		
 							<div class="form-group row mb-0">
 								<div class="col-md-6 offset-md-4">
-									<button type="submit" rel="submit" class="btn btn-primary">
+									<button type="submit" rel="submit" class="btn btn-primary btn-important">
 										{{ __('Crear negocio') }}
 									</button>
-									<a href="{{ route('store.list') }}" class="btn btn-link marL5">Cancelar</a>
+									<a href="{{ route('store.list') }}" class="btn btn-link btn-important marL5">Cancelar</a>
 								</div>
 							</div>
 		

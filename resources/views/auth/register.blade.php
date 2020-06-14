@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container marTB50">
+<div class="container container-forms">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 cont-forms">
             <div class="card">
                 {{-- <div class="card-header">{{ __('Register') }}</div> --}}
 
-                <div class="card-body padB40 padT25">
+                <div class="card-body card-body-forms">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">&nbsp;</label>
+                            <label class="col-md-4 col-form-label text-md-right d-none d-md-block">&nbsp;</label>
 
                             <div class="col-md-6">
                                 <h3 class="f25 fw600 marT20">Registrarme</h3>
@@ -102,10 +102,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" rel="submit" class="btn btn-primary">
+                                <button type="submit" rel="submit" class="btn btn-important btn-primary">
                                     {{ __('Registrarme') }}
                                 </button>
-                                <a href="{{ route('home') }}" class="btn btn-link">
+                                <a href="{{ route('home') }}" class="btn btn-important btn-link">
                                     {{ __('Cancelar') }}
                                 </a>
                             </div>

@@ -7,17 +7,21 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body pad30">
+			<div class="card-body card-body-pad">
 
-				<div class="f17 marB30">
-					<div class="f-right align-right">
+				<div class="card-body-title ">
+					<div class="f-right align-right d-none d-md-block">
 						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'list']) }}" class="btn btn-{{ session('listType') == 'list' ? 'secondary disabled' : 'outline-secondary' }}" title="Mostrar los registros a modo de lista"><i class="fa fa-list"></i></a>
 						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'grid']) }}" class="btn btn-{{ session('listType') == 'grid' ? 'secondary disabled' : 'outline-secondary' }}" title="Mostrar los registros a modo de grilla"><i class="fa fa-th-large"></i></a>
 						<a href="{{ route('item.new', ['alias' => $store->alias]) }}" class="marL10 btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Agregar un nuevo item</a>
 					</div>
-					<h1 class="f30 marB15">Mis productos y servicios</h1>
+					<h1>Mis productos y servicios</h1>
 					<hr>
 				</div>
+
+				<a href="{{ route('item.new', ['alias' => $store->alias]) }}" class="btn-new">
+					<i class="fa fa-plus"></i>
+				</a>
 
 				@if($items->count()!=0)
 
@@ -65,8 +69,8 @@
 									@if(isset($item->photos->sortBy('ordering')->first()->file_path) && !empty($item->photos->sortBy('ordering')->first()->file_path))
 										@php($img = 'storage/items/sm/'.$item->photos->sortBy('ordering')->first()->file_path)
 									@endif
-									<div class="col-md-3">
-										<div class="show-grid-item">
+									<div class="col-6 col-md-3">
+										<div class="show-grid-item show-grid-item-favs">
 											<div class="item-info relative">
 												<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" title="Editar la información de este item">
 													<img src="{{ file_exists($img) && !is_dir($img) ? asset($img.'?v='.$item->photos->sortBy('ordering')->first()->version) : asset($noimg) }}" class="img-fluid">

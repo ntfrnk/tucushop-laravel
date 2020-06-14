@@ -2,7 +2,7 @@
 
 @section('section.admin', 'Leer mensaje')
 @section('back.admin')
-    <a href="{{ route('store.messages', ['alias' => $store->alias]) }}">Volver al listado de mensajes</a>
+    <a href="{{ route('store.messages', ['alias' => $store->alias]) }}">Volver a mensajes</a>
 @endsection
 
 @section('admin')
@@ -10,7 +10,7 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body pad30">
+			<div class="card-body card-body-pad">
 
 				<div class="f20 lh30">
                     <div class="f16 fw500">
@@ -83,7 +83,7 @@
                         
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <button type="submit" rel="submit" class="btn btn-primary">
+                                <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                     {{ __('Enviar respuesta') }}
                                 </button>
                             </div>

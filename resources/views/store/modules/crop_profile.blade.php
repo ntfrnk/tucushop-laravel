@@ -26,10 +26,10 @@
 <div class="row">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body padT30 padB30 padLR30">
+			<div class="card-body card-body-pad">
 
-				<div class="f17">
-					<h1 class="f30 marB15">Recortar foto de perfil</h1>
+				<div class="card-body-title">
+					<h1>Recortar foto de perfil</h1>
 					<hr>
 				</div>
 
@@ -44,7 +44,8 @@
 					<div class="col-md-6 marT20">
 						<p class="d-none d-md-block">Mueve con el mouse la foto, para seleccionar el área que deseas mostrar. Para agrandar o achicar el área de recorte puedes girar la rueda del mouse sobre la foto, o deslizar el control que está debajo de la foto.</p>
 						<p class="d-block d-md-none">Mueve la foto para seleccionar el área que deseas recortar. Para agrandar o achicar el área de recorte usa dos dedos.</p>
-						<a href="javascript:;" class="show-result-profile btn btn-primary loading">Recortar foto</a>
+						<a href="javascript:;" class="show-result-profile btn btn-primary btn-important loading">Recortar foto</a>
+						<a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
 						<form id="crop-data-profile" action="{{ route('store.profile.cropper') }}" method="post">
 							@csrf
 							<input type="hidden" name="image" id="image" value="storage/logos/original/{{ $store->shop->image_profile }}">

@@ -15,10 +15,10 @@
                 @if(session('message'))
                     <div class="card-header bold a-center text-success">{{ session('message') }}</div>
                 @endif
-            	<div class="card-body pad30">
+            	<div class="card-body card-body-pad">
 
-                    <div class="f17 marB30">
-                        <h1 class="f30 marB15">Información general</h1>
+                    <div class="card-body-title">
+                        <h1>Información general</h1>
                         <hr>
                     </div>
 
@@ -62,11 +62,11 @@
                     </div>
 
                     <div class="form-group row form-row-btn">
-                        <div class="col-md-6 offset-md-3 padL5">
-                            <button type="submit" rel="submit" class="btn btn-primary">
+                        <div class="col-md-6 offset-md-3">
+                            <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                 {{ __('Guardar cambios') }}
                             </button>
-                            <a href="{{ route('store.home', ['alias' => $store->alias]) }}" class="btn btn-link marL5">Cancelar</a>
+                            <a href="{{ route('store.home', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
                         </div>
                     </div>
 

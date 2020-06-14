@@ -3,7 +3,7 @@
 @section('section.admin', 'Gestión de fotos')
 
 @section('back.admin')
-    <a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}">Volver a la edición del item</a>
+    <a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}">Volver a editar item</a>
 @endsection
 
 @php($noimg = 'storage/items/sm/no-image-min.jpg')
@@ -13,15 +13,17 @@
 <div class="row justify-content-center">
 	<div class="col-md-12 mainbar">
 		<div class="card marB20">
-			<div class="card-body card-body-min pad30">
+			<div class="card-body card-body-min card-body-pad mh500">
 
-				<div class="f16">
-					<div class="f-right">
-						<button type="button" id="photo-upload" class="btn btn-primary spn">Subir una nueva foto</button>
+				<div class="card-body-title">
+					<div class="f-right d-none d-md-block">
+						<button type="button" id="photo-upload" class="btn btn-primary">Subir una nueva foto</button>
 					</div>
-				    <h1 class="f30 marB15">Gestionar fotos</h1>
+				    <h1>Gestionar fotos</h1>
 				    <hr>
 				</div>
+
+				<a href="javascript:;" onclick="$('#photo-upload').trigger('click');" class="btn-new"><i class="fa fa-camera"></i></a>
 				
 				@if($item->photos->count() > 1)
 					<div class="f15 marB30">
@@ -34,7 +36,7 @@
 					@if($item->photos->count() != 0)
 
 						@foreach($item->photos->sortBy('ordering') as $photo)
-							<div class="col-md-3" id="img_<?=$photo->id?>">
+							<div class="col-6 col-md-3" id="img_<?=$photo->id?>">
 								<div class="show-grid-item">
 									<div class="item-info">
 										<img src="{{ file_exists('storage/items/sm/'.$photo->file_path) && !is_dir('storage/items/sm/'.$photo->file_path) ? asset('storage/items/sm/'.$photo->file_path.'?v='.$photo->version) : asset($noimg) }}" class="img-fluid">

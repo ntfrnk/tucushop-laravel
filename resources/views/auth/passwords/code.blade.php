@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container marTB50">
+<div class="container container-forms">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 cont-forms">
             <div class="card">
                 {{-- <div class="card-header">{{ __('Reset Password') }}</div> --}}
 
-                <div class="card-body padB40 padT25">
+                <div class="card-body card-body-forms">
 
                     <form method="POST" action="{{ route('user.pass.validate') }}">
                         @csrf
@@ -34,10 +34,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" rel="submit" class="btn btn-primary">
+                                <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                     {{ __('Enviar código') }}
                                 </button>
-                                <a href="{{ route('login') }}" class="btn btn-link">
+                                <a href="{{ route('login') }}" class="btn btn-link btn-important">
                                     {{ __('Cancelar') }}
                                 </a>
                             </div>

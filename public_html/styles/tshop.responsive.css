@@ -261,12 +261,30 @@
         margin-bottom: 0px !important;
     }
 
+    .container-forms {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .cont-forms {
+        padding: 0;
+    }
+
+    .card-body-forms {
+        margin: 0 !important;
+        padding: 15px 30px 100px;
+    }
+    
     .card-body-pad {
-        padding: 20px 20px 40px;
+        padding: 20px 20px 80px;
     }
 
     .card-body-title {
         margin-bottom: 0px;
+    }
+
+    .card-body-pad-1 {
+        padding: 20px 20px 10px;
     }
 
     .card-body-title h1 {
@@ -299,11 +317,15 @@
         border-bottom: none;
     }
 
+    .form-group-alt label {
+        margin-bottom: 7px;
+    }
+
     .show-grid-item-favs {
         padding: 0px;
     }
 
-    .options {
+    .options-fav {
         position: absolute;
         text-align: right;
         top: 5px;
@@ -319,8 +341,8 @@
     }
 
     .sidebar ul {
-        padding-bottom: 50px;
-        padding-top: 20px;
+        padding-bottom: 80px;
+        padding-top: 30px;
     }
 
     .sidebar ul li {
@@ -330,6 +352,85 @@
 
     .sidebar ul li a {
         padding: 0 0;
+    }
+
+    .margin-form {
+        padding: 0px 15px 50px;
+    }
+
+    .btn-important {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 15px !important;
+        width: 100%;
+    }
+
+    .btn-important:first-child {
+        margin-top: 10px;
+    }
+
+    .btn-new {
+        background: #090;
+        color: #FFF !important;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 400;
+        display: block;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        z-index: 15;
+        box-shadow: 1px 3px 12px 2px rgba(0, 0, 0, 0.6);
+        transition: all 300ms ease;
+    }
+
+    .btn-new-off {
+        display: none;
+    }
+
+
+    /* Stores management
+    ********************************************/
+    
+    .stores-logo{
+        text-align: center;
+    }
+
+    .stores-logo img{
+        border: solid 1px #999;
+        width: 100px;
+        margin: 0 auto;
+    }
+    
+    .stores-info {
+        margin-top: 13px;
+    }
+
+    .stores-info h3 {
+        font-size: 16px;
+    }
+
+    .box-admin {
+        margin-bottom: 20px;
+    }
+
+    .box-admin>div {
+        height: 195px;
+    }
+
+    .box-admin:nth-child(even) {
+        padding-left: 10px;
+    }
+
+    .box-admin:nth-child(odd) {
+        padding-right: 10px;
     }
 
 

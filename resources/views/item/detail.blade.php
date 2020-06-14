@@ -147,17 +147,17 @@
 
 					<div class="row marT0 marB20">
 						<div class="col-md-12">
-							<a class="fb-share-button" 
+							<a rel="submit" class="fb-share-button" 
 								data-href="{{ Request::url() }}" 
 								data-layout="button">
 							</a>
-							<a href="http://pinterest.com/pin/create/button/?url={{ urlencode(Request::url()) }}&amp;media={{ urlencode(route('home').'/storage/items/lg/'.$item->photos->first()->file_path) }}" class="btn btn-primary btn-sm btn-pt f18">
+							<a rel="submit" href="http://pinterest.com/pin/create/button/?url={{ urlencode(Request::url()) }}&amp;media={{ urlencode(route('home').'/storage/items/lg/'.$item->photos->first()->file_path) }}" class="btn btn-primary btn-sm btn-pt f18">
 								<i class="fab fa-pinterest"></i>
 							</a>
-							<a href="whatsapp://send?text={{ urlencode($item->name.': '.Request::url()) }}" class="badge badge-success text-white btn-wp">
+							<a rel="submit" href="whatsapp://send?text={{ urlencode($item->name.': '.Request::url()) }}" class="badge badge-success text-white btn-wp">
 								<i class="fab fa-whatsapp f13 block f-left"></i> <span class="inline-block f11 fw600 lh10">Enviar</span>
 							</a>
-							<a href="https://twitter.com/intent/tweet?text={{ urlencode($item->name) }}&url={{ urlencode(Request::url()) }}" class="badge badge-info text-white btn-wp">
+							<a rel="submit" href="https://twitter.com/intent/tweet?text={{ urlencode($item->name) }}&url={{ urlencode(Request::url()) }}" class="badge badge-info text-white btn-wp">
 								<i class="fab fa-twitter f13 block f-left"></i> <span class="inline-block f11 fw600 lh10">Twittear</span>
 							</a>
 						</div>

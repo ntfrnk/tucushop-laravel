@@ -2,7 +2,7 @@
 
 @section('section.admin', 'Leer mensaje')
 @section('back.admin')
-    <a href="{{ route('user.messages') }}">Volver al listado de mensajes</a>
+    <a href="{{ route('user.messages') }}">Volver a mensajes</a>
 @endsection
 
 @section('admin')

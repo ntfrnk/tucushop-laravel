@@ -11,4 +11,24 @@ $(function(){
         }
     });
 
+
+    /* SCROLL */
+
+	$(document).on('scroll', function(){
+	    
+        var top = $(document).scrollTop();
+        var altura = $(document).height();
+        var footer = $('footer').height();
+
+        var alturapie = parseInt(altura - footer - 600);
+		
+		// Cabecera 
+		if(top >= alturapie){
+			$('.btn-new').css({'opacity':'0'});
+		} else {
+			$('.btn-new').css({'opacity':'1'});
+		}
+		
+	});
+
 });

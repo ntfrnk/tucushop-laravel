@@ -23,7 +23,7 @@
                 <div class="card-header bold a-center text-success">{{ session('message') }}</div>
             @endif
 
-        	<div class="card-body pad30">
+        	<div class="card-body card-body-pad">
 
                 {{-- Inicio del formulario --}}
                 
@@ -124,10 +124,10 @@
 
                             @if(!isset($item))
                                 <div class="form-group form-group-alt">
-                                    <button type="submit" rel="submit" id="save-form" class="btn btn-primary">
+                                    <button type="submit" rel="submit" id="save-form" class="btn btn-primary btn-important">
                                         <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
                                     </button>
-                                    <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+                                    <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary btn-important">Cancelar</a>
                                 </div>
                             @endif
 
