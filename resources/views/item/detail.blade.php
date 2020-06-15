@@ -198,13 +198,11 @@
 					
 					@if($item->tags && $item->tags->count() > 0)
 						<div class="f15 texto marT10">
-							@if($item->tags!=null && $item->tags->count()>0)
-								@foreach($item->tags as $tag)
-									<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
-										#{{ mb_strtolower($tag->keyword->keyword) }}
-									</a>
-								@endforeach
-							@endif
+							@foreach($item->tags as $tag)
+								<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
+									#{{ mb_strtolower($tag->keyword->keyword) }}
+								</a>
+							@endforeach
 						</div>
 						<hr>
 					@endif
