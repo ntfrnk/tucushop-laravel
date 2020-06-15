@@ -34,11 +34,11 @@
                     <div class="marB30">
                         <div class="mar0 marT0 f-right">
                             <div class="f-right align-right">
-                                @if($offer)
+                                @if(isset($offer) && $offer == 1)
                                     <span>¡Artículo en oferta!</span>
                                 @endif
-                                <a href="{{ $offer ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ $offer ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ $offer ? 'btn-outline-danger' : 'btn-outline-primary' }}">
-                                    {{ $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
+                                <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ isset($offer) && $offer == 1 ? 'btn-outline-danger' : 'btn-outline-primary' }}">
+                                    {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
                                 </a>
                             </div>
                         </div>
@@ -88,30 +88,30 @@
 
                                 <div class="row">
 
-                                    <label for="price" class="{{ $offer ? 'col-6' : 'col-12' }}">{{ __('Precio') }}</label>
+                                    <label for="price" class="{{ isset($offer) && $offer == 1 ? 'col-6' : 'col-12' }}">{{ __('Precio') }}</label>
                                     
-                                    @if($offer)
+                                    @if(isset($offer) && $offer == 1)
                                         <label for="offer-price" class="col-6">Oferta ({{ $item->offer->percent }}% OFF)</label>
                                     @endif
                                 
                                 </div>
 
-                                <div class="{{ $offer ? 'row' : '' }}">
+                                <div class="{{ isset($offer) && $offer == 1 ? 'row' : '' }}">
 
-                                    <div class="input-group{{ $offer ? ' col-6' : '' }}">
+                                    <div class="input-group{{ isset($offer) && $offer == 1 ? ' col-6' : '' }}">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text bold">$</span>
                                         </div>
-                                        <input type="text" id="price" class="{{ $offer ? 'tachado ' : '' }} f20 form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}"{{ $offer ? ' readonly' : '' }} autocomplete="off">
+                                        <input type="text" id="price" class="{{ isset($offer) && $offer == 1 ? 'tachado ' : '' }} f20 form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}"{{ isset($offer) && $offer == 1 ? ' readonly' : '' }} autocomplete="off">
                                         <span class="invalid-feedback price b">@error('price'){{ $message }}@enderror</span>
                                     </div>
 
-                                    @if($offer)
+                                    @if(isset($offer) && $offer == 1)
                                         <div class="input-group col-6">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bold">$</span>
                                             </div>
-                                            <input type="text" id="offer-price" class="form-control f20 @error('price') is-invalid @enderror" name="price" value="{{ $item->offer->price }}" readonly autocomplete="off">
+                                            <input type="text" class="form-control f20 @error('price') is-invalid @enderror" name="price" value="{{ $item->offer->price }}" readonly autocomplete="off">
                                             <span class="invalid-feedback offer-price b">@error('price'){{ $message }}@enderror</span>
                                         </div>
 
@@ -210,7 +210,7 @@
                                 <div class="input-group marT10">
 
                                     <div id="show-tags">
-                                        @if($item->tags && $item->tags->count() != 0)
+                                        @if($item->tags && $item->tags->count() > 0)
                                             @foreach($item->tags as $tag)
                                             <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
                                                 #{{ trim($tag->keyword->keyword) }}
@@ -262,7 +262,10 @@
 
 @section('modals')
 
-{{-- Consultas sobre la página --------------------------------------- --}}
+
+@if(isset($item))
+
+{{-- Crear oferta en base al item --------------------------------------- --}}
 
 <div class="pop-container" id="m-offer">
     <div class="pop-box">
@@ -329,14 +332,6 @@
                         </form>
 
                     </div>
-
-                    <div class="resp-offer none">
-                        <div class="f18 alert alert-success padT25">
-                            <p>Tu consulta fue enviada exitosamente.<br>En breve nos pondremos en contacto con vos para responderte.</p>
-                            <p class="b">¡Muchas gracias por contactarnos!</p>
-                        </div>
-                        <p class="marT20"><button type="button" class="btn btn-primary w25 refresh">Cerrar esta ventana</button></p>
-                    </div>
         
                 </div>
         
@@ -346,5 +341,7 @@
 
     </div>
 </div>
+
+@endif
 
 @endsection
