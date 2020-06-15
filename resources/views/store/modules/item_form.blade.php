@@ -210,8 +210,8 @@
                                 <div class="input-group marT10">
 
                                     <div id="show-tags">
-                                        @if($item->tags && $item->tags->count() != 0)
-                                            @foreach($item->tags as $tag)
+                                        @if($tags && $tags->count() != 0)
+                                            @foreach($tags as $tag)
                                             <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
                                                 #{{ trim($tag->keyword->keyword) }}
                                                 <a href="javascript:;" onclick="tagDelete({{ $item->id }}, {{ $tag->keyword->id }})" class="inline-block marL10">

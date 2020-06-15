@@ -58,8 +58,8 @@ class ItemController extends Controller {
 		$kname = \Help::keywords($item->name);
 		$kdetail = \Help::keywords($item->detail);
 
-		if($item->tags!=null && $item->tags->count()!=0){
-			foreach($item->tags as $tag){
+		if($tags!=null && $tags->count()!=0){
+			foreach($tags as $tag){
 				$ktags[] = $tag->keyword->keyword;
 			}
 		} else {
@@ -247,12 +247,14 @@ class ItemController extends Controller {
 
 			$store = Store::where('alias', $alias)->first();
 			$item = Item::find($item_id);
+			$tags = ItemTag::where('item_id', $item_id)->get();
 
 			$offer = $item->offer && $item->offer->expiration > date('Y-m-d') ? true : false;
 
 			return view('store.modules.item_form', [
 				'store' => $store,
 				'item' => $item,
+				'tags' => $tags,
 				'offer' => $offer
 			]);
 
