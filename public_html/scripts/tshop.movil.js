@@ -12,6 +12,40 @@ $(function(){
     });
 
 
+    $('.h-toggle-features').on('click', function(){
+        $('.div-toggle-features').toggle(200);
+        if($('.h-toggle-features span').hasClass('on')){
+            $('.h-toggle-features span').removeClass('on');
+            $('.h-toggle-features span').removeClass('fa-angle-up').addClass('fa-angle-down');
+        } else {
+            $('.h-toggle-features span').addClass('on');
+            $('.h-toggle-features span').removeClass('fa-angle-down').addClass('fa-angle-up');
+        }
+    });
+
+    $('.h-toggle-tags').on('click', function(){
+        $('.div-toggle-tags').toggle(200);
+        if($('.h-toggle-tags span').hasClass('on')){
+            $('.h-toggle-tags span').removeClass('on');
+            $('.h-toggle-tags span').removeClass('fa-angle-up').addClass('fa-angle-down');
+        } else {
+            $('.h-toggle-tags span').addClass('on');
+            $('.h-toggle-tags span').removeClass('fa-angle-down').addClass('fa-angle-up');
+        }
+    });
+
+    $('.h-toggle-options').on('click', function(){
+        $('.div-toggle-options').toggle(200);
+        if($('.h-toggle-options span').hasClass('on')){
+            $('.h-toggle-options span').removeClass('on');
+            $('.h-toggle-options span').removeClass('fa-angle-up').addClass('fa-angle-down');
+        } else {
+            $('.h-toggle-options span').addClass('on');
+            $('.h-toggle-options span').removeClass('fa-angle-down').addClass('fa-angle-up');
+        }
+    });
+
+
     /* SCROLL */
 
 	$(document).on('scroll', function(){

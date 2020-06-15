@@ -20,7 +20,7 @@
 
 @section('admin')
 
-<div class="row justify-content-center d-none d-md-block">
+<div class="row justify-content-center d-none d-md-flex">
     <div class="col-md-12 mainbar">
 
 		<div class="card marB20">

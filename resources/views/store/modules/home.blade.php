@@ -6,7 +6,7 @@
 
 @section('admin')
 
-<div class="row mainbar d-none d-md-block">
+<div class="row mainbar d-none d-md-flex">
 	<div class="col-md-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">

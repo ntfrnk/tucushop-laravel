@@ -37,7 +37,7 @@
                                 @if(isset($offer) && $offer == 1)
                                     <span>¡Artículo en oferta!</span>
                                 @endif
-                                <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ isset($offer) && $offer == 1 ? 'btn-outline-danger' : 'btn-outline-primary' }}">
+                                <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ isset($offer) && $offer == 1 ? 'btn-outline-danger' : 'btn-outline-primary' }} d-none d-md-inline-block">
                                     {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
                                 </a>
                             </div>
@@ -52,7 +52,7 @@
                     <div class="row{{ isset($item) ? '' : ' justify-content-center' }}">
                         
                         @if(isset($item))
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none d-md-inline-block">
                                 <div class="relative">
                                     <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
                                     <div class="form-group form-group-alt marT15 absolute b0 l15">
@@ -148,39 +148,45 @@
 
                             <div class="col-md-6">
 
-                                <div class="marT30">
-                                    <h3 class="f22 marB0">Características</h3>
+                                <div class="h-toggle h-toggle-features first">
+                                    <h3 class="f22 marB0">
+                                        Características <span class="fa fa-angle-down f-right f20 marT5"></span>
+                                    </h3>
                                     <hr>
                                 </div>
 
-                                <label for="feature_id">Añadir una característica: </label>
-                                <div class="input-group marT0">
+                                <div class="div-toggle div-toggle-features">
 
-                                    <input type="text" id="feature_name" class="form-control" placeholder="Ej: Color" autocomplete="off">
+                                    <label for="feature_id">Añadir una característica: </label>
+                                    <div class="input-group marT0">
 
-                                    <input type="text" id="feature_content" class="form-control" placeholder="Ej: Verde" autocomplete="off">
-                                    <input type="hidden" id="item_id" value="{{ $item->id }}">
+                                        <input type="text" id="feature_name" class="form-control" placeholder="Ej: Color" autocomplete="off">
 
-                                    <input type="hidden" id="feature_data" />
+                                        <input type="text" id="feature_content" class="form-control" placeholder="Ej: Verde" autocomplete="off">
+                                        <input type="hidden" id="item_id" value="{{ $item->id }}">
 
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary z1" id="add-feature" type="button">Agregar</button>
+                                        <input type="hidden" id="feature_data" />
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary z1" id="add-feature" type="button">Agregar</button>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                    <div class="marT15" id="show-features">
 
-                                <div class="marT15" id="show-features">
+                                        @if($item->features && $item->features->count() != 0)
+                                            @foreach($item->features as $feature)
+                                                <div class="badge badge-light f13 marB5 marR5" id="feature-{{ $item->id }}-{{ $feature->feature->id }}">
+                                                    {{ $feature->feature->feature }}: <span class="fw400 inline-block">{{ $feature->content }}</span>
+                                                    <a href="javascript:;" onclick="featureDelete({{ $item->id }}, {{ $feature->feature->id }})" class="inline-block marL10">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endif
 
-                                    @if($item->features && $item->features->count() != 0)
-                                        @foreach($item->features as $feature)
-                                            <div class="badge badge-light f13 marB5 marR5" id="feature-{{ $item->id }}-{{ $feature->feature->id }}">
-                                                {{ $feature->feature->feature }}: <span class="fw400 inline-block">{{ $feature->content }}</span>
-                                                <a href="javascript:;" onclick="featureDelete({{ $item->id }}, {{ $feature->feature->id }})" class="inline-block marL10">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    @endif
+                                    </div>
 
                                 </div>
 
@@ -188,39 +194,73 @@
 
                             <div class="col-md-6">
 
-                                <div class="marT30">
-                                    <h3 class="f22 marB0">Etiquetas / Hashtags</h3>
+                                <div class="h-toggle h-toggle-tags">
+                                    <h3 class="f22 marB0">
+                                        Etiquetas / Hashtags <span class="fa fa-angle-down f-right f20 marT5"></span>
+                                    </h3>
                                     <hr>
                                 </div>
-                                    
-                                <label for="keyword">Palabras separadas por comas:</label>
-                                
-                                <div class="marT0 input-group">
-                                    
-                                    <input type="text" id="keyword" class="form-control" placeholder="Ej: vestido, noche, fiesta" autocomplete="off">
 
-                                    {{-- El input id="item_id" está en el formulario de características (features) --}}
+                                <div class="div-toggle div-toggle-tags">
+                                    
+                                    <label for="keyword">Palabras separadas por comas:</label>
+                                    
+                                    <div class="marT0 input-group">
+                                        
+                                        <input type="text" id="keyword" class="form-control" placeholder="Ej: vestido, noche, fiesta" autocomplete="off">
 
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary z1" type="button" id="add-tags">Agregar</button>
+                                        {{-- El input id="item_id" está en el formulario de características (features) --}}
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary z1" type="button" id="add-tags">Agregar</button>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group marT10">
+
+                                        <div id="show-tags">
+                                            @if($tags && $tags->count() != 0)
+                                                @foreach($tags as $tag)
+                                                <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
+                                                    #{{ trim($tag->keyword->keyword) }}
+                                                    <a href="javascript:;" onclick="tagDelete({{ $item->id }}, {{ $tag->keyword->id }})" class="inline-block marL10">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
                                     </div>
 
                                 </div>
 
-                                <div class="input-group marT10">
+                            </div>
 
-                                    <div id="show-tags">
-                                        @if($tags && $tags->count() != 0)
-                                            @foreach($tags as $tag)
-                                            <div class="inline-block badge badge-light pad5 marT5 marR5 f13" id="tag-{{ $item->id }}-{{ $tag->keyword->id }}">
-                                                #{{ trim($tag->keyword->keyword) }}
-                                                <a href="javascript:;" onclick="tagDelete({{ $item->id }}, {{ $tag->keyword->id }})" class="inline-block marL10">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </div>
-                                            @endforeach
-                                        @endif
-                                    </div>
+                            <div class="col-md-6">
+
+                                <div class="h-toggle h-toggle-options">
+                                    <h3 class="f22 marB0">
+                                        Más opciones <span class="fa fa-angle-down f-right f20 marT5"></span>
+                                    </h3>
+                                    <hr>
+                                </div>
+
+                                <div class="div-toggle div-toggle-options">
+
+                                    @if(isset($offer) && $offer == 1)
+                                    <span>¡Artículo en oferta!</span>
+                                    @endif
+                                    <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="btn-important btn fw500 btn-link">
+                                        {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
+                                    </a>
+                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+                                        <a href="javascript:;" onclick="notify_open('No puedes {{ __('habilitar') }} un item sin foto.')" class="btn btn-link btn-important text-primary"><i class="fa fa-check"></i> {{ __('Habilitar') }}</a>
+                                    @else
+                                        <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="btn btn-important btn-link {{ $item->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? __('Deshabilitar') : __('Habilitar') }}</a>
+                                    @endif
+                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-link btn-important">Eliminar</a>
 
                                 </div>
 
@@ -229,11 +269,11 @@
                         </div>
 
                         @if(isset($item))
-
+                            
                             <hr>
 
                             <div class="form-group form-group-alt marT10">
-                                <div class="f-right align-right">
+                                <div class="f-right a-right d-none d-md-inline-block">
                                     @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
                                         <a href="javascript:;" onclick="notify_open('No puedes {{ __('habilitar') }} un item sin foto.')" class="marR5 btn btn-link text-primary"><i class="fa fa-check"></i> {{ __('Habilitar') }}</a>
                                     @else
@@ -241,11 +281,12 @@
                                     @endif
                                     <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-link text-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
                                 </div>
-                                <button type="button" id="save-form-item" class="btn btn-primary">
+                                <button type="button" id="save-form-item" class="btn btn-primary btn-important">
                                     <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
                                 </button>
-                                <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-outline-primary marL5">Cancelar</a>
+                                <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
                             </div>
+
                         @endif
 
                     </div>

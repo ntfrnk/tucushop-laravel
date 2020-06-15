@@ -433,6 +433,27 @@
         padding-right: 10px;
     }
 
+    .h-toggle {
+        display: block;
+        margin-top: 0px;
+    }
+
+    .h-toggle.first {
+        margin-top: 30px;
+    }
+
+    .div-toggle {
+        display: none;
+    }
+
+    .div-toggle-features {
+        padding-bottom: 30px;
+    }
+
+    .div-toggle-tags {
+        padding-bottom: 30px;
+    }
+
 
     /* Footer
     ********************************************/
