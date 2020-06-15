@@ -197,9 +197,9 @@
 						<hr>
 					@endif
 					
-					@if($item->tags && $item->tags->count() > 0)
+					@if($tags && $tags->count() > 0)
 						<div class="f15 marT10">
-							@foreach($item->tags as $tag)
+							@foreach($tags as $tag)
 								<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
 									#{{ mb_strtolower($tag->keyword->keyword) }}
 								</a>

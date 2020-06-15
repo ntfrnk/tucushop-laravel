@@ -36,6 +36,8 @@ class ItemController extends Controller {
 			$item_disabled = 0;
 		}
 
+		$tags = ItemTag::where('item_id',$item->id)->get();
+
 		// Obtengo los items aleatorios
 
 		$items_random = 
@@ -99,6 +101,7 @@ class ItemController extends Controller {
 
 		return view('item.detail', [
 			'item' => $item,
+			'tags' => $tags,
 			'item_disabled' => $item_disabled,
 			'items_sugested' => $items_sugested,
 			'items_random' => $items_random
