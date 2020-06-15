@@ -135,7 +135,7 @@ class ItemController extends Controller {
 	---------------------------------------------------- */
 	public function items($alias){
 
-		if(\Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && isset($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 
@@ -177,7 +177,7 @@ class ItemController extends Controller {
 	---------------------------------------------------- */
 	public function new($alias){
 		
-		if(\Auth::user() && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && isset($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$features = Feature::all();
@@ -240,7 +240,7 @@ class ItemController extends Controller {
 	---------------------------------------------------- */
 	public function edit($alias, $item_id){
 
-		if(\Auth::user() && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && isset($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$store = Store::where('alias', $alias)->first();
 			$item = Item::find($item_id);
@@ -351,7 +351,7 @@ class ItemController extends Controller {
 		$item = Item::find($item_id);
 		$store = Store::find($item->store->id);
 
-		if(\Auth::user() && \Help::isAdmin($store->alias) && !\Help::isDeleted($store->alias)){
+		if(\Auth::user() && isset($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			return view('store.modules.photos', [
 				'store' => $store,
@@ -654,7 +654,7 @@ class ItemController extends Controller {
 		
 		$item = Item::find($item_id);
 
-		if(\Auth::user() && \Help::isAdmin($item->store->alias) && !\Help::isDeleted($item->store->alias)){
+		if(\Auth::user() && isset($alias) && \Help::isAdmin($item->store->alias) && !\Help::isDeleted($item->store->alias)){
 
 			$item->status = $item->status == 1 ? 0 : 1;
 			$item->save();
@@ -683,7 +683,7 @@ class ItemController extends Controller {
 		$item = Item::find($item_id);
 		$alias = $item->store->alias;
 
-		if(\Auth::user() && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
+		if(\Auth::user() && isset($alias) && \Help::isAdmin($alias) && !\Help::isDeleted($alias)){
 
 			$photos = ItemPhoto::where('item_id', $item_id)->get();
 

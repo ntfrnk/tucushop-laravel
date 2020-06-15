@@ -15,8 +15,12 @@ class Help {
 		foreach($store->admins as $admin){
 			$adminers[] = $admin->user->id;
 		}
-		if(in_array(\Auth::user()->id, $adminers)){
-			return true;
+		if(\Auth::user()){
+			if(in_array(\Auth::user()->id, $adminers)){
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
