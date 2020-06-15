@@ -244,9 +244,8 @@ class ItemController extends Controller {
 
 			$store = Store::where('alias', $alias)->first();
 			$item = Item::find($item_id);
-			$features = Feature::all();
 
-			var_dump($item);
+			var_dump($item->tags->all());
 			die;
 
 			$offer = $item->offer && $item->offer->expiration > date('Y-m-d') ? true : false;
