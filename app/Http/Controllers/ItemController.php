@@ -95,7 +95,7 @@ class ItemController extends Controller {
 		->take(12)
 		->get();
 
-		var_dump($item->tags);
+		var_dump($item);
 		die;
 
 		// Retorno la vista
