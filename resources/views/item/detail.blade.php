@@ -85,30 +85,34 @@
 				{{-- Muestro las fotos --}}
 				<div class="col-md-6 item-col-photos">
 
-					<div id="item-detail" class="owl-carousel owl-theme">
+					<div class="relative padLR15">
 
-						@php($i=0)
-						@foreach($item->photos->sortBy('ordering') as $photo)
-							<div class="item item-detail-photo">
-								<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid" idph="{{ $i }}">
-							</div>
-							@php($i++)
-						@endforeach
+						<div id="item-detail" class="owl-carousel owl-theme">
 
-					</div>
+							@php($i=0)
+							@foreach($item->photos->sortBy('ordering') as $photo)
+								<div class="item item-detail-photo">
+									<img src="{{ asset('storage/items/lg/'.$photo->file_path.'?v='.$photo->version) }}" class="img-fluid" idph="{{ $i }}">
+								</div>
+								@php($i++)
+							@endforeach
 
-					<div class="n-photo">
-						<div>
-							<span>Foto </span>
-							<span class="n-actual">1</span> de 
-							<span class="n-total">{{ $item->photos->count() }}</span>
 						</div>
-					</div>
 
-					@if($item->photos && $item->photos->count() > 1)
-						<a href="javascript:;" class="btn-photo btn-photo-prev d-none d-md-block"><i class="fa fa-chevron-left"></i></a>
-						<a href="javascript:;" class="btn-photo btn-photo-next d-none d-md-block"><i class="fa fa-chevron-right"></i></a>
-					@endif
+						<div class="n-photo">
+							<div>
+								<span>Foto </span>
+								<span class="n-actual">1</span> de 
+								<span class="n-total">{{ $item->photos->count() }}</span>
+							</div>
+						</div>
+
+						@if($item->photos && $item->photos->count() > 1)
+							<a href="javascript:;" class="btn-photo btn-photo-prev d-none d-md-block"><i class="fa fa-chevron-left"></i></a>
+							<a href="javascript:;" class="btn-photo btn-photo-next d-none d-md-block"><i class="fa fa-chevron-right"></i></a>
+						@endif
+
+					</div>
 
 				</div>
 
