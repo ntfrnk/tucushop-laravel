@@ -41,8 +41,8 @@
 										</div>
 									</td>
 									<td class="a-right">
-										<a href="{{ route('user.message.read', ['message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i><span class="d-none d-md-inline-block"> Ver mensaje</span></a>
-										<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('user.message.delete', ['message_id' => $message->id]) }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i><span class="d-none d-md-inline-block"> Eliminar</span></a>
+										<a href="{{ route('user.message.read', ['message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i><span class="d-none d-md-inline-block marL5"> Ver mensaje</span></a>
+										<a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este mensaje?', '{{ route('user.message.delete', ['message_id' => $message->id]) }}')" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i><span class="d-none d-md-inline-block marL5"> Eliminar</span></a>
 									</td>
 								</tr>
 
