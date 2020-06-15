@@ -97,10 +97,10 @@ $(function(){
 				loop:false
 	        },
 	        600:{
-				loop:true
+				loop:false
 	        },
 	        1000:{
-	            loop:true
+	            loop:false
 	        }
 	    }
 	});

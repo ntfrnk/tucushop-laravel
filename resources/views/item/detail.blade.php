@@ -104,6 +104,7 @@
 							<span class="n-total">{{ $item->photos->count() }}</span>
 						</div>
 					</div>
+
 					@if($item->photos && $item->photos->count() > 1)
 						<a href="javascript:;" class="btn-photo btn-photo-prev d-none d-md-block"><i class="fa fa-chevron-left"></i></a>
 						<a href="javascript:;" class="btn-photo btn-photo-next d-none d-md-block"><i class="fa fa-chevron-right"></i></a>
@@ -197,7 +198,7 @@
 					@endif
 					
 					@if($item->tags && $item->tags->count() > 0)
-						<div class="f15 texto marT10">
+						<div class="f15 marT10">
 							@foreach($item->tags as $tag)
 								<a href="{{ route('search.results',['keyword' => $tag->keyword->keyword]) }}" class="inline-block marR15">
 									#{{ mb_strtolower($tag->keyword->keyword) }}
@@ -286,12 +287,12 @@
 
 
 		{{-- Encabezado de random --}}
-		<div class="carousel-heading row marT10">
+		<div class="carousel-heading row marT40">
 			<div class="col-2 col-md-2 carousel-icon">
 				<i class="fa fa-tag" aria-hidden="true"></i>
 			</div>
 			<div class="col-10 col-md-8 carousel-title">
-				<h3>T<span class="d-none d-md-block">ambién t</span>e puede interesar</h3>
+				<h3>T<span class="d-none d-md-inline-block">ambién t</span>e puede interesar</h3>
 				<p class="d-none d-md-block">Te sugerimos otros productos y servicios disponibles en la web</p>
 			</div>
 			<div class="col-md-2 carousel-navigation d-none d-md-block">
@@ -302,7 +303,7 @@
 
 		{{-- Cuerpo de random items --}}
 
-		<div id="random" class="box-item-list owl-carousel owl-theme marB500">
+		<div id="random" class="box-item-list owl-carousel owl-theme marB50">
 
 			@foreach($items_random as $item_rand)
 
