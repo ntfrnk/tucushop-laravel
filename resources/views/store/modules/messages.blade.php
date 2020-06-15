@@ -36,7 +36,7 @@
 									{{ $message->item->name }}
 								</td>
 								<td class="a-right">
-									<a href="{{ route('store.message.read', ['alias' => $store->alias,'message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i><span class="d-none d-md-block"> Ver mensaje</span></a>
+									<a href="{{ route('store.message.read', ['alias' => $store->alias,'message_id' => $message->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i><span class="d-none d-md-inline-block"> Ver mensaje</span></a>
 								</td>
 							</tr>
 							@endforeach
