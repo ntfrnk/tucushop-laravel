@@ -95,9 +95,6 @@ class ItemController extends Controller {
 		->take(12)
 		->get();
 
-		var_dump($item);
-		die;
-
 		// Retorno la vista
 
 		return view('item.detail', [
@@ -248,6 +245,9 @@ class ItemController extends Controller {
 			$store = Store::where('alias', $alias)->first();
 			$item = Item::find($item_id);
 			$features = Feature::all();
+
+			var_dump($item);
+			die;
 
 			$offer = $item->offer && $item->offer->expiration > date('Y-m-d') ? true : false;
 
