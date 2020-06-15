@@ -182,7 +182,7 @@
 						</div>
 					</div> --}}
 
-					@if($item->tags && $item->features->count() != 0)
+					@if($item->features && $item->features->count() > 0)
 						<div class="row item-features">
 							<div class="col-md-12">
 								<h3 class="marB20 f22">Características</h3>
@@ -196,7 +196,7 @@
 						<hr>
 					@endif
 					
-					@if($item->tags && $item->tags->count() != 0)
+					@if($item->tags && $item->tags->count() > 0)
 						<div class="f15 texto marT10">
 							@if($item->tags!=null && $item->tags->count()>0)
 								@foreach($item->tags as $tag)
