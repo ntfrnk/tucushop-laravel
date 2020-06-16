@@ -33,14 +33,34 @@
 
                     <div class="marB30">
                         <div class="mar0 marT0 f-right">
-                            <div class="f-right align-right">
+                            <div class="f-right align-right d-none">
                                 @if(isset($offer) && $offer == 1)
                                     <span>¡Artículo en oferta!</span>
                                 @endif
-                                <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ isset($offer) && $offer == 1 ? 'btn-outline-danger' : 'btn-outline-primary' }} d-none d-md-inline-block">
+                                <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ isset($offer) && $offer == 1 ? 'btn-outline-danger' : 'btn-outline-primary' }}">
                                     {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
                                 </a>
                             </div>
+                            <div class="f-right align-right d-none">
+                                <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-light">
+                                    <i class="fa fa-camera marR5"></i>Gestionar fotos
+                                </a>
+                            </div>
+
+                            <div class="f-right align-right item-active">
+                                @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+                                    <div class="f-left marR5 fw500 f16">Activar</div>
+                                    <a href="javascript:;" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}" onclick="notify_open('No puedes activar un item sin foto.')">
+                                        <span class="onoff-slider"></span>
+                                    </a>
+                                @else
+                                    <div class="f-left marR5 fw500 f16">{{ $item->status == 1 ? 'Desactivar' : 'Activar' }}</div>
+                                    <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}">
+                                        <span class="onoff-slider"></span>
+                                    </a>
+                                @endif
+                            </div>
+
                         </div>
                         <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
                         <hr>
@@ -86,39 +106,74 @@
 
                             <div class="form-group form-group-alt">
 
-                                <div class="row">
+                                @if(isset($offer) && $offer == 1)
 
-                                    <label for="price" class="{{ isset($offer) && $offer == 1 ? 'col-6' : 'col-12' }}">{{ __('Precio') }}</label>
-                                    
-                                    @if(isset($offer) && $offer == 1)
-                                        <label for="offer-price" class="col-6">Oferta ({{ $item->offer->percent }}% OFF)</label>
-                                    @endif
-                                
-                                </div>
-
-                                <div class="{{ isset($offer) && $offer == 1 ? 'row' : '' }}">
-
-                                    <div class="input-group{{ isset($offer) && $offer == 1 ? ' col-6' : '' }}">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bold">$</span>
-                                        </div>
-                                        <input type="text" id="price" class="{{ isset($offer) && $offer == 1 ? 'tachado ' : '' }} f20 form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}"{{ isset($offer) && $offer == 1 ? ' readonly' : '' }} autocomplete="off">
-                                        <span class="invalid-feedback price b">@error('price'){{ $message }}@enderror</span>
+                                    <div class="marT25 marB10">
+                                        <span class="text-white bg-success padLR10 padTB5 fw600">¡Artículo en oferta!</span>
+                                        {{-- <a href="" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="fw500 btn-link">
+                                            {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
+                                        </a>  --}}
+                                        <span class="f15 inline-block fw600 marL5" id="delete-offer"><a href="{{ route('item.offer.delete', ['item_id' => $item->id]) }}">¿Eliminar?</a></span>
                                     </div>
 
-                                    @if(isset($offer) && $offer == 1)
+                                    <div class="row">
+
+                                        <label for="price" class="{{ isset($offer) && $offer == 1 ? 'col-6' : 'col-12' }}">
+                                            {{ __('Precio') }}
+                                        </label>
+                                        
+                                        @if(isset($offer) && $offer == 1)
+                                            <label for="offer-price" class="col-6 text-success fw600">Oferta ({{ $item->offer->percent }}% OFF)</label>
+                                        @endif
+                                    
+                                    </div>
+
+                                    <div class="row">
+
                                         <div class="input-group col-6">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bold">$</span>
                                             </div>
-                                            <input type="text" class="form-control f20 @error('price') is-invalid @enderror" name="price" value="{{ $item->offer->price }}" readonly autocomplete="off">
-                                            <span class="invalid-feedback offer-price b">@error('price'){{ $message }}@enderror</span>
+                                            <input type="text" id="price" class="tachado f20 form-control" name="price" value="{{ isset($item) ? $item->price : '' }}" readonly autocomplete="off">
+                                        </div>
+
+                                        <div class="input-group col-6">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bold">$</span>
+                                            </div>
+                                            <input type="text" class="form-control f20" name="price" value="{{ $item->offer->price }}" readonly autocomplete="off">
                                         </div>
 
                                         <div class="f14 text-muted col-12 marT10 em">(*) Para cambiar el precio a un artículo en oferta primero debes eliminar la oferta.</div>
-                                    @endif
 
-                                </div>
+                                    </div>
+
+                                @else
+
+                                    <div class="row">
+
+                                        <label for="price" class="col-12">
+                                            {{ __('Precio') }} 
+                                            <span class="f15 inline-block fw600 marL5 f-right">
+                                                <a href="javascript:;" class="text-primary" id="new-offer">Crear oferta</a>
+                                            </span>
+                                        </label>
+                                        
+                                        @if(isset($offer) && $offer == 1)
+                                            <label for="offer-price" class="col-6 text-success fw600">Oferta ({{ $item->offer->percent }}% OFF)</label>
+                                        @endif
+                                    
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bold">$</span>
+                                        </div>
+                                        <input type="text" id="price" class="f20 form-control @error('price') is-invalid @enderror" name="price" value="{{ isset($item) ? $item->price : old('price') }}" autocomplete="off">
+                                        <span class="invalid-feedback price b">@error('price'){{ $message }}@enderror</span>
+                                    </div>
+
+                                @endif
 
                             </div>
 
@@ -238,7 +293,7 @@
 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-block d-md-none">
 
                                 <div class="h-toggle h-toggle-options">
                                     <h3 class="f22 marB0">
@@ -249,18 +304,24 @@
 
                                 <div class="div-toggle div-toggle-options">
 
-                                    @if(isset($offer) && $offer == 1)
-                                    <span>¡Artículo en oferta!</span>
-                                    @endif
-                                    <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="btn-important btn fw500 btn-link">
-                                        {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
-                                    </a>
-                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
-                                        <a href="javascript:;" onclick="notify_open('No puedes {{ __('habilitar') }} un item sin foto.')" class="btn btn-link btn-important text-primary"><i class="fa fa-check"></i> {{ __('Habilitar') }}</a>
-                                    @else
-                                        <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="btn btn-important btn-link {{ $item->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? __('Deshabilitar') : __('Habilitar') }}</a>
-                                    @endif
-                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-link btn-important">Eliminar</a>
+                                    <div class="">
+                                        <div class="btn-border">
+                                            <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn-link">
+                                                Gestionar fotos
+                                            </a>
+                                        </div>
+                                        <div class="btn-border">
+                                            @if(isset($offer) && $offer == 1)
+                                                <span>¡Artículo en oferta!</span>
+                                            @endif
+                                            <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="fw500 btn-link">
+                                                {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
+                                            </a>
+                                        </div>
+                                        <div class="btn-border">
+                                            <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn-link">Eliminar</a>
+                                        </div>
+                                    </div>
 
                                 </div>
 
@@ -281,9 +342,9 @@
                                     @endif
                                     <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-link text-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
                                 </div>
-                                <button type="button" id="save-form-item" class="btn btn-primary btn-important">
+                                <a href="javascript:;" id="save-form-item" class="btn btn-primary btn-important">
                                     <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
-                                </button>
+                                </a>
                                 <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
                             </div>
 
@@ -345,7 +406,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text fw500">$</span>
                                     </div>
-                                    <input type="number" step="10" min="0" max="{{ $item->price }}" name="price" id="offer-price" value="{{ $item->price }}" class="form-control" required autocomplete="off">
+                                    <input type="number" min="0" max="{{ $item->price }}" name="price" id="offer-price" value="{{ $item->price }}" class="form-control" required autocomplete="off">
                                 </div>
                                 <div class="col-md-3 input-group">
                                     <input type="number" step="1" min="0" max="99" name="percent" id="offer-percent" value="0" class="form-control" required autocomplete="off">

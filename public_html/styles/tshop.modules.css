@@ -436,6 +436,51 @@ label {
 	padding: 25px 0 0;
 }
 
+.onoff-cont {
+	height: 24px;
+}
+
+.onoff {
+	width: 40px;
+	height: 24px;
+	text-align: left;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	cursor: pointer;
+	transition: all 400ms ease;
+	display: inline-block;
+}
+
+.onoff-slider {
+	display: inline-block;
+	background: #FFF;
+	width: 20px;
+	height: 20px;
+	border-radius: 11px;
+	-webkit-border-radius: 11px;
+}
+
+.onoff-on {
+	background: #2e9e12;
+	padding-left: 16px;
+	border: solid 2px #2e9e12;
+}
+
+.onoff-off {
+	background: #AAA;
+	padding-left: 0px;
+	border: solid 2px #AAA;
+}
+
+.onoff-text {
+	display: inline-block;
+	line-height: 24px;
+	height: 24px;
+	background: #F52;
+	padding: 0px 5px;
+	margin: -5px 0 0 0;
+}
+
 
 .pop-header {
 	margin-bottom: 30px;

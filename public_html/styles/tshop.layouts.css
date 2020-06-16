@@ -370,6 +370,15 @@
 	filter: brightness(0.95);
 }
 
+.item-col-photos-container {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.item-active {
+	margin-top: 5px;
+}
+
 .n-photo {
     width: 100%;
     position: absolute;

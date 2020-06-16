@@ -1,4 +1,4 @@
-<div class="box-item{{ $item_suggest->offer ? ' item-offer' : '' }} item">
+<div class="box-item{{ $item_suggest->offer && $item_suggest->offer->expiration > date('Y-m-d') ? ' item-offer' : '' }} item">
 	<div class="box-item-body">
 		<figure class="box-item-image">
 			<a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item_suggest->name), 'id' => \UrlFormat::add_zeros($item_suggest->id)]) }}">
@@ -7,7 +7,7 @@
 		</figure>
 		<div class="box-item-details">
 			<h3 class="ellipsis"><a href="{{ route('item.detail', ['name' => \UrlFormat::url_limpia($item_suggest->name), 'id' => \UrlFormat::add_zeros($item_suggest->id)]) }}">{{ $item_suggest->name }}</a></h3>
-			@if($item_suggest->offer)
+			@if($item_suggest->offer && $item_suggest->offer->expiration > date('Y-m-d'))
 				<p><span class="offer">$ {{ $item_suggest->price }}</span><span>/</span>$ {{ $item_suggest->offer->price }}</p>
 				<div class="box-item-offer-flag">{{ $item_suggest->offer->percent }}% OFF</div>
 			@else 

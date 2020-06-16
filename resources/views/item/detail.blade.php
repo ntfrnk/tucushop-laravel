@@ -85,7 +85,7 @@
 				{{-- Muestro las fotos --}}
 				<div class="col-md-6 item-col-photos">
 
-					<div class="relative padLR15">
+					<div class="relative item-col-photos-container">
 
 						<div id="item-detail" class="owl-carousel owl-theme">
 
@@ -135,7 +135,7 @@
 							@endif
 						</h3>
 
-						@if($item->offer)
+						@if($item->offer && $item->offer->expiration > date('Y-m-d'))
 							<div class="precio-item">
 								<span class="old">$ {{ $item->price }}</span>&nbsp;<span class="new">$ {{ $item->offer->price }}</span>
 								<span class="f14 badge badge-danger inline-block marB20">{{ $item->offer->percent }}% OFF</span>

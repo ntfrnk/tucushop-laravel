@@ -45,6 +45,14 @@ $(function(){
         }
     });
 
+    $('.onoff').on('click', function(){
+        if($('.onoff').hasClass('onoff-on')){
+            $('.onoff').removeClass('onoff-on').addClass('onoff-off');
+        } else {
+            $('.onoff').removeClass('onoff-off').addClass('onoff-on');
+        }
+    });
+
 
     /* SCROLL */
 

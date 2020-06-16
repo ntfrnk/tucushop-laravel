@@ -249,7 +249,7 @@ class ItemController extends Controller {
 			$item = Item::find($item_id);
 			$tags = ItemTag::where('item_id', $item->id)->get();
 
-			$offer = $item->offer && $item->offer->expiration > date('Y-m-d') ? true : false;
+			$offer = $item->offer && $item->offer->expiration > date('Y-m-d') ? 1 : 0;
 
 			return view('store.modules.item_form', [
 				'store' => $store,
@@ -659,7 +659,7 @@ class ItemController extends Controller {
 		
 		$item = Item::find($item_id);
 
-		if(\Auth::user() && isset($alias) && \Help::isAdmin($item->store->alias) && !\Help::isDeleted($item->store->alias)){
+		if(\Auth::user() && isset($item->store->alias) && \Help::isAdmin($item->store->alias) && !\Help::isDeleted($item->store->alias)){
 
 			$item->status = $item->status == 1 ? 0 : 1;
 			$item->save();

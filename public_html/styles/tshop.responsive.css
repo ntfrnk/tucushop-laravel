@@ -180,6 +180,11 @@
     .item-col-photos {
         padding: 0;
     }
+
+    .item-col-photos-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
     
     .n-photo {
         padding: 0px 0px 0px;
@@ -433,6 +438,10 @@
         padding-right: 10px;
     }
 
+    .item-active {
+        margin-top: 8px;
+    }
+
     .h-toggle {
         display: block;
         margin-top: 0px;
@@ -452,6 +461,18 @@
 
     .div-toggle-tags {
         padding-bottom: 30px;
+    }
+
+    .btn-border {
+        margin: 0px;
+        border-bottom: solid 1px #CCC;
+    }
+
+    .btn-border .btn-link {
+        color: var(--);
+        font-size: 17px !important;
+        text-align: center;
+        display: block;
     }
 
 

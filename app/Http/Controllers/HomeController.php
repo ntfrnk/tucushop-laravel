@@ -17,6 +17,7 @@ class HomeController extends Controller {
         whereHas('item', function(Builder $query){
             $query->where(function($query) {
                 $query->where('status', 1);
+                $query->where('expiration', '>', date('Y-m-d'));
                 $query->whereHas('store', function($q) {
                     $q->where('status', 1);
                     $q->where('deleted', '!=', 1);
