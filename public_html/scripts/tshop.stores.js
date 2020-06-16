@@ -91,14 +91,9 @@ $(function(){
 		$('#offer-price').val(Math.round(new_price));
 	});
 
-    $('#new-offer').on('click', function(){
-        sess = $('#sess').text();
-        if(sess==1){
-            $('.pop-bg').show();
-            $('#m-offer').show();
-        } else {
-            notify_open('Para hacer una pregunta sobre este artículo primero debes iniciar sesión.');
-        }
+    $('.new-offer').on('click', function(){
+		$('.pop-bg').show();
+		$('#m-offer').show();
     });
 
     $('#send-offer').on('submit', function(e){

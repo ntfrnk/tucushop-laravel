@@ -155,7 +155,7 @@
                                         <label for="price" class="col-12">
                                             {{ __('Precio') }} 
                                             <span class="f15 inline-block fw600 marL5 f-right">
-                                                <a href="javascript:;" class="text-primary" id="new-offer">Crear oferta</a>
+                                                <a href="javascript:;" class="text-primary new-offer">Crear oferta</a>
                                             </span>
                                         </label>
                                         
@@ -295,34 +295,10 @@
 
                             <div class="col-md-6 d-block d-md-none">
 
-                                <div class="h-toggle h-toggle-options">
-                                    <h3 class="f22 marB0">
-                                        Más opciones <span class="fa fa-angle-down f-right f20 marT5"></span>
-                                    </h3>
-                                    <hr>
-                                </div>
-
-                                <div class="div-toggle div-toggle-options">
-
-                                    <div class="">
-                                        <div class="btn-border">
-                                            <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn-link">
-                                                Gestionar fotos
-                                            </a>
-                                        </div>
-                                        <div class="btn-border">
-                                            @if(isset($offer) && $offer == 1)
-                                                <span>¡Artículo en oferta!</span>
-                                            @endif
-                                            <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="fw500 btn-link">
-                                                {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
-                                            </a>
-                                        </div>
-                                        <div class="btn-border">
-                                            <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn-link">Eliminar</a>
-                                        </div>
-                                    </div>
-
+                                <div class="">
+                                    <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-outline-secondary btn-important">
+                                        <i class="fa fa-camera"></i> &nbsp; <span class="fw600">Gestionar fotos</span>
+                                    </a>
                                 </div>
 
                             </div>
@@ -346,6 +322,9 @@
                                     <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
                                 </a>
                                 <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
+                                <div class="marT0">
+                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-link btn-important f15 fw600 text-danger d-block d-md-none">Eliminar este item</a>
+                                </div>
                             </div>
 
                         @endif
@@ -402,13 +381,13 @@
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">{{ __('Precio & descuento') }}</label>
-                                <div class="col-md-4 input-group">
+                                <div class="col-6 col-md-4 input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text fw500">$</span>
                                     </div>
                                     <input type="number" min="0" max="{{ $item->price }}" name="price" id="offer-price" value="{{ $item->price }}" class="form-control" required autocomplete="off">
                                 </div>
-                                <div class="col-md-3 input-group">
+                                <div class="col-6 col-md-3 input-group">
                                     <input type="number" step="1" min="0" max="99" name="percent" id="offer-percent" value="0" class="form-control" required autocomplete="off">
                                     <div class="input-group-append">
                                         <span class="input-group-text fw500">%</span>
@@ -424,10 +403,10 @@
                             </div>
                 
                             <div class="form-group row">
-                                <label for="" class="col-md-4 col-form-label text-md-right">&nbsp;</label>
+                                <label for="" class="col-md-4 col-form-label text-md-right d-none d-md-inline-block">&nbsp;</label>
                                 <div class="col-md-7 a-left">
-                                    <button type="submit" class="btn btn-primary" rel="submit">Enviar consulta</button>
-                                    <button type="button" class="btn btn-link" onclick="pop_close();">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary btn-important" rel="submit">Enviar consulta</button>
+                                    <button type="button" class="btn btn-link btn-important" onclick="pop_close();">Cancelar</button>
                                 </div>
                             </div>
 
