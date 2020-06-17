@@ -1,6 +1,7 @@
 /* NO BORDER ******************************************* */
 
 .no-border {border: none !important;}
+.no-br {border-radius: 0;}
 
 
 /* POSITION ******************************************** */

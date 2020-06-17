@@ -27,10 +27,14 @@
 
 				<div class="row">
 
-					<div class="col-md-6">
+					<div class="col-md-6 relative">
 						<div class="crop-container" style="border: solid 1px #CCC; background: #CCC">
-		                    <img src="" class="recorte" />
-		                </div>
+		                    <img src="" class="recorte" id="recorte" />
+						</div>
+						<div class="row padLR15" role="group">
+							<button class="photo-rotate no-br btn btn-sm btn-outline-secondary col-6" data-deg="resta">Girar a la izquierda</button>
+							<button class="photo-rotate no-br btn btn-sm btn-outline-secondary col-6" data-deg="suma">Girar a la derecha</button>
+						</div>
 					</div>
 
 					<div class="col-md-6 marT20">
@@ -47,6 +51,7 @@
 							<input type="hidden" id="y" name="y">
 							<input type="hidden" id="w" name="w">
 							<input type="hidden" id="h" name="h">
+							<input type="hidden" id="imgrotate" name="rotate" value="1">
 						</form>
 					</div>
 

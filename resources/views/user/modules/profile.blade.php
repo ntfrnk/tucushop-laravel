@@ -38,7 +38,7 @@
                             <img src="{{ asset($img) }}" class="img-fluid rounded-circle marB10" />
                             <button type="button" id="photo-upload" class="btn btn-outline-secondary btn-sm marT10 marR5">{{ isset($noimg) ? 'Subir' : 'Cambiar' }} foto</button>
                             @if(!isset($noimg))
-                                <a href="{{ route('user.photo.crop') }}" class="btn btn-outline-secondary btn-sm marT10"><i class="fa fa-crop"></i> Recortar foto</a>
+                                <a href="{{ route('user.photo.crop', ['vmovil' => 1]) }}" class="btn btn-outline-secondary btn-sm marT10"><i class="fa fa-crop"></i> Recortar foto</a>
                             @endif
 
                         </div>

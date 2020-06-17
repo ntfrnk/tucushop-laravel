@@ -375,6 +375,11 @@ class UserController extends Controller {
 		$image->setPath($path_cropped_resize);
 		$image->crop();
 
+		if($request->rotate != 1){
+			$image->setDegrees(($request->rotate * 90) - 90);
+			$image->rotate();
+		}
+
 		$image->save();
 
 		$profile->version_photo = $profile->version_photo + 1;

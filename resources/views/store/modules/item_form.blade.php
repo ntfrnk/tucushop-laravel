@@ -88,10 +88,25 @@
 
                             <div class="form-group form-group-alt">
 
-                                <label for="name">{{ __('Nombre') }}</label>
+                                <div class="row">
 
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($item) ? $item->name : old('name') }}" required autocomplete="name">
-                                <span class="invalid-feedback name b">@error('name'){{ $message }}</strong>@enderror</span>
+                                    <div class="col-3 padL5 padR5 d-block d-md-none">
+                                        <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light relative">
+                                            <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
+                                            <i class="fa fa-camera block f20 absolute text-white b10 l30" style="opacity: 0.8;"></i>
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="col-9 padL5 col-md-12">
+
+                                        <label for="name">{{ __('Nombre') }}</label>
+
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($item) ? $item->name : old('name') }}" required autocomplete="name">
+                                        <span class="invalid-feedback name b">@error('name'){{ $message }}</strong>@enderror</span>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 

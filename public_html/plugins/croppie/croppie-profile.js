@@ -3,13 +3,39 @@ $(function(){
 
 	/* Recorte de las fotos de portada de stores
 	---------------------------------------------------- */
-	var basic = $('.recorte').croppie({
+	var imgToCrop = $('.recorte')
+	
+	imgToCrop.croppie({
 	    viewport: {width: 300, height: 300},
-	    boundary: { width: 300, height: 300 }
+		boundary: { width: 300, height: 300 },
+		enableOrientation: true
 	});
 
-	basic.croppie('bind', {
-	    url: $('#photo_url').text()
+	imgToCrop.croppie('bind', {
+		url: $('#photo_url').text(),
+		orientation: 1
+	});
+
+	$('.photo-rotate').on('click', function() {
+		posicionar = $(this).data('deg');
+		posicion = $('#imgrotate').val();
+		if(posicionar=="suma"){
+			if(posicion != 4){
+				newposicion = parseInt(posicion) + 1;
+			} else {
+				newposicion = 1;
+			}
+			grados = -90;
+		} else {
+			if(posicion != 1){
+				newposicion = parseInt(posicion) - 1;
+			} else {
+				newposicion = 4;
+			}
+			grados = 90;
+		}
+		imgToCrop.croppie('rotate', parseInt(grados));
+		$('#imgrotate').val(newposicion);
 	});
 
 	$('.show-result-profile').on('click', function(){

@@ -12,6 +12,7 @@ class ImagesWork {
 	private $sizeH = null;
 	private $posX = null;
 	private $posY = null;
+	private $degrees = 0;
 	private $quality = '90';
 	
 	private $image_file = null;
@@ -46,6 +47,10 @@ class ImagesWork {
 		$this->posY = $posY;
 	}
 
+	public function setDegrees($degrees){
+		$this->degrees = $degrees;
+	}
+
 	public function setQuality($quality){
 		$this->quality = $quality;
 	}
@@ -73,6 +78,10 @@ class ImagesWork {
 
 	public function crop(){
 		$this->image_file->cropInPixel($this->sizeW, $this->sizeH, $this->posX, $this->posY, 'LT');
+	}
+
+	public function rotate(){
+		$this->image_file->rotate($this->degrees);
 	}
 
 	public function save(){
