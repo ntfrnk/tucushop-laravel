@@ -13,7 +13,7 @@
 
 @section('admin')
 
-<span id="photo_url" class="none">{{ route('home').'/storage/users/original/'.$user->profile->photo }}</span>
+<span id="photo_url" class="none">{{ route('home').'/storage/users/original/'.$user->profile->photo.'?v='.$user->profile->version_photo }}</span>
 
 <div class="row">
 	<div class="col-md-12 mainbar">

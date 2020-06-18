@@ -27,6 +27,8 @@
 			</div>
 		</div>
 
+		<a href="{{ route('store.new') }}" class="btn-new"><i class="fa fa-plus"></i></a>
+
 		<div class="d-block d-md-none col-12 card-body-pad card-body-pad-1">
 			<div class="card-body-title">
 				<h1>Mis negocios</h1>

@@ -300,17 +300,17 @@ $(function(){
 
 	/* Oscurecer cabecera
 	---------------------------------------------------- */
-	$('#opacity-range').on('change', function(){
+	$('.opacity-range').on('change', function(){
 
-		opacity = $('#opacity-range').val();
+		opacity = $('.opacity-range').val();
 		store_id = $('#store_id').text();
 
 		if(opacity.length<2){ 
 			opacity = '0' + opacity;
 		}
 
-		$('#opacity-input').val(opacity);
-		$('#bg-header').css({'background':'rgba(0,0,0,0.' + opacity + ')'});
+		$('.opacity-input').val(opacity);
+		$('.bg-header').css({'background':'rgba(0,0,0,0.' + opacity + ')'});
 		
 		url_get = url_base + '/store/eshop/opacity/' + store_id + '/' + opacity;
 

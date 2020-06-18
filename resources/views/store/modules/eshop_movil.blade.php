@@ -39,7 +39,7 @@
 					<div class="col-md-12">
 						<div class="relative">
 							<img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset($img.'?v='.$store->shop->version_header) : asset($noimg) }}" class="img-fluid">
-							<div class="absolute t0 l0 w100 h100 bg-header" style="background: rgba(0,0,0,0.{{ $store->shop->opacity_header != 0 ? \UrlFormat::add_zeros($store->shop->opacity_header, 2) : 0 }})" title="Desliza el control para aclarar / oscurecer."></div>
+							<div class="absolute t0 l0 w100 h100" id="bg-header" style="background: rgba(0,0,0,0.{{ $store->shop->opacity_header != 0 ? \UrlFormat::add_zeros($store->shop->opacity_header, 2) : 0 }})" title="Desliza el control para aclarar / oscurecer."></div>
 							
 							<div class="row absolute l0 t40 w100">
 								<div class="w50 marAuto pad15" style="background: rgba(255, 255, 255, 0.85); border-radius: 4px;">
@@ -62,10 +62,10 @@
 								<strong title="Desliza el control para aclarar / oscurecer.">Oscurecer la imagen:</strong>
 							</div>
 							<div class="col-md-8">
-								<input type="range" min="0" max="99" class="form-control darkness opacity-range" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}">
+								<input type="range" min="0" max="99" class="form-control" id="opacity-range" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}">
 							</div>
 							<div class="col-md-1 padL0">
-								<input type="text" class="form-control a-center opacity-input" min="0" max="99" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}" readonly>
+								<input type="text" class="form-control a-center" id="opacity-input" min="0" max="99" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}" readonly>
 							</div>
 						</div>
 						<hr>
@@ -109,7 +109,20 @@
 					<div class="col-md-12">
 						<div class="relative">
 							<img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset($img.'?v='.$store->shop->version_header) : asset($noimg) }}" class="img-fluid">
-							<div class="absolute t0 l0 w100 h100 bg-header" style="background: rgba(0,0,0,0.{{ $store->shop->opacity_header != 0 ? \UrlFormat::add_zeros($store->shop->opacity_header, 2) : 0 }})" title="Desliza el control para aclarar / oscurecer."></div>
+							<div class="absolute t0 l0 w100 h100" id="bg-header" style="background: rgba(0,0,0,0.{{ $store->shop->opacity_header != 0 ? \UrlFormat::add_zeros($store->shop->opacity_header, 2) : 0 }})" title="Desliza el control para aclarar / oscurecer."></div>
+							
+							<div class="row absolute l0 t40 w100">
+								<div class="w50 marAuto pad15" style="background: rgba(255, 255, 255, 0.85); border-radius: 4px;">
+									<div class="w25 f-left">
+										<img src="{{ isset($logo) && file_exists($logo) && !is_dir($logo) ? asset($logo.'?v='.$store->shop->version_profile) : asset($nologo) }}" class="img-fluid">
+									</div>
+									<div class="w75 f-right padL20 padT10">
+										<h3 class="mar0 f22">{{ $store->name }}</h3>
+										<span class="mar0 f14 bold">{{ '@'.$store->alias }}</span>
+									</div>
+								</div>
+							</div>
+
 						</div>
                     </div>
                     
@@ -119,7 +132,10 @@
 								<strong title="Desliza el control para aclarar / oscurecer.">Oscurecer la imagen:</strong>
 							</div>
 							<div class="col-md-8">
-								<input type="range" min="0" max="99" class="form-control darkness opacity-range" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}">
+								<input type="range" min="0" max="99" class="form-control" id="opacity-range" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}">
+							</div>
+							<div class="col-md-1 padL0">
+								<input type="text" class="form-control a-center" id="opacity-input" min="0" max="99" value="{{ $store->shop->opacity_header != 0 ? $store->shop->opacity_header : 0 }}" readonly>
 							</div>
 						</div>
 						<hr>
@@ -127,34 +143,18 @@
                     
 					<div class="col-md-12">
 						<div class="row">
+							<div class="input-group col-md-6 padR0">
+								<button type="button" id="image-profile-upload" class="btn btn-primary marR5">Cambiar foto de perfil</button>
+								<a href="{{ route('store.profile.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary">Volver a recortar</a>
+							</div>
 							<div class="input-group col-md-6">
 								<button type="button" id="image-header-upload" class="btn btn-primary marR5">Cambiar foto de cabecera</button>
 								<a href="{{ route('store.header.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary">Volver a recortar</a>
 							</div>
 						</div>
 						<hr>
-					</div>
-					
-					<div class="col-md-12">
-
-						<div class="row">
-							<div class="w60 marAuto pad15">
-								<img src="{{ isset($logo) && file_exists($logo) && !is_dir($logo) ? asset($logo.'?v='.$store->shop->version_profile) : asset($nologo) }}" class="img-fluid">
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-12">
-						<div class="row">
-							<div class="input-group col-md-6 padR0">
-								<button type="button" id="image-profile-upload" class="btn btn-primary marR5">Cambiar foto de perfil</button>
-								<a href="{{ route('store.profile.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary">Volver a recortar</a>
-							</div>
-						</div>
-						<hr>
-					</div>
-
+                    </div>
+                    
 				</div>
 
 			</div>
