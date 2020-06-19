@@ -189,9 +189,11 @@
 
                                         <label for="price" class="col-12">
                                             {{ __('Precio') }} 
-                                            <span class="f15 inline-block fw600 marL5 f-right">
-                                                <a href="javascript:;" class="text-primary new-offer">Crear oferta</a>
-                                            </span>
+                                            @if(isset($item))
+                                                <span class="f15 inline-block fw600 marL5 f-right">
+                                                    <a href="javascript:;" class="text-primary new-offer">Crear oferta</a>
+                                                </span>
+                                            @endif
                                         </label>
                                         
                                         @if(isset($offer) && $offer == 1)
