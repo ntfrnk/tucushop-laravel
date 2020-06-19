@@ -708,8 +708,12 @@ class ItemController extends Controller {
 			ItemOffer::where('item_id', $item_id)->delete();
 			ItemReport::where('item_id', $item_id)->delete();
 			UserLike::where('item_id', $item_id)->delete();
-			$messages = Message::where('item_id', $item_id)->answers->delete();
-			$messages = Message::where('item_id', $item_id)->delete();
+			$messages = Message::where('item_id', $item_id)->get();
+			foreach($messages as $message){
+				MessageAnswer::where('message_id', $message->id)->delete();
+			}
+			Message::where('item_id', $item_id)->delete();
+
 			$item->delete();
 
 			return redirect()->route('items', ['alias' => $alias]);
