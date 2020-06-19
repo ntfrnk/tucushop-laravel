@@ -14,7 +14,7 @@
 
 @section('admin')
 
-<span id="features-json" class="none"></span>
+<span id="features-json" class="none">{{ 'public_html/storage/json/features.json' }}</span>
 
 <div class="row justify-content-center">
     <div class="col-md-12 mainbar">
@@ -35,14 +35,6 @@
 
                     <div class="marB30">
                         <div class="mar0 marT0 f-right">
-                            <div class="f-right align-right d-none">
-                                @if(isset($offer) && $offer == 1)
-                                    <span>¡Artículo en oferta!</span>
-                                @endif
-                                <a href="{{ isset($offer) && $offer == 1 ? route('item.offer.delete', ['item_id' => $item->id]) : 'javascript:;' }}" id="{{ isset($offer) && $offer == 1 ? 'delete-offer' : 'new-offer' }}" class="marL10 btn btn-sm fw500 {{ isset($offer) && $offer == 1 ? 'btn-outline-danger' : 'btn-outline-primary' }}">
-                                    {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
-                                </a>
-                            </div>
 
                             @if(isset($item)))
                                 <div class="f-right align-right d-none">
@@ -54,7 +46,7 @@
 
                             @if(isset($item))
                                 <div class="f-right align-right item-active">
-                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail))
                                         <div class="f-left marR5 fw500 f16">Activar</div>
                                         <a href="javascript:;" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}" onclick="notify_open('No puedes activar un item sin foto.')">
                                             <span class="onoff-slider"></span>
