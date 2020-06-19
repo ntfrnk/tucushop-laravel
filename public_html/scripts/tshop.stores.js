@@ -168,7 +168,7 @@ $(function(){
 	*/
 
 	$.ajax({
-	    url: 'public_html/storage/json/features.json',
+	    url: $('#features-json').val(),
 		type: 'POST',
 	    success: function(data){
 

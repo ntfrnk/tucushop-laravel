@@ -14,6 +14,8 @@
 
 @section('admin')
 
+<span id="features-json" class="none"></span>
+
 <div class="row justify-content-center">
     <div class="col-md-12 mainbar">
         

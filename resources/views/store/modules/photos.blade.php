@@ -53,7 +53,7 @@
 					@else
 						
 						<div class="col-md-12 marT30 row">
-							<div class="col-md-3">
+							<div class="col-6 col-md-3">
 								<div class="show-grid-item padB10">
 									<div class="item-info">
 										<img src="{{ asset($noimg) }}" class="img-fluid">
