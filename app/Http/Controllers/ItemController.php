@@ -18,6 +18,7 @@ use App\ItemPhoto;
 use App\ItemOffer;
 use App\ItemReport;
 use App\Message;
+use App\MessageAnswer;
 use App\UserLike;
 
 class ItemController extends Controller {
@@ -707,6 +708,7 @@ class ItemController extends Controller {
 			ItemOffer::where('item_id', $item_id)->delete();
 			ItemReport::where('item_id', $item_id)->delete();
 			UserLike::where('item_id', $item_id)->delete();
+			MessageAnswer::where('item_id', $item_id)->delete();
 			Message::where('item_id', $item_id)->delete();
 
 			$item->delete();
