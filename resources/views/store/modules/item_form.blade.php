@@ -36,7 +36,7 @@
                     <div class="marB30">
                         <div class="mar0 marT0 f-right">
 
-                            @if(isset($item)))
+                            @if(isset($item))
                                 <div class="f-right align-right d-none">
                                     <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-light">
                                         <i class="fa fa-camera marR5"></i>Gestionar fotos
@@ -46,7 +46,7 @@
 
                             @if(isset($item))
                                 <div class="f-right align-right item-active">
-                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail))
+                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
                                         <div class="f-left marR5 fw500 f16">Activar</div>
                                         <a href="javascript:;" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}" onclick="notify_open('No puedes activar un item sin foto.')">
                                             <span class="onoff-slider"></span>
