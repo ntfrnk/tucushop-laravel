@@ -424,7 +424,7 @@ class UserController extends Controller {
 	public function update(Request $request){
 
 		$validate = $this->validate($request, [
-			'name' => 'required|min:3|regex:/^[a-zA-Z \.]+$/',
+			'name' => 'required|min:3|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ \.]+$/',
 			'birthday' => 'date|nullable',
 			'dni' => 'numeric|nullable',
 		], [
