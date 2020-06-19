@@ -320,10 +320,31 @@ $(function(){
 
 	});
 
+	/* Oscurecer cabecera
+	---------------------------------------------------- */
+	$('.opacity-range-movil').on('change', function(){
+
+		opacity = $('.opacity-range-movil').val();
+		store_id = $('#store_id').text();
+
+		if(opacity.length<2){ 
+			opacity = '0' + opacity;
+		}
+
+		$('.bg-header-movil').css({'background':'rgba(0,0,0,0.' + opacity + ')'});
+		
+		url_get = url_base + '/store/eshop/opacity/' + store_id + '/' + opacity;
+
+		$.get(url_get, {}, function(resp){
+			console.log(resp);
+		});
+
+	});
+
 
 	/* Subir imagen de portada
 	---------------------------------------------------- */
-	$('#image-header-upload').on('click', function(){
+	$('#image-header-upload, #image-header-upload-movil').on('click', function(){
 		$('#image-header').trigger('click');
 	});
 
@@ -353,7 +374,7 @@ $(function(){
 
 	/* Subir imagen de perfil
 	---------------------------------------------------- */
-	$('#image-profile-upload').on('click', function(){
+	$('#image-profile-upload, #image-profile-upload-movil').on('click', function(){
 		$('#image-profile').trigger('click');
 	});
 

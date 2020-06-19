@@ -41,25 +41,30 @@
                                     {{ isset($offer) && $offer ? 'Eliminar oferta' : '¡Poner este artículo en oferta!' }}
                                 </a>
                             </div>
-                            <div class="f-right align-right d-none">
-                                <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-light">
-                                    <i class="fa fa-camera marR5"></i>Gestionar fotos
-                                </a>
-                            </div>
 
-                            <div class="f-right align-right item-active">
-                                @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
-                                    <div class="f-left marR5 fw500 f16">Activar</div>
-                                    <a href="javascript:;" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}" onclick="notify_open('No puedes activar un item sin foto.')">
-                                        <span class="onoff-slider"></span>
+                            @if(isset($item)))
+                                <div class="f-right align-right d-none">
+                                    <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-light">
+                                        <i class="fa fa-camera marR5"></i>Gestionar fotos
                                     </a>
-                                @else
-                                    <div class="f-left marR5 fw500 f16">{{ $item->status == 1 ? 'Desactivar' : 'Activar' }}</div>
-                                    <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}">
-                                        <span class="onoff-slider"></span>
-                                    </a>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
+
+                            @if(isset($item))
+                                <div class="f-right align-right item-active">
+                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
+                                        <div class="f-left marR5 fw500 f16">Activar</div>
+                                        <a href="javascript:;" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}" onclick="notify_open('No puedes activar un item sin foto.')">
+                                            <span class="onoff-slider"></span>
+                                        </a>
+                                    @else
+                                        <div class="f-left marR5 fw500 f16">{{ $item->status == 1 ? 'Desactivar' : 'Activar' }}</div>
+                                        <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="onoff {{ $item->status == 0 ? 'onoff-off' : 'onoff-on' }}">
+                                            <span class="onoff-slider"></span>
+                                        </a>
+                                    @endif
+                                </div>
+                            @endif
 
                         </div>
                         <h1 class="f30 marB15">{{ isset($item) ? 'Editar item' : 'Nuevo item' }}</h1>
@@ -90,14 +95,27 @@
 
                                 <div class="row">
 
-                                    <div class="col-3 padL5 padR5 d-block d-md-none">
-                                        <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light relative">
-                                            <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
-                                            <i class="fa fa-camera block f20 absolute text-white b10 l30" style="opacity: 0.8;"></i>
-                                        </a>
-                                    </div>
-                                    
-                                    <div class="col-9 padL5 col-md-12">
+                                    @if(isset($item))
+
+                                        <div class="col-3 padL5 padR5 d-block d-md-none">
+                                            <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-sm btn-light relative">
+                                                <img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset('storage/items/sm/'.$item->photos->first()->file_path.'?v='.$item->photos->first()->version) : asset($noimg) }}" class="img-fluid">
+                                                <i class="fa fa-camera block f20 absolute text-white b10 l30" style="opacity: 0.8;"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-9 col-md-12">
+
+                                            <label for="name">{{ __('Nombre') }}</label>
+    
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ isset($item) ? $item->name : old('name') }}" required autocomplete="name">
+                                            <span class="invalid-feedback name b">@error('name'){{ $message }}</strong>@enderror</span>
+    
+                                        </div>
+
+                                    @else
+
+                                    <div class="col-12 col-md-12">
 
                                         <label for="name">{{ __('Nombre') }}</label>
 
@@ -105,6 +123,8 @@
                                         <span class="invalid-feedback name b">@error('name'){{ $message }}</strong>@enderror</span>
 
                                     </div>
+                                    
+                                    @endif
 
                                 </div>
 
@@ -311,7 +331,7 @@
                             <div class="col-md-6 d-block d-md-none">
 
                                 <div class="">
-                                    <a href="{{ route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) }}" class="btn btn-outline-secondary btn-important">
+                                    <a href="{{ isset($item) ? route('item.photos', ['alias' => $store->alias, 'item_id' => $item->id]) : 'javascript:;' }}" class="btn btn-outline-secondary btn-important">
                                         <i class="fa fa-camera"></i> &nbsp; <span class="fw600">Gestionar fotos</span>
                                     </a>
                                 </div>

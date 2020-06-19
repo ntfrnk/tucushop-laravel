@@ -490,7 +490,8 @@ label {
 	-webkit-appearance: none;
 	appearance: none;
 	width: 100%;
-	height: 25px;
+	height: 15px;
+	border-radius: 5px;  
 	background: #d3d3d3;
 	outline: none;
 }
@@ -500,6 +501,7 @@ label {
 	appearance: none;
 	width: 25px;
 	height: 25px;
+	border-radius: 50%; 
 	background: #4CAF50;
 	cursor: pointer;
 }
@@ -507,6 +509,7 @@ label {
 .darkness::-moz-range-thumb {
 	width: 25px;
 	height: 25px;
+	border-radius: 50%;
 	background: #4CAF50;
 	cursor: pointer;
 }
