@@ -57,7 +57,7 @@
 
 			{{-- Cuerpo de ofertas --}}
 
-			<div id="home-offers" class="box-item-list owl-carousel owl-theme">
+			<div id="home-offers" class="box-item-list owl-carousel owl-theme marB30">
 	
 				@foreach($offers as $offer)
 
