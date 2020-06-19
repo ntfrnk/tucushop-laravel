@@ -16,6 +16,7 @@ use App\ItemTag;
 use App\Store;
 use App\ItemPhoto;
 use App\ItemOffer;
+use App\ItemReport;
 use App\Message;
 use App\UserLike;
 
@@ -704,6 +705,7 @@ class ItemController extends Controller {
 			ItemFeature::where('item_id', $item_id)->delete();
 			ItemTag::where('item_id', $item_id)->delete();
 			ItemOffer::where('item_id', $item_id)->delete();
+			ItemReport::where('item_id', $item_id)->delete();
 			UserLike::where('item_id', $item_id)->delete();
 			Message::where('item_id', $item_id)->delete();
 
