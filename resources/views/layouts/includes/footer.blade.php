@@ -4,13 +4,16 @@
     <div class="container">
         <div class="padT70 padB40">
             <div class="row margin-footer">
-                <div class="col-md-4 col-sm-6 col-xs-12 marB20 order-md-1 order-3">
-                    <div class="foot-sec">
+                <div class="col-lg-4 col-md-12 col-sm-6 col-12 marB20 order-md-1 order-3">
+                    <div class="foot-sec atencion-cliente">
                         <h3>Atención al cliente</h3>
-                        <p>Red Tucushop
-                            <br>WhatsApp: +54 9 381 320-0054
-                            <br>E-mail: info@tucushop.com
-                        </p>
+                        <div>
+                            <div class="d-block d-md-inline-block d-lg-block">Red Tucushop</div>
+                            <div class="d-none d-md-inline-block d-lg-none marLR10">|</div>
+                            <div class="d-block d-md-inline-block d-lg-block">WhatsApp: +54 9 381 320-0054</div>
+                            <div class="d-none d-md-inline-block d-lg-none marLR10">|</div>
+                            <div class="d-block d-md-inline-block d-lg-block">E-mail: info@tucushop.com</div>
+                        </div>
                         <p>
                             <a href="https://www.facebook.com/moda.tucushop/" target="_blank"><span><i class="fab fa-facebook"></i></span></a>
                             <a href="https://www.instagram.com/moda.tucushop/" target="_blank"><span><i class="fab fa-instagram"></i></span></a>
@@ -19,7 +22,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 marB20">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 marB20">
                     <div class="foot-sec">
                         <h3>TU CUENTA </h3>
                         <ul class="pad0">
@@ -35,7 +38,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 marB20">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 marB20">
                     <div class="foot-sec">
                         <h3>PARTICIPA </h3>
                         <ul class="pad0">

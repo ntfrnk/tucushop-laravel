@@ -96,7 +96,7 @@ $(function(){
 	        0:{
 				loop:false
 	        },
-	        600:{
+	        768:{
 				loop:false
 	        },
 	        1000:{
@@ -134,11 +134,14 @@ $(function(){
 				items:2,
 				center:true
 	        },
-	        600:{
+	        768:{
 				items:3,
 				center:true
 	        },
-	        1000:{
+	        992:{
+	            items:4
+			},
+			1200:{
 	            items:4
 	        }
 	    }
@@ -167,11 +170,14 @@ $(function(){
 				items:2,
 				center:true
 	        },
-	        600:{
+	        768:{
 				items:3,
 				center:true
 	        },
-	        1000:{
+	        992:{
+	            items:4
+			},
+			1200:{
 	            items:4
 	        }
 	    }
@@ -195,16 +201,19 @@ $(function(){
 	    dots:false,
 	    navText: ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
 	    responsive:{
-	        0:{
+			0:{
 				items:2,
 				center:true
 	        },
-	        600:{
-				items:3,
-				center:true
+	        768:{
+				items:4,
+				center:false
 	        },
-	        1000:{
-				items:6,
+	        992:{
+	            items:4
+			},
+			1200:{
+	            items:4,
 				slideBy: 2
 	        }
 	    }

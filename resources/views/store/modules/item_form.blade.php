@@ -232,7 +232,7 @@
 
                         <div class="form-group form-group-alt row marB30">
 
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
 
                                 <div class="h-toggle h-toggle-features first">
                                     <h3 class="f22 marB0">
@@ -278,7 +278,7 @@
 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
 
                                 <div class="h-toggle h-toggle-tags">
                                     <h3 class="f22 marB0">
@@ -341,20 +341,17 @@
                             <hr>
 
                             <div class="form-group form-group-alt marT10">
-                                <div class="f-right a-right d-none d-md-inline-block">
-                                    @if($item->status == 0 && ($item->photos->count() == 0 || $item->price == 0 || empty($item->detail)))
-                                        <a href="javascript:;" onclick="notify_open('No puedes {{ __('habilitar') }} un item sin foto.')" class="marR5 btn btn-link text-primary"><i class="fa fa-check"></i> {{ __('Habilitar') }}</a>
-                                    @else
-                                        <a href="{{ route('item.status', ['item_id' => $item->id, 'editing' => 1]) }}" class="marL10 btn btn-link {{ $item->status == 1 ? 'text-secondary' : 'text-primary' }}"><i class="fa fa-{{ $item->status == 1 ? 'ban' : 'check' }}"></i>&nbsp; {{ $item->status == 1 ? __('Deshabilitar') : __('Habilitar') }}</a>
-                                    @endif
-                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-link text-danger"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
+                                <div class="f-right a-right">
+                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="marL10 btn btn-link text-danger d-none d-md-inline-block"><i class="fa fa-times"></i>&nbsp; Eliminar</a>
                                 </div>
-                                <a href="javascript:;" id="save-form-item" class="btn btn-primary btn-important">
-                                    <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
-                                </a>
-                                <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
-                                <div class="marT0">
-                                    <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-link btn-important f15 fw600 text-danger d-block d-md-none">Eliminar este item</a>
+                                <div class="d-md-block d-lg-inline-block">
+                                    <a href="javascript:;" id="save-form-item" class="btn btn-primary btn-important">
+                                        <i class="fa fa-save marR5"></i>{{ isset($item) ? 'Guardar cambios' : 'Guardar nuevo item' }}
+                                    </a>
+                                    <a href="{{ route('items', ['alias' => $store->alias]) }}" class="btn btn-link btn-important">Cancelar</a>
+                                    <div class="marT0">
+                                        <a href="javascript:;" onclick="confirm_open_link('¿Estás seguro de que quieres eliminar este item?', '{{ route('item.delete', ['item_id' => $item->id]) }}');" class="btn btn-link btn-important f15 fw600 text-danger d-block d-md-none">Eliminar este item</a>
+                                    </div>
                                 </div>
                             </div>
 

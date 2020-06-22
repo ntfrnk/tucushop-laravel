@@ -7,7 +7,7 @@
 @section('admin')
 
 <div class="row mainbar d-none d-md-flex">
-	<div class="col-md-4 box-admin">
+	<div class="col-md-6 col-lg-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 box-admin">
+	<div class="col-md-6 col-lg-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 box-admin">
+	<div class="col-md-6 col-lg-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 box-admin">
+	<div class="col-md-6 col-lg-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 	</div>
-	{{-- <div class="col-md-4 box-admin">
+	{{-- <div class="col-md-6 col-lg-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	</div> --}}
-	<div class="col-md-4 box-admin">
+	<div class="col-md-6 col-lg-4 box-admin">
 		<div class="box-admin-container">
 			<div class="card-body">
 				<h4 class="f17 fw600">

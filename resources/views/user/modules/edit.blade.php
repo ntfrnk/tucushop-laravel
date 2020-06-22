@@ -22,9 +22,9 @@
                     @csrf
 
                     <div class="form-group row form-row">
-                        <label for="name" class="col-md-3 col-form-label">{{ __('Nombres') }}</label>
+                        <label for="name" class="col-lg-3 col-form-label">{{ __('Nombres') }}</label>
 
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->profile->name ? $user->profile->name : old('name') }}" required autocomplete="off">
 
                             @error('name')
@@ -36,9 +36,9 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="alias" class="col-md-3 col-form-label">{{ __('Apellidos') }}</label>
+                        <label for="alias" class="col-lg-3 col-form-label">{{ __('Apellidos') }}</label>
 
-                        <div class="col-md-6 input-group">
+                        <div class="col-lg-6 input-group">
 							<input type="text" id="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ $user->profile->lastname ? $user->profile->lastname : old('lastname') }}" required autocomplete="off">
 
                             @error('lastname')
@@ -50,9 +50,9 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="birthday" class="col-md-3 col-form-label">{{ __('Fecha de nacimiento') }}</label>
+                        <label for="birthday" class="col-lg-3 col-form-label">{{ __('Fecha de nacimiento') }}</label>
 
-                        <div class="col-md-6 input-group">
+                        <div class="col-lg-6 input-group">
 							<input type="date" id="birthday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ $user->profile->birthday ? $user->profile->birthday : old('birthday') }}" autocomplete="off">
 
                             @error('birthday')
@@ -64,9 +64,9 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="gender" class="col-md-3 col-form-label">{{ __('Sexo') }}</label>
+                        <label for="gender" class="col-lg-3 col-form-label">{{ __('Sexo') }}</label>
 
-                        <div class="col-md-6 input-group">
+                        <div class="col-lg-6 input-group">
                             
                             <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender">
                                 <option value="Masculino"{{ $user->profile->gender == 'Masculino' ? ' selected' : '' }}>Masculino</option>
@@ -82,9 +82,9 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="dni" class="col-md-3 col-form-label">{{ __('DNI Nº') }}</label>
+                        <label for="dni" class="col-lg-3 col-form-label">{{ __('DNI Nº') }}</label>
 
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
 
                             <input type="number" id="dni" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $user->profile->dni ? $user->profile->dni : '' }}" autocomplete="off">
                             <span class="f13 text-muted i">(*) Requerido para realizar compras o ventas.</span>
@@ -98,11 +98,11 @@
                     </div>
 
                     <div class="form-group row form-row-btn">
-                        <div class="col-md-6 offset-md-3 padL5">
-                            <button type="submit" rel="submit" class="btn btn-primary">
+                        <div class="col-lg-6 offset-lg-3">
+                            <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                 {{ __('Guardar cambios') }}
                             </button>
-                            <a href="{{ route('user.home') }}" class="btn btn-link marL5">Cancelar</a>
+                            <a href="{{ route('user.home') }}" class="btn btn-link btn-important">Cancelar</a>
                         </div>
                     </div>
 

@@ -23,16 +23,16 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="name" class="col-md-3 col-form-label">{{ __('Nombre') }}</label>
-                        <div class="col-md-6">
+                        <label for="name" class="col-lg-3 col-form-label">{{ __('Nombre') }}</label>
+                        <div class="col-lg-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ? old('name') : $store->name }}" required autocomplete="name">
                             <span class="invalid-feedback name b">@error('name'){{ $message }}@enderror</span>
                         </div>
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="type_id" class="col-md-3 col-form-label">{{ __('Actividad') }}</label>
-                        <div class="col-md-6">
+                        <label for="type_id" class="col-lg-3 col-form-label">{{ __('Actividad') }}</label>
+                        <div class="col-lg-6">
                             <select id="type_id" name="type_id" type="text" class="form-control @error('type_id') is-invalid @enderror" required>
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}"{{ $type->id == $store->type_id ? ' selected' : '' }}>{{ $type->type }}</option>
@@ -43,16 +43,16 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="description" class="col-md-3 col-form-label">{{ __('Descripción') }}</label>
-                        <div class="col-md-6">
+                        <label for="description" class="col-lg-3 col-form-label">{{ __('Descripción') }}</label>
+                        <div class="col-lg-6">
                             <textarea id="description" rows="3" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="off">{{ old('description') ? old('description') : $store->description }}</textarea>
                             <span class="invalid-feedback description b">@error('description'){{ $message }}@enderror</span>
                         </div>
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="alias" class="col-md-3 col-form-label">{{ __('Dirección web') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="alias" class="col-lg-3 col-form-label">{{ __('Dirección web') }}</label>
+                        <div class="col-lg-6 input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text fw500">https://tucushop.com/</span>
 							</div>
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="form-group row form-row-btn">
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-lg-6 offset-lg-3">
                             <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                 {{ __('Guardar cambios') }}
                             </button>

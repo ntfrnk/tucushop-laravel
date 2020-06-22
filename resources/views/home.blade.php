@@ -13,12 +13,12 @@
 
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="{{ asset('images/slider/001-ambos.jpg') }}" class="img-fluid d-none d-md-block">
-				<img src="{{ asset('images/slider/001_1-ambos.jpg') }}" class="img-fluid d-block d-md-none">
+				<img src="{{ asset('images/slider/001-ambos.jpg') }}" class="img-fluid d-none d-lg-block">
+				<img src="{{ asset('images/slider/001_1-ambos.jpg') }}" class="img-fluid d-block d-lg-none">
 			</div>
 			<div class="carousel-item">
-				<img src="{{ asset('images/slider/002-moda.jpg') }}" class="img-fluid d-none d-md-block">
-				<img src="{{ asset('images/slider/002_2-moda.jpg') }}" class="img-fluid d-block d-md-none">
+				<img src="{{ asset('images/slider/002-moda.jpg') }}" class="img-fluid d-none d-lg-block">
+				<img src="{{ asset('images/slider/002_2-moda.jpg') }}" class="img-fluid d-block d-lg-none">
 			</div>
 		</div>
 
@@ -108,8 +108,8 @@
 					<i class="fa fa-tag" aria-hidden="true"></i>
 				</div>
 				<div class="col-10 col-md-10 carousel-title">
-					<h3>Ofertas de la semana</h3>
-					<p class="d-none d-md-block">Con estas ofertas te vas a volver loco!</p>
+					<h3>Artículos destacados</h3>
+					<p class="d-none d-md-block">¡Algunas propuestas que pueden llegar a interesarte!</p>
 				</div>
 			</div>
 

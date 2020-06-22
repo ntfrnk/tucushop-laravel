@@ -36,7 +36,7 @@
 					@if($item->photos->count() != 0)
 
 						@foreach($item->photos->sortBy('ordering') as $photo)
-							<div class="col-6 col-md-3" id="img_<?=$photo->id?>">
+							<div class="col-6 col-md-4 col-lg-3" id="img_<?=$photo->id?>">
 								<div class="show-grid-item">
 									<div class="item-info">
 										<img src="{{ file_exists('storage/items/sm/'.$photo->file_path) && !is_dir('storage/items/sm/'.$photo->file_path) ? asset('storage/items/sm/'.$photo->file_path.'?v='.$photo->version) : asset($noimg) }}" class="img-fluid">
@@ -53,7 +53,7 @@
 					@else
 						
 						<div class="col-md-12 marT30 row">
-							<div class="col-6 col-md-3">
+							<div class="col-6 col-md-4 col-lg-3">
 								<div class="show-grid-item padB10">
 									<div class="item-info">
 										<img src="{{ asset($noimg) }}" class="img-fluid">

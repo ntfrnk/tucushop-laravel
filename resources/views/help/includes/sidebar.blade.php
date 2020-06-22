@@ -1,4 +1,4 @@
-<div class="col-md-3 sidebar">
+<div class="col-md-4 col-lg-3 sidebar">
 
 	<ul>
 		@foreach($categories as $category)

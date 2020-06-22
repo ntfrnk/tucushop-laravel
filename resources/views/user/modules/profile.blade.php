@@ -33,7 +33,7 @@
 
                     <div class="form-group row justify-content-center">
 
-                        <div class="col-10 a-center">
+                        <div class="col-10 col-md-7 a-center">
                             
                             <img src="{{ asset($img) }}" class="img-fluid rounded-circle marB10" />
                             <button type="button" id="photo-upload" class="btn btn-outline-secondary btn-sm marT10 marR5">{{ isset($noimg) ? 'Subir' : 'Cambiar' }} foto</button>

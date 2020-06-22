@@ -1,4 +1,4 @@
-<div class="col-md-3 sidebar d-none d-md-block">
+<div class="col-md-4 col-lg-3 sidebar d-none d-md-block">
 
 	<ul>
 		<li>
@@ -9,6 +9,11 @@
 		<li>
 			<a href="{{ route('user.account') }}">
 				<i class="fa fa-key"></i> Datos de la cuenta
+			</a>
+		</li>
+		<li class="d-block d-lg-none">
+			<a href="{{ route('user.profile') }}">
+				<i class="fa fa-image"></i> Foto de perfil
 			</a>
 		</li>
 		<li>

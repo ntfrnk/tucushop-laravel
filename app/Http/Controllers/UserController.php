@@ -425,6 +425,7 @@ class UserController extends Controller {
 
 		$validate = $this->validate($request, [
 			'name' => 'required|min:3|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ \.]+$/',
+			'lastname' => 'required|min:3|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ \.]+$/',
 			'birthday' => 'date|nullable',
 			'dni' => 'numeric|nullable',
 		], [
@@ -491,13 +492,15 @@ class UserController extends Controller {
 
 		$validate = $this->validate($request, [
 			'phone' => 'digits:10|numeric|nullable',
-			'address' => 'nullable',
-			'city' => 'nullable',
+			'address' => 'nullable|string',
+			'city' => 'nullable|string',
 			'postalcode' => 'numeric|nullable',
 		], [
 			'phone.digits' => 'El número es muy corto (se esperan 10 números)',
 			'phone.numeric' => 'Debes ingresar sólo caracteres numéricos',
-			'postalcode.numeric' => 'Sólo puedes ingresar caracteres numéricos'
+			'postalcode.numeric' => 'Sólo puedes ingresar caracteres numéricos',
+			'address.string' => 'Sólo puedes ingresar caracteres alfanuméricos',
+			'city.string' => 'Sólo puedes ingresar caracteres alfanuméricos'
 		]);
 
 		$user = \Auth::user();

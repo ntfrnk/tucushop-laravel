@@ -27,7 +27,7 @@
 
 				<div class="row">
 
-					<div class="col-md-6 relative">
+					<div class="col-lg-6 relative">
 						<div class="crop-container" style="border: solid 1px #CCC; background: #CCC">
 		                    <img src="" class="recorte" id="recorte" />
 						</div>
@@ -37,9 +37,9 @@
 						</div>
 					</div>
 
-					<div class="col-md-6 marT20">
-						<p class="d-none d-md-block">Mueve con el mouse la foto, para seleccionar el área que deseas mostrar. Para agrandar o achicar el área de recorte puedes girar la rueda del mouse sobre la foto, o deslizar el control que está debajo de la foto.</p>
-						<p class="d-block d-md-none">Mueve la foto para seleccionar el área que deseas recortar. Para agrandar o achicar el área de recorte usa dos dedos.</p>
+					<div class="col-lg-6 marT20">
+						<p class="d-none d-lg-block">Mueve con el mouse la foto, para seleccionar el área que deseas mostrar. Para agrandar o achicar el área de recorte puedes girar la rueda del mouse sobre la foto, o deslizar el control que está debajo de la foto.</p>
+						<p class="d-block d-lg-none">Mueve la foto para seleccionar el área que deseas recortar. Para agrandar o achicar el área de recorte usa dos dedos.</p>
 						<a href="javascript:;" class="show-result-profile btn btn-primary loading">Recortar foto</a>
 						<form id="crop-data-profile" action="{{ route('user.photo.cropper') }}" method="post">
 							@csrf

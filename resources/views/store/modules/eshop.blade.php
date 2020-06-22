@@ -25,7 +25,7 @@
 		<div class="card marB20">
 			<div class="card-body card-body-pad">
 
-				<div class="row d-none d-md-block">
+				<div class="row d-none d-lg-block">
 					<div class="col-md-12">
 						<div class="relative">
 							<img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset($img.'?v='.$store->shop->version_header) : asset($noimg) }}" class="img-fluid">
@@ -63,11 +63,11 @@
                     
 					<div class="col-md-12">
 						<div class="row">
-							<div class="input-group col-md-6 padR0">
+							<div class="input-group col-lg-6 padR0">
 								<button type="button" id="image-profile-upload" class="btn btn-primary marR5">Cambiar foto de perfil</button>
 								<a href="{{ route('store.profile.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary">Volver a recortar</a>
 							</div>
-							<div class="input-group col-md-6">
+							<div class="input-group col-lg-6">
 								<button type="button" id="image-header-upload" class="btn btn-primary marR5">Cambiar foto de cabecera</button>
 								<a href="{{ route('store.header.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary">Volver a recortar</a>
 							</div>
@@ -79,7 +79,7 @@
 
 
 
-				<div class="row d-block d-md-none">
+				<div class="row d-block d-lg-none">
 					<div class="col-md-12">
 						<div class="relative">
 							<img src="{{ isset($img) && file_exists($img) && !is_dir($img) ? asset($img.'?v='.$store->shop->version_header) : asset($noimg) }}" class="img-fluid">
@@ -88,7 +88,7 @@
                     </div>
                     
 					<div class="marT20 col-md-12">
-						<div class="row">
+						<div class="row justify-content-center">
 							<div class="col-md-3 padR0">
 								<strong title="Desliza el control para aclarar / oscurecer.">Oscurecer la imagen de cabecera:</strong>
 							</div>
@@ -98,10 +98,10 @@
 						</div>
                     </div>
                     
-					<div class="marT15 col-md-12">
-						<div class="row">
-							<div class="input-group col-md-6">
-								<button type="button" id="image-header-upload-movil" class="btn btn-primary btn-important marR0">Cambiar foto de cabecera</button>
+					<div class="marT15 marB30 col-lg-12">
+						<div class="row a-center justify-content-center">
+							<div class="marAuto">
+								<button type="button" id="image-header-upload-movil" class="btn btn-primary btn-important">Cambiar foto de cabecera</button>
 								<a href="{{ route('store.header.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary btn-important marR0">Volver a recortar</a>
 							</div>
 						</div>
@@ -110,18 +110,18 @@
 					
 					<div class="col-md-12">
 
-						<div class="row">
-							<div class="a-center marAuto pad15">
-								<img src="{{ isset($logo) && file_exists($logo) && !is_dir($logo) ? asset($logo.'?v='.$store->shop->version_profile) : asset($nologo) }}" class="img-fluid">
+						<div class="row justify-content-center">
+							<div class="a-center marAuto col-md-5">
+								<img src="{{ isset($logo) && file_exists($logo) && !is_dir($logo) ? asset($logo.'?v='.$store->shop->version_profile) : asset($nologo) }}" class="img-fluid" style="border: solid 1px #CCC;">
 							</div>
 						</div>
 
 					</div>
 
-					<div class="col-md-12">
-						<div class="row">
-							<div class="input-group col-md-6">
-								<button type="button" id="image-profile-upload-movil" class="btn btn-primary btn-important marR0">Cambiar foto de perfil</button>
+					<div class="col-md-12 marT20">
+						<div class="row a-center justify-content-center">
+							<div class="marAuto">
+								<button type="button" id="image-profile-upload-movil" class="btn btn-primary btn-important">Cambiar foto de perfil</button>
 								<a href="{{ route('store.profile.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary btn-important marR0">Volver a recortar</a>
 							</div>
 						</div>

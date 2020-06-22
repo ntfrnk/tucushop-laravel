@@ -22,9 +22,9 @@
                     @csrf
 
                     <div class="form-group row form-row">
-                        <label for="phone" class="col-md-3 col-form-label">{{ __('Celular') }}</label>
+                        <label for="phone" class="col-lg-3 col-form-label">{{ __('Celular') }}</label>
 
-                        <div class="col-md-5">
+                        <div class="col-lg-5">
                             <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->addresses->first()->phone ?? old('phone') }}" autocomplete="off">
 
                             @error('phone')
@@ -36,9 +36,9 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="address" class="col-md-3 col-form-label">{{ __('Dirección') }}</label>
+                        <label for="address" class="col-lg-3 col-form-label">{{ __('Dirección') }}</label>
 
-                        <div class="col-md-5 input-group">
+                        <div class="col-lg-5 input-group">
                             <input type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->addresses->first()->address ?? old('address') }}" autocomplete="off">
 
                             @error('address')
@@ -50,9 +50,9 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="city" class="col-md-3 col-form-label">{{ __('Localidad') }}</label>
+                        <label for="city" class="col-lg-3 col-form-label">{{ __('Localidad') }}</label>
 
-                        <div class="col-md-5 input-group">
+                        <div class="col-lg-5 input-group">
                             <input type="text" id="city" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user->addresses->first()->city ?? old('city') }}" autocomplete="off">
 
                             @error('city')
@@ -64,9 +64,9 @@
 					</div>
 					
 					<div class="form-group row form-row">
-                        <label for="cp" class="col-md-3 col-form-label">{{ __('Código postal') }}</label>
+                        <label for="cp" class="col-lg-3 col-form-label">{{ __('Código postal') }}</label>
 
-                        <div class="col-md-5 input-group">
+                        <div class="col-lg-5 input-group">
                             <input type="text" id="postalcode" class="form-control @error('postalcode') is-invalid @enderror" name="postalcode" value="{{ $user->addresses->first()->postalcode ?? old('postalcode') }}" autocomplete="off">
 
                             @error('postalcode')
@@ -78,11 +78,11 @@
 					</div>
 
                     <div class="form-group row form-row-btn">
-                        <div class="col-md-5 offset-md-3 padL5">
-                            <button type="submit" rel="submit" class="btn btn-primary">
+                        <div class="col-lg-5 offset-lg-3">
+                            <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                 {{ __('Guardar cambios') }}
                             </button>
-                            <a href="{{ route('user.home') }}" class="btn btn-link marL5">Cancelar</a>
+                            <a href="{{ route('user.home') }}" class="btn btn-link btn-important">Cancelar</a>
                         </div>
                     </div>
 

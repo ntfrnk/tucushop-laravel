@@ -36,27 +36,27 @@
 
                     <div class="row">
 
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
 
                             <div class="form-group row form-row">
-                                <label for="email" class="col-md-4 col-form-label">{{ __('Correo electrónico') }}</label>
-                                <div class="col-md-8">
+                                <label for="email" class="col-lg-4 col-form-label">{{ __('Correo electrónico') }}</label>
+                                <div class="col-lg-8">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email ? $user->email : '' }}" required autocomplete="off">
                                     <span class="invalid-feedback email b">@error('email'){{ $message }}@enderror</span>                                    
                                 </div>
                             </div>
 
                             <div class="form-group row form-row">
-                                <label for="nickname" class="col-md-4 col-form-label">{{ __('Nombre de usuario') }}</label>
-                                <div class="col-md-8 input-group">
+                                <label for="nickname" class="col-lg-4 col-form-label">{{ __('Nombre de usuario') }}</label>
+                                <div class="col-lg-8 input-group">
                                     <input type="text" id="nickname" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ $user->nickname ? $user->nickname : '' }}" required autocomplete="off">
                                     <span class="invalid-feedback nickname b">@error('nickname'){{ $message }}@enderror</span>
                                 </div>
                             </div>
 
                             <div class="form-group row form-row">
-                                <label for="password" class="col-md-4 col-form-label">{{ __('Cambiar contraseña') }}</label>
-                                <div class="col-md-8">
+                                <label for="password" class="col-lg-4 col-form-label">{{ __('Cambiar contraseña') }}</label>
+                                <div class="col-lg-8">
                                     <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
                                     <span class="invalid-feedback password b">@error('password'){{ $message }}@enderror</span>
                                     <span class="f13 text-muted i">(*) Rellenar sólo si deseas cambiar de contraseña.</span>
@@ -64,17 +64,17 @@
                             </div>
 
                             <div class="form-group row form-row-btn">
-                                <div class="col-md-8 offset-md-4 padL5">
-                                    <button type="submit" rel="submit" class="btn btn-primary">
+                                <div class="col-lg-8 offset-lg-4">
+                                    <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                         {{ __('Guardar cambios') }}
                                     </button>
-                                    <a href="{{ route('user.home') }}" class="btn btn-link marL5">Cancelar</a>
+                                    <a href="{{ route('user.home') }}" class="btn btn-link btn-important">Cancelar</a>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div class="col-md-4 d-none d-md-block">
+                        <div class="col-md-4 d-none d-lg-block">
 
                             <div class="form-group row">
 

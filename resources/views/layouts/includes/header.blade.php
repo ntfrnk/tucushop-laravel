@@ -22,7 +22,7 @@
 				</a>
 			</div>
 
-			<div class="menu-search d-none d-md-inline-block">
+			<div class="menu-search d-none d-lg-inline-block">
 				<form id="form-search" action="{{ route('search') }}" method="POST">
 					@csrf
 					<input type="text" id="search" name="search" placeholder="Escribe aquí lo que estás buscando" autocomplete="off" />
@@ -31,11 +31,15 @@
 
 			<div class="menu-nav">
 
-				<a href="javascript:;" class="d-block d-md-none menu-bars">
+				<a href="javascript:;" class="btn-search d-inline-block d-lg-none">
+					<i class="fa fa-search"></i>
+				</a>
+				
+				<a href="javascript:;" class="d-inline-block d-xl-none menu-bars">
 					<i class="fa fa-bars"></i>
 				</a>
 
-				<ul class="menu-nav-list d-none d-md-inline-block">
+				<ul class="menu-nav-list d-none d-xl-inline-block">
 					@guest
 						<li>
 						    <a href="{{ route('login') }}">
@@ -106,7 +110,7 @@
 		</div>
 	</div>
 
-	<ul class="menu-nav-movil d-block d-md-none">
+	<ul class="menu-nav-movil d-block d-xl-none">
 		@guest
 			<li>
 				<a href="{{ route('login') }}">

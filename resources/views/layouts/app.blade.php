@@ -24,6 +24,7 @@
 	@include('layouts.includes.data')
 	@include('layouts.includes.modals')
 	@include('layouts.includes.scripts')
+	{{-- @include('layouts.includes.responsive') --}}
 
 </body>
 </html>

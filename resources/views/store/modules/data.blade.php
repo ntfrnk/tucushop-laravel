@@ -26,16 +26,16 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="email" class="col-md-3 col-form-label">{{ __('Correo electrónico') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="email" class="col-lg-3 col-form-label">{{ __('Correo electrónico') }}</label>
+                        <div class="col-lg-6 input-group">
                             <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ? old('email') : $store->profile->email }}" autocomplete="off">
                             <span class="invalid-feedback email b">@error('email') {{ $message }} @enderror</span>
                         </div>
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="website" class="col-md-3 col-form-label">{{ __('Sitio Web') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="website" class="col-lg-3 col-form-label">{{ __('Sitio Web') }}</label>
+                        <div class="col-lg-6 input-group">
                         	<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">http://</span>
 							</div>
@@ -45,24 +45,24 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="phone" class="col-md-3 col-form-label">{{ __('Teléfono fijo') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="phone" class="col-lg-3 col-form-label">{{ __('Teléfono fijo') }}</label>
+                        <div class="col-lg-6 input-group">
                             <input type="text" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ? old('phone') : $store->profile->phone }}" autocomplete="phone">
                             <span class="invalid-feedback phone b">@error('phone') {{ $message }} @enderror</span>
                         </div>
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="cellphone" class="col-md-3 col-form-label">{{ __('Celular') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="cellphone" class="col-lg-3 col-form-label">{{ __('Celular') }}</label>
+                        <div class="col-lg-6 input-group">
                             <input type="text" id="cellphone" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" value="{{ old('cellphone') ? old('cellphone') : $store->profile->cellphone }}" autocomplete="cellphone">
                             <span class="invalid-feedback cellphone b">@error('cellphone') {{ $message }} @enderror</span>
                         </div>
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="facebook" class="col-md-3 col-form-label">{{ __('Facebook') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="facebook" class="col-lg-3 col-form-label">{{ __('Facebook') }}</label>
+                        <div class="col-lg-6 input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">facebook.com/</span>
 							</div>
@@ -72,8 +72,8 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="instagram" class="col-md-3 col-form-label">{{ __('Instagram') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="instagram" class="col-lg-3 col-form-label">{{ __('Instagram') }}</label>
+                        <div class="col-lg-6 input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">instagram.com/</span>
 							</div>
@@ -83,8 +83,8 @@
                     </div>
 
                     <div class="form-group row form-row">
-                        <label for="pinterest" class="col-md-3 col-form-label">{{ __('Pinterest') }}</label>
-                        <div class="col-md-6 input-group">
+                        <label for="pinterest" class="col-lg-3 col-form-label">{{ __('Pinterest') }}</label>
+                        <div class="col-lg-6 input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">pinterest.com/</span>
 							</div>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="form-group row form-row-btn">
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-lg-6 offset-lg-3">
                             <button type="submit" rel="submit" class="btn btn-primary btn-important">
                                 {{ __('Guardar cambios') }}
                             </button>

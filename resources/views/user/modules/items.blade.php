@@ -23,7 +23,7 @@
 								@if(isset($item->item->photos->sortBy('ordering')->first()->file_path) && !empty($item->item->photos->sortBy('ordering')->first()->file_path))
 									@php($img = 'storage/items/sm/'.$item->item->photos->sortBy('ordering')->first()->file_path)
 								@endif
-								<div class="col-6 col-md-3">
+								<div class="col-6 col-md-4 col-lg-3">
 									<div class="show-grid-item show-grid-item-favs">
 										<div class="item-info">
 											<a href="{{ route('item.detail', ['name' => UrlFormat::url_limpia($item->item->name), 'item_id' => $item->item->id]) }}" target="_blank" title="Ver el detalle de este item">

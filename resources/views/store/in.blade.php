@@ -29,7 +29,7 @@
 
 			@include('store.includes.sidebar')
 
-			<div class="col-md-9">
+			<div class="col-md-8 col-lg-9">
 
 				@yield('admin')
 

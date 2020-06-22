@@ -11,8 +11,8 @@
 
 				<div class="card-body-title ">
 					<div class="f-right align-right d-none d-md-block">
-						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'list']) }}" class="btn btn-{{ session('listType') == 'list' ? 'secondary disabled' : 'outline-secondary' }}" title="Mostrar los registros a modo de lista"><i class="fa fa-list"></i></a>
-						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'grid']) }}" class="btn btn-{{ session('listType') == 'grid' ? 'secondary disabled' : 'outline-secondary' }}" title="Mostrar los registros a modo de grilla"><i class="fa fa-th-large"></i></a>
+						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'list']) }}" class="btn btn-{{ session('listType') == 'list' ? 'secondary disabled' : 'outline-secondary' }} d-none d-lg-inline-block" title="Mostrar los registros a modo de lista"><i class="fa fa-list"></i></a>
+						<a href="{{ route('item.list.type', ['alias' => $store->alias, 'style' => 'grid']) }}" class="btn btn-{{ session('listType') == 'grid' ? 'secondary disabled' : 'outline-secondary' }} d-none d-lg-inline-block" title="Mostrar los registros a modo de grilla"><i class="fa fa-th-large"></i></a>
 						<a href="{{ route('item.new', ['alias' => $store->alias]) }}" class="marL10 btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Agregar un nuevo item</a>
 					</div>
 					<h1>Mis productos y servicios</h1>
@@ -69,7 +69,7 @@
 									@if(isset($item->photos->sortBy('ordering')->first()->file_path) && !empty($item->photos->sortBy('ordering')->first()->file_path))
 										@php($img = 'storage/items/sm/'.$item->photos->sortBy('ordering')->first()->file_path)
 									@endif
-									<div class="col-6 col-md-3">
+									<div class="col-6 col-md-4 col-lg-3">
 										<div class="show-grid-item show-grid-item-favs">
 											<div class="item-info relative">
 												<a href="{{ route('item.edit', ['alias' => $store->alias, 'item_id' => $item->id]) }}" title="Editar la información de este item">
