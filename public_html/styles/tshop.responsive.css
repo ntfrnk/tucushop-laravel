@@ -85,10 +85,16 @@ header .btn-search {
         margin: 18px 0;
     }
 
-    header .menu-bars {
-        margin: 13px 10px 0 0;
+    .menu-nav .fa {
+        font-size: 25px;
+    }
+
+    header .menu-bars,
+    header .btn-search {
+        margin: 15px 5px 0 0;
         color: #FFF;
-        font-size: 28px;
+        font-size: 25px;
+        width: 32px;
         display: block;
         transition: all 200ms ease-out;
     }
