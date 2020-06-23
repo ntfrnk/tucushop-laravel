@@ -31,9 +31,13 @@
 
 			<div class="menu-nav">
 
-				<a href="javascript:;" class="btn-search d-inline-block d-lg-none">
+				<a href="javascript:;" id="show-searchbox" class="btn-search d-inline-block d-lg-none">
 					<i class="fa fa-search"></i>
 				</a>
+
+				<div class="search-movil">
+					<input type="text" id="search-movil-field" placeholder="Escribe aquí lo que estás buscando" autocomplete="off" />
+				</div>
 				
 				<a href="javascript:;" class="d-inline-block d-xl-none menu-bars">
 					<i class="fa fa-bars"></i>

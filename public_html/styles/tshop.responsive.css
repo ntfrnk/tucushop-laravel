@@ -12,6 +12,26 @@
 }
 
 
+/* Buscar */
+
+.search-movil {
+    background: #FFF;
+    position: fixed;
+    top: 66px;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+
+.search-movil input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
 /* Generales
 ************************************************/
 

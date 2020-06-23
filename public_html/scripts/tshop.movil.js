@@ -11,6 +11,26 @@ $(function(){
         }
     });
 
+    $('#show-searchbox').on('click', function(){
+        if($('.search-movil').hasClass('on')){
+            $('.search-movil').removeClass('on');
+            $('.search-movil').slideUp(100);
+        } else {
+            $('.search-movil').addClass('on');
+            $('.search-movil').slideDown(100);
+            $('#search-movil-field').focus();
+        }
+    });
+
+    $('#search-movil-field').on('keyup', function(){
+        if ( event.which == 13 ) {
+            $('#form-search').submit();
+		} else {
+            text = $('#search-movil-field').val();
+            $('#search').val(text);
+        }
+    });
+
 
     $('.h-toggle-features').on('click', function(){
         $('.div-toggle-features').toggle(200);
