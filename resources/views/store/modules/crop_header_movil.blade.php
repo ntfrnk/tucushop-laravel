@@ -35,9 +35,9 @@
 
 				<div class="row">
 
-					<div class="col-md-12 d-none d-md-block">
+					<div class="col-md-12 padLR0 d-block d-md-none">
 						<div class="crop-container" style="border: solid 1px #CCC; background: #CCC">
-		                    <img src="" class="recorte" />
+		                    <img src="" class="recorte-movil" />
 		                </div>
 					</div>
 

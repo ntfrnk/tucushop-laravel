@@ -406,6 +406,13 @@ Route::get('/store/eshop/header/crop/{alias}', 'StoreController@headerCrop')
 ->name('store.header.crop')
 ->where('alias', '[a-zA-Z0-9._]+');
 
+
+// Recorte de foto de portada (seleccionar área de recorte) MOVIL
+
+Route::get('/store/eshop/header/cropmovil/{alias}', 'StoreController@headerCrop')
+->name('store.header.crop.movil')
+->where('alias', '[a-zA-Z0-9._]+');
+
 	
 // Recorte de foto de portada (procesar recorte)
 

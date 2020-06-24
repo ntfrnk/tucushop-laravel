@@ -102,7 +102,7 @@
 						<div class="row a-center justify-content-center">
 							<div class="marAuto">
 								<button type="button" id="image-header-upload-movil" class="btn btn-primary btn-important">Cambiar foto de cabecera</button>
-								<a href="{{ route('store.header.crop', ['alias' => $store->alias]) }}" class="btn btn-secondary btn-important marR0">Volver a recortar</a>
+								<a href="{{ route('store.header.crop.movil', ['alias' => $store->alias]) }}" class="btn btn-secondary btn-important marR0">Volver a recortar</a>
 							</div>
 						</div>
 						<hr>

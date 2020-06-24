@@ -3,9 +3,9 @@ $(function(){
 
 	/* Recorte de las fotos de portada de stores
 	---------------------------------------------------- */
-	var basic = $('.recorte').croppie({
-	    viewport: {width: 740, height: 186},
-	    boundary: { width: 740, height: 186 }
+	var basic = $('.recorte-movil').croppie({
+	    viewport: {width: 360, height: 90},
+	    boundary: {width: 360, height: 90}
 	});
 
 	basic.croppie('bind', {
@@ -15,7 +15,7 @@ $(function(){
 	$('.show-result-header').on('click', function(){
 
 		// Objeto con las coordenadas
-		p = $('.recorte').croppie('get');
+		p = $('.recorte-movil').croppie('get');
 
 		x = p.points[0];
 		y = p.points[1];
