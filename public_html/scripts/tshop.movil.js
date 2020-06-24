@@ -2,6 +2,7 @@
 $(function(){
 
     $('.menu-bars').on('click', function(){
+        
         if($('.menu-nav-movil').hasClass('menu-on')){
             $('.menu-nav-movil').removeClass('menu-on');
             $('.menu-bars i').removeClass('fa-times').addClass('fa-bars')
@@ -9,17 +10,36 @@ $(function(){
             $('.menu-nav-movil').addClass('menu-on');
             $('.menu-bars i').removeClass('fa-bars').addClass('fa-times')
         }
+
+        if($('.search-movil').hasClass('on')){
+            $('.search-movil').removeClass('on');
+            $('.search-movil').slideUp(200);
+        }
+
     });
 
     $('#show-searchbox').on('click', function(){
+        
         if($('.search-movil').hasClass('on')){
             $('.search-movil').removeClass('on');
-            $('.search-movil').slideUp(100);
+            $('.search-movil').slideUp(200);
+
+            $('body').css({'padding-top':'66px'});
+
         } else {
             $('.search-movil').addClass('on');
-            $('.search-movil').slideDown(100);
+            $('.search-movil').slideDown(200);
             $('#search-movil-field').focus();
+
+            $('body').css({'padding-top':'121px'});
+
         }
+
+        if($('.menu-nav-movil').hasClass('menu-on')){
+            $('.menu-nav-movil').removeClass('menu-on');
+            $('.menu-bars i').removeClass('fa-times').addClass('fa-bars')
+        }
+
     });
 
     $('#search-movil-field').on('keyup', function(){
