@@ -1,6 +1,6 @@
 
-body {
-    transition: padding 200ms ease-out;
+#app {
+    transition: all 200ms ease-out;
 }
 
 .responsive-test {
@@ -19,21 +19,24 @@ body {
 /* Buscar */
 
 .search-movil {
-    background: #222;
+    background: var(--colorPrincipal);
     position: fixed;
-    top: 66px;
+    height: 80px;
+    top: 0;
     left: 0;
-    width: 100%;
+    width: 75%;
     padding: 10px 15px;
-    /* box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.3); */
     display: none;
 }
 
 .search-movil input {
     width: 100%;
-    padding: 6px 10px;
+    padding: 0 15px;
+    height: 60px;
+    line-height: 60px;
     border: none;
     outline: none;
+    font-size: 18px;
 }
 
 
@@ -85,7 +88,7 @@ header .btn-search {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 765px) {
 
     body {
         overflow-x: hidden;
@@ -94,6 +97,31 @@ header .btn-search {
 
 	.container {
         width: 100%;
+    }
+
+
+    /* Buscar
+    ********************************************/
+
+    .search-movil {
+        background: var(--colorPrincipal);
+        position: fixed;
+        height: 66px;
+        top: 0;
+        left: 0;
+        width: 75%;
+        padding: 10px 15px;
+        display: none;
+    }
+
+    .search-movil input {
+        width: 100%;
+        padding: 0 15px;
+        height: 46px;
+        line-height: 46px;
+        border: none;
+        outline: none;
+        font-size: 16px;
     }
 
     /* General
@@ -549,7 +577,7 @@ header .btn-search {
 
 
 
-@media (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 766px) and (max-width: 991px) {
     
     .container {
         width: 100%;
@@ -566,6 +594,10 @@ header .btn-search {
 
     /* Item detail
     ********************************************/
+
+    .item-container {
+        margin-top: 10px;
+    }
 
     .product-item-showing {
         padding: 30px 0px;

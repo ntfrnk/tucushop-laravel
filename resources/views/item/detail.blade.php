@@ -261,7 +261,7 @@
 			</div>
 			<div class="col-10 col-md-8 carousel-title">
 				<h3>Items relacionados</h3>
-				<p class="d-none d-md-block">Productos y servicios similares a lo que estás viendo</p>
+				<p class="d-none d-md-block">Artículos similares a lo que estás viendo</p>
 			</div>
 			<div class="col-md-2 carousel-navigation d-none d-md-block">
 				<button type="button" class="suggested carousel-prev btn btn-light" carousel-id="carousel-1"><</button>
@@ -297,7 +297,7 @@
 			</div>
 			<div class="col-10 col-md-8 carousel-title">
 				<h3>T<span class="d-none d-md-inline-block">ambién t</span>e puede interesar</h3>
-				<p class="d-none d-md-block">Te sugerimos otros productos y servicios disponibles en la web</p>
+				<p class="d-none d-md-block">Otros artículos disponibles en la web</p>
 			</div>
 			<div class="col-md-2 carousel-navigation d-none d-md-block">
 				<button type="button" class="random carousel-prev btn btn-light" carousel-id="random"><</button>

@@ -13,10 +13,7 @@ $(function(){
 
         if($('.search-movil').hasClass('on')){
             $('.search-movil').removeClass('on');
-            $('.search-movil').slideUp(200);
-
-            $('body').css({'padding-top':'66px'});
-
+            $('.search-movil').hide();
         }
 
     });
@@ -24,17 +21,15 @@ $(function(){
     $('#show-searchbox').on('click', function(){
         
         if($('.search-movil').hasClass('on')){
-            $('.search-movil').removeClass('on');
-            $('.search-movil').slideUp(200);
 
-            $('body').css({'padding-top':'66px'});
+            $('.search-movil').removeClass('on');
+            $('.search-movil').hide();
 
         } else {
-            $('.search-movil').addClass('on');
-            $('.search-movil').slideDown(200);
-            $('#search-movil-field').focus();
 
-            $('body').css({'padding-top':'121px'});
+            $('.search-movil').addClass('on');
+            $('.search-movil').show();
+            $('#search-movil-field').focus();
 
         }
 
