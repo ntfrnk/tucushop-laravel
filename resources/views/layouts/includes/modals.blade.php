@@ -1,4 +1,5 @@
 <div class="pop-bg"></div>
+<div class="coverall"></div>
     
 {{-- Reporte de errores en la página --------------------------------- --}}
 
