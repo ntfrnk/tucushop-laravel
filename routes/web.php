@@ -226,7 +226,7 @@ Route::get('/user/preferences', 'UserController@preferences')
 
 Route::get('/item/{name}_{id}', 'ItemController@detail')
 ->name('item.detail')
-->where('name', '[a-z0-9-]+')
+->where('name', '[a-z0-9ç-]+')
 ->where('id', '[0-9]+');
 
 
