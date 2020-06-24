@@ -81,10 +81,17 @@
 									</a>
 								</li>
 								<li>
-									<a href="{{ route('store.list') }}">
-										<i class="w15 f17 fa fa-store-alt"></i>
-										Mis negocios
-									</a>
+									@if(\Auth::user() && \Auth::user()->admins->count() > 0)
+										<a href="{{ route('store.home', ['alias' => \Auth::user()->admins->first()->store->alias]) }}">
+											<i class="w15 f17 fa fa-store-alt"></i>
+											Mis negocios
+										</a>
+									@else
+										<a href="{{ route('store.list') }}">
+											<i class="w15 f17 fa fa-store-alt"></i>
+											Mis negocios
+										</a>
+									@endif
 								</li>
 								<li>
 									<a class="dropdown-item" href="javascript:;" onclick="$('#logout-form').submit();">
@@ -155,10 +162,17 @@
 				</a>
 			</li>
 			<li>
-				<a href="{{ route('store.list') }}">
-					<i class="w15 f17 fa fa-store-alt"></i>
-					Mis negocios
-				</a>
+				@if(\Auth::user() && \Auth::user()->admins->count() > 0)
+					<a href="{{ route('store.home', ['alias' => \Auth::user()->admins->first()->store->alias]) }}">
+						<i class="w15 f17 fa fa-store-alt"></i>
+						Mi negocio
+					</a>
+				@else
+					<a href="{{ route('store.list') }}">
+						<i class="w15 f17 fa fa-store-alt"></i>
+						Mi negocio
+					</a>
+				@endif
 			</li>
 			<li>
 				<a href="{{ route('help') }}">
