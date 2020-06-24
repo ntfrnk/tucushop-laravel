@@ -84,12 +84,12 @@
 									@if(\Auth::user() && \Auth::user()->admins->count() > 0)
 										<a href="{{ route('store.home', ['alias' => \Auth::user()->admins->first()->store->alias]) }}">
 											<i class="w15 f17 fa fa-store-alt"></i>
-											Mis negocios
+											Mis negocio
 										</a>
 									@else
 										<a href="{{ route('store.list') }}">
 											<i class="w15 f17 fa fa-store-alt"></i>
-											Mis negocios
+											Mis negocio
 										</a>
 									@endif
 								</li>
