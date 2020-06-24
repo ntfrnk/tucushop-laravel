@@ -20,7 +20,7 @@
 				</div>
 			</div>
 
-			<div class="card-body-title d-block d-md-none">
+			<div class="card-body-title d-block d-md-none marT30">
 				<h1>Resultados de tu búsqueda</h1>
 				<hr>
 			</div>
