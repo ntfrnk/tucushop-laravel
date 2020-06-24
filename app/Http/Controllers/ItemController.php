@@ -187,8 +187,9 @@ class ItemController extends Controller {
 		->take(12)
 		->get(); */
 
-
-		var_dump($item);
+		echo "<pre>";
+		print_r($item);
+		echo "</pre>";
 		die();
 
 		// Retorno la vista
