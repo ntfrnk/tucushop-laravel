@@ -2,8 +2,6 @@
 
 @section('content')
 
-	{{-- PRODUCTOS DESTACADOS --}}
-
 	<section style="clear: both;">
 
 		<div class="container">

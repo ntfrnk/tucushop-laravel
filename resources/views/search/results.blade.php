@@ -10,7 +10,7 @@
 		
 			{{-- Encabezado --}}
 
-			<div class="carousel-heading row">
+			<div class="carousel-heading row d-none d-md-block">
 				<div class="col-md-2 carousel-icon">
 					<i class="fa fa-tag" aria-hidden="true"></i>
 				</div>
@@ -18,6 +18,11 @@
 					<h3>Resultados de tu búsqueda</h3>
 				<p class="">Se encontraron <span class="fw600">{{ $items->total() }}</span> coincidencias para <span class="fw600">«{{ $search }}»</span>.</p>
 				</div>
+			</div>
+
+			<div class="card-body-title d-block d-md-none">
+				<h1>Resultados de tu búsqueda</h1>
+				<hr>
 			</div>
 
 			{{-- Cuerpo de productos destacados --}}
