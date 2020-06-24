@@ -56,6 +56,25 @@ class RegisterController extends Controller
             'gender' => ['string', 'min:8', 'max:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'name.required' => 'Este campo no puede quedar vacío',
+            'name.string' => 'Estás ingresando caracteres no permitidos',
+            'name.max' => 'El nombre es demasiado largo',
+            'lastname.required' => 'Este campo no puede quedar vacío',
+            'lastname.string' => 'Estás ingresando caracteres no permitidos',
+            'lastname.max' => 'El apellido es demasiado largo',
+            'gender.string' => 'Hay un error con este dato',
+            'gender.min' => 'Hay un error con este dato',
+            'gender.max' => 'Hay un error con este dato',
+            'email.required' => 'Este campo no puede quedar vacío',
+            'email.string' => 'Estás ingresando caracteres no permitidos',
+            'email.email' => 'Debes ingresar una dirección válida',
+            'email.max' => 'El correo electrónico es demasiado largo',
+            'email.unique' => 'Este correo ya se encuentra en uso',
+            'password.required' => 'Este campo no puede quedar vacío',
+            'password.string' => 'Estás ingresando caracteres no permitidos',
+            'password.min' => 'La contraseña es demasiado corta',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
 
     }

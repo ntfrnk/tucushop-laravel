@@ -337,14 +337,14 @@ Route::get('/store/alias/validate/{alias}/{store_id?}', 'StoreController@aliasVa
 
 Route::get('/store/{alias}', 'StoreController@home')
 ->name('store.home')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Formulario de edición de datos del store
 
 Route::get('/store/edit/{alias}', 'StoreController@edit')
 ->name('store.edit')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Guardado de modificaciones en el store
@@ -357,7 +357,7 @@ Route::post('/store/update', 'StoreController@update')
 
 Route::get('/store/data/{alias}', 'StoreController@data')
 ->name('store.data')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Guardado de modificaciones en los datos de contacto
@@ -370,7 +370,7 @@ Route::post('/store/data/update', 'StoreController@updateData')
 
 Route::get('/store/eshop/{alias}', 'StoreController@shopConfig')
 ->name('store.shop.config')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Guardado de las configuraciones del shop
@@ -397,14 +397,14 @@ Route::post('/store/eshop/header/upload', 'StoreController@headerUpload')
 
 Route::get('/store/eshop/header/resize/{alias}', 'StoreController@headerResize')
 ->name('store.header.resize')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Recorte de foto de portada (seleccionar área de recorte)
 
 Route::get('/store/eshop/header/crop/{alias}', 'StoreController@headerCrop')
 ->name('store.header.crop')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 	
 // Recorte de foto de portada (procesar recorte)
@@ -423,14 +423,14 @@ Route::post('/store/eshop/profile/upload', 'StoreController@profileUpload')
 
 Route::get('/store/eshop/profile/resize/{alias}', 'StoreController@profileResize')
 ->name('store.profile.resize')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Recorte de foto de perfil (seleccionar área de recorte)
 
 Route::get('/store/eshop/profile/crop/{alias}', 'StoreController@profileCrop')
 ->name('store.profile.crop')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 	
 // Recorte de foto de perfil (procesar recorte)
@@ -443,14 +443,14 @@ Route::post('/store/eshop/profile/cropper', 'StoreController@profileCropper')
 
 Route::get('/store/eshop/status/{alias}', 'StoreController@shopStatus')
 ->name('store.shop.status')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Administradores del store
 
 Route::get('/store/admins/{alias}', 'StoreController@admins')
 ->name('store.admins')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Nuevo administrador para el store
@@ -469,7 +469,7 @@ Route::post('/store/admins/save', 'StoreController@saveAdmin')
 
 Route::get('/store/admins/edit/{alias}', 'StoreController@editAdmin')
 ->name('store.editAdmin')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Guardar cambios en un administrador del store
@@ -482,28 +482,28 @@ Route::post('/store/admins/update', 'StoreController@updateAdmin')
 
 Route::get('/store/status/{alias}', 'StoreController@status')
 ->name('store.status')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Habilitar / Deshabilitar el store (confirmar)
 
 Route::get('/store/status/change/{alias}', 'StoreController@changeStatus')
 ->name('store.status.change')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Dar de baja el store
 
 Route::get('/store/delete/{alias}', 'StoreController@delete')
 ->name('store.delete')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Dar de baja el store
 
 Route::get('/store/delete/confirm/{alias}', 'StoreController@deleteConfirm')
 ->name('store.delete.confirm')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 
@@ -518,14 +518,14 @@ Route::get('/store/delete/confirm/{alias}', 'StoreController@deleteConfirm')
 
 Route::get('/store/items/{alias}/{page?}', 'ItemController@items')
 ->name('items')
-->where('alias', '[a-z._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Tipo de vista en listados
 
 Route::get('/items/{alias}/{style}', 'ItemController@itemListType')
 ->name('item.list.type')
-->where('alias', '[a-z._]+')
+->where('alias', '[a-zA-Z0-9._]+')
 ->where('style', '[a-z]{4}');
 
 
@@ -533,7 +533,7 @@ Route::get('/items/{alias}/{style}', 'ItemController@itemListType')
 
 Route::get('/store/item/new/{alias}', 'ItemController@new')
 ->name('item.new')
-->where('alias', '[a-z._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Guardado del nuevo item
@@ -546,7 +546,7 @@ Route::post('/store/item/save', 'ItemController@save')
 
 Route::get('/store/item/edit/{alias}/{item_id}', 'ItemController@edit')
 ->name('item.edit')
-->where('alias', '[a-z._]+')
+->where('alias', '[a-zA-Z0-9._]+')
 ->where('item_id', '[0-9]+');
 
 
@@ -572,7 +572,7 @@ Route::get('/item/offer/delete/{item_id}', 'ItemController@offerDelete')
 
 Route::get('/store/item/photos/{alias}/{item_id}', 'ItemController@photos')
 ->name('item.photos')
-->where('alias', '[a-z._]+')
+->where('alias', '[a-zA-Z0-9._]+')
 ->where('item_id', '[0-9]+');
 
 
@@ -593,7 +593,7 @@ Route::get('/store/item/resize/{photo_id}', 'ItemController@resizePhoto')
 
 Route::get('/store/item/crop/{alias}/{item_id}/{photo_id}', 'ItemController@cropPhoto')
 ->name('item.photo.crop')
-->where('alias', '[a-z._]+')
+->where('alias', '[a-zA-Z0-9._]+')
 ->where('item_id', '[0-9]+')
 ->where('photo_id', '[0-9]+');
 
@@ -670,7 +670,7 @@ Route::post('/message/send', 'MessageController@send')
 
 Route::get('/store/{alias}/messages', 'MessageController@store')
 ->name('store.messages')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Leer un hilo de mensajes (Store)
@@ -678,7 +678,7 @@ Route::get('/store/{alias}/messages', 'MessageController@store')
 Route::get('/store/{alias}/message/read/{message_id}', 'MessageController@readStore')
 ->name('store.message.read')
 ->where('message_id', '[0-9]+')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');
 
 
 // Lista de mensajes (Usuario)
@@ -873,4 +873,4 @@ Route::get('/help/topic/{title}_{id}', 'HelpController@detail')
 
 Route::get('/{alias}', 'ShopController@home')
 ->name('store.index')
-->where('alias', '[a-z0-9._]+');
+->where('alias', '[a-zA-Z0-9._]+');

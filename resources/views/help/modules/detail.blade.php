@@ -17,8 +17,8 @@
                     <hr>
                 </div>
 				
-                <div class="f16 lh26">
-                    {{ $topic->text }}
+                <div class="f16 lh26 help-text">
+                    {!! $topic->text !!}
                 </div>
 
 			</div>

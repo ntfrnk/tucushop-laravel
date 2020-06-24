@@ -307,6 +307,31 @@
 
 /*
  |
+ | HELP
+ | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.help-text p {
+	margin-bottom: 20px;
+}
+
+.help-text h3 {
+	font-size: 22px;
+	border-bottom: dashed 1px #CCC;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	margin-top: 15px;
+}
+
+.help-text blockquote {
+	border-left: solid 6px #EEE;
+	padding: 15px 20px 5px;
+	font-style: italic;
+}
+
+
+/*
+ |
  | ITEM -> DETAIL
  | ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 */
