@@ -120,6 +120,9 @@ class ItemController extends Controller {
 
 		$item = Item::find($id);
 
+		var_dump($item);
+		die;
+
 		if($item->status != 0 && $item->store->status != 0 && $item->store->deleted != 1){
 			$item_disabled = 1;
 		} else {
