@@ -67,7 +67,7 @@
 			@endforeach
 
 		@else
-			<div class="col-md-12 marB20">
+			<div class="col-md-12 marB70">
 				<div class="padTB100 em f20 fw500 a-center">
 					Aún no estás administrando un negocio.<br>
 					<a href="{{ route('store.new') }}" class="f18 fw500">¿Quieres crear uno nuevo?</a>
