@@ -112,6 +112,98 @@ class ItemController extends Controller {
 	}
 
 
+	/* Detalle del ítem (PRUEBAS)
+	---------------------------------------------------- */
+	public function detailTest($name, $id){
+
+		// Obtengo los datos del item
+
+		$item = Item::find($id);
+
+		if($item->status != 0 && $item->store->status != 0 && $item->store->deleted != 1){
+			$item_disabled = 1;
+		} else {
+			$item_disabled = 0;
+		}
+
+		$tags = ItemTag::where('item_id',$item->id)->get();
+
+		/* // Obtengo los items aleatorios
+
+		$items_random = 
+		Item::where(function($query) {
+				$query->where('status', 1);
+				$query->whereHas('store', function($q) {
+					$q->where('status', 1);
+					$q->where('deleted', '!=', 1);
+				});
+			})
+			->where('status', '1')
+			->inRandomOrder()
+			->take(12)
+			->get();
+
+		// Obtengo keywords para buscar los relacionados
+
+		$kname = \Help::keywords($item->name);
+		$kdetail = \Help::keywords($item->detail);
+
+		if($tags!=null && $tags->count()!=0){
+			foreach($tags as $tag){
+				$ktags[] = $tag->keyword->keyword;
+			}
+		} else {
+			$ktags = array();
+		}
+
+		$words = array_merge_recursive($kname, $kdetail, $ktags);
+
+		// Busco los ítems relacionados
+
+		$items_sugested = 
+		Item::where(function($query) use ($item) {
+			$query->where('status', 1);
+			$query->whereHas('store', function($q) {
+				$q->where('status', 1);
+				$q->where('deleted', '!=', 1);
+			});
+			$query->where('id', '!=', $item->id);
+		})
+		->where(function($query) use ($words){
+			foreach($words as $word){
+				$query->orWhere('name', 'like', '%'.$word.'%');
+				$query->orWhere('detail', 'like', '%'.$word.'%');
+				$query->orWhereHas('features', function($q) use ($word) {
+					$q->where('content', 'like', '%'.$word.'%');
+				});
+				$query->orWhereHas('tags', function($query) use ($word) {
+					$query->whereHas('keyword', function($q) use ($word) {
+						$q->where('keyword', 'like', '%'.$word.'%');
+					});
+				});
+			}
+		})
+		->inRandomOrder()
+		->take(12)
+		->get(); */
+
+
+		var_dump($item);
+		die();
+
+		// Retorno la vista
+
+		return view('item.detail', [
+			'item' => $item,
+			'tags' => $tags,
+			'item_disabled' => $item_disabled,
+			'items_sugested' => $items_sugested,
+			'items_random' => $items_random
+		]);
+
+	}
+
+
 	/* Like / unlike a un item
 	---------------------------------------------------- */
 	public function like($item_id){
