@@ -14,6 +14,9 @@ $(function(){
         if($('.search-movil').hasClass('on')){
             $('.search-movil').removeClass('on');
             $('.search-movil').slideUp(200);
+
+            $('body').css({'padding-top':'66px'});
+
         }
 
     });
