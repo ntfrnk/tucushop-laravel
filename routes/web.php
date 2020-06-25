@@ -230,14 +230,6 @@ Route::get('/item/{name}_{id}', 'ItemController@detail')
 ->where('id', '[0-9]+');
 
 
-// Detalle del item (pruebas)
-
-/* Route::get('/itemtest/{name}_{id}', 'ItemController@detailTest')
-->name('item.detail')
-->where('name', '[a-z0-9-]+')
-->where('id', '[0-9]+'); */
-
-
 // Like / Unlike
 
 Route::get('/item/like/{item_id}', 'ItemController@like')
