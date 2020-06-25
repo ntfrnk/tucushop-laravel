@@ -83,7 +83,7 @@
 					<div class="featured-banner-caption align-left">
 						<h2>Para tu fiesta...</h2>
 						<h1>tu mejor look!</h1>
-						<a href="collection/tags/fiesta/" class="btn btn-light">
+						<a href="{{ route('search.results', ['keyword' => 'fiesta']) }}" class="btn btn-light">
 						<span>Ver propuestas</span>
 						</a>
 					</div>
