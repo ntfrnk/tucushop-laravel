@@ -213,7 +213,7 @@ $(function(){
 	            items:4
 			},
 			1200:{
-	            items:4,
+	            items:6,
 				slideBy: 2
 	        }
 	    }
